@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Shreyu - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden
+        }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, .7);
+            animation: animate 25s linear infinite;
+            bottom: -150px
+        }
+
+        .circles li:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s
+        }
+
+        .circles li:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s
+        }
+
+        .circles li:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s
+        }
+
+        .circles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s
+        }
+
+        .circles li:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s
+        }
+
+        .circles li:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s
+        }
+
+        .circles li:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s
+        }
+
+        .circles li:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s
+        }
+
+        .circles li:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s
+        }
+
+        .circles li:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+                border-radius: 0
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%
+            }
+        }
+
+        .font-size-44 {
+            font-size: 44px
+        }
+
+        .animate {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out
+        }
+
+        .animate:hover {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1)
+        }
+    </style>
+
+</head>
+
+<body class="pb-0">
+
+    <div class="alert alert-dark bg-primary text-white border-0 mb-0 rounded-0 text-center font-size-15 alert-dismissible fade show" role="alert">
+        <strong>5 in 1 Bundle - Shreyu is available in Html, Angular, React, Vue and Laravel</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg py-lg-3 mb-2 sticky-top" id="nav-menu">
+        <div class="container">
+            <!-- logo -->
+            <a href="index.html" class="navbar-brand mr-lg-5 font-size-22 font-weight-bold text-dark">
+                <img src="assets/images/logo.png" alt="" class="logo-dark mr-2" height="24" /> Shreyu
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class='uil uil-bars'></i>
+            </button>
+
+            <!-- menus -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <!-- left menu -->
+                <ul class="navbar-nav mr-auto align-items-center">
+
+                </ul>
+
+                <!-- right menu -->
+                <ul class="navbar-nav ml-auto align-items-center font-size-16 font-weight-bold">
+                    <li class="nav-item mx-lg-1">
+                        <a class="nav-link text-dark link-demos" href="#demos" id="link-demos">Demos</a>
+                    </li>
+                    <li class="nav-item mr-0 ml-4">
+                        <a href="https://1.envato.market/shreyu_admin" target="_blank" class="nav-link d-lg-none">Purchase now</a>
+                        <a href="https://1.envato.market/shreyu_admin" target="_blank" class="btn btn-success d-none d-lg-inline-flex">
+                            <i data-feather="shopping-bag" class="icon-xs mr-2 mt-1"></i> Purchase Now
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <!-- START HERO -->
+    <section class="hero-section position-relative overflow-hidden px-3 text-dark pt-5 pb-0"
+        style="background: url('assets/images/covers/pattern.png') center top;">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col text-center">
+                    <div class="py-5">
+                        <h1 class="mb-4">
+                            Build your dashboard or admin application faster with Shreyu
+                        </h1>
+
+                        <p class="mb-4 font-size-16 text-center">
+                            Shreyu is a fully featured admin and dashboard template.
+                            Shreyu comes with tones of well designed & ready to use <br />UI elements, components, widgets and
+                            pages.
+                        </p>
+
+                        <p class="pt-4">
+                            <button class="btn btn-primary btn-lg mr-3 link-demos">Check Demos
+                                <i data-feather="arrow-right" class="icon-xs ml-1 align-middle"></i></button>
+                            <a href="https://1.envato.market/shreyu_admin" target="_blank" class="btn btn-outline-success btn-lg mt-2 mt-lg-0">
+                                <i data-feather="shopping-bag" class="icon-xs mr-1 align-middle"></i>
+                                Purchase Now
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="assets/images/layouts/vertical-full-sm.png" alt=""
+                        class="mx-auto d-block shadow img-fluid" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO -->
+
+    <!-- START SERVICES -->
+    <section class="py-sm-5 pb-4 bg-white" id="demos">
+        <div class="container">
+            <div class="row py-4">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1>Creative Demos</h1>
+                        <p class="text-muted mt-2 font-size-15">
+                            Multiple navigation layouts and navigation color schemes are available to cater need of any modern web
+                            application. <br />
+                            We understand that having only html bundle is not enough and so we have developed the
+                            React, Angular, Vue and Laravel versions as well.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3 mb-3">
+                <div class="col-md-6 offset-md-3">
+                    <ul class="nav nav-pills navtab-bg nav-justified">
+                        <li class="nav-item">
+                            <a href="#htmldemo" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                <span class="d-block d-sm-none"><i class="uil uil-html3-alt"></i></span>
+                                <span class="d-none d-sm-block">Html</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#reactdemo" data-toggle="tab" aria-expanded="true" class="nav-link">
+                                <span class="d-block d-sm-none"><i class="uil uil-react"></i></span>
+                                <span class="d-none d-sm-block">React</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#angulardemo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                <span class="d-block d-sm-none"><i class=""></i>A</span>
+                                <span class="d-none d-sm-block">Angular</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#vuedemo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                <span class="d-block d-sm-none"><i class=""></i>V</span>
+                                <span class="d-none d-sm-block">Vue</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#laraveldemo" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                <span class="d-block d-sm-none"><i class=""></i>L</span>
+                                <span class="d-none d-sm-block">Laravel</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content text-muted">
+                <div class="tab-pane fade show active" id="htmldemo">
+                    <div class="row mt-2 pb-3">
+                        <div class="col text-center">
+                            <img src="assets/images/brands/bootstrap.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Bootstrap v4.3.1" />
+                            <img src="assets/images/brands/html5.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Html 5" />
+                            <img src="assets/images/brands/css3.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="CSS 3" />
+                            <img src="assets/images/brands/jquery.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="JQuery" />
+                            <img src="assets/images/brands/sass.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="SCSS" />
+                            <img src="assets/images/brands/gulp.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Gulp v4" />
+                            <img src="assets/images/brands/yarn.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Yarn" />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="index.html">
+                                    <img src="assets/images/layouts/vertical-landing.jpg" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Vertical Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="layouts-horizontal.html">
+                                    <img src="assets/images/layouts/horizontal-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Horizontal Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="layouts-dark.html">
+                                    <img src="assets/images/layouts/dark-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Dark Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="layouts-dark-sidebar.html">
+                                    <img src="assets/images/layouts/vertical-dark-sidebar-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Semi Dark Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="layouts-boxed.html">
+                                    <img src="assets/images/layouts/boxed-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Fixed Width (Boxed) Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="layouts-condensed.html">
+                                    <img src="assets/images/layouts/vertical-condensed-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Condensed Sidenav Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="reactdemo">
+                    <div class="row mt-2 pb-3">
+                        <div class="col text-center">
+                            <img src="assets/images/brands/react.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="React v16.10.1" />
+                            <img src="assets/images/brands/redux.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Redux" />
+                            <img src="assets/images/brands/saga.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Redux Saga" />
+                            <img src="assets/images/brands/bootstrap.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Bootstrap v4.3.1" />
+                            <img src="assets/images/brands/sass.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="SCSS" />
+                            <img src="assets/images/brands/yarn.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Yarn" />
+                        </div>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-react.coderthemes.com/">
+                                    <img src="assets/images/layouts/vertical-landing.jpg" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Vertical Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-react.coderthemes.com/">
+                                    <img src="assets/images/layouts/horizontal-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Horizontal Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="angulardemo">
+                    <div class="row mt-2 pb-3">
+                        <div class="col text-center">
+                            <img src="assets/images/brands/angular.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Angular v8" />
+                            <img src="assets/images/brands/ts.png" alt="" height="36" class="m-1" data-toggle="tooltip"
+                                data-placement="top" title="Typescript" />
+                            <img src="assets/images/brands/bootstrap.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Bootstrap v4.3.1" />
+                            <img src="assets/images/brands/sass.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="SCSS" />
+                        </div>
+                    </div>
+                    <div class="row mt-4 justify-content-center">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-ng.coderthemes.com/">
+                                    <img src="assets/images/layouts/vertical-landing.jpg" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Vertical Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-ng.coderthemes.com/">
+                                    <img src="assets/images/layouts/horizontal-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Horizontal Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="vuedemo">
+                    <div class="row mt-2 pb-3">
+                        <div class="col text-center">
+                            <img src="assets/images/brands/vue.png" alt="" height="40" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Vue v2, Vuex and Vue Router" />
+                            <img src="assets/images/brands/bootstrap.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Bootstrap v4.3.1" />
+                            <img src="assets/images/brands/sass.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="SCSS" />>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-vue.coderthemes.com/">
+                                    <img src="assets/images/layouts/vertical-landing.jpg" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Vertical Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-vue.coderthemes.com/">
+                                    <img src="assets/images/layouts/horizontal-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Horizontal Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="laraveldemo">
+                    <div class="row mt-2 pb-3">
+                        <div class="col text-center">
+                            <img src="assets/images/brands/laravel.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Laravel v6" />
+                            <img src="assets/images/brands/mix.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Laravel Mix" />
+                            <img src="assets/images/brands/npm.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="NPM" />
+                            <img src="assets/images/brands/bootstrap.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="Bootstrap v4.3.1" />
+                            <img src="assets/images/brands/sass.png" alt="" height="48" class="m-1"
+                                data-toggle="tooltip" data-placement="top" title="SCSS" />
+                            
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/">
+                                    <img src="assets/images/layouts/vertical-landing.jpg" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Vertical Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/layout-example/horizontal">
+                                    <img src="assets/images/layouts/horizontal-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Horizontal Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/layout-example/dark">
+                                    <img src="assets/images/layouts/dark-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Dark Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/layout-example/dark-sidebar">
+                                    <img src="assets/images/layouts/vertical-dark-sidebar-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Semi Dark Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/layout-example/boxed">
+                                    <img src="assets/images/layouts/boxed-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Fixed Width (Boxed) Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card-box shadow-none text-center">
+                                <a href="http://shreyu-laravel.coderthemes.com/layout-example/condensed-sidebar">
+                                    <img src="assets/images/layouts/vertical-condensed-landing.png" alt="demo-img"
+                                        class="shadow-sm rounded img-thumbnail animate" />
+                                    <h5 class="mt-3 font-size-16">Condensed Sidenav Layout</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END SERVICES -->
+
+
+    <!-- START FEATURES 2 -->
+    <!-- <section class="py-5 bg-white border-top border-bottom border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1>Features you'll <span class="text-primary">love</span></h1>
+                        <p class="text-muted mt-2">It comes with next generation ui design and have multiple benefits
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-5 align-items-center">
+                <div class="col-lg-4 col-md-5">
+                    <img src="assets/images/widgets-sample/17.png" class="border1 img-fluid animate" alt="" />
+                </div>
+                <div class="offset-lg-1 col-md-7">
+                    <h4>Ready to use applications and pages</h4>
+                    <p class="text-muted mt-3">Shreyu comes with a variety of ready-to-use applications and pages that
+                        help to speed up the development</p>
+
+                    <div class="mt-4">
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Projects & Tasks</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Email Application Pages</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Profile, pricing, invoice</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Login, signup, forget password,
+                            etc</p>
+                    </div>
+
+                    <a href="dashboard.html" class="btn btn-primary mt-3">Check Demo <i data-feather="arrow-right"
+                            class="icon-xs ml-1"></i></a>
+
+                </div>
+            </div>
+
+            <div class="row pb-3 pt-5 align-items-center">
+                <div class="col-md-6">
+                    <h4>Simply beautiful and clean design</h4>
+                    <p class="text-muted mt-3">The simplest and fastest way to build dashboard or admin panel. Shreyu is
+                        built using the latest tech and tools and provide an easy way to customize anything, including
+                        an overall color schemes, layout, etc.</p>
+
+                    <div class="mt-4">
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Built with latest
+                            Bootstrap</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Extensive use of SCSS
+                            variables</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Well documented and
+                            structured code</p>
+                        <p class="text-muted font-size-15 mb-2"><i data-feather="check-circle"
+                                class="mr-1 align-middle icon-xs icon-dual-success"></i> Detailed Documentation
+                        </p>
+                    </div>
+
+                    <a href="dashboard.html" class="btn btn-primary mt-3">Check Demo <i data-feather="arrow-right"
+                            class="icon-xs ml-1"></i></a>
+
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-5 pt-4 pt-lg-0">
+                    <img src="assets/images/widgets-sample/16.png" class="img-fluid animate" alt="" />
+                </div>
+            </div>
+
+        </div>
+    </section> -->
+    <!-- END FEATURES 2 -->
+
+
+    <section class="py-5 bg-white border-top border-bottom border-top">
+        <div class="container">
+            <div class="row pb-3">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1 class="mb-1">Built in Pages</h1>
+                        <p class="text-muted">Shreyu comes with applications and secondary pages including auth, registration, profile,
+                            pricing, faq, error pages, etc
+                            <br />which are handy when dealing with presenting more details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="pages-profile.html">
+                            <img src="assets/images/pages-sample/profile-page.png" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Profile</h5>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="email-inbox.html">
+                            <img src="assets/images/pages-sample/inbox.png" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Inbox</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="pages-pricing.html">
+                            <img src="assets/images/pages-sample/pricing.png" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Pricing</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="pages-invoice.html">
+                            <img src="assets/images/pages-sample/invoice.png" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Invoice</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="pages-register.html">
+                            <img src="assets/images/pages-sample/register.png" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Register</h5>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card-box shadow-none text-center">
+                        <a href="pages-recoverpw.html">
+                            <img src="assets/images/pages-sample/error-404.jpg" alt="demo-img"
+                                class="shadow-sm rounded img-thumbnail animate" />
+                            <h5 class="mt-3 font-size-16">Error - 404</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col text-center py-4">
+                    <a href="pages-profile.html" class="btn btn-success shadow-sm">Check All <i
+                            data-feather="arrow-right" class="icon-xs ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- START FEATURES  -->
+    <section class="py-5 bg-white border-top border-bottom border-top">
+        <div class="container">
+            <div class="row pb-3">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1>Complete UI Kit with <span class="text-primary">Reusable Widgets</span></h1>
+                        <p class="text-muted mt-2">Fully responsive and resuable widgets covering statistics, user
+                            profile, team, chat, tasks, etc.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-columns mt-3">
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/3.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/4.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/5.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/6.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/1.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/2.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/8.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/9.png" class="card-img-top" alt="..." />
+                </div>
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/10.png" class="card-img-top" alt="..." />
+                </div>
+                <!-- <div class="card border animate">
+                    <img src="assets/images/widgets-sample/11.png" class="card-img-top" alt="..." />
+                </div> -->
+                <!-- <div class="card border animate">
+                    <img src="assets/images/widgets-sample/12.png" class="card-img-top" alt="..." />
+                </div> -->
+                <!-- <div class="card border animate">
+                    <img src="assets/images/widgets-sample/13.png" class="card-img-top" alt="..." />
+                </div> -->
+                <div class="card border animate">
+                    <img src="assets/images/widgets-sample/14.png" class="card-img-top" alt="..." />
+                </div>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col text-center py-4">
+                    <a href="widgets.html" class="btn btn-success shadow-sm">Check All <i data-feather="arrow-right"
+                            class="icon-xs ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END FEATURES  -->
+
+    <!-- START FAQ -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h1>Frequently Asked <span class="text-primary">Questions</span></h1>
+                        <p class="text-muted mt-2">Here are some of the basic types of questions for our customers. For
+                            more <br>information please contact us.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 mb-3">
+                <div class="col-lg-5 offset-lg-1">
+                    <!-- Question/Answer -->
+                    <div>
+                        <h4 class="faq-question text-body font-size-17">Q. Can I use this template for my client?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted font-size-15">Yup, the marketplace license allows you
+                            to use this
+                            theme in any end product. For more information on licenses, please refer <a
+                                href="https://themeforest.net/licenses/standard" target="_blank">here</a>.</p>
+                    </div>
+
+                    <!-- Question/Answer -->
+                    <div class="pt-3">
+                        <h4 class="faq-question text-body font-size-17">Q. How do I get help with the theme?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted font-size-15">Use our dedicated support email
+                            (support@coderthemes.com) to send your issues or feedback. We are here to help anytime.</p>
+                    </div>
+
+                </div>
+                <!--/col-lg-5 -->
+
+                <div class="col-lg-5">
+                    <!-- Question/Answer -->
+                    <div>
+                        <h4 class="faq-question text-body font-size-17">Q. Can this theme work with Wordpress?</h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted font-size-15">No. This is a HTML template. It won't
+                            work directly with
+                            wordpress. However you can convert this into wordpress compatible theme.</p>
+                    </div>
+
+                    <!-- Question/Answer -->
+                    <div class="pt-3">
+                        <h4 class="faq-question text-body font-size-17">Q. Will you regularly give updates of Shreyu?
+                        </h4>
+                        <p class="faq-answer mb-4 pb-1 text-muted font-size-15">Yes, We will update the Shreyu
+                            regularly. All the
+                            future updates would be available without any cost.</p>
+                    </div>
+
+                </div>
+                <!--/col-lg-5-->
+            </div>
+            <!-- end row -->
+
+            <div class="row pt-4">
+                <div class="col text-center">
+                    <a href="https://1.envato.market/shreyu_admin" target="_blank" class="btn btn-success btn-lg shadow-sm">
+                        <i data-feather="shopping-bag" class="icon-xs mr-2"></i> Purchase Now
+                    </a>
+                </div>
+            </div>
+
+        </div> <!-- end container-->
+    </section>
+    <!-- END FAQ -->
+
+
+    <!-- START FOOTER -->
+    <footer class="pt-5 pb-3 position-relative" style="background: url('assets/images/covers/pattern.png') center top;">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="index.html" class="navbar-brand mr-lg-5 font-size-22 font-weight-bold text-dark">
+                        <img src="assets/images/logo.png" alt="" class="logo-dark mr-2" height="42" /> Shreyu
+                    </a>
+                    <p class="font-size-15 mt-4">Shreyu makes it easier to build better websites with
+                        <br> great speed. Save hundreds of hours of design
+                        <br> and development by using it.</p>
+                </div>
+
+                <div class="col-lg-2">
+
+                </div>
+
+                <div class="col-lg-2">
+                </div>
+
+                <div class="col-lg-2">
+                    <h5 class="">Help</h5>
+
+                    <ul class="list-unstyled pl-0 mb-0 mt-3">
+                        <li class="mt-2"><a href="https://coderthemes.com" class="text-dark">Get Support</a></li>
+                        <li class="mt-2"><a href="docs.html" class="text-dark">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mt-5">
+                        <p class="mt-4 text-center mb-0">© 2019 Shreyu. Design and coded by
+                            Coderthemes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+
+    <!-- Vendor js -->
+    <script src="assets/js/vendor.min.js"></script>
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".link-demos").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#demos").offset().top
+                }, 1000);
+            });
+
+            // make the navbar stikcy
+            var nav = $("#nav-menu");
+            $(window).on('scroll', function(e) {
+                if (window.scrollY > 50) {
+                    nav.addClass('bg-white');
+                    nav.addClass('shadow');
+                } else {
+                    nav.removeClass('bg-white');
+                    nav.removeClass('shadow');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

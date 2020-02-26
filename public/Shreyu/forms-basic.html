@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Shreyu - Admin & Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Topbar Start -->
+            <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+                <div class="container-fluid">
+                    <!-- LOGO -->
+                    <a href="index.html" class="navbar-brand mr-0 mr-md-2 logo">
+                        <span class="logo-lg">
+                            <img src="assets/images/logo.png" alt="" height="24" />
+                            <span class="d-inline h5 ml-1 text-logo">Shreyu</span>
+                        </span>
+                        <span class="logo-sm">
+                            <img src="assets/images/logo.png" alt="" height="24">
+                        </span>
+                    </a>
+
+                    <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
+                        <li class="">
+                            <button class="button-menu-mobile open-left disable-btn">
+                                <i data-feather="menu" class="menu-icon"></i>
+                                <i data-feather="x" class="close-icon"></i>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+                        <li class="d-none d-sm-block">
+                            <div class="app-search">
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                        <span data-feather="search"></span>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="Change language">
+                            <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="false" aria-expanded="false">
+                                <i data-feather="globe"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                        class="align-middle">German</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                        class="align-middle">Italian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                        class="align-middle">Spanish</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                        class="align-middle">Russian</span>
+                                </a>
+                            </div>
+                        </li>
+
+
+                        <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left"
+                            title="8 new unread notifications">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                aria-expanded="false">
+                                <i data-feather="bell"></i>
+                                <span class="noti-icon-badge"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                                <!-- item-->
+                                <div class="dropdown-item noti-title border-bottom">
+                                    <h5 class="m-0 font-size-16">
+                                        <span class="float-right">
+                                            <a href="" class="text-dark">
+                                                <small>Clear All</small>
+                                            </a>
+                                        </span>Notification
+                                    </h5>
+                                </div>
+
+                                <div class="slimscroll noti-scroll">
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                        <div class="notify-icon bg-primary"><i class="uil uil-user-plus"></i></div>
+                                        <p class="notify-details">New user registered.<small class="text-muted">5 hours ago</small>
+                                        </p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                        <div class="notify-icon">
+                                            <img src="assets/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" />
+                                        </div>
+                                        <p class="notify-details">Karen Robinson</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Wow ! this admin looks good and awesome design</small>
+                                        </p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                        <div class="notify-icon">
+                                            <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                        </div>
+                                        <p class="notify-details">Cristina Pride</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Hi, How are you? What about our next meeting</small>
+                                        </p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom active">
+                                        <div class="notify-icon bg-success"><i class="uil uil-comment-message"></i> </div>
+                                        <p class="notify-details">Jaclyn Brunswick commented on Dashboard<small class="text-muted">1
+                                                min
+                                                ago</small></p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                        <div class="notify-icon bg-danger"><i class="uil uil-comment-message"></i></div>
+                                        <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days
+                                                ago</small></p>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-primary">
+                                            <i class="uil uil-heart"></i>
+                                        </div>
+                                        <p class="notify-details">Carlos Crouch liked
+                                            <b>Admin</b>
+                                            <small class="text-muted">13 days ago</small>
+                                        </p>
+                                    </a>
+                                </div>
+
+                                <!-- All-->
+                                <a href="javascript:void(0);"
+                                    class="dropdown-item text-center text-primary notify-item notify-all border-top">
+                                    View all
+                                    <i class="fi-arrow-right"></i>
+                                </a>
+
+                            </div>
+                        </li>
+
+                        <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left" title="Settings">
+                            <a href="javascript:void(0);" class="nav-link right-bar-toggle">
+                                <i data-feather="settings"></i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown notification-list align-self-center profile-dropdown">
+                            <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="false" aria-expanded="false">
+                                <div class="media user-profile ">
+                                    <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
+                                    <div class="media-body text-left">
+                                        <h6 class="pro-user-name ml-2 my-0">
+                                            <span>Shreyu N</span>
+                                            <span class="pro-user-desc text-muted d-block mt-1">Administrator </span>
+                                        </h6>
+                                    </div>
+                                    <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                                <a href="pages-profile.html" class="dropdown-item notify-item">
+                                    <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
+                                    <span>Support</span>
+                                </a>
+
+                                <a href="pages-lock-screen.html" class="dropdown-item notify-item">
+                                    <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- end Topbar -->
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left-side-menu">
+                <div class="media user-profile mt-2 mb-2">
+                    <img src="assets/images/users/avatar-7.jpg" class="avatar-sm rounded-circle mr-2" alt="Shreyu" />
+                    <img src="assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle mr-2" alt="Shreyu" />
+
+                    <div class="media-body">
+                        <h6 class="pro-user-name mt-0 mb-0">Nik Patel</h6>
+                        <span class="pro-user-desc">Administrator</span>
+                    </div>
+                    <div class="dropdown align-self-center profile-dropdown-menu">
+                        <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                            aria-expanded="false">
+                            <span data-feather="chevron-down"></span>
+                        </a>
+                        <div class="dropdown-menu profile-dropdown">
+                            <a href="pages-profile.html" class="dropdown-item notify-item">
+                                <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
+                                <span>My Account</span>
+                            </a>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
+                                <span>Settings</span>
+                            </a>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
+                                <span>Support</span>
+                            </a>
+
+                            <a href="pages-lock-screen.html" class="dropdown-item notify-item">
+                                <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
+                                <span>Lock Screen</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-content">
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu" class="slimscroll-menu">
+                        <ul class="metismenu" id="menu-bar">
+                            <li class="menu-title">Navigation</li>
+
+                            <li>
+                                <a href="index.html">
+                                    <i data-feather="home"></i>
+                                    <span class="badge badge-success float-right">1</span>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
+                            <li class="menu-title">Apps</li>
+                            <li>
+                                <a href="apps-calendar.html">
+                                    <i data-feather="calendar"></i>
+                                    <span> Calendar </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="inbox"></i>
+                                    <span> Email </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="email-inbox.html">Inbox</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-read.html">Read</a>
+                                    </li>
+                                    <li>
+                                        <a href="email-compose.html">Compose</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="briefcase"></i>
+                                    <span> Projects </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+    
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="project-list.html">List</a>
+                                    </li>
+                                    <li>
+                                        <a href="project-detail.html">Detail</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="bookmark"></i>
+                                    <span> Tasks </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+    
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="task-list.html">List</a>
+                                    </li>
+                                    <li>
+                                        <a href="task-board.html">Kanban Board</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-title">Custom</li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="file-text"></i>
+                                    <span> Pages </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="pages-starter.html">Starter</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-profile.html">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-activity.html">Activity</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-invoice.html">Invoice</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-pricing.html">Pricing</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-maintenance.html">Maintenance</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-login.html">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-register.html">Register</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-recoverpw.html">Recover Password</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-confirm-mail.html">Confirm</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-404.html">Error 404</a>
+                                    </li>
+                                    <li>
+                                        <a href="pages-500.html">Error 500</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="layout"></i>
+                                    <span> Layouts </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="layouts-horizontal.html">Horizontal Nav</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-rtl.html">RTL</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-dark.html">Dark</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-scrollable.html">Scrollable</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-boxed.html">Boxed</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-preloader.html">With Pre-loader</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-dark-sidebar.html">Dark Side Nav</a>
+                                    </li>
+                                    <li>
+                                        <a href="layouts-condensed.html">Condensed Nav</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-title">Components</li>
+
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i data-feather="package"></i>
+                                    <span> UI Elements </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="components-bootstrap.html">Bootstrap UI</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" aria-expanded="false">Icons
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul class="nav-third-level" aria-expanded="false">
+                                            <li>
+                                                <a href="icons-feather.html">Feather Icons</a>
+                                            </li>
+                                            <li>
+                                                <a href="icons-unicons.html">Unicons Icons</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="widgets.html">Widgets</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="false">
+                                    <i data-feather="file-text"></i>
+                                    <span> Forms </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="forms-basic.html">Basic Elements</a>
+                                    </li>
+                                    <li>
+                                        <a href="forms-advanced.html">Advanced</a>
+                                    </li>
+                                    <li>
+                                        <a href="forms-validation.html">Validation</a>
+                                    </li>
+                                    <li>
+                                        <a href="forms-wizard.html">Wizard</a>
+                                    </li>
+                                    <li>
+                                        <a href="forms-editor.html">Editor</a>
+                                    </li>
+                                    <li>
+                                        <a href="forms-file-uploads.html">File Uploads</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="charts-apex.html" aria-expanded="false">
+                                    <i data-feather="pie-chart"></i>
+                                    <span> Charts </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="false">
+                                    <i data-feather="grid"></i>
+                                    <span> Tables </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li>
+                                        <a href="tables-basic.html">Basic</a>
+                                    </li>
+                                    <li>
+                                        <a href="tables-datatables.html">Advanced</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Sidebar -->
+
+                    <div class="clearfix"></div>
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        <div class="row page-title">
+                            <div class="col-md-12">
+                                <nav aria-label="breadcrumb" class="float-right mt-1">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Shreyu</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Basic</li>
+                                    </ol>
+                                </nav>
+                                <h4 class="mb-1 mt-0">Basic Forms</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mt-0">Input Types</h4>
+                                        <p class="sub-header">
+                                            Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.
+                                        </p>
+
+                                        <form class="form-horizontal">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="simpleinput">Text</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control" id="simpleinput"
+                                                                value="Some text value...">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-email">Email</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="email" id="example-email" name="example-email"
+                                                                class="form-control" placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-password">Password</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="password" class="form-control"
+                                                                id="example-password" value="password">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-placeholder">Placeholder</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="placeholder" id="example-placeholder">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-textarea">Text area</label>
+                                                        <div class="col-lg-10">
+                                                            <textarea class="form-control" rows="5"
+                                                                id="example-textarea"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">Readonly</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control" readonly=""
+                                                                value="Readonly value">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">Disabled</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control" disabled=""
+                                                                value="Disabled value">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-static">Static control</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" readonly class="form-control-plaintext"
+                                                                id="example-static" value="email@example.com">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-helping">Helping text</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="text" class="form-control" id="example-helping"
+                                                                placeholder="Helping text">
+                                                            <span class="help-block"><small>A block of help text that
+                                                                    breaks onto a new line and may extend beyond one
+                                                                    line.</small></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">Input Select</label>
+                                                        <div class="col-lg-10">
+                                                            <select class="form-control custom-select">
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-fileinput">Default file input</label>
+                                                        <div class="col-lg-10">
+                                                            <input type="file" class="form-control"
+                                                                id="example-fileinput">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-date">Date</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-date" type="date"
+                                                                name="date">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-month">Month</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-month" type="month"
+                                                                name="month">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-time">Time</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-time" type="time"
+                                                                name="time">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-week">Week</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-week" type="week"
+                                                                name="week">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-number">Number</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-number"
+                                                                type="number" name="number">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">URL</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" type="url" name="url">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">Search</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" type="search" name="search">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label">Tel</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" type="tel" name="tel">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-color">Color</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="form-control" id="example-color" type="color"
+                                                                name="color" value="#5369f8">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-0">
+                                                        <label class="col-lg-2 col-form-label"
+                                                            for="example-range">Range</label>
+                                                        <div class="col-lg-10">
+                                                            <input class="custom-range mt-1" id="example-range"
+                                                                type="range" name="range" min="0" max="10">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+            
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mt-0">Select menu</h4>
+                                        <p class="sub-header">
+                                            Custom <code>&lt;select&gt;</code> menus need only a custom class,
+                                            <code>.custom-select</code> to trigger the custom styles.
+                                        </p>
+
+                                        <select class="custom-select mb-2">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="custom-select custom-select-lg mb-2">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="custom-select custom-select-sm">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+
+
+                                        <div class="mt-4">
+                                            <h4 class="header-title">Switches</h4>
+                                            <p class="sub-header">
+                                                A switch has the markup of a custom checkbox but uses the
+                                                <code>.custom-switch</code> class to render a toggle switch. Switches
+                                                also support the <code>disabled</code> attribute.
+                                            </p>
+
+                                            <div class="custom-control custom-switch mb-2">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                <label class="custom-control-label" for="customSwitch1">Toggle this
+                                                    switch element</label>
+                                            </div>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" disabled
+                                                    id="customSwitch2">
+                                                <label class="custom-control-label" for="customSwitch2">Disabled switch
+                                                    element</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mt-0">Checkboxes</h4>
+                                        <div class="mt-3">
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                                    checked>
+                                                <label class="custom-control-label" for="customCheck1">Check this
+                                                    custom checkbox</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                <label class="custom-control-label" for="customCheck2">Check this
+                                                    custom checkbox</label>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="font-size-15 mt-3">Radios</h4>
+                                        <div class="">
+                                            <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="customRadio1" name="customRadio"
+                                                    class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio1">Toggle this
+                                                    custom radio</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio2" name="customRadio"
+                                                    class="custom-control-input" checked>
+                                                <label class="custom-control-label" for="customRadio2">Or toggle
+                                                    this other custom radio</label>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="font-size-15 mt-3">Disabled</h4>
+                                        <div class="">
+                                            <div class="custom-control custom-checkbox mb-2">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="customCheckDisabled1" disabled>
+                                                <label class="custom-control-label" for="customCheckDisabled1">Check
+                                                    this custom checkbox</label>
+                                            </div>
+
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="radioDisabled" id="customRadioDisabled2"
+                                                    class="custom-control-input" disabled>
+                                                <label class="custom-control-label" for="customRadioDisabled2">Toggle
+                                                    this custom radio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mb-3 header-title mt-0">Basic Example</h4>
+
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="checkmeout0">
+                                                    <label class="custom-control-label" for="checkmeout0">Check me out !</label>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mb-3 header-title mt-0">Horizontal Form</h4>
+
+                                        <form class="form-horizontal">
+                                            <div class="form-group row mb-3">
+                                                <label for="inputEmail3" class="col-3 col-form-label">Email</label>
+                                                <div class="col-9">
+                                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-3">
+                                                <label for="inputPassword3" class="col-3 col-form-label">Password</label>
+                                                <div class="col-9">
+                                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-3">
+                                                <label for="inputPassword5" class="col-3 col-form-label">Re Password</label>
+                                                <div class="col-9">
+                                                    <input type="password" class="form-control" id="inputPassword5" placeholder="Retype Password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-3 justify-content-end">
+                                                <div class="col-9">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkmeout">
+                                                        <label class="custom-control-label" for="checkmeout">Check me out !</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-0 justify-content-end row">
+                                                <div class="col-9">
+                                                    <button type="submit" class="btn btn-info">Sign in</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>  <!-- end card-body -->
+                                </div>  <!-- end card -->
+                            </div>  <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                        <!-- Inline Form -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mb-1 header-title mt-0">Inline Form</h4>
+
+                                        <p class="sub-header">
+                                            Use the <code>.form-inline</code> class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states. Controls only appear inline in viewports that are at least 576px wide to account for narrow viewports on mobile devices.
+                                        </p>
+
+                                        <form class="form-inline">
+                                            <div class="form-group mr-3">
+                                                <label for="staticEmail2" class="sr-only">Email</label>
+                                                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+                                            </div>
+                                            <div class="form-group mr-3">
+                                                <label for="inputPassword2" class="sr-only">Password</label>
+                                                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Confirm identity</button>
+                                        </form>
+    
+                                        <h6 class="font-13 mt-3 font-weight-semibold">Auto-sizing</h6>
+    
+                                        <form>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-auto">
+                                                    <label class="sr-only" for="inlineFormInput">Name</label>
+                                                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                                    <div class="input-group mb-2">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">@</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="custom-control custom-checkbox mb-2">
+                                                        <input type="checkbox" class="custom-control-input" id="autoSizingCheck">
+                                                        <label class="custom-control-label" for="autoSizingCheck">Remember me</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        
+                    </div> <!-- container-fluid -->
+
+                </div> <!-- content -->
+
+                
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                2019 &copy; Shreyu. All Rights Reserved. Crafted with <i class='uil uil-heart text-danger font-size-12'></i> by <a href="https://coderthemes.com" target="_blank">Coderthemes</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div class="rightbar-title">
+                <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                    <i data-feather="x-circle"></i>
+                </a>
+                <h5 class="m-0">Customization</h5>
+            </div>
+    
+            <div class="slimscroll-menu">
+    
+                <h5 class="font-size-16 pl-3 mt-4">Choose Variation</h5>
+                <div class="p-3">
+                    <h6>Default</h6>
+                    <a href="index.html"><img src="assets/images/layouts/vertical.jpg" alt="vertical" class="img-thumbnail demo-img" /></a>
+                </div>
+                <div class="px-3 py-1">
+                    <h6>Top Nav</h6>
+                    <a href="layouts-horizontal.html"><img src="assets/images/layouts/horizontal.jpg" alt="horizontal" class="img-thumbnail demo-img" /></a>
+                </div>
+                <div class="px-3 py-1">
+                    <h6>Dark Side Nav</h6>
+                    <a href="layouts-dark-sidebar.html"><img src="assets/images/layouts/vertical-dark-sidebar.jpg" alt="dark sidenav" class="img-thumbnail demo-img" /></a>
+                </div>
+                <div class="px-3 py-1">
+                    <h6>Condensed Side Nav</h6>
+                    <a href="layouts-dark-sidebar.html"><img src="assets/images/layouts/vertical-condensed.jpg" alt="condensed" class="img-thumbnail demo-img" /></a>
+                </div>
+                <div class="px-3 py-1">
+                    <h6>Fixed Width (Boxed)</h6>
+                    <a href="layouts-boxed.html"><img src="assets/images/layouts/boxed.jpg" alt="boxed"
+                            class="img-thumbnail demo-img" /></a>
+                </div>
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+        
+    </body>
+</html>

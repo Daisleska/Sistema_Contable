@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Shreyu - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Summernote css -->
+    <link href="assets/libs/summernote/summernote-bs4.css" rel="stylesheet" type="text/css" />
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Topbar Start -->
+        <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+            <div class="container-fluid">
+                <!-- LOGO -->
+                <a href="index.html" class="navbar-brand mr-0 mr-md-2 logo">
+                    <span class="logo-lg">
+                        <img src="assets/images/logo.png" alt="" height="24" />
+                        <span class="d-inline h5 ml-1 text-logo">Shreyu</span>
+                    </span>
+                    <span class="logo-sm">
+                        <img src="assets/images/logo.png" alt="" height="24">
+                    </span>
+                </a>
+
+                <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
+                    <li class="">
+                        <button class="button-menu-mobile open-left disable-btn">
+                            <i data-feather="menu" class="menu-icon"></i>
+                            <i data-feather="x" class="close-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+                    <li class="d-none d-sm-block">
+                        <div class="app-search">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span data-feather="search"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="Change language">
+                        <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="globe"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                    class="align-middle">German</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                    class="align-middle">Italian</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                    class="align-middle">Spanish</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="mr-2" height="12"> <span
+                                    class="align-middle">Russian</span>
+                            </a>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left"
+                        title="8 new unread notifications">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                            aria-expanded="false">
+                            <i data-feather="bell"></i>
+                            <span class="noti-icon-badge"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                            <!-- item-->
+                            <div class="dropdown-item noti-title border-bottom">
+                                <h5 class="m-0 font-size-16">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <small>Clear All</small>
+                                        </a>
+                                    </span>Notification
+                                </h5>
+                            </div>
+
+                            <div class="slimscroll noti-scroll">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                    <div class="notify-icon bg-primary"><i class="uil uil-user-plus"></i></div>
+                                    <p class="notify-details">New user registered.<small class="text-muted">5 hours ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                    <div class="notify-icon">
+                                        <img src="assets/images/users/avatar-1.jpg" class="img-fluid rounded-circle" alt="" />
+                                    </div>
+                                    <p class="notify-details">Karen Robinson</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Wow ! this admin looks good and awesome design</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                    <div class="notify-icon">
+                                        <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                    </div>
+                                    <p class="notify-details">Cristina Pride</p>
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small>Hi, How are you? What about our next meeting</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom active">
+                                    <div class="notify-icon bg-success"><i class="uil uil-comment-message"></i> </div>
+                                    <p class="notify-details">Jaclyn Brunswick commented on Dashboard<small class="text-muted">1
+                                            min
+                                            ago</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item border-bottom">
+                                    <div class="notify-icon bg-danger"><i class="uil uil-comment-message"></i></div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin<small class="text-muted">4 days
+                                            ago</small></p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-primary">
+                                        <i class="uil uil-heart"></i>
+                                    </div>
+                                    <p class="notify-details">Carlos Crouch liked
+                                        <b>Admin</b>
+                                        <small class="text-muted">13 days ago</small>
+                                    </p>
+                                </a>
+                            </div>
+
+                            <!-- All-->
+                            <a href="javascript:void(0);"
+                                class="dropdown-item text-center text-primary notify-item notify-all border-top">
+                                View all
+                                <i class="fi-arrow-right"></i>
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left" title="Settings">
+                        <a href="javascript:void(0);" class="nav-link right-bar-toggle">
+                            <i data-feather="settings"></i>
+                        </a>
+                    </li>
+
+                    <li class="dropdown notification-list align-self-center profile-dropdown">
+                        <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <div class="media user-profile ">
+                                <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
+                                <div class="media-body text-left">
+                                    <h6 class="pro-user-name ml-2 my-0">
+                                        <span>Shreyu N</span>
+                                        <span class="pro-user-desc text-muted d-block mt-1">Administrator </span>
+                                    </h6>
+                                </div>
+                                <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                            <a href="pages-profile.html" class="dropdown-item notify-item">
+                                <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
+                                <span>My Account</span>
+                            </a>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
+                                <span>Settings</span>
+                            </a>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
+                                <span>Support</span>
+                            </a>
+
+                            <a href="pages-lock-screen.html" class="dropdown-item notify-item">
+                                <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
+                                <span>Lock Screen</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- end Topbar -->
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+            <div class="media user-profile mt-2 mb-2">
+                <img src="assets/images/users/avatar-7.jpg" class="avatar-sm rounded-circle mr-2" alt="Shreyu" />
+                <img src="assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle mr-2" alt="Shreyu" />
+
+                <div class="media-body">
+                    <h6 class="pro-user-name mt-0 mb-0">Nik Patel</h6>
+                    <span class="pro-user-desc">Administrator</span>
+                </div>
+                <div class="dropdown align-self-center profile-dropdown-menu">
+                    <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                        aria-expanded="false">
+                        <span data-feather="chevron-down"></span>
+                    </a>
+                    <div class="dropdown-menu profile-dropdown">
+                        <a href="pages-profile.html" class="dropdown-item notify-item">
+                            <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
+                            <span>My Account</span>
+                        </a>
+
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
+                            <span>Support</span>
+                        </a>
+
+                        <a href="pages-lock-screen.html" class="dropdown-item notify-item">
+                            <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
+                            <span>Lock Screen</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu" class="slimscroll-menu">
+                    <ul class="metismenu" id="menu-bar">
+                        <li class="menu-title">Navigation</li>
+
+                        <li>
+                            <a href="index.html">
+                                <i data-feather="home"></i>
+                                <span class="badge badge-success float-right">1</span>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+                        <li class="menu-title">Apps</li>
+                        <li>
+                            <a href="apps-calendar.html">
+                                <i data-feather="calendar"></i>
+                                <span> Calendar </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="inbox"></i>
+                                <span> Email </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="email-inbox.html">Inbox</a>
+                                </li>
+                                <li>
+                                    <a href="email-read.html">Read</a>
+                                </li>
+                                <li>
+                                    <a href="email-compose.html">Compose</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="briefcase"></i>
+                                <span> Projects </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+    
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="project-list.html">List</a>
+                                </li>
+                                <li>
+                                    <a href="project-detail.html">Detail</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="bookmark"></i>
+                                <span> Tasks </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+    
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="task-list.html">List</a>
+                                </li>
+                                <li>
+                                    <a href="task-board.html">Kanban Board</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-title">Custom</li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="file-text"></i>
+                                <span> Pages </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="pages-starter.html">Starter</a>
+                                </li>
+                                <li>
+                                    <a href="pages-profile.html">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="pages-activity.html">Activity</a>
+                                </li>
+                                <li>
+                                    <a href="pages-invoice.html">Invoice</a>
+                                </li>
+                                <li>
+                                    <a href="pages-pricing.html">Pricing</a>
+                                </li>
+                                <li>
+                                    <a href="pages-maintenance.html">Maintenance</a>
+                                </li>
+                                <li>
+                                    <a href="pages-login.html">Login</a>
+                                </li>
+                                <li>
+                                    <a href="pages-register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="pages-recoverpw.html">Recover Password</a>
+                                </li>
+                                <li>
+                                    <a href="pages-confirm-mail.html">Confirm</a>
+                                </li>
+                                <li>
+                                    <a href="pages-404.html">Error 404</a>
+                                </li>
+                                <li>
+                                    <a href="pages-500.html">Error 500</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="layout"></i>
+                                <span> Layouts </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="layouts-horizontal.html">Horizontal Nav</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-rtl.html">RTL</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-dark.html">Dark</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-scrollable.html">Scrollable</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-boxed.html">Boxed</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-preloader.html">With Pre-loader</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-dark-sidebar.html">Dark Side Nav</a>
+                                </li>
+                                <li>
+                                    <a href="layouts-condensed.html">Condensed Nav</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-title">Components</li>
+
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i data-feather="package"></i>
+                                <span> UI Elements </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="components-bootstrap.html">Bootstrap UI</a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);" aria-expanded="false">Icons
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <ul class="nav-third-level" aria-expanded="false">
+                                        <li>
+                                            <a href="icons-feather.html">Feather Icons</a>
+                                        </li>
+                                        <li>
+                                            <a href="icons-unicons.html">Unicons Icons</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="widgets.html">Widgets</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" aria-expanded="false">
+                                <i data-feather="file-text"></i>
+                                <span> Forms </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="forms-basic.html">Basic Elements</a>
+                                </li>
+                                <li>
+                                    <a href="forms-advanced.html">Advanced</a>
+                                </li>
+                                <li>
+                                    <a href="forms-validation.html">Validation</a>
+                                </li>
+                                <li>
+                                    <a href="forms-wizard.html">Wizard</a>
+                                </li>
+                                <li>
+                                    <a href="forms-editor.html">Editor</a>
+                                </li>
+                                <li>
+                                    <a href="forms-file-uploads.html">File Uploads</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="charts-apex.html" aria-expanded="false">
+                                <i data-feather="pie-chart"></i>
+                                <span> Charts </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" aria-expanded="false">
+                                <i data-feather="grid"></i>
+                                <span> Tables </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="tables-basic.html">Basic</a>
+                                </li>
+                                <li>
+                                    <a href="tables-datatables.html">Advanced</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <div class="row page-title">
+                        <div class="col-md-12">
+                            <nav aria-label="breadcrumb" class="float-right mt-1">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Shreyu</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Tasks</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">List</li>
+                                </ol>
+                            </nav>
+                            <h4 class="mb-1 mt-0">Tasks List</h4>
+                        </div>
+                    </div>
+
+
+                    <!-- tasks panel -->
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- cta -->
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <a href="#" class="btn btn-primary"><i
+                                                            class='uil uil-plus mr-1'></i>Add New</a>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="float-sm-right mt-3 mt-sm-0">
+                                                        
+                                                        <div class="task-search d-inline-block mb-3 mb-sm-0 mr-sm-3">
+                                                            <form>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control search-input"
+                                                                        placeholder="Search..." />
+                                                                    <span class="uil uil-search icon-search"></span>
+                                                                    <div class="input-group-append">
+                                                                        <button class="btn btn-soft-primary" type="button">
+                                                                            <i class='uil uil-file-search-alt'></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="dropdown d-inline-block">
+                                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                <i class='uil uil-sort-amount-down'></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Due Date</a>
+                                                                <a class="dropdown-item" href="#">Added Date</a>
+                                                                <a class="dropdown-item" href="#">Assignee</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-4">
+                                                <div class="col">
+                                                    <a class="text-dark" data-toggle="collapse" href="#todayTasks"
+                                                        aria-expanded="false" aria-controls="todayTasks">
+                                                        <h5 class="mb-0"><i class='uil uil-angle-down font-size-18'></i>Today <span
+                                                                class="text-muted font-size-14">(10)</span></h5>
+                                                    </a>
+
+                                                    <div class="collapse show" id="todayTasks">
+                                                        <div class="card mb-0 shadow-none">
+                                                            <div class="card-body">
+                                                                <!-- task -->
+                                                                <div class="row justify-content-sm-between border-bottom">
+                                                                    <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                class="custom-control-input" id="task1">
+                                                                            <label class="custom-control-label"
+                                                                                for="task1">
+                                                                                Draft the new contract document for
+                                                                                sales team
+                                                                            </label>
+                                                                        </div> <!-- end checkbox -->
+                                                                    </div> <!-- end col -->
+                                                                    <div class="col-lg-6">
+                                                                        <div class="d-sm-flex justify-content-between">
+                                                                            <div>
+                                                                                <img src="assets/images/users/avatar-9.jpg"
+                                                                                    alt="image"
+                                                                                    class="avatar-xs rounded-circle"
+                                                                                    data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="Assigned to Arya S" />
+                                                                            </div>
+                                                                            <div class="mt-3 mt-sm-0">
+                                                                                <ul
+                                                                                    class="list-inline font-13 text-sm-right">
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-schedule font-16 mr-1'></i>
+                                                                                        Today 10am
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                        3/7
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-2">
+                                                                                        <i
+                                                                                            class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                        21
+                                                                                    </li>
+                                                                                    <li class="list-inline-item">
+                                                                                        <span
+                                                                                            class="badge badge-soft-danger p-1">High</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div> <!-- end .d-flex-->
+                                                                    </div> <!-- end col -->
+                                                                </div>
+                                                                <!-- end task -->
+
+                                                                <!-- task -->
+                                                                <div class="row justify-content-sm-between mt-2 border-bottom pt-2">
+                                                                    <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                class="custom-control-input" id="task2">
+                                                                            <label class="custom-control-label"
+                                                                                for="task2">
+                                                                                iOS App home page
+                                                                            </label>
+                                                                        </div> <!-- end checkbox -->
+                                                                    </div> <!-- end col -->
+                                                                    <div class="col-lg-6">
+                                                                        <div class="d-sm-flex justify-content-between">
+                                                                            <div>
+                                                                                <img src="assets/images/users/avatar-2.jpg"
+                                                                                    alt="image"
+                                                                                    class="avatar-xs rounded-circle"
+                                                                                    data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="Assigned to James B" />
+                                                                            </div>
+                                                                            <div class="mt-3 mt-sm-0">
+                                                                                <ul
+                                                                                    class="list-inline font-13 text-sm-right">
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-schedule font-16 mr-1'></i>
+                                                                                        Today 4pm
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                        2/7
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-2">
+                                                                                        <i
+                                                                                            class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                        48
+                                                                                    </li>
+                                                                                    <li class="list-inline-item">
+                                                                                        <span
+                                                                                            class="badge badge-soft-danger p-1">High</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div> <!-- end .d-flex-->
+                                                                    </div> <!-- end col -->
+                                                                </div>
+                                                                <!-- end task -->
+
+                                                                <!-- task -->
+                                                                <div class="row justify-content-sm-between mt-2 pt-2">
+                                                                    <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                class="custom-control-input" id="task3">
+                                                                            <label class="custom-control-label"
+                                                                                for="task3">
+                                                                                Write a release note
+                                                                            </label>
+                                                                        </div> <!-- end checkbox -->
+                                                                    </div> <!-- end col -->
+                                                                    <div class="col-lg-6">
+                                                                        <div class="d-sm-flex justify-content-between">
+                                                                            <div>
+                                                                                <img src="assets/images/users/avatar-4.jpg"
+                                                                                    alt="image"
+                                                                                    class="avatar-xs rounded-circle"
+                                                                                    data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="Assigned to Kevin C" />
+                                                                            </div>
+                                                                            <div class="mt-3 mt-sm-0">
+                                                                                <ul
+                                                                                    class="list-inline font-13 text-sm-right mb-0">
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-schedule font-16 mr-1'></i>
+                                                                                        Today 6pm
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-1">
+                                                                                        <i
+                                                                                            class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                        18/21
+                                                                                    </li>
+                                                                                    <li class="list-inline-item pr-2">
+                                                                                        <i
+                                                                                            class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                        73
+                                                                                    </li>
+                                                                                    <li class="list-inline-item">
+                                                                                        <span
+                                                                                            class="badge badge-soft-info p-1">Medium</span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div> <!-- end .d-flex-->
+                                                                    </div> <!-- end col -->
+                                                                </div>
+                                                                <!-- end task -->
+                                                            </div> <!-- end card-body-->
+                                                        </div> <!-- end card -->
+                                                    </div> <!-- end .collapse-->
+
+                                                    <!-- upcoming tasks -->
+                                                    <div class="mt-4">
+                                                        <a class="text-dark" data-toggle="collapse"
+                                                            href="#upcomingTasks" aria-expanded="false"
+                                                            aria-controls="upcomingTasks">
+                                                            <h5 class="mb-0">
+                                                                <i class='uil uil-angle-down font-18'></i>Upcoming <span
+                                                                    class="text-muted font-size-14">(5)</span>
+                                                            </h5>
+                                                        </a>
+
+                                                        <div class="collapse show" id="upcomingTasks">
+                                                            <div class="card mb-0 shadow-none">
+                                                                <div class="card-body">
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between border-bottom">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task4">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task4">
+                                                                                    Invite user to a project
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-2.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to James B" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            Tomorrow
+                                                                                            7am
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            1/12
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            36
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-danger p-1">High</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 pt-2 border-bottom">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task5">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task5">
+                                                                                    Enable analytics tracking
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-2.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to James B" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            27 Aug
+                                                                                            10am
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            13/72
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            211
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-success p-1">Low</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 pt-2">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task6">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task6">
+                                                                                    Code HTML email template
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-7.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to Edward S" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right mb-0">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            No Due
+                                                                                            Date
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            0/7
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            0
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-info p-1">Medium</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+                                                                </div> <!-- end card-body-->
+                                                            </div> <!-- end card -->
+                                                        </div> <!-- end collapse-->
+                                                    </div>
+                                                    <!-- end upcoming tasks -->
+
+                                                    <!-- start other tasks -->
+                                                    <div class="mt-4 mb-4">
+                                                        <a class="text-dark" data-toggle="collapse" href="#otherTasks"
+                                                            aria-expanded="false" aria-controls="otherTasks">
+                                                            <h5>
+                                                                <i class='uil uil-angle-down font-18'></i>Other <span
+                                                                    class="text-muted font-size-14">(5)</span>
+                                                            </h5>
+                                                        </a>
+
+                                                        <div class="collapse show" id="otherTasks">
+                                                            <div class="card mb-0 shadow-none">
+                                                                <div class="card-body">
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between border-bottom">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task7">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task7">
+                                                                                    Coordinate with business development
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-9.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to Arya S" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            Today
+                                                                                            10am
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            5/14
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            71
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-info p-1">Medium</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 border-bottom pt-2">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task8">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task8">
+                                                                                    Kanban board design
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-2.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to James B" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            No Due
+                                                                                            Date
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            0/8
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            0
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-info p-1">Medium</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 border-bottom pt-2">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task11">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task11">
+                                                                                    Draft the new contract document for
+                                                                                    sales team
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-9.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to Arya S" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            Today 10am
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            3/7
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            21
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-danger p-1">High</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 border-bottom pt-2">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task12">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task12">
+                                                                                    iOS App home page
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-2.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to James B" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right">
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            Today 4pm
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            2/7
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            48
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-danger p-1">High</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+
+                                                                    <!-- task -->
+                                                                    <div class="row justify-content-sm-between mt-2 pt-2">
+                                                                        <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="task13">
+                                                                                <label class="custom-control-label"
+                                                                                    for="task13">
+                                                                                    Write a release note
+                                                                                </label>
+                                                                            </div> <!-- end checkbox -->
+                                                                        </div> <!-- end col -->
+                                                                        <div class="col-lg-6">
+                                                                            <div class="d-sm-flex justify-content-between">
+                                                                                <div>
+                                                                                    <img src="assets/images/users/avatar-4.jpg"
+                                                                                        alt="image"
+                                                                                        class="avatar-xs rounded-circle"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="bottom"
+                                                                                        title="Assigned to Kevin C" />
+                                                                                </div>
+                                                                                <div class="mt-3 mt-sm-0">
+                                                                                    <ul
+                                                                                        class="list-inline font-13 text-sm-right mb-0">
+                                                                                        <li class="list-inline-item">
+                                                                                            <i
+                                                                                                class='uil uil-schedule font-16 mr-1'></i>
+                                                                                            Today 6pm
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-1">>
+                                                                                            <i
+                                                                                                class='uil uil-align-alt font-16 mr-1'></i>
+                                                                                            18/21
+                                                                                        </li>
+                                                                                        <li class="list-inline-item pr-2">
+                                                                                            <i
+                                                                                                class='uil uil-comment-message font-16 mr-1'></i>
+                                                                                            73
+                                                                                        </li>
+                                                                                        <li class="list-inline-item">
+                                                                                            <span
+                                                                                                class="badge badge-soft-info p-1">Medium</span>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div> <!-- end .d-flex-->
+                                                                        </div> <!-- end col -->
+                                                                    </div>
+                                                                    <!-- end task -->
+                                                                </div> <!-- end card-body-->
+                                                            </div> <!-- end card -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 mt-5">
+                                                <div class="col-12">
+                                                    <div class="text-center">
+                                                        <a href="javascript:void(0);" class="btn btn-white mb-3">
+                                                            <i data-feather="loader" class="icon-dual icon-xs mr-2"></i>
+                                                            Load more
+                                                        </a>
+                                                    </div>
+                                                </div> <!-- end col-->
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- task details -->
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row pb-3 border-bottom">
+                                        <div class="col">
+                                            <div class="dropdown float-right">
+                                                <a href="#" class="dropdown-toggle arrow-none text-muted"
+                                                    data-toggle="dropdown" aria-expanded="false">
+                                                    <i class='uil uil-ellipsis-h'></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">
+                                                        <i class='uil uil-file-upload mr-1'></i>Attachment
+                                                    </a>
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">
+                                                        <i class='uil uil-edit mr-1'></i>Edit
+                                                    </a>
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item">
+                                                        <i class='uil uil-file-copy-alt mr-1'></i>Mark as Duplicate
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <!-- item-->
+                                                    <a href="javascript:void(0);" class="dropdown-item text-danger">
+                                                        <i class='uil uil-trash-alt mr-1'></i>Delete
+                                                    </a>
+                                                </div> <!-- end dropdown menu-->
+                                            </div> <!-- end dropdown-->
+
+                                            <div class="custom-control custom-checkbox float-left">
+                                                <input type="checkbox" class="custom-control-input" id="completedCheck">
+                                                <label class="custom-control-label" for="completedCheck">
+                                                    Mark as completed
+                                                </label>
+                                            </div> <!-- end custom-checkbox-->
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4 class="mt-3">Draft the new contract document for sales team</h4>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <!-- assignee -->
+                                                    <p class="mt-2 mb-1 text-muted">Assigned To</p>
+                                                    <div class="media">
+                                                        <img src="assets/images/users/avatar-9.jpg" alt="Arya S"
+                                                            class="rounded-circle mr-2" height="24" />
+                                                        <div class="media-body">
+                                                            <h5 class="mt-1 font-size-14">
+                                                                Arya Stark
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end assignee -->
+                                                </div> <!-- end col -->
+
+                                                <div class="col-6">
+                                                    <!-- start due date -->
+                                                    <p class="mt-2 mb-1 text-muted">Due Date</p>
+                                                    <div class="media">
+                                                        <i class='uil uil-schedule font-18 text-success mr-1'></i>
+                                                        <div class="media-body">
+                                                            <h5 class="mt-1 font-size-14">
+                                                                Today 10am
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end due date -->
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row -->
+
+                                            <!-- task description -->
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    <div id="taskDesk">
+                                                        <p>This is a task description with markup support</p>
+                                                        <ul>
+                                                            <li>Select a text to reveal the toolbar.</li>
+                                                            <li>Edit rich document on-the-fly, so elastic!</li>
+                                                        </ul>
+                                                        <p>End of air-mode area</p>
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            </div>
+                                            <!-- end task description -->
+
+                                            <!-- start sub tasks/checklists -->
+                                            <h5 class="mt-4 mb-2 font-size-16">Checklists/Sub-tasks</h5>
+                                            <div class="custom-control custom-checkbox mt-1">
+                                                <input type="checkbox" class="custom-control-input" id="checklist1">
+                                                <label class="custom-control-label strikethrough" for="checklist1">
+                                                    Find out the old contract documents
+                                                </label>
+                                            </div>
+
+                                            <div class="custom-control custom-checkbox mt-1">
+                                                <input type="checkbox" class="custom-control-input" id="checklist2">
+                                                <label class="custom-control-label strikethrough" for="checklist2">
+                                                    Organize meeting sales associates to understand need in detail
+                                                </label>
+                                            </div>
+
+                                            <div class="custom-control custom-checkbox mt-1">
+                                                <input type="checkbox" class="custom-control-input" id="checklist3">
+                                                <label class="custom-control-label strikethrough" for="checklist3">
+                                                    Make sure to cover every small details
+                                                </label>
+                                            </div>
+                                            <!-- end sub tasks/checklists -->
+
+                                            <!-- start attachments -->
+                                            <h5 class="mt-4 mb-2 font-size-16">Attachments</h5>
+                                            <div class="card mb-2 shadow-none border">
+                                                <div class="p-1 px-2">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <img src="assets/images/projects/project-1.jpg"
+                                                                class="avatar-sm rounded" alt="file-image">
+                                                        </div>
+                                                        <div class="col pl-0">
+                                                            <a href="javascript:void(0);"
+                                                                class="text-muted font-weight-bold">sales-assets.zip</a>
+                                                            <p class="mb-0">2.3 MB</p>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <!-- Button -->
+                                                            <a href="javascript:void(0);" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Download"
+                                                                class="btn btn-link text-muted btn-lg p-0">
+                                                                <i class='uil uil-cloud-download font-size-14'></i>
+                                                            </a>
+                                                            <a href="javascript:void(0);" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Delete"
+                                                                class="btn btn-link text-danger btn-lg p-0">
+                                                                <i class='uil uil-multiply font-size-14'></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-2 shadow-none border">
+                                                <div class="p-1 px-2">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <img src="assets/images/projects/project-2.jpg"
+                                                                class="avatar-sm rounded" alt="file-image">
+                                                        </div>
+                                                        <div class="col pl-0">
+                                                            <a href="javascript:void(0);"
+                                                                class="text-muted font-weight-bold">new-contarcts.docx</a>
+                                                            <p class="mb-0">1.25 MB</p>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <!-- Button -->
+                                                            <a href="javascript:void(0);" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Download"
+                                                                class="btn btn-link text-muted btn-lg p-0">
+                                                                <i class='uil uil-cloud-download font-size-14'></i>
+                                                            </a>
+                                                            <a href="javascript:void(0);" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Delete"
+                                                                class="btn btn-link text-danger btn-lg p-0">
+                                                                <i class='uil uil-multiply font-size-14'></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end attachments -->
+
+                                            <!-- comments -->
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    <h5 class="mb-2 font-size-16">Comments</h5>
+
+                                                    <div class="media mt-3 p-1">
+                                                        <img src="assets/images/users/avatar-9.jpg"
+                                                            class="mr-2 rounded-circle" height="36" alt="Arya Stark" />
+                                                        <div class="media-body">
+                                                            <h5 class="mt-0 mb-0 font-size-14">
+                                                                <span
+                                                                    class="float-right text-muted font-size-12">4:30am</span>
+                                                                Arya Stark
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted">
+                                                                Should I review the last 3 years legal documents as
+                                                                well?
+                                                            </p>
+                                                        </div>
+                                                    </div> <!-- end comment -->
+
+                                                    <hr />
+
+                                                    <div class="media mt-2 p-1">
+                                                        <img src="assets/images/users/avatar-5.jpg"
+                                                            class="mr-2 rounded-circle" height="36" alt="Dominc B" />
+                                                        <div class="media-body">
+                                                            <h5 class="mt-0 mb-0 font-size-14">
+                                                                <span
+                                                                    class="float-right text-muted font-size-12">3:30am</span>
+                                                                Gary Somya
+                                                            </h5>
+                                                            <p class="mt-1 mb-0 text-muted">
+                                                                @Arya FYI..I have created some general guidelines last
+                                                                year.
+                                                            </p>
+                                                        </div>
+                                                    </div> <!-- end comment-->
+
+                                                    <hr />
+
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row -->
+
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <div class="border rounded">
+                                                        <form action="#" class="comment-area-box">
+                                                            <textarea rows="3" class="form-control border-0 resize-none"
+                                                                placeholder="Your comment..."></textarea>
+                                                            <div class="p-2 bg-light">
+                                                                <div class="float-right">
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm btn-success"><i
+                                                                            class='uil uil-message mr-1'></i>Submit</button>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i
+                                                                            class='uil uil-cloud-upload'></i></a>
+                                                                    <a href="#" class="btn btn-sm px-1 btn-light"><i
+                                                                            class='uil uil-at'></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div> <!-- end .border-->
+                                                </div> <!-- end col-->
+                                            </div> <!-- end row-->
+                                            <!-- end comments -->
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row-->
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+
+                </div> <!-- container-fluid -->
+
+            </div> <!-- content -->
+
+            
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            2019 &copy; Shreyu. All Rights Reserved. Crafted with <i class='uil uil-heart text-danger font-size-12'></i> by <a href="https://coderthemes.com" target="_blank">Coderthemes</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div class="rightbar-title">
+            <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                <i data-feather="x-circle"></i>
+            </a>
+            <h5 class="m-0">Customization</h5>
+        </div>
+    
+        <div class="slimscroll-menu">
+    
+            <h5 class="font-size-16 pl-3 mt-4">Choose Variation</h5>
+            <div class="p-3">
+                <h6>Default</h6>
+                <a href="index.html"><img src="assets/images/layouts/vertical.jpg" alt="vertical" class="img-thumbnail demo-img" /></a>
+            </div>
+            <div class="px-3 py-1">
+                <h6>Top Nav</h6>
+                <a href="layouts-horizontal.html"><img src="assets/images/layouts/horizontal.jpg" alt="horizontal" class="img-thumbnail demo-img" /></a>
+            </div>
+            <div class="px-3 py-1">
+                <h6>Dark Side Nav</h6>
+                <a href="layouts-dark-sidebar.html"><img src="assets/images/layouts/vertical-dark-sidebar.jpg" alt="dark sidenav" class="img-thumbnail demo-img" /></a>
+            </div>
+            <div class="px-3 py-1">
+                <h6>Condensed Side Nav</h6>
+                <a href="layouts-dark-sidebar.html"><img src="assets/images/layouts/vertical-condensed.jpg" alt="condensed" class="img-thumbnail demo-img" /></a>
+            </div>
+            <div class="px-3 py-1">
+                <h6>Fixed Width (Boxed)</h6>
+                <a href="layouts-boxed.html"><img src="assets/images/layouts/boxed.jpg" alt="boxed"
+                        class="img-thumbnail demo-img" /></a>
+            </div>
+        </div> <!-- end slimscroll-menu-->
+    </div>
+    <!-- /Right-bar -->
+
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- Vendor js -->
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
+
+    <!-- Summernote js -->
+    <script src="assets/libs/summernote/summernote-bs4.min.js"></script>
+
+    <script>
+        $(document).ready(function (e) {
+            $('#taskDesk').summernote({
+                airMode: true,
+                callbacks: {
+                    // fix broken checkbox on link modal
+                    onInit: function onInit(e) {
+                        var editor = $(e.editor);
+                        editor.find('.custom-control-description').addClass('custom-control-label')
+                            .parent().removeAttr('for');
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
