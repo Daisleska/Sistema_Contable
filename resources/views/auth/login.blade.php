@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('Shreyu/assets/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{ asset('Shreyu/assets/images/favicon.ico')}}">
 
         <!-- App css -->
         <link href="{{ asset('Shreyu/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-md-6 p-5">
                                         <div class="mx-auto mb-5">
-                                             <a href="{{ url('/portal') }}"><b>Sistema Contable</b>
+                                             <a href="{{ url('/login') }}"><b>Sistema Contable</b>
                                                 <img src="assets/images/logo.png" alt="" height="24" />
                                                 <h3 class="d-inline align-middle ml-1 text-logo">Shreyu</h3>
 
@@ -100,8 +100,9 @@
                                     <div class="col-lg-6 d-none d-md-inline-block">
                                         <div class="auth-page-sidebar">
                                             <div class="overlay"></div>
+
                                             <div class="auth-user-testimonial">
-                                               
+                                               <img src="{{ asset('Shreyu/assets/images/a.jpg')}}" alt="" height="320">
                                             </div>
                                         </div>
                                     </div>
