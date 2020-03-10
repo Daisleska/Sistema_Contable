@@ -2,7 +2,7 @@
 
 
 @section('css')
-    <link href="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -613,12 +613,12 @@
 
 @section('script')
 <!-- optional plugins -->
-<script src="{{ URL::asset('assets/libs/moment/moment.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
 <!-- init js -->
-<script src="{{ URL::asset('assets/js/pages/dashboard.init.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
 @endsection

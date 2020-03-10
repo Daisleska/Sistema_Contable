@@ -18,7 +18,7 @@
 
     </head>
 
-    <body class="authentication-bg">
+    <body class="authentication-bg" {{-- style="background-image: url('Shreyu/assets/images/fondo1.jpg'); background-size: cover;  " --}}>
         
         <div class="account-pages my-5">
             <div class="container">
@@ -31,7 +31,7 @@
                                         <div class="mx-auto mb-5">
                                              <a href="{{ url('/login') }}"><b>Sistema Contable</b>
                                                 <img src="assets/images/logo.png" alt="" height="24" />
-                                                <h3 class="d-inline align-middle ml-1 text-logo">Shreyu</h3>
+                                                <h3 class="d-inline align-middle ml-1 text-logo">Blatt</h3>
 
                                             </a>
                                         </div>
@@ -81,13 +81,13 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group mb-4">
+                                            {{-- <div class="form-group mb-4">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="checkbox-signin" checked>
                                                     <label class="custom-control-label" for="checkbox-signin">Recuerdame</label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="form-group mb-0 text-center">
                                                 <button class="btn btn-primary btn-block" type="submit">
@@ -95,6 +95,12 @@
 
                                             </div>
                                         </form>
+                                        <br>
+                                        <div class="form-group mb-0 text-center">
+                                                <button class="btn btn-default btn-block"><a href="{{ route('register') }}"> {{ __('Registrarse') }}</a>
+                                                </button>
+
+                                            </div>
                                         
                                     </div>
                                     <div class="col-lg-6 d-none d-md-inline-block">
@@ -112,11 +118,11 @@
                         </div>
                         <!-- end card -->
 
-                        <div class="row mt-3">
+                        {{-- <div class="row mt-3">
                             <div class="col-12 text-center">
                                 <p class="text-muted">No posee una cuenta? <a href="{{ route('register') }}" class="text-primary font-weight-bold ml-1">Registrarse</a></p>
                             </div> <!-- end col -->
-                        </div>
+                        </div> --}}
                         <!-- end row -->
 
                     </div> <!-- end col -->

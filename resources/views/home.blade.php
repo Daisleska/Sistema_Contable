@@ -44,81 +44,43 @@
 
 @section('content')
 <!-- stats + charts -->
-<div class="row">
-    <div class="col-md-6 col-xl-3">
+ <div class="col-xl-6">
         <div class="card">
-            <div class="card-body p-0">
-                <div class="media p-3">
-                    <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Today
-                            Revenue</span>
-                        <h2 class="mb-0">$2189</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <div id="today-revenue-chart" class="apex-charts"></div>
-                        <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i>
-                            10.21%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="card-body pb-0">
+                <ul class="nav card-nav float-right">
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">Hoy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">7d</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">15d</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">1m</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="#">1y</a>
+                    </li>
+                </ul>
+                <h5 class="card-title mb-0 header-title">balance</h5>
 
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body p-0">
-                <div class="media p-3">
-                    <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Product
-                            Sold</span>
-                        <h2 class="mb-0">1065</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <div id="today-product-sold-chart" class="apex-charts"></div>
-                        <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i>
-                            5.05%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body p-0">
-                <div class="media p-3">
-                    <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">New
-                            Customers</span>
-                        <h2 class="mb-0">11</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <div id="today-new-customer-chart" class="apex-charts"></div>
-                        <span class="text-success font-weight-bold font-size-13"><i class='uil uil-arrow-up'></i>
-                            25.16%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body p-0">
-                <div class="media p-3">
-                    <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">New
-                            Visitors</span>
-                        <h2 class="mb-0">750</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <div id="today-new-visitors-chart" class="apex-charts"></div>
-                        <span class="text-danger font-weight-bold font-size-13"><i class='uil uil-arrow-down'></i>
-                            5.05%</span>
-                    </div>
-                </div>
+                <div id="revenue-chart" class="apex-charts mt-3" dir="ltr"></div>
             </div>
         </div>
     </div>
 </div>
+<!-- row -->
+@endsection
+@section('script')
+<!-- optional plugins -->
+<script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+@endsection
+
+@section('script-bottom')
+<!-- init js -->
+<script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
 @endsection

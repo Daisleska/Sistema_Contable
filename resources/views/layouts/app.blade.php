@@ -48,8 +48,8 @@
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Today
-                            Revenue</span>
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Hoy
+                            balance</span>
                         <h2 class="mb-0">$2189</h2>
                     </div>
                     <div class="align-self-center">
@@ -67,8 +67,7 @@
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Product
-                            Sold</span>
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Precio Producto</span>
                         <h2 class="mb-0">1065</h2>
                     </div>
                     <div class="align-self-center">

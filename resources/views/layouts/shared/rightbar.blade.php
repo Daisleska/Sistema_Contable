@@ -16,19 +16,19 @@
         </div>
         <div class="px-3 py-1">
             <h6>Top Nav</h6>
-            <a href="../layout-example/horizontal.html"><img src="{{ URL::asset('Shreyu/assets/images/layouts/horizontal.jpg') }}" alt="horizontal" class="img-thumbnail demo-img" /></a>
+            <a href="/layout-example/horizontal"><img src="{{ URL::asset('Shreyu/assets/images/layouts/horizontal.jpg') }}" alt="horizontal" class="img-thumbnail demo-img" /></a>
         </div>
         <div class="px-3 py-1">
             <h6>Dark Side Nav</h6>
-            <a href="layouts-dark-sidebar.html"><img src="{{ URL::asset('Shreyu/assets/images/layouts/vertical-dark-sidebar.jpg') }}" alt="dark sidenav" class="img-thumbnail demo-img" /></a>
+            <a href="/layout-example/dark-sidebar"><img src="{{ URL::asset('Shreyu/assets/images/layouts/vertical-dark-sidebar.jpg') }}" alt="dark sidenav" class="img-thumbnail demo-img" /></a>
         </div>
         <div class="px-3 py-1">
             <h6>Condensed Side Nav</h6>
-            <a href="layouts-dark-sidebar.html"><img src="{{ URL::asset('Shreyu/assets/images/layouts/vertical-condensed.jpg') }}" alt="condensed" class="img-thumbnail demo-img" /></a>
+            <a href="/layout-example/dark-sidebar"><img src="{{ URL::asset('Shreyu/assets/images/layouts/vertical-condensed.jpg') }}" alt="condensed" class="img-thumbnail demo-img" /></a>
         </div>
         <div class="px-3 py-1">
             <h6>Fixed Width (Boxed)</h6>
-            <a href="layouts-boxed.html"><img src="{{ URL::asset('Shreyu/assets/images/layouts/boxed.jpg') }}" alt="boxed"
+            <a href="/layout-example/boxed"><img src="{{ URL::asset('Shreyu/assets/images/layouts/boxed.jpg') }}" alt="boxed"
                     class="img-thumbnail demo-img" /></a>
         </div>
     </div> <!-- end slimscroll-menu-->
