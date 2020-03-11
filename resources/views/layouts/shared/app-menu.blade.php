@@ -9,14 +9,33 @@
         </a>
     </li>
 
-    
     <li class="menu-title">Apps</li>
     <li>
         <a href="{{ route('proveedores.index') }}">
-            <i data-feather="book"></i>
+            <i data-feather="truck"></i>
             <span> Proveedores </span>
         </a>
     </li>
+
+    <li class="menu-title">Apps</li>
+    <li>
+        <a href="{{ route('productos.index') }}">
+            <i data-feather="clipboard"></i>
+            <span> Productos </span>
+        </a>
+    </li>
+
+    <li class="menu-title">Apps</li>
+    <li>
+        <a href="{{ route('clientes.index') }}">
+            <i data-feather="user-plus"></i>
+            <span> Clientes </span>
+        </a>
+    </li>
+   
+
+
+   
      <li>
         <a href="{{ url('backup') }}">
             <i data-feather="book"></i>

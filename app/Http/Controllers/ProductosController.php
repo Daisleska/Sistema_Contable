@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\proveedor;
+use App\producto;
 use Illuminate\Http\Request;
 
-
-class ProveedoresController extends Controller
+class ProductosController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ProveedoresController extends Controller
      */
     public function index()
     {
-        $proveedores = proveedor::all();
-       return view('proveedores.index', compact('proveedores'));
+        $productos = producto::all();
+       return view('productos.index', compact('productos'));
     }
 
     /**
@@ -26,7 +25,7 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
-         return view ('proveedores.create');
+         return view ('productos.create');
     }
 
     /**
@@ -44,16 +43,14 @@ class ProveedoresController extends Controller
             return redirect()->back();
         } else {*/
             # permitir regitrar
-            $proveedor= new proveedor();
-            $proveedor->tipo_documento=$request->tipo_documento;
-            $proveedor->codigo=$request->codigo;
-            $proveedor->nombre=$request->nombre;
-            $proveedor->correo=$request->correo;
-            $proveedor->direccion=$request->direccion;
-            $proveedor->telefono=$request->telefono;
-            $proveedor->save();
+            $producto= new producto();
+            $producto->codigo=$request->codigo;
+            $producto->nombre=$request->nombre;
+            $producto->descripcion=$request->descripcion;
+            $producto->precio=$request->precio;
+            $producto->save();
 
-           return redirect()->to('proveedores');
+           return redirect()->to('productos');
        /* }*/
     }
 
@@ -63,7 +60,7 @@ class ProveedoresController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedores $proveedores)
+    public function show(productos $productos)
     {
         //
     }
@@ -74,10 +71,10 @@ class ProveedoresController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id_proveedor)
+    public function edit( $id_producto)
     {
-        $proveedor=proveedor::find($id_proveedor);
-        return view ('proveedores.edit', compact ('proveedor'));
+        $producto=producto::find($id_producto);
+        return view ('productos.edit', compact ('producto'));
     }
 
     /**
@@ -87,24 +84,23 @@ class ProveedoresController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id_proveedor)
+    public function update(Request $request,$id_producto)
     {
-         $buscar=proveedor::where('codigo', $request->codigo)->where('id', '<>', $id_proveedor)->get();
+         $buscar=producto::where('codigo', $request->codigo)->where('id', '<>', $id_producto)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
-            return redirect()-> route('proveedores.index');
+            return redirect()-> route('productos.index');
         } else {
             # podemos actualizar los datos
-            $proveedor=proveedor::find($id_proveedor);
-            $proveedor->codigo=$request->codigo;
-            $proveedor->nombre=$request->nombre;
-            $proveedor->correo=$request->correo;
-            $proveedor->direccion=$request->direccion;
-            $proveedor->telefono=$request->telefono;
-            $proveedor->save();
+            $producto=producto::find($id_proveedor);
+            $producto->codigo=$request->codigo;
+            $producto->nombre=$request->nombre;
+            $producto->descripcion=$request->descripcion;
+            $producto->precio=$request->precio;
+            $producto->save();
 
-            return redirect ()->route('proveedores.index');
+            return redirect ()->route('productos.index');
         }
     }
 
@@ -116,9 +112,9 @@ class ProveedoresController extends Controller
      */
     public function destroy($id)
     {
-         $proveedor = proveedor::find($id);
-        $proveedor->delete();
+         $producto = producto::find($id);
+        $producto->delete();
 
-        return back()->with('info', 'El proveedor ha sido eliminado');
+        return back()->with('info', 'El producto ha sido eliminado');
     }
 }

@@ -30,7 +30,7 @@
                                     <div class="col-md-6 p-5">
                                         <div class="mx-auto mb-5">
                                              <a href="{{ url('/login') }}"><b>Sistema Contable</b>
-                                                <img src="assets/images/logo.png" alt="" height="24" />
+                                                <img src="{{ asset('Shreyu/assets/images/logo.png')}}" alt="" height="24" />
                                                 <h3 class="d-inline align-middle ml-1 text-logo">Blatt</h3>
 
                                             </a>

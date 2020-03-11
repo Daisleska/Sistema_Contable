@@ -7,7 +7,7 @@
         <small>...</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Proveedores</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Clientes</a></li>
         <li class="active">Registros</li>
       </ol>
     </section>
@@ -18,13 +18,13 @@
         <div class="col">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Modificar Proveedor</h3>
+              <h3 class="box-title">Modificar Clientes</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form name="form" action="{{ route('proveedores.update',$proveedores->id)}}" method="PUT">
+              <form name="form" action="{{ route('clientes.update',$clientes->id)}}" method="PUT">
                   @csrf
-              	@include('proveedores.partials.edit-fields')
+              	@include('clientes.partials.edit-fields')
               </form>
             </div>
             <!-- /.box-body -->
