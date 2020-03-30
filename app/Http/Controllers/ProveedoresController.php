@@ -45,11 +45,12 @@ class ProveedoresController extends Controller
         } else {*/
             # permitir regitrar
             $proveedor= new proveedor();
-            $proveedor->tipo_documento=$request->tipo_documento;
-            $proveedor->codigo=$request->codigo;
             $proveedor->nombre=$request->nombre;
-            $proveedor->correo=$request->correo;
+            $proveedor->tipo_documento=$request->tipo_documento;
+            $proveedor->ruf=$request->ruf;
+            $proveedor->representante=$request->representante;
             $proveedor->direccion=$request->direccion;
+            $proveedor->correo=$request->correo;
             $proveedor->telefono=$request->telefono;
             $proveedor->save();
 
@@ -89,7 +90,7 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request,$id_proveedor)
     {
-         $buscar=proveedor::where('codigo', $request->codigo)->where('id', '<>', $id_proveedor)->get();
+         $buscar=proveedor::where('ruf', $request->ruf)->where('id', '<>', $id_proveedor)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
@@ -97,10 +98,12 @@ class ProveedoresController extends Controller
         } else {
             # podemos actualizar los datos
             $proveedor=proveedor::find($id_proveedor);
-            $proveedor->codigo=$request->codigo;
             $proveedor->nombre=$request->nombre;
-            $proveedor->correo=$request->correo;
+            $proveedor->tipo_documento=$request->tipo_documento;
+            $proveedor->ruf=$request->ruf;
+            $proveedor->representante=$request->representante;
             $proveedor->direccion=$request->direccion;
+            $proveedor->correo=$request->correo;
             $proveedor->telefono=$request->telefono;
             $proveedor->save();
 

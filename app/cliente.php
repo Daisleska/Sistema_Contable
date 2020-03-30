@@ -8,6 +8,13 @@ class cliente extends Model
 {
    protected $table='clientes';
 
-    protected $fillable=['tipo_documento'.'cedula','nombre', 'email','direccion','telefono'];
+    protected $fillable=['nombre','tipo_documento'.'ruf', 'email','direccion','telefono'];
+
+
+    public function producto()
+    {
+    	return $this->belongsToMany('App\producto','facturav','clientes_id','productos_id')->withPivot('amount');
+    }
+
 }
 

@@ -3,6 +3,7 @@
 @yield('css')
 
 <!-- App css -->
+
 <link href="{{ URL::asset('Shreyu/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 @if(isset($isDark) && $isDark)

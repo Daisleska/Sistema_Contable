@@ -37,9 +37,9 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         $cliente= new cliente();
-            $cliente->tipo_documento=$request->tipo_documento;
-            $cliente->cedula=$request->cedula;
             $cliente->nombre=$request->nombre;
+            $cliente->tipo_documento=$request->tipo_documento;
+            $cliente->ruf=$request->ruf;
             $cliente->email=$request->email;
             $cliente->direccion=$request->direccion;
             $cliente->telefono=$request->telefono;
@@ -80,7 +80,7 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id_cliente)
     {
-        $buscar=cliente::where('cedula', $request->cedula)->where('id', '<>', $id_cliente)->get();
+        $buscar=cliente::where('ruf', $request->ruf)->where('id', '<>', $id_cliente)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
@@ -88,8 +88,9 @@ class ClientesController extends Controller
         } else {
             # podemos actualizar los datos
             $cliente=cliente::find($id_cliente);
-            $cliente->cedula=$request->cedula;
             $cliente->nombre=$request->nombre;
+            $cliente->tipo_documento=$request->tipo_documento;
+            $cliente->ruf=$request->ruf;     
             $cliente->email=$request->email;
             $cliente->direccion=$request->direccion;
             $cliente->telefono=$request->telefono;
@@ -111,5 +112,16 @@ class ClientesController extends Controller
         $cliente->delete();
 
         return back()->with('info', 'El cliente ha sido eliminado');
+    }
+
+
+    public function buscar_cliente($cliente)
+    {
+        return Clientes::where('ruf', $cliente)->get();
+    }
+
+    public function buscar_clientes($id)
+    {
+        return Cliente::where('ruf', $id)->get();
     }
 }

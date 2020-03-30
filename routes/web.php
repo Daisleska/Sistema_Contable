@@ -15,13 +15,20 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+
+
+
 Auth::routes();
+
+Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
+
+Route::get('clientes/{cliente}/buscar_clientes', 'ClientesController@buscar_clientes');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('proveedores', 'ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
-Route::resource('facturas', 'FacturasController');
+Route::resource('facturav', 'FacturasVController');
 Auth::routes();
 
 

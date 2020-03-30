@@ -33,9 +33,24 @@
         </a>
     </li>
    
+   <li class="menu-title">Facturas</li>
+    <li>
+        <a href="{{ route('facturav.index') }}">
+            <i data-feather="log-out"></i>
+            <span> Facturas de Ventas </span>
+        </a>
+    </li>
+    <li>
+        <a href="">
+         <i data-feather="log-in"></i>
+            <span> Facturas de Compras </span>
+        </a>
+    </li>
 
 
-   
+
+     
+     <li class="menu-title"></li>
      <li>
         <a href="{{ url('backup') }}">
             <i data-feather="book"></i>

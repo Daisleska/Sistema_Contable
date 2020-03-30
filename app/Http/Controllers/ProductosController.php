@@ -14,8 +14,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = producto::all();
+        $productos= producto::all();
        return view('productos.index', compact('productos'));
+
     }
 
     /**
@@ -36,24 +37,34 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-       /* dd($request);*/
-       /* $buscar=Repuestos::where ('descripcion', $require->descripcion)->get();
-        if (count($buscar)>0) {
-            # no permitir registrar
-            return redirect()->back();
-        } else {*/
-            # permitir regitrar
+        $buscar=producto::where('codigo',$request->codigo)->where('codigo',$request->codigo)->first();
+
+        
+        if ($buscar !== null && count($buscar) > 0) {
+            
+            flash('<i class="icon-circle-check"></i> Ya tiene un producto registrado con este código!')->warning()->important();
+            return redirect()->to('productos');
+
+        } else {
+
             $producto= new producto();
             $producto->codigo=$request->codigo;
             $producto->nombre=$request->nombre;
             $producto->descripcion=$request->descripcion;
+            $producto->existencia=$request->existencia;
+            $producto->unidad=$request->unidad;
             $producto->precio=$request->precio;
+            $producto->stock_min=$request->stock_min;
+            $producto->stock_max=$request->stock_max;
             $producto->save();
 
-           return redirect()->to('productos');
-       /* }*/
-    }
 
+
+           return redirect()->to('productos');
+           
+               }
+
+    }
     /**
      * Display the specified resource.
      *
@@ -71,9 +82,9 @@ class ProductosController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id_producto)
+    public function edit( $id)
     {
-        $producto=producto::find($id_producto);
+        $producto=producto::find($id);
         return view ('productos.edit', compact ('producto'));
     }
 
@@ -89,16 +100,18 @@ class ProductosController extends Controller
          $buscar=producto::where('codigo', $request->codigo)->where('id', '<>', $id_producto)->get();
 
         if (count($buscar)>0) {
-            # no puede actualizar
+             flash('<i class="icon-circle-check"></i> Ya tiene un producto registrado con este código!')->warning()->important();
             return redirect()-> route('productos.index');
         } else {
             # podemos actualizar los datos
             $producto=producto::find($id_proveedor);
-            $producto->codigo=$request->codigo;
+            $producto->ruf=$request->ruf;
             $producto->nombre=$request->nombre;
             $producto->descripcion=$request->descripcion;
             $producto->precio=$request->precio;
             $producto->save();
+
+            flash('<i class="icon-circle-check"></i> Producto Actualizado con satisfactoriamente!')->success()->important();
 
             return redirect ()->route('productos.index');
         }
@@ -111,10 +124,18 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-         $producto = producto::find($id);
+   {
+       $producto = producto::find($id);
         $producto->delete();
 
+        
+
         return back()->with('info', 'El producto ha sido eliminado');
+
+    
+           
     }
+
+  
+    
 }

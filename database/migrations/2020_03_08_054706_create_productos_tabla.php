@@ -15,10 +15,16 @@ class CreateProductosTabla extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo')->unique();
+            $table->string('codigo');
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->integer('precio');
+            $table->string('descripcion')->nullable();
+            $table->bigInteger('existencia');
+            $table->enum('unidad',['Caja','Bulto','Saco','M3','Resma','Paquete','kilo','Barril','Litros','Individual']);
+            $table->bigInteger('precio');
+            $table->bigInteger('stock_min');
+            $table->bigInteger('stock_max');
+       
+            
             $table->timestamps();
         });
     }

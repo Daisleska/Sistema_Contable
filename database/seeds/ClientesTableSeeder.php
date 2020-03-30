@@ -12,9 +12,10 @@ class ClientesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('clientes')->insert([
+            
+            'nombre' => 'Santiago',
        		'tipo_documento' => 'V',
-            'cedula' => '25897654',
-       		'nombre' => 'Santiago',
+            'ruf' => '25897654',
             'email' => 'santiago02@gmail.com',
             'direccion' => 'Cagua',
             'telefono' => '0412786768',

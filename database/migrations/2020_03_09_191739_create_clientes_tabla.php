@@ -15,10 +15,10 @@ class CreateClientesTabla extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo_documento');
-            $table->string('cedula');
             $table->string('nombre');
-            $table->string('email');
+            $table->string('tipo_documento');
+            $table->string('ruf')->unique();;
+            $table->string('email')->unique();
             $table->string('direccion');
             $table->integer('telefono');
             $table->timestamps();
