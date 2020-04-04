@@ -31,7 +31,8 @@
                                         <div class="mx-auto mb-5">
                                             <a href="index.html">
                                                 <img src="assets/images/logo.png" alt="" height="24" />
-                                                <h3 class="d-inline align-middle ml-1 text-logo">Shreyu</h3>
+                                                <img src="{{ asset('Shreyu/assets/images/logo.png')}}" alt="" height="24" />
+                                                <h3 class="d-inline align-middle ml-1 text-logo">Blatt</h3>
                                             </a>
                                         </div>
 
@@ -69,7 +70,7 @@
                                                             <i class="icon-dual" data-feather="mail"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="email"  id="email" placeholder="hello@coderthemes.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                                    <input type="email"  id="email" placeholder="usuario@mail.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -132,11 +133,8 @@
                                     <div class="col-lg-6 d-none d-md-inline-block">
                                         <div class="auth-page-sidebar">
                                             <div class="overlay"></div>
-                                            <div class="auth-user-testimonial">
-                                                <p class="font-size-24 font-weight-bold text-white mb-1">I simply love it!</p>
-                                                <p class="lead">"It's a elegent templete. I love it very much!"
-                                                </p>
-                                                <p>- Admin User</p>
+                                             <div >
+                                               <img src="{{ asset('Shreyu/assets/images/logoeiche.jpg')}}" alt="" width="450" height="650">
                                             </div>
                                         </div>
                                     </div>

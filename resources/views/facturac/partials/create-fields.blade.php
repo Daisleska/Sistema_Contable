@@ -11,9 +11,9 @@
 
                                 <?php 
 
-                                use App\facturav;
+                                use App\facturac;
 
-                                $factura=DB::table ('facturav')->select('id')->take(1)->orderBy('id', 'desc')->get();
+                                $factura=DB::table ('facturac')->select('id')->take(1)->orderBy('id', 'desc')->get();
 
 
                             ?>
@@ -162,7 +162,7 @@
 
 
                     
-                    <button style="margin-left: 1cm;" class="btn btn-primary" type="submit">Guardar</button>
+                    <button class="btn btn-primary" type="submit">Guardar</button>
 
 
 <script>

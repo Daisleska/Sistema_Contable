@@ -2,8 +2,8 @@
 
 <div class="row" style="margin-left: 0.3cm;">
     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Nombre</label>
-                        <input style="width: 380px; margin-left: 0.3cm; " type="text" name="nombre" class="form-control" placeholder="EICHE" required>
+                        <label style="margin-left: 0.3cm;">Nombre de la Empresa</label>
+                        <input style="width: 340px; margin-left: 0.3cm; " type="text" name="nombre" class="form-control" placeholder="EICHE" required>
                         <div class="valid-feedback">
                            
                         </div>
@@ -24,7 +24,7 @@
   
                 <div class="form-group mb-3">
                     <label style="color: white;">...</label>    
-                        <input style="width: 310px; margin-left: 0.3cm;" type="text" class="form-control"  name="ruf" placeholder="9876584-J" required>
+                        <input style="width: 270px; margin-left: 0.3cm;" type="text" class="form-control"  name="ruf" placeholder="9876584-J" required>
                         <div class="valid-feedback">
                         </div>
 
@@ -33,7 +33,7 @@
     <div class="row" style="margin-left: 0.3cm;">         
                 <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Correo</label>
-                        <input style="width: 380px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="eiche@gmail.com" required>
+                        <input style="width: 340px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="eiche@gmail.com" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -43,17 +43,24 @@
     <div class="row" style="margin-left: 0.3cm;">
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección</label>
-                        <input style="width: 380px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
+                        <input style="width: 340px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
     </div>
 
-    <div class="row" style="margin-left: 0.3cm;">
+     <div class="row" style="margin-left: 0.3cm;">
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Código</label>
+                            <input style="width: 60px; margin-left: 0.3cm; " type="text" class="form-control" name="codigo" placeholder="56" required>
+                            <div class="valid-feedback">
+                            </div>
+                    </div>
+
                  <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Teléfono</label>
-                        <input style="width: 380px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
+                        <input style="width: 270px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
                         <div class="valid-feedback">
                        
                         </div>

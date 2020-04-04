@@ -8,7 +8,8 @@ class facturav extends Model
 {
     protected $table='facturav';
 
-    protected $fillable=['n_factura', 'fecha', 'id_cliente', 'id_producto', 'domicilio', 'f_pago', 'cantidad', 'importe', 'sub_total', 'total'];
+    protected $fillable=['n_factura', 'fecha', 'id_clientes', 'id_productos', 'domicilio', 'f_pago', 'cantidad', 'importe', 'sub_total', 'total'];
 
    
 }
+

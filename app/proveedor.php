@@ -10,3 +10,4 @@ class proveedor extends Model
 
     protected $fillable=['nombre', 'tipo_documento'.'ruf','representante','direccion', 'correo','telefono'];
 }
+

@@ -9,24 +9,22 @@
         </a>
     </li>
 
-    <li class="menu-title">Apps</li>
+    <li class="menu-title">Registros</li>
     <li>
+        <a href="{{route('empresa.index')}}">
+            <i data-feather="briefcase"></i>
+            <span>Empresa</span>
+        </a>
         <a href="{{ route('proveedores.index') }}">
             <i data-feather="truck"></i>
             <span> Proveedores </span>
         </a>
-    </li>
-
-    <li class="menu-title">Apps</li>
-    <li>
+   
         <a href="{{ route('productos.index') }}">
             <i data-feather="clipboard"></i>
             <span> Productos </span>
         </a>
-    </li>
-
-    <li class="menu-title">Apps</li>
-    <li>
+    
         <a href="{{ route('clientes.index') }}">
             <i data-feather="user-plus"></i>
             <span> Clientes </span>
@@ -47,7 +45,25 @@
         </a>
     </li>
 
-
+    <li class="menu-title">Libros</li>
+    <li>
+        <a href="{{ route('compra.index') }}">
+            <i data-feather="book-open"></i>  
+            <span>Compra</span>
+        </a>
+         <a href="{{ route('venta.index') }}">
+            <i data-feather="book-open"></i>
+            <span>Venta</span>
+        </a>
+        <a href="{{ route('cajachica.index') }}">
+            <i data-feather="book-open"></i>
+            <span>Caja Chica</span>
+        </a>
+         <a href="{{ route('diario.index') }}">
+            <i data-feather="book-open"></i>
+            <span>Diario</span>
+        </a>
+    </li>
 
      
      <li class="menu-title"></li>
@@ -57,6 +73,7 @@
             <span> backup </span>
         </a>
     </li>
+
     
   
     </ul>

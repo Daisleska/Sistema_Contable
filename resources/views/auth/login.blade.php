@@ -29,15 +29,15 @@
                                 <div class="row">
                                     <div class="col-md-6 p-5">
                                         <div class="mx-auto mb-5">
-                                             <a href="{{ url('/login') }}"><b>Sistema Contable</b>
+                                             <a href="{{ url('/login') }}"><b></b>
                                                 <img src="{{ asset('Shreyu/assets/images/logo.png')}}" alt="" height="24" />
                                                 <h3 class="d-inline align-middle ml-1 text-logo">Blatt</h3>
 
                                             </a>
                                         </div>
 
-                                        <h6 class="h5 mb-0 mt-4">Bienvenido!</h6>
-                                        <p class="text-muted mt-1 mb-4">Ingrese su correo y su clave de acceso</p>
+                                        <h6 class="h5 mb-0 mt-4">¡Bienvenido!</h6>
+                                        <p class="text-muted mt-1 mb-4">Ingrese su correo y su contraseña de acceso</p>
 
                             <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -107,8 +107,8 @@
                                         <div class="auth-page-sidebar">
                                             <div class="overlay"></div>
 
-                                            <div class="auth-user-testimonial">
-                                               <img src="{{ asset('Shreyu/assets/images/a.jpg')}}" alt="" height="320">
+                                            <div >
+                                               <img src="{{ asset('Shreyu/assets/images/logoeiche.jpg')}}" alt="" width="453" height="550">
                                             </div>
                                         </div>
                                     </div>

@@ -29,6 +29,12 @@ Route::resource('proveedores', 'ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
 Route::resource('facturav', 'FacturasVController');
+Route::resource('facturac', 'FacturasCController');
+Route::resource('venta', 'VentasController');
+Route::resource('compra', 'ComprasController');
+Route::resource('empresa', 'EmpresaController');
+Route::resource('cajachica', 'CajaChicaController');
+Route::resource('diario', 'DiarioController');
 Auth::routes();
 
 

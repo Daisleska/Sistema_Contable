@@ -26,18 +26,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Clientes</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
                    
-                  
+                       
                     
-                    <a href="{{ route('clientes.create') }}" class="btn btn-outline-primary">
+                    
+                    <a href="{{ route('empresa.create') }}" class="btn btn-outline-primary">
                    Registrar</a>
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
+                                <th>Nombre de la Empresa</th>
                                 <th>RUF</th>
                                 <th>Correo</th>
                                 <th>Dirección</th>
@@ -50,22 +51,22 @@
                     
                     
                         <tbody>
-                            @foreach($clientes as $key)
+                            @foreach($empresa as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{$key->email}}</td>
                   <td>{{$key->direccion}}</td>
-                  <td>{{$key->telefono}}</td>
+                  <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   
                    <td>
-                       <form action="{{ route('clientes.edit',$key->id) }}" method="POST">
+                       <form action="{{ route('empresa.edit',$key->id) }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
                    <br>
-                   <form action="{{ route('clientes.destroy', $key->id) }}" method="POST">
+                   <form action="{{ route('empresa.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
                    <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
