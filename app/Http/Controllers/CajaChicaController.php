@@ -15,7 +15,7 @@ class CajaChicaController extends Controller
     public function index()
     {
         $cajachica = cajachica::all();
-       return view('cajachica.index', compact('cajachica'));
+       return view('process.cajachica.index', compact('cajachica'));
     }
 
     /**

@@ -15,16 +15,20 @@
             <i data-feather="briefcase"></i>
             <span>Empresa</span>
         </a>
+    </li>
+    <li>
         <a href="{{ route('proveedores.index') }}">
             <i data-feather="truck"></i>
             <span> Proveedores </span>
         </a>
-   
+   </li>
+   <li>
         <a href="{{ route('productos.index') }}">
             <i data-feather="clipboard"></i>
             <span> Productos </span>
         </a>
-    
+    </li>
+    <li>
         <a href="{{ route('clientes.index') }}">
             <i data-feather="user-plus"></i>
             <span> Clientes </span>
@@ -39,7 +43,7 @@
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="{{ route('facturac.index') }}">
          <i data-feather="log-in"></i>
             <span> Facturas de Compras </span>
         </a>
@@ -51,14 +55,20 @@
             <i data-feather="book-open"></i>  
             <span>Compra</span>
         </a>
+    </li>
+    <li>
          <a href="{{ route('venta.index') }}">
             <i data-feather="book-open"></i>
             <span>Venta</span>
         </a>
+    </li>
+    <li>
         <a href="{{ route('cajachica.index') }}">
             <i data-feather="book-open"></i>
             <span>Caja Chica</span>
         </a>
+    </li>
+    <li>
          <a href="{{ route('diario.index') }}">
             <i data-feather="book-open"></i>
             <span>Diario</span>
@@ -66,14 +76,11 @@
     </li>
 
      
-     <li class="menu-title"></li>
+     <li class="menu-title">Seguridad</li>
      <li>
-        <a href="{{ url('backup') }}">
-            <i data-feather="book"></i>
-            <span> backup </span>
+        <a href="{{ route('bitacoras.index') }}">
+            <i data-feather="truck"></i>
+            <span> Bitacora </span>
         </a>
     </li>
-
-    
-  
-    </ul>
+  </ul>

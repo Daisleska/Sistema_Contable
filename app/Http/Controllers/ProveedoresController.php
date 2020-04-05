@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\proveedor;
+use Bitacora;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProveedoresController extends Controller
 {
@@ -16,7 +18,7 @@ class ProveedoresController extends Controller
     public function index()
     {
         $proveedores = proveedor::all();
-       return view('proveedores.index', compact('proveedores'));
+       return view('admin.proveedores.index', compact('proveedores'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
-         return view ('proveedores.create');
+         return view ('admin.proveedores.create');
     }
 
     /**
@@ -54,6 +56,16 @@ class ProveedoresController extends Controller
             $proveedor->telefono=$request->telefono;
             $proveedor->save();
 
+             /*registrar accion en bitacora*/
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha registrado un nuevo proveedor';
+            $bitacoras->save();
+       
+
            return redirect()->to('proveedores');
        /* }*/
     }
@@ -78,7 +90,7 @@ class ProveedoresController extends Controller
     public function edit( $id_proveedor)
     {
         $proveedor=proveedor::find($id_proveedor);
-        return view ('proveedores.edit', compact ('proveedor'));
+        return view ('admin.proveedores.edit', compact ('proveedor'));
     }
 
     /**
@@ -121,6 +133,15 @@ class ProveedoresController extends Controller
     {
          $proveedor = proveedor::find($id);
         $proveedor->delete();
+
+         /*registrar accion en bitacora*/
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado un proveedor';
+            $bitacoras->save();
 
         return back()->with('info', 'El proveedor ha sido eliminado');
     }

@@ -15,7 +15,7 @@ class ComprasController extends Controller
     public function index()
     {
          $compra = compra::all();
-       return view('compra.index', compact('compra'));
+       return view('process.compra.index', compact('compra'));
     }
 
     /**

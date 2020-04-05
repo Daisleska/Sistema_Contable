@@ -1,3 +1,5 @@
+@if (Auth::guest())
+@else
 @extends('layouts.vertical')
 
 
@@ -619,3 +621,5 @@
 <!-- init js -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
 @endsection
+
+@endif

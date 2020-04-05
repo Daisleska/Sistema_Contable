@@ -15,7 +15,7 @@ class DiarioController extends Controller
     public function index()
     {
        $diario = diario::all();
-       return view('diario.index', compact('diario'));
+       return view('process.diario.index', compact('diario'));
     }
 
     /**

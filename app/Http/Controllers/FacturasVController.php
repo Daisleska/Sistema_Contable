@@ -15,7 +15,7 @@ class FacturasVController extends Controller
     public function index()
     {
        $facturav = facturav::all();
-       return view('facturav.index', compact('facturav'));
+       return view('process.facturav.index', compact('facturav'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FacturasVController extends Controller
      */
     public function create()
     {
-        return view ('facturav.create');
+        return view ('process.facturav.create');
     }
 
     /**

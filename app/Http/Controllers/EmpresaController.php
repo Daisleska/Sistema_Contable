@@ -15,7 +15,7 @@ class EmpresaController extends Controller
     public function index()
     {
        $empresa = empresa::all();
-       return view('empresa.index', compact('empresa'));
+       return view('admin.empresa.index', compact('empresa'));
     }
 
     /**
@@ -25,7 +25,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        return view ('empresa.create');
+        return view ('admin.empresa.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class EmpresaController extends Controller
     public function edit($id_empresa)
     {
          $empresa=empresa::find($id_cliente);
-        return view ('empresa.edit', compact ('empresa'));
+        return view ('admin.empresa.edit', compact ('empresa'));
     }
 
     /**

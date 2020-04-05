@@ -19,7 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status',['S','N'])->nullable();
+            $table->enum('user_type',['Admin','Contador','Jefe']);
+            $table->string('Empresa');
+            $table->enum('status',['Activo','Suspendido'])->default('Activo');
+            $table->string('avatar')->default('avatar-1.jpg');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -33,5 +36,9 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+
+/*        Schema::table('users', function(Blueprint $table) {
+            $table->dropColumn('avatar');
+        });*/
     }
 }

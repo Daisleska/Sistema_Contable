@@ -1,7 +1,8 @@
 <link rel="shortcut icon" href="{{ URL::asset('Shreyu/assets/images/favicon.ico') }}">
 
 @yield('css')
-
+{{-- cdn del vue.js --}}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- App css -->
 
 <link href="{{ URL::asset('Shreyu/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />

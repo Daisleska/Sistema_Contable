@@ -15,7 +15,7 @@ class FacturasCController extends Controller
     public function index()
     {
        $facturac = facturac::all();
-       return view('facturac.index', compact('facturac'));
+       return view('process.facturac.index', compact('facturac'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FacturasCController extends Controller
      */
     public function create()
     {
-        return view ('facturac.create');
+        return view ('process.facturac.create');
     }
 
     /**
