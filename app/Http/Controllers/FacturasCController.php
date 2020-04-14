@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\facturac;
+use App\proveedor;
 use Illuminate\Http\Request;
 
 class FacturasCController extends Controller

@@ -18,6 +18,17 @@ class UsersTableSeeder extends Seeder
           'user_type' => 'Admin',
           'Empresa' =>'EICHE',
           'avatar' => '1_1584161024.jpg'
-       	]);    
+       	]);  
+
+         \DB::table('users')->insert([
+          'name' => 'Administrador',
+          'email' => 'admin@admin.com',
+          'password' => bcrypt('12345678'),
+          'user_type' => 'Admin',
+          'Empresa' =>'EICHE',
+          'avatar' => '1_1584161024.jpg'
+        ]);    
     }
+
+
 }

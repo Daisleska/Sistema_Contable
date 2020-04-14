@@ -117,11 +117,10 @@ class ClientesController extends Controller
 
     public function buscar_cliente($cliente)
     {
-        return Clientes::where('ruf', $cliente)->get();
+          $resultado=cliente::where('ruf', $cliente)->get();
+        
+        return $resultado;
+
     }
 
-    public function buscar_clientes($id)
-    {
-        return Cliente::where('ruf', $id)->get();
-    }
 }

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('user_type',['Admin','Contador','Jefe']);
-            $table->string('Empresa');
+            $table->string('Empresa')->default('EICHE');
             $table->enum('status',['Activo','Suspendido'])->default('Activo');
             $table->string('avatar')->default('avatar-1.jpg');
             $table->rememberToken();

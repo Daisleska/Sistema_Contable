@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+
 <!-- plugin css -->
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -28,6 +29,9 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Compras</h4>
                    
+
+
+                    
                   
                     <a href="{{ route('facturac.create') }}" class="btn btn-outline-primary">
                     Registrar</a>
@@ -48,12 +52,12 @@
                     
                     
                         <tbody>
-                           
+                           @foreach($facturac as $key)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$key->fecha}}</td>
+                  <td>{{$key->n_factura}}</td>
+                  <td>{{$key->proveedores_id}}</td>
+                  <td>{{$key->total}}</td>
                   <td></td>
              
                   
@@ -62,7 +66,7 @@
                 
                 </tr>
            
-                          
+                          @endforeach
                              </tbody>
                     </table>
 
@@ -71,11 +75,13 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+
 @endsection
 
 @section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+
 @endsection
 
 @section('script-bottom')

@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -179,7 +180,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         /*alerta*/
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 

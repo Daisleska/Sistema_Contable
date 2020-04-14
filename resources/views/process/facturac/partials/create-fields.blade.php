@@ -21,7 +21,7 @@
                              
                                 
                                 <th>N° Factura</th>
-                                <th><input style="width: 160px;" disabled="disabled" type="text" name="n_factura" class="form-control" value="000<?php  echo e(count($factura)+1); ?>"></th>
+                                <th><input style="width: 160px;" disabled="disabled" type="text" name="n_factura" class="form-control" value="000000<?php  echo e(count($factura)+1); ?>"></th>
 
 
                           
@@ -32,31 +32,22 @@
 
                                
 
-                                <th>RUT</th>
-                                <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""></th>
+                                <th>RUF</th>
+                                <th><input style="width: 200px;"  type="text" id="ruf" name="ruf" class="form-control"  value=""></th>
 
                             </tr>
 
 
                             <tr>
                                 <th>Nombre</th>
-                                <th><input style="width: 350px;" type="text" id="nom" name="nombre" disabled="disabled" class="form-control"  value=""></th>
+                                <th><input style="width: 350px;" type="text" id="nomb" name="nombre" class="form-control"  value=""></th>
 
                             </tr>
                             <tr>
                                 <th>Dirección</th>
-                                <th><input style="width: 350px;" type="text" name="direccion" disabled="disabled" class="form-control"  value=""></th>
+                                <th><input style="width: 350px;" type="text" id="dir" name="direccion" class="form-control"  value=""></th>
                             </tr>
-                            <tr>
-                                <th>Teléfono</th>
-                                 <th><input style="width: 350px;" type="text" name="telefono" disabled="disabled" class="form-control"  value=""></th>
-                            </tr>
-                            <tr>
-                                <th>Correo</th>
-                                <th><input style="width: 350px;" type="email" name="email" disabled="disabled" class="form-control"  value=""></th>
-
-
-                            </tr>
+                            
                           
                         </tbody>
                 </table>
@@ -71,7 +62,13 @@
                                 <th>Domicilio</th>
                                 <th><input style="width: 150px;" type="text" name="domicilio" class="form-control"  value="" required></th>
                                 <th>Forma de pago</th>
-                                <th><input style="width: 150px;" type="text" name="f_pago" class="form-control"  value=""></th>
+                                <th>
+                            <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
+                                  <option selected="selected" disabled="disabled">Selecciona una opción</option>
+                                  <option value="transferencia">Tranferencia</option>
+                                  <option value="efectivo">Efectivo</option>
+                                  <option value="cheque">Cheque</option>
+                                </select></th>
                             
 
                             
@@ -86,11 +83,11 @@
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Descripción del producto</th>
+                                <th>Descripción producto</th>
                                 <th>Cantidad</th>
                                 <th>Valor de unidad</th>
                                 <th>Importe</th>
-                                <th>Agregar</th>
+                                
                               
 
                             
@@ -185,45 +182,41 @@ function eliminarFila(){
 
 
 
+<script src="{{ URL::asset('js/feather.min.js')}}"></script>
+<script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
+
 
 <script>
 
 feather.replace();
 
-      $("#ruf").keyup(function(e) {
+   
+
+
+      $("#ruf").on('keyup',function (event) {
+        var ruf = event.target.value;
+   
+    var cliente=$("#ruf").val();
+    if(cliente>0){
+       console.log(cliente);
+    
+    $.get('/clientes/'+cliente+'/buscar_cliente',function(data){
         
-        $.ajax({
-
-              type: "POST",
-              url : "funciones/buscar_clientes.php",
-              data: "id="+$("#ruf").val() ,
-               beforeSend: function(){
-                //$('#result').html('verificando');
-
-              },
-              success: function( respuesta ){  
-
-                 $('#nom').val(respuesta);
-              }
-
-            });
-
-
-       $.ajax({
-
-              type: "POST",
-              url : "funciones/buscar_cliente.php",
-              data: "cliente="+$("#ruf").val(),
-              success: function( respuesta ){
-              
-                $('#nombre').val(respuesta);
-                  
-              }
-
-            });
-
-      });
+      var result = data;
+      console.log(result);
+      if (result<=0) {
+        $("#mensaje").text('Los datos no existen en el registro');
+      } else {
+        $("#mensaje").text('');
+        $('#nomb').val(result[0].nombre);
+        $('#dir').val(result[0].direccion);
+      }
+    });
+    }
+  });
 
 
     </script>
+
+
    

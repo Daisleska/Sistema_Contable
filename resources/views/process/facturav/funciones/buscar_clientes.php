@@ -1,5 +1,4 @@
 <?php
-extract($_REQUEST);
 	use App\cliente;
 
 	$cliente=DB::table ('clientes')->select('nombre','id', 'ruf')->where('ruf', $id )->get();

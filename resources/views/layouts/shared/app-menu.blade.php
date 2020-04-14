@@ -68,6 +68,14 @@
             <span>Caja Chica</span>
         </a>
     </li>
+
+    <li>
+        <a href="{{ route('inventario.index') }}">
+            <i data-feather="book-open"></i>  
+            <span>Inventario</span>
+        </a>
+    </li>
+
     <li>
          <a href="{{ route('diario.index') }}">
             <i data-feather="book-open"></i>

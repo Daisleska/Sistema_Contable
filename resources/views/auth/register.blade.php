@@ -56,7 +56,7 @@
 
                                                  @error('name')
                                                      <span class="invalid-feedback" role="alert">
-                                                         <strong>{{ $message }}</strong>
+                                                         <strong>{{ 'El nombre no puede llevar datos numericos' }}</strong>
                                                      </span>
                                                  @enderror
                                                 </div>
@@ -74,7 +74,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ 'Este correo ya esta registrado' }}</strong>
                                     </span>
                                 @enderror
                                                 </div>
@@ -89,11 +89,11 @@
                                                         </span>
                                                     </div>
                                                     <input type="password"  id="password"
-                                                        placeholder="Ingrese su Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                        placeholder="Ingrese su Contraseña" minlength="8"  title="Minimo 8 digitos" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                               @error('password')
                                                  <span class="invalid-feedback" role="alert">
-                                                     <strong>{{ $message }}</strong>
+                                                     <strong>{{ 'La contraseña no coincide' }}</strong>
                                                  </span>
                                              @enderror
                                                 </div>

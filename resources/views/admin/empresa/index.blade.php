@@ -89,6 +89,7 @@
 
 @section('script')
 <!-- datatable js -->
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection
 

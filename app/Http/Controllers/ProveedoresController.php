@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\proveedor;
 use Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -131,10 +132,13 @@ class ProveedoresController extends Controller
      */
     public function destroy($id)
     {
-         $proveedor = proveedor::find($id);
-        $proveedor->delete();
 
-         /*registrar accion en bitacora*/
+        $proveedor=proveedor::find($id);
+
+        if ($proveedor->delete()) {
+            flash('Registro eliminado satisfactoriamente!', 'success');
+
+             /*registrar accion en bitacora*/
             $bitacoras = new App\Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
@@ -143,6 +147,13 @@ class ProveedoresController extends Controller
             $bitacoras->action = 'Ha Eliminado un proveedor';
             $bitacoras->save();
 
-        return back()->with('info', 'El proveedor ha sido eliminado');
+                return redirect()->back();
+
+        } else {
+
+            flash('No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
+                return redirect()->back();
+        }
+
     }
 }

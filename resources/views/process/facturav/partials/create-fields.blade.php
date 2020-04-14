@@ -32,20 +32,25 @@
 
                                
 
-                                <th>RUT</th>
-                                <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""></th>
+                                <th>RUF</th>
+                                <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""> 
+                             
+                    <small><span id="mensaje" style="color:red"></span></small>
+                                </th>
+                         
+                                
 
                             </tr>
 
 
                             <tr>
                                 <th>Nombre</th>
-                                <th><input style="width: 350px;" type="text" id="nom" name="nombre" disabled="disabled" class="form-control"  value=""></th>
+                                <th><input style="width: 350px;" type="text" id="nomb" name="nombre" disabled="disabled" class="form-control"  value="" ></th>
 
                             </tr>
                             <tr>
                                 <th>Dirección</th>
-                                <th><input style="width: 350px;" type="text" name="direccion" disabled="disabled" class="form-control"  value=""></th>
+                                <th><input style="width: 350px;" type="text" name="direccion" id="dir" disabled="disabled" class="form-control"  value=""></th>
                             </tr>
                             <tr>
                                 <th>Teléfono</th>
@@ -189,44 +194,41 @@ function eliminarFila(){
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
 <script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
 
+
 <script>
 
 feather.replace();
 
-      $("#ruf").keyup(function(e) {
-        
-        $.ajax({
+      $("#ruf").on('keyup',function (event) {
+        //asignar evento a la variable ruf
+        var ruf = event.target.value;
+   // aignar el valor de ruf a la variable $cliente
+    var cliente=$("#ruf").val();
+    //si cliente es mayor que 0
+    if(cliente>0){
+    //envio de datos a la ruta en web
+    $.get('/clientes/'+cliente+'/buscar_cliente',function(data){
+      //resive el valor data de lo consultado en el controlador
 
-              type: "POST",
-              url : "funciones/buscar_clientes.php",
-              data: "id="+$("#ruf").val() ,
-               beforeSend: function(){
-                //$('#result').html('verificando');
+      // asignar a la variable result el valor de data
+      var result = data;
 
-              },
-              success: function( respuesta ){  
+    /*  console.log(result);*/
 
-                 $('#nom').val(respuesta);
-              }
-
-            });
-
-
-       $.ajax({
-
-              type: "POST",
-              url : "funciones/buscar_cliente.php",
-              data: "cliente="+$("#ruf").val(),
-              success: function( respuesta ){
-              
-                $('#nombre').val(respuesta);
-                  
-              }
-
-            });
-
-      });
+    //si result es menor o igual a 0 mostrar ese  mensaje
+      if (result<=0) {
+        $("#mensaje").text('Los datos no existen en el registro');
+      } else {
+        //sino muestra mensaje vacio
+        $("#mensaje").text('');
+        //en el campo nombre ingresar el valor del array nombre
+        $('#nomb').val(result[0].nombre);
+        //en el campo direccion ingresar el valor del array direccion
+        $('#dir').val(result[0].direccion);
+      }
+    });
+    }
+  });
 
 
     </script>
-   

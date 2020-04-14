@@ -56,7 +56,7 @@
                   <td>{{$key->codigo}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->descripcion}}</td>
-                  <td>{{ $key->unidad }}</td>
+                  <td>{{$key->unidad }}</td>
                   <td>{{number_format($key->precio,2,',','.')}}</td>
                   
                   <td>

@@ -20,8 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
 
-Route::get('clientes/{cliente}/buscar_clientes', 'ClientesController@buscar_clientes');
-
 Route::resource('proveedores', 'ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
@@ -32,6 +30,7 @@ Route::resource('compra', 'ComprasController');
 Route::resource('empresa', 'EmpresaController');
 Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
+Route::resource('inventario', 'InventarioController');
 Auth::routes();
 Route::middleware('auth')->group(function () {
 /*Perfin de usuarios*/

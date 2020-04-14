@@ -22,6 +22,13 @@
 @endsection
 
 @section('content')
+
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="row">
         <div class="col-12">
             <div class="card">
@@ -32,7 +39,8 @@
                     Registrar</a>
                     <br></br>
 
-                    <table id="basic-datatable" class="table dt-responsive nowrap">
+
+                     <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Nombre de la Empresa</th>
@@ -77,13 +85,20 @@
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->
-    </div>
+
+        
+</div>
     <!-- end row-->
 @endsection
 
 @section('script')
+
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection
 
 @section('script-bottom')
