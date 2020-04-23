@@ -114,11 +114,15 @@
 @endsection
 
 @section('scripts')
+<script src="{{ URL::asset('js/feather.min.js')}}"></script>
+<script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
+
 <script type="text/javascript">
 
     function cambiar_status(user_id,status) {
         
         if (status=="Activo") {
+            console.log(status);
             $("#nuevo_status").text('Suspendido');
             $("#status").val('Suspendido');
         }else{
@@ -131,8 +135,7 @@
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}">
 </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+  
 {{-- 
       $('#zero_config').DataTable();
  --}}

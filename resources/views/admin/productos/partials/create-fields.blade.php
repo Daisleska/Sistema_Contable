@@ -92,6 +92,7 @@
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Stock Máximo</label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ old('stock_max') }}" placeholder="" required>
+
                         <div class="valid-feedback">
                        
                         </div>

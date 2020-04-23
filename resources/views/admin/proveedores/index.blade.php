@@ -64,11 +64,9 @@
                   <td>{{$key->correo}}</td>
                   <td>{{$key->telefono}}</td>
                   <td>
-                        <form action="{{ route('proveedores.edit',$key->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form>
+                        
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+                    
                        <br>
                         <form action="{{ route('proveedores.destroy', $key->id) }}" method="POST">
                         {{ csrf_field() }}

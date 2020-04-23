@@ -17,5 +17,6 @@
     <link href="{{ URL::asset('Shreyu/assets/css/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
     @else
     <link href="{{ URL::asset('Shreyu/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+
     @endif
 @endif

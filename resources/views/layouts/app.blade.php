@@ -4,6 +4,7 @@
 
 
 @section('css')
+
 <link href="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
@@ -612,6 +613,7 @@
 
 @section('script')
 <!-- optional plugins -->
+
 <script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>

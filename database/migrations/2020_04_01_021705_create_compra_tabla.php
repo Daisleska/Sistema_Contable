@@ -17,6 +17,10 @@ class CreateCompraTabla extends Migration
             $table->bigIncrements('id');
              $table->unsignedBigInteger('facturac_id');
             $table->unsignedBigInteger('proveedores_id');
+
+            $table->foreign('facturac_id')->references('id')->on('facturac')->onDelete('cascade');
+            $table->foreign('proveedores_id')->references('id')->on('proveedores')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

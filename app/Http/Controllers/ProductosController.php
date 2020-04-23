@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\producto;
+use App\inventario;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -13,6 +14,7 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    
     {
         $productos= producto::all();
        return view('admin.productos.index', compact('productos'));
@@ -37,6 +39,7 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
+        
         $buscar=producto::where('codigo',$request->codigo)->where('codigo',$request->codigo)->first();
 
         
@@ -59,9 +62,20 @@ class ProductosController extends Controller
             $producto->save();
 
 
+           
+        
+            //---registro nuevo producto en inventario=======
+
+            $inventario=new inventario();
+            $inventario->existencia=$request->existencia;
+            $inventario->productos_id=$producto->id;
+            $inventario->save();
+             
+             if ($inventario->save()) {
 
            return redirect()->to('productos');
-           
+            }
+            
                }
 
     }
@@ -126,16 +140,19 @@ class ProductosController extends Controller
     public function destroy($id)
    {
        $producto = producto::find($id);
-        $producto->delete();
-
-        
+        $producto->delete();  
 
         return back()->with('info', 'El producto ha sido eliminado');
-
     
            
     }
 
+     public function buscar_producto($product)
+    {
+          return producto::where('codigo', $product)->get();
+        
+
+    }
   
     
 }

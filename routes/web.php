@@ -1,26 +1,20 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('auth/login');
 });
 
 Auth::routes();
 
+/*buscadores para autocompletar*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
+Route::get('productos/{product}/buscar_producto', 'ProductosController@buscar_producto');
+Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@buscar_proveedor');
+/*fin*/
 
-Route::resource('proveedores', 'ProveedoresController');
+Route::middleware('auth')->group(function () {
+Route::resource('proveedores','ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
 Route::resource('facturav', 'FacturasVController');
@@ -31,14 +25,24 @@ Route::resource('empresa', 'EmpresaController');
 Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
-Auth::routes();
-Route::middleware('auth')->group(function () {
+
+Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
 	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
 Route::resource('users','UsersController');
 /*Bitácora de acciones*/
 Route::resource('bitacoras','BitacoraController');
+
+
+
+// Reportes en PDF
+Route::get('facturac.pdf', 'FacturasCController@pdf')->name('facturac.pdf');
+Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
+// Reportes en Excel
+Route::get('users_view', 'ExcelController@users_view')->name('users_view');
+Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');
+
 
 /*rutas para el backup*/
 Route::get("backup", "BackupController@index")->name("backup.index");

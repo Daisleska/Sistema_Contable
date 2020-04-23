@@ -106,10 +106,10 @@
                         <tbody>
                            
                 <tr>
-                  <td><input style="width: 100px;" type="text" name="codigo"  class="form-control"  value=""></td>
-                  <td><input style="width: 180px;" type="text" name="nombre" disabled="disabled" class="form-control"  value=""></td>
+                  <td><input style="width: 100px;" type="text" name="codigo" id="cod"  class="form-control"  value=""></td> <small><span id="mensaje" style="color:red"></span></small>
+                  <td><input style="width: 180px;" type="text" name="nombre" id="producto" disabled="disabled" class="form-control"  value=""></td>
                   <td><input style="width: 100px;" type="text" name="cantidad" class="form-control"  value=""></td>
-                  <td><input style="width: 100px;" type="text" name="precio" disabled="disabled" class="form-control"  value=""></td>
+                  <td><input id="valor" style="width: 100px;" type="text" name="precio" disabled="disabled" class="form-control"  value=""></td>
                   <td><input style="width: 100px;" type="text" name="importe" disabled="disabled" class="form-control"  value=""></td>
 
                   <td><button onclick="agregarFila()" type="button" class="btn btn-info btn-sm">+</button>
@@ -229,6 +229,8 @@ feather.replace();
     });
     }
   });
+
+
 
 
     </script>

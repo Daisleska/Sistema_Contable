@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+{{-- <link rel="stylesheet" href="{{ mix('/css/app.css')}}"> --}}
 
 <!-- plugin css -->
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -24,12 +25,23 @@
 
 @section('content')
 <div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
+<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Compras</h4>
                    
-
+                          <div class="float-right" >
+                                            <a href="{{ route('facturac.pdf') }}" class="btn btn-primary mt-2"
+                                                data-toggle="tooltip" 
+                                                title="Generar pdf"> <i class="feather icon-file-text"
+                                                    style="font-size: 20px"></i> Generar PDF</a>
+                                        </div>
 
                     
                   
@@ -56,7 +68,7 @@
                 <tr>
                   <td>{{$key->fecha}}</td>
                   <td>{{$key->n_factura}}</td>
-                  <td>{{$key->proveedores_id}}</td>
+                  <td>{{$key->nombre}}</td>
                   <td>{{$key->total}}</td>
                   <td></td>
              
@@ -79,6 +91,9 @@
 @endsection
 
 @section('script')
+{{-- <script type="text/javascript">
+    mix.js('resources/js/app.js', 'public/js').version();
+</script> --}}
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 

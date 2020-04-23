@@ -11,9 +11,9 @@
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="">Libro Inventario</a></li>
+             
             </ol>
         </nav>
         <h4 class="mb-1 mt-0"></h4>
@@ -31,11 +31,30 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                    <a href="{{ route('inventario.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
+                       <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                   <a href="{{ route('inventario_view') }}" class="dropdown-item notify-item">
+                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
+                        <span>Excel</span>
+                    </a>
+                    <a href="{{ route('inventario.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                    <a href="javascript:window.print()" class="dropdown-item notify-item">
+                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
+                        <span>Imprimir</span>
+                    </a>
+                </div>
+            </div>
+                  
                     </div>
                     <div class="col-md-8">
-                         <p style="text-align: right; color: blue;">Valor Total Del Inventario <input type="text" name="" value="180.000" disabled="disabled"></p>
+                         <p style="text-align: right; color: blue;">Valor Total Del Inventario <input id="total_inventario" type="text" name=""  readonly="readonly"></p>
                     </div>
                 </div>    
 
@@ -53,15 +72,25 @@
                         </thead>
                 
                         <tbody>
-                       
+                        @foreach($inventario as $key)
+
+                        <?php
+                        $existencia=$key->existencia;
+                        $precio=$key->precio;
+                        $costo_total=$precio*$existencia;
+
+                        ?>
+                          
                           <tr>
-                             <td>cauchos</td>
-                             <td>23123</td>
-                             <td>8</td>
-                             <td>lotes</td>
-                             <td>80.000</td>
-                             <td>100.000</td>
+                             <td>{{$key->nombre}}</td>
+                             <td>{{$key->codigo}}</td>
+                             <td>{{$key->existencia}}</td>
+                             <td>{{$key->unidad}}</td>
+                             <td>{{number_format($key->precio, 2,',','.')}}</td>
+                             <td  id="costo_total" >{{number_format($costo_total, 2,',','.')}}</td>
                          </tr>
+
+                         @endforeach
                              </tbody>
 
                     </table>
@@ -75,6 +104,24 @@
 
 @section('script')
 
+<script type="text/javascript">
+     $("#costo_total").on('keyup',function (event) {
+        //asignar evento a la variable ruf
+        var costo_total = event.target.value;
+     
+    var total = $("#costo_total").val();
+    
+    
+      if (total) {
+        $("#total_inventario").text('0');
+      } else {
+        $('#total_inventario').val(total);
+        
+      }
+    });
+
+
+</script>
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection

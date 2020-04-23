@@ -59,7 +59,7 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr style="color: black;">
-                                <th COLSPAN="13" style="text-align: center;">LIBRO DE COMPRAS</th>
+                                <th COLSPAN="8" style="text-align: center;">LIBRO DE COMPRAS</th>
                             </tr>
                             <tr style="color: black;">
                                 <th>N° OPE.</th>
@@ -68,15 +68,12 @@
                                 <th>N° CONTROL</th>
                                 <th>PROVEEDOR</th>
                                 <th>RUT</th>
-                                <th>COMPRAS CON IVA</th>
-                                <th>MONTO BASE</th>
+                                <th>COMPRAS IVA</th>
+                                <th>MONTO B</th>
                                 <th>%</th>
                                 <th>IMPUEST</th>
                                 <th>COMPRAS NO GRAV.</th>
-                                <th>TOTAL COMPRAS</th>
-                             
-
-                            
+                                <th>TOTAL COMPRAS</th>           
                             </tr>
                         </thead>
                     

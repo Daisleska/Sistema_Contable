@@ -15,6 +15,13 @@ class CreateInventarioTable extends Migration
     {
         Schema::create('inventario', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('existencia');
+            $table->integer('costo_total')->nullable();
+            $table->unsignedBigInteger('facturac_id')->nullable();
+            $table->unsignedBigInteger('productos_id');
+
+            $table->foreign('facturac_id')->references('id')->on('facturac')->onDelete('cascade');
+            $table->foreign('productos_id')->references('id')->on('productos')->onDelete('cascade');
             $table->timestamps();
         });
     }

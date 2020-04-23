@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use App\proveedor;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,7 +57,7 @@ class ProveedoresController extends Controller
             $proveedor->save();
 
              /*registrar accion en bitacora*/
-            $bitacoras = new App\Bitacora;
+            $bitacoras = new Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
@@ -90,8 +89,8 @@ class ProveedoresController extends Controller
      */
     public function edit( $id_proveedor)
     {
-        $proveedor=proveedor::find($id_proveedor);
-        return view ('admin.proveedores.edit', compact ('proveedor'));
+        $proveedores=proveedor::find($id_proveedor);
+        return view ('admin.proveedores.edit', compact ('proveedores'));
     }
 
     /**
@@ -101,16 +100,16 @@ class ProveedoresController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id_proveedor)
+    public function update(Request $request,$id)
     {
-         $buscar=proveedor::where('ruf', $request->ruf)->where('id', '<>', $id_proveedor)->get();
+         $buscar=proveedor::where('ruf', $request->ruf)->where('id', '<>', $id)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
             return redirect()-> route('proveedores.index');
         } else {
             # podemos actualizar los datos
-            $proveedor=proveedor::find($id_proveedor);
+            $proveedor=proveedor::find($id);
             $proveedor->nombre=$request->nombre;
             $proveedor->tipo_documento=$request->tipo_documento;
             $proveedor->ruf=$request->ruf;
@@ -156,4 +155,13 @@ class ProveedoresController extends Controller
         }
 
     }
+
+     public function buscar_proveedor($proveedor)
+    {
+          $resultado=proveedor::where('ruf', $proveedor)->get();
+        
+        return $resultado;
+
+    }
+
 }

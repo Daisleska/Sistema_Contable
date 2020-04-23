@@ -16,6 +16,12 @@
             <span>Empresa</span>
         </a>
     </li>
+    {{--  <li>
+        <a href="{{route('users_view')}}">
+            <i data-feather="briefcase"></i>
+            <span>eXCEL</span>
+        </a>
+    </li> --}}
     <li>
         <a href="{{ route('proveedores.index') }}">
             <i data-feather="truck"></i>

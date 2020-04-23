@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="row" style="align-content: center;">
     <div class="col-lg-13">
         <div class="card">
@@ -8,7 +14,7 @@
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Facturas</h4>
                 <p class="sub-header"></p>
 
-                <form  action="{{route('facturav.store')}}" class="needs-validation" method="post"  novalidate>
+                <form  action="{{route('facturac.store', 'facturac.update')}}" class="needs-validation" method="post"  novalidate>
                     
                     @csrf
                   @include('process.facturac.partials.create-fields')

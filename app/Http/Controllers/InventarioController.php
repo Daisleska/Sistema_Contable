@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\invetario;
+use App\inventario;
+use App\producto;
 use Bitacora;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,11 +18,15 @@ class InventarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+     
     {
-     /* $inventario = inventario::all();
-       return view('process.inventario.index', compact('inventario'));*/
+      $inventario = \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo
 
-       return view ('process.inventario.index');
+        FROM productos, inventario
+
+        WHERE inventario.productos_id = productos.id');
+  
+       return view('process.inventario.index', compact('inventario'));
     }
 
     /**
@@ -88,4 +94,23 @@ class InventarioController extends Controller
     {
         //
     }
+
+       public function pdf()
+
+    {
+        $inventario = \DB::select('SELECT   inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo
+
+        FROM productos, inventario
+
+        WHERE inventario.productos_id = productos.id');
+
+         $i = 1;
+
+         $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.inventario', compact('inventario', 'i','date'));
+        $dompdf->setPaper('a4', 'landscape');
+
+        return $dompdf->stream('inventario.pdf');
+    }
+
 }

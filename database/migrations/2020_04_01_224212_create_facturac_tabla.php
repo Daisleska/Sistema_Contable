@@ -15,7 +15,7 @@ class CreateFacturacTabla extends Migration
     {
         Schema::create('facturac', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('n_factura');
+            $table->integer('n_factura');
             $table->date('fecha');
             $table->unsignedBigInteger('proveedores_id');
             $table->unsignedBigInteger('productos_id');
