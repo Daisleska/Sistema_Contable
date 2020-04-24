@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\empresa;
+use App\Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmpresaController extends Controller
 {
@@ -24,8 +27,19 @@ class EmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view ('admin.empresa.create');
+    
+        $buscar=empresa::all();
+            
+            if (count($buscar)>0) {
+                flash('<i class="icon-circle-check"></i> Ya existe un registro de empresa, para registrar uno debe eliminar el anterior!')->success()->important();
+                return redirect()->back();
+            } else {
+                return view ('admin.empresa.create');
+            }
+            
+        
     }
 
     /**
@@ -36,6 +50,19 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+           
+            'image' => 'required',
+            'image.*' => 'mimes:jpeg,jpg,png',
+            'image' => 'dimensions:max_width=396px,max_height=340px',
+            'page_foot' => 'required'
+        ]);
+
+        $name=$request->file('image')->getClientOriginalName();
+        $ok=$request->file('image')->move(public_path().'/images/', $name);  
+        //dd($ok);
+        $url = '/images/'.$name;
        $empresa= new empresa();
             $empresa->nombre=$request->nombre;
             $empresa->tipo_documento=$request->tipo_documento;
@@ -44,7 +71,22 @@ class EmpresaController extends Controller
             $empresa->direccion=$request->direccion;
             $empresa->codigo=$request->codigo;
             $empresa->telefono=$request->telefono;
+            $empresa->image_name=$name;
+            $empresa->url_image=$url;
+            $empresa->page_foot=$request->page_foot;
             $empresa->save();
+
+           flash('¡Información de la empresa registrada exitosamente!', 'success');
+
+           /*registrar accion en bitacora*/
+            $bitacoras = new Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha registrado la información de la empresa';
+            $bitacoras->save();
+       
 
            return redirect()->to('empresa');
     }
@@ -79,16 +121,33 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_empresa)
+    public function update(Request $request, $id)
     {
-        $buscar=empresa::where('ruf', $request->ruf)->where('id', '<>', $id_cliente)->get();
 
-        if (count($buscar)>0) {
-            # no puede actualizar
-            return redirect()-> route('empresa.index');
+          if ($request->file('image')!=="") {
+            $this->validate($request, [
+            'image.*' => 'mimes:jpeg,jpg,png',
+            'image' => 'dimensions:max_width=844,max_height=63',
+            'page_foot' => 'required'
+            ]);
         } else {
-            # podemos actualizar los datos
-            $empresa=empresa::find($id_cliente);
+            $this->validate($request, [
+          
+            'page_foot' => 'required'
+        ]);
+        }
+
+        if ($request->file('image')!=="") {
+            $empresa=empresa::find($id);
+            unlink(public_path().'/'.$empresa->url_image);
+            
+
+            $name=$request->file('image')->getClientOriginalName();
+            $ok=$request->file('image')->move(public_path().'/images/', $name);  
+            //dd($ok);
+            $url = '/images/'.$name;
+
+            
             $empresa->nombre=$request->nombre;
             $empresa->tipo_documento=$request->tipo_documento;
             $empresa->ruf=$request->ruf;     
@@ -96,10 +155,29 @@ class EmpresaController extends Controller
             $empresa->direccion=$request->direccion;
             $empresa->codigo=$request->codigo;
             $empresa->telefono=$request->telefono;
+            $empresa->image_name=$name;
+            $empresa->url_image=$url;
+            $empresa->page_foot=$request->page_foot;
             $empresa->save();
 
-            return redirect ()->route('empresa.index');
+        } else {
+            
+            $empresa=empresa::find($id);
+            $empresa->nombre=$request->nombre;
+            $empresa->tipo_documento=$request->tipo_documento;
+            $empresa->ruf=$request->ruf;     
+            $empresa->email=$request->email;
+            $empresa->direccion=$request->direccion;
+            $empresa->codigo=$request->codigo;
+            $empresa->telefono=$request->telefono;
+            $empresa->user_id=$request->user_id;
+            $empresa->page_foot=$request->page_foot;
+            $empresa->save();
         }
+        
+        
+        flash('<i class="icon-circle-check"></i> Información de la empresa actualizada exitosamente!')->success()->important();
+            return redirect()->to('admin.empresa.index');
     }
 
     /**
@@ -108,11 +186,17 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_empresa)
     {
-       $empresa = empresa::find($id);
-        $empresa->delete();
-
-        return back()->with('info', 'La empresa ha sido eliminado');
+       $empresa=empresa::find($request->id_empresa);
+         $image=$empresa->url_image;
+        if ($empresa->delete()) {
+            unlink(public_path().'/'.$image);
+            flash('Registro eliminado exitosamente!', 'success');
+                return redirect()->back();
+        } else {
+            flash('No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
+                return redirect()->back();
+        }        
     }
 }

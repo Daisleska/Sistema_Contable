@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\cajachica;
+use App\facturav;
+use App\facturac;
 use Illuminate\Http\Request;
 
 class CajaChicaController extends Controller
@@ -36,7 +38,37 @@ class CajaChicaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+    $hoy=CURDATE();
+  
+
+    //$facturav= facturav::where("fecha","=",CURDATE())->select(SUM("total"), "id")->get();
+    $facturav = \DB::select('SELECT SUM(total) AS ingresos, fecha FROM facturav WHERE fecha=$hoy');
+    
+
+    //$facturac= facturac::where("fecha","=",CURDATE())->select(SUM("total"), "id")->get();
+    
+
+    $facturac = \DB::select('SELECT SUM(total) AS egresos, fecha FROM facturac WHERE fecha=$hoy');
+
+    $saldo=0;
+    //saldo=saldo+ingresos-egresos;
+    $saldo=$saldo+$ingresos-$egresos;
+       
+       $cajachica= new cajachica();
+            
+            $cajachica->facturav_id=$facturav_id;
+            $cajachica->facturac_id=$facturac_id;
+            $cajachica->fecha=$fecha;
+            $cajachica->ingresos=$ingresos;
+            $cajachica->egresos=$egresos;
+            $cajachica->saldo=$saldo;
+           
+            
+            $cajachica->save();
+
+
+    
     }
 
     /**
@@ -83,4 +115,8 @@ class CajaChicaController extends Controller
     {
         //
     }
+
+   
+
+
 }

@@ -11,6 +11,12 @@
 @endsection
 
 @section('content')
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="row" style="align-content: center;">
     <div class="col-lg-13">
         <div class="card">

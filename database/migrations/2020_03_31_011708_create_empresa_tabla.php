@@ -22,6 +22,10 @@ class CreateEmpresaTabla extends Migration
             $table->string('direccion');
             $table->string('codigo');
             $table->integer('telefono');
+            $table->string('image_name');
+            $table->string('url_image');
+            $table->text('page_foot');
+
             $table->timestamps();
         });
     }

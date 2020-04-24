@@ -22,6 +22,12 @@
 @endsection
 
 @section('content')
+
+<div class="row">
+<div class="col-md-7"></div>
+<div class="col-md-5">
+  @include('flash::message')
+</div>
 <div class="row">
         <div class="col-12">
             <div class="card">
@@ -39,7 +45,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre de la Empresa</th>
-                                <th>RUF</th>
+                                <th>RUT</th>
                                 <th>Correo</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
@@ -71,6 +77,8 @@
                    <input type="hidden" name="_method" value="DELETE">
                    <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
+                   <br>
+                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   </td>
 
                 
@@ -85,6 +93,83 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+
+     <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myCenterModalLabel">Información de la Empresa</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <tr>
+                                                        <p style="color:black;">Nombre: {{$key->nombre}} </p>
+                                                    </tr>
+                                                    <tr>
+                                                        <p style="color:black;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} </p>
+                                                    </tr>
+                                                    <tr>
+                                                        <p style="color:black;">Correo: {{$key->email}} </p>
+                                                    </tr>
+                                                    <tr>
+                                                        <p style="color:black;">Dirección: {{$key->direccion}}</p>
+                                                    </tr>
+                                                     <tr>
+                                                        <p style="color:black;">Teléfono: {{$key->telefono}} </p>
+                                                    </tr>
+                                                    <tr>
+                                                        <p style="color:black;">Nombre de la Imagen: {{$key->image_name}} </p>
+                                                    </tr>
+                                                    <tr>
+                                                     
+                                                       <img src="{{ asset($key->url_image) }}" width="50%" height="50%">
+                                                    </tr>
+                                                    <tr>
+                                                        <p style="color:black;">Pie de Página: {{$key->page_foot}} </p>
+                                                    </tr>
+                                                    
+
+                                                   
+                                                       
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+
+ <script type="text/javascript">
+    //descripcion, monto
+  
+  function detalles(id,nombre, tipo_documento, ruf, correo, direccion, telefono, image_name, page_foot){
+
+  $.ajax({
+        url: 'index.blade.php',
+        type: 'POST',
+        data: {nombre: nombre, tipo_documento: tipo_documento, ruf: ruf, correo: correo, direccion: direccion, telefono: telefono, image_name: image_name, page_foot: page_foot}
+    }).success(function(respuesta){
+        // console.log(respuesta);
+        $('#tablita').html(respuesta);
+    });
+   
+  $("#id").text(id);
+  $("#nombre").text(nombre);
+  $("#tipo_documento").text(tipo_documento);
+  $("#ruf").text(ruf);
+  $("#correo").text(correo);
+  $("#direccion").text(direccion);
+    $("#image_name").text(image_name);
+    $("#page_foot").text(page_foot);
+   
+
+
+}
+
+    
+  
+
+</script>
 @endsection
 
 @section('script')

@@ -30,6 +30,10 @@
                     <table style="color: black;">
                       <?php
                       use App\empresa;
+                     
+     
+                   
+
 
   $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
 
@@ -70,6 +74,7 @@
                    
                               </tr>
                             <tr style="color: black;">
+                               
                             
                                 <th>FECHA</th>
                                 <th>INGRESOS</th>
@@ -84,22 +89,23 @@
                     
                     
                         <tbody>
-                           
+                      @foreach($cajachica as $key)      
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$key->precio}}</td>
+                  <td>{{number_format($key->ingresos,2,',','.')}}</td>
+                  <td>{{number_format($key->egresos,2,',','.')}}</td>
+                  <td>{{number_format($key->saldo,2,',','.')}}</td>
                   
              
              
                 
                 </tr>
                
-           
+                     @endforeach
                           
                              </tbody>
                     </table>
+                    
 
                 </div> <!-- end card body-->
             </div> <!-- end card -->

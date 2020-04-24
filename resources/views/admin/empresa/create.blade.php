@@ -7,8 +7,11 @@
             <div class="card-body">
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Empresa</h4>
                 <p class="sub-header"></p>
+                <div class="col-md-12">
+  
+    
 
-                <form  action="{{route('empresa.store')}}" class="needs-validation" method="post"  novalidate>
+                <form  action="{{route('empresa.store')}}" class="needs-validation" method="post" enctype="multipart/form-data"  novalidate>
                     @csrf
                   @include('admin.empresa.partials.create-fields')
                 </form>

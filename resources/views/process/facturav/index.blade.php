@@ -23,6 +23,11 @@
 
 @section('content')
 <div class="row">
+<div class="col-md-7"></div>
+<div class="col-md-5">
+  @include('flash::message')
+</div>
+<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -48,20 +53,33 @@
                     
                     
                         <tbody>
-                           
+                     @foreach($facturav as $key) 
+
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$key->fecha}}</td>
+                  <td>{{$key->n_factura}}</td>
+                  <td>{{$key->nombre}}</td>
+                  <td>{{number_format($key->total,2,',','.')}}</td>
+                  <td>
+                      
+                        <button type="button" class="btn btn-info btn-sm" title="PDF"><i data-feather="save"></i></button>
+                       
+                  
+                   <form action="{{ route('facturav.destroy', $key->id) }}" method="POST">
+                   {{ csrf_field() }}
+                   <input type="hidden" name="_method" value="DELETE">
+                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   </form>
+                   <br>
+                 
+                  </td>
              
                   
                   
 
                 
                 </tr>
-           
+                @endforeach
                           
                              </tbody>
                     </table>

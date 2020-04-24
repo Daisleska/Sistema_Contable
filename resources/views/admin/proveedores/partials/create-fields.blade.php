@@ -11,7 +11,7 @@
 
 <div class="row" style="margin-left: 0.3cm;">  
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">RUF</label>
+                        <label style="margin-left: 0.3cm;">RUT</label>
                             <input style="width: 60px; margin-left: 0.3cm; " type="text" class="form-control"  name="tipo_documento" placeholder="V" required>
                             <div class="valid-feedback">
                             </div>

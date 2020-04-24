@@ -38,7 +38,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>RUF</th>
+                                <th>RUT</th>
                                 <th>Correo</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>

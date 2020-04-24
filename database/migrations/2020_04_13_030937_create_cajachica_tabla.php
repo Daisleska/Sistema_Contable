@@ -15,8 +15,11 @@ class CreateCajachicaTabla extends Migration
     {
         Schema::create('cajachica', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('facturac_id');
-            $table->unsignedBigInteger('facturav_id');
+            $table->date('fecha');
+            $table->string('ingresos');
+            $table->string('egresos');
+            $table->string('saldo');
+
             $table->timestamps();
         });
     }
