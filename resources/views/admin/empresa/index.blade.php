@@ -78,6 +78,7 @@
                    <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
                    <br>
+
                    <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   </td>
 
@@ -104,6 +105,9 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
+
+                                    
+
                                                     <tr>
                                                         <p style="color:black;">Nombre: {{$key->nombre}} </p>
                                                     </tr>
@@ -130,7 +134,7 @@
                                                         <p style="color:black;">Pie de Página: {{$key->page_foot}} </p>
                                                     </tr>
                                                     
-
+                                                  
                                                    
                                                        
                                                     </div>
