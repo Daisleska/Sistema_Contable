@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<!-- plugin css -->
+{{-- <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+@endsection
+
 @section('content')
 <div class="row">
         <div class="col-md-7" ></div>
@@ -32,5 +37,9 @@
 <script src="{{ asset('js/jquery/dist/jquery.js') }}"></script>
 
 
+
+@endsection
+
+@section('script-bottom')
 
 @endsection

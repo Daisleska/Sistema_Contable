@@ -27,14 +27,15 @@ class FacturasCController extends Controller
 
     
     {
+        $mesactual = date('m');
       $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha
 
         FROM facturac, proveedores
 
-        WHERE facturac.proveedores_id = proveedores.id');
+        WHERE facturac.proveedores_id = proveedores.id AND MONTH(facturac.fecha)='.$mesactual);
 
 
-       return view('process.facturac.index', compact('facturac'));
+       return view('process.facturac.index', compact('facturac', 'mesactual'));
     }
 
     /**
@@ -74,9 +75,18 @@ class FacturasCController extends Controller
             $fact_comp->importe=$request->importe;
             $fact_comp->sub_total=$request->sub_total;
             $fact_comp->total=$request->total;
+            $fact_comp->n_control=$request->n_control;
             $fact_comp->proveedores_id=$request->proveedores_id;
             $fact_comp->productos_id=$request->productos_id;
             $fact_comp->save();
+
+//-----------Registrar accion en libro de compra--------------------
+        $compra = new compra();
+
+            $compra->facturac_id=$fact_comp->id;
+            $compra->proveedores_id=$request->proveedores_id;
+            $compra->save();
+//-------------------------------------------------------------------
 
              if ($fact_comp->save()) {
             flash('Registro Exitoso!', 'success');
@@ -112,6 +122,7 @@ foreach ($inventario as $val) {
         }
     
     }
+
 
 }
 

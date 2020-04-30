@@ -180,10 +180,10 @@
   
 </div>
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.js')}}
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js')}}
 "></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
-"></script>
+{{-- <script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script> --}}
 
 <script>
 function agregarFila(){
@@ -353,29 +353,37 @@ feather.replace();
      
     var product = $("#cod").val();
     if(product.length>3){
-    $.get('/productos/'+product+'/buscar_producto',function(data){
+    $.get('/inventario/'+product+'/buscar_inventario',function(data){
  
       var res = data;
+
+      console.log(res);
     
       if (res<=0) {
         $("#mensaje2").text('No existe es producto registrado');
       } else {
         $("#mensaje2").text('');
-        var existencia = res[0].existencia;
-        var stock_max = res[0].stock_max;
+        var exis = res[0].existencia;
+        var stock_min = res[0].stock_min;
 
         var nueva_existencia = event.target.value;
-        var nueva_existencia = $("#cantidad").val();
-
-         
-
-         if ( nueva_existencia > existencia) {
-          $("#mensaje4").text('la cantidad supera el stock');
+        var nueva_existencia=$("#cantidad").val();
+   if (nueva_existencia.value > 0) {
+    console.log('holaaaaa');
+         var rest = parseInt(exis) - parseInt(nueva_existencia);
+         console.log(rest);
+         if ( rest < 0) {
+          $("#mensaje3").text('No hay suficiente cantidad en el inventario');
           $('#guardar').prop('disabled',true);
          }else{   
            $('#guardar').prop('disabled',false);
         }
-      }
+
+        }
+        
+      
+
+    }
     });
     }
   });

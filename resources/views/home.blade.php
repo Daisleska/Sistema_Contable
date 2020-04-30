@@ -43,6 +43,42 @@
 
 
 @section('content')
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="media p-3">
+                    <div class="media-body">
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Today
+                            Revenue</span>
+                        <h2 class="mb-0">$2100</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="media p-3">
+                    <div class="media-body">
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Product
+                            Sold</span>
+                        <h2 class="mb-0">1065</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <span class="icon-lg icon-dual-warning" data-feather="coffee"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- stats + charts -->
  <div class="col-xl-6">
         <div class="card">

@@ -1,5 +1,6 @@
 @if (Auth::guest())
 @else
+
 @extends('layouts.vertical')
 
 
@@ -45,6 +46,20 @@
 @endsection
 
 @section('content')
+ {{-- <style type="text/css">
+    .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("../../../public/images/progress.git") 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+</style>
+    
+    <div class="loader"></div> --}}
 <div class="row">
     <div class="col-md-6 col-xl-3">
         <div class="card">
@@ -617,6 +632,8 @@
 <script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+
+
 @endsection
 
 @section('script-bottom')

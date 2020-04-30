@@ -2,7 +2,7 @@
 
 @section('css')
 <!-- plugin css -->
-<link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+{{-- <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" /> --}}
 @endsection
 
 @section('breadcrumb')
@@ -54,61 +54,52 @@
                         </tr>
                     </table>
                   
-              
+  <div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+          {{--       <h5 class="header-title mb-3 mt-0">Libros:</h5> --}}
 
-                    <table id="basic-datatable" class="table dt-responsive nowrap" >
-                        <thead>
-                            <tr style="color: black;">
-                                <th COLSPAN="8" style="text-align: center;">LIBRO DE COMPRAS</th>
-                            </tr>
-                            <tr style="color: black;">
-                                <th>N° OPE.</th>
-                                <th>FECHA</th>
-                                <th>N° FACT.</th>
-                                <th>N° CONTROL</th>
-                                <th>PROVEEDOR</th>
-                                <th>RUT</th>
-                                <th>COMPRAS IVA</th>
-                                <th>MONTO B</th>
-                                <th>%</th>
-                                <th>IMPUEST</th>
-                                <th>COMPRAS NO GRAV.</th>
-                                <th>TOTAL COMPRAS</th>           
-                            </tr>
-                        </thead>
-                    
-                    
-                        <tbody>
-                           
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-             
-             
-                
-                </tr>
-                <tr style="color: black;">
-                
-                      <th COLSPAN="5" style="text-align: right;">TOTAL COMPRAS $</th>
-                     
-                      <td COLSPAN="7"></td>
-                      
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#compras" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                            <span class="d-block d-sm-none"><i class="uil-home-alt"></i></span>
+                            <span class="d-none d-sm-block">Compras</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ventas" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                            <span class="d-block d-sm-none"><i class="uil-user"></i></span>
+                            <span class="d-none d-sm-block">Ventas</span>
+                        </a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            <span class="d-block d-sm-none"><i class="uil-envelope"></i></span>
+                            <span class="d-none d-sm-block">Messages</span>
+                        </a>
+                    </li> --}}
+                </ul>
+                <div class="tab-content p-3 text-muted">
+                    <div class="tab-pane show active" id="compras">
+                      @include('process.compra_venta.partials.libro_compra')
+                    </div>
+
+                    <div class="tab-pane " id="ventas">
+                        @include('process.compra_venta.partials.libro_venta')
+                    </div>
+                   {{--  <div class="tab-pane" id="messages">
+                        <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean
+                          </p>
+                        
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div> 
+
                    
-                </tr>
-           
-                          
-                             </tbody>
-                    </table>
 
                 </div> <!-- end card body-->
             </div> <!-- end card -->
@@ -119,7 +110,7 @@
 
 @section('script')
 <!-- datatable js -->
-<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+{{-- <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script> --}}
 @endsection
 
 @section('script-bottom')

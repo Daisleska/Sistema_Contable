@@ -59,15 +59,10 @@
     <li>
         <a href="{{ route('compra.index') }}">
             <i data-feather="book-open"></i>  
-            <span>Compra</span>
+            <span>Compra - Venta</span>
         </a>
     </li>
-    <li>
-         <a href="{{ route('venta.index') }}">
-            <i data-feather="book-open"></i>
-            <span>Venta</span>
-        </a>
-    </li>
+
     <li>
         <a href="{{ route('cajachica.index') }}">
             <i data-feather="book-open"></i>

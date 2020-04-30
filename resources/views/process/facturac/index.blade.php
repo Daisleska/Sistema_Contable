@@ -67,9 +67,9 @@
                            @foreach($facturac as $key)
                 <tr>
                   <td>{{$key->fecha}}</td>
-                  <td>{{$key->n_factura}}</td>
+                  <td>000{{$key->n_factura}}</td>
                   <td>{{$key->nombre}}</td>
-                  <td>{{$key->total}}</td>
+                  <td>{{number_format($key->total,2,',','.')}}</td>
                   <td></td>
              
                   

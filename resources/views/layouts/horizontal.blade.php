@@ -16,6 +16,7 @@
 
 <body data-layout="topnav">
 
+
     <div id="wrapper">
         @include('layouts.shared.navbar')
 

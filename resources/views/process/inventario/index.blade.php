@@ -84,10 +84,12 @@
                           <tr>
                              <td>{{$key->nombre}}</td>
                              <td>{{$key->codigo}}</td>
-                             <td>{{$key->existencia}}</td>
+                             <td style="color: green;">{{$key->existencia}}</td>
                              <td>{{$key->unidad}}</td>
                              <td>{{number_format($key->precio, 2,',','.')}}</td>
                              <td  id="costo_total" >{{number_format($costo_total, 2,',','.')}}</td>
+
+                             {{-- <td >{{str_split(strval($costo_total)))}}</td> --}}
                          </tr>
 
                          @endforeach

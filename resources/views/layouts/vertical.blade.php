@@ -32,19 +32,31 @@
     <body>
 @endif
 
-@if(isset($withLoader) && $withLoader)
+
 <!-- Pre-loader -->
-<div id="preloader">
+{{-- <div id="preloader">
     <div id="status">
-        <div class="spinner">
+        <div class="spinner-grow text-primary m-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-secondary m-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-success m-2" role="status">
+                                    <span class="sr-only">Loading...</span>
+        </div> --}}
+
+
+        {{-- <div class="spinner">
             <div class="circle1"></div>
             <div class="circle2"></div>
             <div class="circle3"></div>
-        </div>
-    </div>
+        </div> --}}
+  {{--   </div>
 </div>
+ --}}
 <!-- End Preloader-->
-@endif
+
 
     <div id="wrapper">
 

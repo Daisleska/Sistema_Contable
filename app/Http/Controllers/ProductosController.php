@@ -150,7 +150,6 @@ class ProductosController extends Controller
      public function buscar_producto($product)
     {
           return producto::where('codigo', $product)->get();
-        
 
     }
   

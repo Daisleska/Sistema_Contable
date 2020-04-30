@@ -21,6 +21,7 @@ class FacturaCTableSeeder extends Seeder
           'importe' => 10,
           'sub_total' => 95,
           'total' => 100,
+          'n_control' => '230013',
           'proveedores_id' => 1,
           'productos_id' =>1
          

@@ -6,8 +6,16 @@
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
 
-{{-- <script src="{{ URL::asset('js/jquery/dist/jquery.js') }}"></script> --}}
+{{-- 
+<script src="{{ URL::asset('js/jquery/dist/jquery.js') }}"></script> --}}
+
+<script type="text/javascript">
+$(window).load(function() {
+    $(".loader").fadeOut("slow");
+});
+</script>
  
+
  {{-- cdn del vue.js --}}
 {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --}}
 

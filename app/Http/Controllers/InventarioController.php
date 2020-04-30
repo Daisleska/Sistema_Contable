@@ -113,4 +113,13 @@ class InventarioController extends Controller
         return $dompdf->stream('inventario.pdf');
     }
 
+      public function buscar_inventario($product)
+    {
+
+          $resultado= inventario::join("productos", "inventario.productos_id", "=", "productos.id")->where("productos.codigo", "=", $product)->get();
+        
+        return $resultado;
+
+    }
+
 }

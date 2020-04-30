@@ -8,6 +8,6 @@ class compra extends Model
 {
     protected $table='compra';
 
-    protected $fillable=['id_facturac','id_provedores'];
+    protected $fillable=['facturac_id','proveedores_id'];
 
 }

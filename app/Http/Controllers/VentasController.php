@@ -15,7 +15,7 @@ class VentasController extends Controller
     public function index()
     {
        $venta = venta::all();
-       return view('process.venta.index', compact('venta'));
+       return view('process.compra_venta.index', compact('venta'));
     }
 
     /**

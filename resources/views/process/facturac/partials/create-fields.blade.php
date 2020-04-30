@@ -8,25 +8,43 @@
                                 <th>Fecha</th>
                                 <th><input style="width: 160px;" readonly="readonly"  type="date" name="fecha" class="form-control"  value="<?php echo date("Y-m-d");?>"  required></th>
 
+              
 
-                                <?php 
+     <?php 
 
                                 use App\facturac;
 
-                                $factura=DB::table ('facturac')->select('id')->take(1)->orderBy('id', 'desc')->get();
+                                $factura=DB::table ('facturac')->select('id')->take(1)->orderBy('id', 'desc')->first();
 
-
+                                 if($factura) {
                             ?>
-         
+
                                 <th>N° Factura</th>
-                                <th><input style="width: 160px;"  type="text" name="n_factura" readonly="readonly" class="form-control" value="000<?php  echo e(count($factura)+1); ?>"></th>
-                            </tr>                         
+                                <th><input style="width: 100px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="000<?php  echo $factura->id +1; ?>"></th>
+
+
+
+                          
+                            </tr>
+                          <?php }else{
+                            ?>
                                 
+                                <th>N° Factura</th>
+                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="0001"></th>
+
+                                
+                            </tr>
+                            <?php
+                          }?>          
+                               
                             <tr>
 
                                 <th>RUF</th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="ruf" class="form-control" ></th>
                                 <small><span id="mensaje" style="color:red"></span></small>
+
+                                 <th>N°control</th>
+                                <th><input style="width: 160px;" type="number" name="n_control" class="form-control"  required></th>
                             </tr>
 
 
@@ -56,7 +74,7 @@
                                 <th><input style="width: 150px;"  type="text" name="domicilio" id="domi" class="form-control"  value="" required></th>
                                 <th>Forma de pago</th>
                                 <th>
-                            <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
+                            <select required="required" name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
                                   <option selected="selected" disabled="disabled">Selecciona una opción</option>
                                   <option value="transferencia">Tranferencia</option>
                                   <option value="efectivo">Efectivo</option>
@@ -151,12 +169,12 @@
 
 
                     
-                    <button class="btn btn-primary" id="guardar" type="submit">Guardar</button>
+                    <button disabled="disabled" class="btn btn-primary" id="guardar" type="submit">Guardar</button>
 
 
 <script>
 function agregarFila(){
-  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input style="width: 100px;" type="text" name="codigo" class="form-control"  value=""></td><td><input style="width: 180px;" type="text" name="nombre" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="cantidad" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="precio" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="importe" disabled="disabled" class="form-control"  value=""></td><td><button onclick="eliminarFila()" type="button" class="btn btn-danger btn-sm">-</button></td>';
+  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input style="width: 100px;" type="text" name="codigo" class="form-control" id="cod" for="cod" value=""></td><td><input style="width: 180px;" type="text" name="nombre" readonly="readonly" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="cantidad" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="precio" readonly="readonly" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="importe" readonly="readonly" class="form-control"  value=""></td><td><button onclick="eliminarFila()" type="button" class="btn btn-danger btn-sm">-</button></td>';
 }
 
 function eliminarFila(){
@@ -293,9 +311,11 @@ var total_pagar = cantidad*preciot;
 
     if(total_pagar>0){
         $('#total_final').val(total_pagar);
+          $('#guardar').prop('disabled',false);
       } else {
         $("#mensaje2").text('Debe Ingresar la cantidad');
         $('#total_final').val('');
+          $('#guardar').prop('disabled',true);
        
       }
   });
