@@ -11,6 +11,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
 Route::get('productos/{product}/buscar_producto', 'ProductosController@buscar_producto');
 Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@buscar_proveedor');
+
+
+
 /*fin*/
 
 Route::middleware('auth')->group(function () {

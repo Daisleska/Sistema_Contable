@@ -91,7 +91,7 @@
                         <tbody>
                       @foreach($cajachica as $key)      
                 <tr>
-                  <td>{{$key->precio}}</td>
+                  <td>{{$key->fecha}}</td>
                   <td>{{number_format($key->ingresos,2,',','.')}}</td>
                   <td>{{number_format($key->egresos,2,',','.')}}</td>
                   <td>{{number_format($key->saldo,2,',','.')}}</td>
