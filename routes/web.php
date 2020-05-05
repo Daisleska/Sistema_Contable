@@ -13,12 +13,7 @@ Route::get('productos/{product}/buscar_producto', 'ProductosController@buscar_pr
 Route::get('inventario/{product}/buscar_inventario', 'InventarioController@buscar_inventario');
 Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@buscar_proveedor');
 
-<<<<<<< HEAD
 Route::get('compras/{mes}/{anio}/{dia}/buscador', 'ComprasController@buscador');
-=======
-
-
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
 /*fin*/
 
 Route::middleware('auth')->group(function () {

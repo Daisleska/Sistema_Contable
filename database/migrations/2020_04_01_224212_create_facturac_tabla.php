@@ -26,6 +26,7 @@ class CreateFacturacTabla extends Migration
             $table->integer('sub_total');
             $table->integer('total');
             $table->integer('n_control');
+            $table->enum('divisas', ['VEF', 'USD' , 'EUR', 'CLP'])->default('USD');
 
             $table->foreign('proveedores_id')->references('id')->on('proveedores')->onDelete('cascade');
             $table->foreign('productos_id')->references('id')->on('productos')->onDelete('cascade');

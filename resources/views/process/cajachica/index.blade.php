@@ -62,15 +62,15 @@
 
                     <table id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
-                            <tr style="color: black;">
-                                <th COLSPAN="13" style="text-align: center;">LIBRO DE CAJA CHICA</th>
+                            <tr >
+                                <th COLSPAN="13" style="text-align: center; color: black;">LIBRO DE CAJA CHICA</th>
                             </tr>
                              <tr style="color: black;">
-                                <th>SALDO INICIAL</th>
-                                <th></th>
-                                <th COLSPAN="2"></th>
+                                <th COLSPAN="2">SALDO INICIAL</th>
+                               <th></th>
+                              
                     
-                      
+                                <th>Semana:{{$semana}} /   Mes:{{$mes}}</th>
                    
                               </tr>
                             <tr style="color: black;">
@@ -92,9 +92,9 @@
                       @foreach($cajachica as $key)      
                 <tr>
                   <td>{{$key->fecha}}</td>
-                  <td>{{number_format($key->ingresos,2,',','.')}}</td>
-                  <td>{{number_format($key->egresos,2,',','.')}}</td>
-                  <td>{{number_format($key->saldo,2,',','.')}}</td>
+                  <td style="color: green;">+ {{number_format($key->ingresos,2,',','.')}}</td>
+                  <td style="color: red;">- {{number_format($key->egresos,2,',','.')}}</td>
+                  <td style="color: black;">{{number_format($key->saldo,2,',','.')}}</td>
                   
              
              

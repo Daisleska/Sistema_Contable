@@ -69,7 +69,7 @@
                   <td>{{$key->fecha}}</td>
                   <td>000{{$key->n_factura}}</td>
                   <td>{{$key->nombre}}</td>
-                  <td>{{number_format($key->total,2,',','.')}}</td>
+                  <td>{{number_format($key->total,2,',','.')}}  {{$key->divisas}}</td>
                   <td></td>
              
                   

@@ -52,6 +52,14 @@
                                 <th>Nombre</th>
                                 <th><input style="width: 350px;" type="text" id="nomb" readonly="readonly" name="nombre" class="form-control"  value=""></th>
 
+                                 <th>Divisa</th>
+                                <th><select style="width: 50" name="divisa" class="form-control">
+                                <option value="VEF">VEF</option>
+                                <option selected="selected" value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="CLP">CLP</option>
+                                </select></th>
+
                             </tr>
                             <tr>
                                 <th>Dirección</th>
@@ -218,9 +226,10 @@ feather.replace();
         $("#mensaje").text('Los datos no existen en el registro');
       } else {
         $("#mensaje").text('');
+        $('#proveedores_id').val(result[0].id);
         $('#nomb').val(result[0].nombre);
         $('#dir').val(result[0].direccion);
-        $('#proveedores_id').val(result[0].id);
+      
       }
     });
     }else{

@@ -7,6 +7,9 @@ use App\facturav;
 use App\facturac;
 use Illuminate\Http\Request;
 
+date_default_timezone_set('UTC');
+ini_set('max_execution_time', 3000);
+set_time_limit(3000);
 class CajaChicaController extends Controller
 {
     /**
@@ -14,20 +17,16 @@ class CajaChicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+  public function index()
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
     //$factura = \DB::select('SELECT SUM(facturav.total) AS ingresos, SUM(facturac.total) AS egresos FROM facturav, facturac WHERE facturav.fecha=CURRENT_DATE AND facturac.fecha=CURRENT_DATE');
      
     //consultar cajachica
     $cajachica = \DB::select('SELECT * FROM cajachica WHERE fecha=CURRENT_DATE');
-<<<<<<< HEAD
 
-=======
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
+$semana = date('W')-1;
+$mes = date('F');
+
  
     foreach ($cajachica as $val) {
     $id_caja=$val->id;
@@ -36,73 +35,82 @@ class CajaChicaController extends Controller
     if ($cajachica){
 
     //consultar facturas 
-    $facturav = \DB::select('SELECT SUM(total) AS ingresos FROM facturav WHERE fecha=CURRENT_DATE');
-<<<<<<< HEAD
+    $facturav = \DB::select('SELECT SUM(total) AS ingresos FROM facturav WHERE fecha=CURRENT_DATE AND f_pago="efectivo"');
 
-=======
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
-    if($facturav){
+    foreach ($facturav as $x){
+    $facturav_f=is_null($x->ingresos);
+ 
+    }
+
+    if($facturav_f !=true) {
+
     foreach ($facturav as $val) {
     $ingreso=$val->ingresos;
     }
+    
     }else{
-<<<<<<< HEAD
-     $ingreso=0;  
-
-=======
-    $ingreso=0;  
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
+    $ingreso=0;
+  
     }
 
-    $facturac = \DB::select('SELECT SUM(total) AS egresos FROM facturac WHERE fecha=CURRENT_DATE');
-    if($facturac){
+    $facturac = \DB::select('SELECT SUM(total) AS egresos FROM facturac WHERE fecha=CURRENT_DATE AND f_pago="efectivo"');
+
+    foreach ($facturac as $y){
+    $facturac_f=is_null($y->egresos);
+    }
+
+    if($facturac_f !=true) {
     foreach ($facturac as $val) {
-       $egreso=$val->egresos;
-    }
+    $egreso=$val->egresos;
+    
+    } 
+    
     }else{
     $egreso=0;
+    
     }
 
     $cajac = \DB::select('SELECT saldo FROM cajachica WHERE id!='.$id_caja.'  ORDER BY id  DESC LIMIT 1');
     
-    if($cajac) {
-     foreach ($cajac as $val) {
-       $saldo=$val->saldo;
+    if($cajac !=null) {
+    foreach ($cajac as $val) {
+    $saldo=$val->saldo;
     }
-
+   
     }else{
     $saldo=0;
     }
 
+
     $saldo=$saldo+$ingreso-$egreso;
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
-        if($facturav || $facturac){
+        if($facturac_f !=true || $facturav_f !=true ){
 
     //actualizar y mostrar index 
     //actualizar 
     $caja = \DB::select('UPDATE cajachica SET ingresos ='.$ingreso.', egresos ='.$egreso.', saldo ='.$saldo.' WHERE fecha=CURRENT_DATE');
 
-        $cajachica = cajachica::all();
-       return view('process.cajachica.index', compact('cajachica'));
+        $semana = date('W')-1;
+       
+        $cajachica = \DB::select('SELECT * FROM cajachica WHERE WEEK(fecha)='.$semana);
+
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes'));
 
          }else{
     //index 
 
-       $cajachica = cajachica::all();
-       return view('process.cajachica.index', compact('cajachica'));
+      $semana = date('W')-1;
+       
+        $cajachica = \DB::select('SELECT * FROM cajachica WHERE WEEK(fecha)='.$semana);
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes'));
          }
     
     }else{
     
     //consultar facturas 
-    $facturav = \DB::select('SELECT SUM(total) AS ingresos FROM facturav WHERE fecha=CURRENT_DATE');
+    $facturav = \DB::select('SELECT SUM(total) AS ingresos FROM facturav WHERE fecha=CURRENT_DATE AND f_pago="efectivo"');
 
-<<<<<<< HEAD
 
 foreach ($facturav as $x){
   $facturav_f=is_null($x->ingresos);
@@ -111,21 +119,17 @@ foreach ($facturav as $x){
 
     if($facturav_f !=true) {
 
-=======
-    if($facturav) {
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
     foreach ($facturav as $val) {
     $ingreso=$val->ingresos;
     }
     
     }else{
     $ingreso=0;
-<<<<<<< HEAD
   
     }
 
 
-    $facturac = \DB::select('SELECT SUM(total) AS egresos FROM facturac WHERE fecha=CURRENT_DATE');
+    $facturac = \DB::select('SELECT SUM(total) AS egresos FROM facturac WHERE fecha=CURRENT_DATE AND f_pago="efectivo"');
   /*$y=is_null($facturac);*/
   foreach ($facturac as $y){
   $facturac_f=is_null($y->egresos);
@@ -146,32 +150,6 @@ foreach ($facturav as $x){
 
   /*$z=is_null($cajac);*/
     if($cajac !=null) {
-=======
-    }
-
-    
-
-
-
-    $facturac = \DB::select('SELECT SUM(total) AS egresos FROM facturac WHERE fecha=CURRENT_DATE');
-
-    if($facturac) {
-    foreach ($facturac as $val) {
-    $egreso=$val->egresos;
-    }
-    
-    }else{
-    $egreso=0;
-    }
-
-    
-    
- 
-    $cajac = \DB::select('SELECT saldo FROM cajachica ORDER BY id DESC LIMIT 1');
-
-
-    if($cajac) {
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
     foreach ($cajac as $val) {
     $saldo=$val->saldo;
     }
@@ -183,41 +161,31 @@ foreach ($facturav as $x){
 
     $saldo=$saldo+$ingreso-$egreso;
 
-<<<<<<< HEAD
         if($facturac_f !=true || $facturav_f !=true ) {
        
     /*   foreach ($facturac as $key ) {
            $egreso=$key->egresos;
        }*/
-=======
-        if($facturav || $facturac){
-      
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
 
     //insertar y mostrar index 
         $caja = \DB::select('INSERT INTO cajachica (fecha, ingresos, egresos, saldo) VALUES(CURRENT_DATE, '.$ingreso.', '.$egreso.', '.$saldo.')');
 
+
         $cajachica = cajachica::all();
-       return view('process.cajachica.index', compact('cajachica'));
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes'));
 
 
          }else{
 
     //index 
         $cajachica = cajachica::all();
-       return view('process.cajachica.index', compact('cajachica')); 
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes')); 
     
          }
     }
   
-<<<<<<< HEAD
     }//fin index
-=======
 
-
-
-    }//fin función index 
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
 
     /**
      * Show the form for creating a new resource.
@@ -237,7 +205,6 @@ foreach ($facturav as $x){
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
 /*
     $hoy=CURDATE();
   */
@@ -269,10 +236,6 @@ foreach ($facturav as $x){
 
 
     
-=======
-
-   
->>>>>>> d7b706f35893e1dc0e8c54b65a6bbca1a8b701fd
     }
 
     /**
@@ -320,9 +283,7 @@ foreach ($facturav as $x){
         //
     }
 
-
-
-
    
+
 
 }

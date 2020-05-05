@@ -8,6 +8,7 @@ use App\proveedor;
 use App\inventario;
 use App\producto;
 use App\compra;
+use App\divisa;
 use Bitacora;
 use App\Alert;
 use PDF;
@@ -15,6 +16,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
+date_default_timezone_set('UTC');
+ini_set('max_execution_time', 3000);
+set_time_limit(3000);
 
 class FacturasCController extends Controller
 {
@@ -28,11 +33,13 @@ class FacturasCController extends Controller
     
     {
         $mesactual = date('m');
-      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha
+      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas
 
         FROM facturac, proveedores
 
         WHERE facturac.proveedores_id = proveedores.id AND MONTH(facturac.fecha)='.$mesactual);
+
+    
 
 
        return view('process.facturac.index', compact('facturac', 'mesactual'));
@@ -45,7 +52,9 @@ class FacturasCController extends Controller
      */
     public function create()
     {
+         
         return view ('process.facturac.create');
+
     }
 
     /**
@@ -78,6 +87,7 @@ class FacturasCController extends Controller
             $fact_comp->n_control=$request->n_control;
             $fact_comp->proveedores_id=$request->proveedores_id;
             $fact_comp->productos_id=$request->productos_id;
+            $fact_comp->divisas=$request->divisa;
             $fact_comp->save();
 
 //-----------Registrar accion en libro de compra--------------------

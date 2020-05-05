@@ -8,7 +8,7 @@ class facturac extends Model
 {
     protected $table='facturac';
 
-    protected $fillable=['n_factura', 'fecha', 'id_proveedores', 'id_productos', 'domicilio', 'f_pago', 'cantidad', 'importe', 'sub_total', 'total', 'n_control'];
+    protected $fillable=['n_factura', 'fecha', 'id_proveedores', 'id_productos', 'domicilio', 'f_pago', 'cantidad', 'importe', 'sub_total', 'total', 'n_control', 'divisas'];
 
      public function inventario()
     {
@@ -19,5 +19,7 @@ class facturac extends Model
     {
         return $this->belongsToMany('App\compra','compra','facturac_id','id')->withPivot('amount');
     }
+
+    
 }
 

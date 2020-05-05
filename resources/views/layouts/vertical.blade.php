@@ -53,8 +53,8 @@
             <div class="circle3"></div>
         </div> --}}
   {{--   </div>
-</div>
- --}}
+</div> --}}
+
 <!-- End Preloader-->
 
 
