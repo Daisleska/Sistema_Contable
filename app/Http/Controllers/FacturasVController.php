@@ -7,7 +7,9 @@ use App\facturav;
 use App\proveedor;
 use App\inventario;
 use App\producto;
-use App\compra;
+use App\venta;
+use App\empresa;
+use App\iva;
 use Bitacora;
 use App\Alert;
 use PDF;
@@ -28,7 +30,7 @@ class FacturasVController extends Controller
 
 
 
-       $facturav = \DB::select('SELECT clientes.id, clientes.nombre, facturav.n_factura, facturav.total, facturav.fecha FROM facturav, clientes WHERE facturav.clientes_id= clientes.id');
+       $facturav = \DB::select('SELECT clientes.id, clientes.nombre, facturav.n_factura, facturav.total, facturav.fecha, facturav.id AS id_factura FROM facturav, clientes WHERE facturav.clientes_id= clientes.id');
 
 
 
@@ -43,9 +45,9 @@ class FacturasVController extends Controller
     public function create()
 
     {   
-        
-
-        return view ('process.facturav.create');
+        $iva= iva::all();
+        return view('process.facturav.create', compact('iva'));
+      
     }
 
     /**
@@ -161,23 +163,35 @@ foreach ($inventario as $val) {
     }
 
     
-    public function pdf()
+    public function pdf($id_factura)
 
     {
-        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre,  facturav.n_factura, facturav.total, facturav.fecha
+        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total
 
-        FROM facturav, clientes
+        FROM facturav, clientes, productos
 
-        WHERE facturav.clientes_id = clientes.id');
+        WHERE facturav.clientes_id = clientes.id AND facturav.productos_id=productos.id AND facturav.id='.$id_factura );
 
-         $i = 1;
+        $i = 1;
 
-         $date = date('d-m-Y');
-        $dompdf = PDF::loadView('pdf.facturav', compact('facturav', 'i','date'));
+        $empresa = empresa::all();
+
+
+
+        $dompdf = PDF::loadView('pdf.facturav', compact('facturav', 'i','empresa'));
 
         return $dompdf->stream('facturav.pdf');
     }
     
+    
+    
 
+    public function ivaupdate ($porcen){
+  
+   
+    $ivaupdate->porcentaje= $porcen;
+    $ivaupdate->save();
+    
+    }
 
 }

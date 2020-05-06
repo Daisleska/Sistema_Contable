@@ -106,6 +106,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
+                                                    
                                                 
                                                      <tr>
                                                         <p style="color:black;">Código: {{$key->codigo}} </p>

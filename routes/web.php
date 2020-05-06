@@ -38,10 +38,13 @@ Route::resource('users','UsersController');
 Route::resource('bitacoras','BitacoraController');
 
 
+//iva
+Route::get('ivaupdate/{porcen}', 'FacturasVController@ivaupdate')->name('ivaupdate');
 
 // Reportes en PDF
 Route::get('facturac.pdf', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
+Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');
 Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');

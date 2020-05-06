@@ -16,7 +16,7 @@ class ProductosController extends Controller
     public function index()
     
     {
-        $productos= producto::all();
+       $productos= producto::all();
        return view('admin.productos.index', compact('productos'));
 
     }

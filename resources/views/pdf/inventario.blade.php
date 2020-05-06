@@ -10,20 +10,30 @@
         type="text/css" />
     <style>
         img {
-            width: 20%;
+            width: 10%;
+            margin-left: 20cm;
+            margin-right: 2.5cm;
+            border-radius: 50%;
+      
+
+
         }
 
         h3 {
             text-align: center;
         }
 
+      
+
         small {
             margin-top: 20%;
+            color:black;
+
         }
 
         #titulo {
             text-align: right;
-            padding-right: 50px;
+       
         }
 
         #membrete {
@@ -42,42 +52,53 @@
 
         body {
             font-family: 'Times-Bold';
-        }
+       
+          margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+         }
+
 
         table {
-            border-collapse: separate;
+            border-collapse: collapse;
+            width: 100%;
 
         }
 
-        #tabla {
 
-            margin-top: -150px;
+        #l {
+            text-align: left;
+            margin-left: 4cm;
 
         }
+
+        #c{
+            text-align:center;
+            height: 40px;
+        }
+
+       
+
 
     </style>
 </head>
 
 <body>
     <div class="row">
-        
-        <div id="fecha" class="float-right">
-            Fecha: {{ $date }} </div>
-
-            <div id="fecha">
-
-            <p class="float-left"><small>RIF:</small> J-29954809-0</p>
-            <small class="float-left">Maracay Edo. Aragua, Av. Las Delicias</small> <br>
-            <small class="float-left">Telefono: 0426-3186547</small> /
-            <small class="float-left">Correo: stylom@gmail.com</small>
-
-            {{-- Logo de la empresa --}}
+        @foreach($empresa as $key)
             
+            <small>RUT:{{$key->tipo_documento}}-{{$key->ruf}}</small>
+            <small id="fecha" style="margin-left: 16cm;">
+            Fecha: {{ $date }}</small><br>
+            <small class="float-left">{{$key->direccion}}</small> <br>
+            <small class="float-left">Telefono: +{{$key->codigo}} {{$key->telefono}}</small> /
+            <small class="float-left">Correo: {{$key->email}}</small>
+
+            
+            <img class="circular--square" src="../public/{{ $key->url_image }}">
             <h3 id="titulo">EICHE.cl</h3>
 
         </div>
 
-
+         @endforeach
 
         </div>
    
@@ -86,25 +107,20 @@
 
     </div>
 
-    <br><br><br><br><br><br><br><br><br>
 
-    <div id="tabla">
-        <div class="row">
-             <h2 class="text-center">Listado de facturas de compras</h2> <br>
-             <div class="col-12">
-                        <div class="table-responsive">
-                            <table class="table mt-4 table-centered">
-            
+             <h2 style="text-align: center;">Inventario</h2> <br>
+             
+                            <table border="1" >
                
 
                     <thead class=>
                         <tr>
-                            <th>#</th>
-                            <th>Descripción</th>
-                            <th>Código</th>
-                            <th>Existencia</th>
-                            <th>Unidad</th>
-                            <th>precio</th>
+                            <th id="alto">N°</th>
+                            <th id="alto">Descripción</th>
+                            <th id="alto">Código</th>
+                            <th id="alto">Existencia</th>
+                            <th id="alto">Unidad</th>
+                            <th id="alto">precio</th>
                        
 
 
@@ -114,23 +130,19 @@
                         @foreach($inventario as $item)
                         <tr>
 
-                            <td><b>{{ $i++ }}</b></td>
-                            <td>{{$item->descripcion}}</td>
-                            <td>{{$item->codigo}}</td>
-                            <td>{{$item->existencia}}</td>
-                            <td>{{$item->unidad}}</td>
-                            <td>{{number_format($item->precio, 2,',','.')}}</td>
+                            <td id="c"><b>{{ $i++ }}</b></td>
+                            <td id="c">{{$item->descripcion}}</td>
+                            <td id="c">{{$item->codigo}}</td>
+                            <td id="c">{{$item->existencia}}</td>
+                            <td id="c">{{$item->unidad}}</td>
+                            <td id="c">{{number_format($item->precio, 2,',','.')}}</td>
                         
 
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-
-        </div>
-    </div>
-</div>
+        
 
 </body>
 

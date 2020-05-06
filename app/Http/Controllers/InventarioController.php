@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\inventario;
 use App\producto;
+use App\empresa;
 use Bitacora;
 use PDF;
 use Illuminate\Http\Request;
@@ -105,9 +106,10 @@ class InventarioController extends Controller
         WHERE inventario.productos_id = productos.id');
 
          $i = 1;
+        $empresa = empresa::all();
 
-         $date = date('d-m-Y');
-        $dompdf = PDF::loadView('pdf.inventario', compact('inventario', 'i','date'));
+        $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.inventario', compact('inventario', 'i','date', 'empresa'));
         $dompdf->setPaper('a4', 'landscape');
 
         return $dompdf->stream('inventario.pdf');

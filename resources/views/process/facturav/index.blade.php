@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Ventas</h4>
                    
-                  
+                 
                     <a href="{{ route('facturav.create') }}" class="btn btn-outline-primary">
                     Registrar</a>
 
@@ -62,7 +62,14 @@
                   <td>{{number_format($key->total,2,',','.')}}</td>
                   <td>
                       
-                        <button type="button" class="btn btn-info btn-sm" title="PDF"><i data-feather="save"></i></button>
+                    
+
+                        <div class="float-right" >
+                                            <a href="{{ route('facturav.pdf', $key->id_factura) }}" class="btn btn-primary mt-2"
+                                                data-toggle="tooltip" 
+                                                title="Generar pdf"> <i data-feather="save"></i>
+                                            </a>
+                        </div>
                        
                   
                    <form action="{{ route('facturav.destroy', $key->id) }}" method="POST">

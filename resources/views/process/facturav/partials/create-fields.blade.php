@@ -1,4 +1,3 @@
-
 <div class="row">
  <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -137,7 +136,7 @@
 
                 <tr>
                     
-                    <td COLSPAN="2" style="text-align: right;"><strong>CANTIDAD DE ARTÍCULOS</strong>
+                    <td COLSPAN="2" style="text-align: right;"><strong>CANTIDAD DE ARTÍCULOS</strong></td>
                     <td><input style="width: 100px;" type="text" name="cantidad" id="canti"  class="form-control" readonly="readonly" value=""></td>
                     <td><strong style="text-align: left;">SUBTOTAL</strong></td>
                     <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value=""></td>
@@ -151,9 +150,14 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td align="left"><strong>DOMICILIO</strong></td>
-                    <td><input style="width: 100px;" type="text" name="domi" id="domi"  class="form-control" readonly="readonly" value=""></td></td>
+                    @foreach($iva as $key)
+                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
+                    
+                    <td><input style="width: 100px;" type="text" name="domi" id="IVA" class="form-control" readonly="readonly" value=""></td>
+                    <input type="hidden" name="iva" id="iva" value="{{$key->porcentaje}}">
                     <td></td>
+
+                    
                 </tr>
 
                 <tr>
@@ -161,11 +165,11 @@
                     <td></td>
                     <td></td>
                     <td align="left"><strong>TOTAL</strong></td>
-                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></td></td>
+                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></td>
                     <td></td>
                 </tr>
+
              
-                          
                         </tbody>
 
                 </table>  
@@ -177,13 +181,19 @@
                   
 
 
+
   
 </div>
+
+
+
+
+                                        
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js')}}
 "></script>
-{{-- <script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
-"></script> --}}
+<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script> 
 
 <script>
 function agregarFila(){
@@ -312,13 +322,23 @@ feather.replace();
   //campo precio por unidad 
 
   var preciot =$("#precio").val();
+  var iva =$("#iva").val();
 
   console.log(preciot);
    //importe
-
    var total = cantidad*preciot;
+   //sub_total
    var sub_total=total;
-   var monto_total=sub_total;
+
+
+   //iva 
+   iva=iva*sub_total/100;
+
+
+   //total
+   var monto_total=sub_total+iva;
+
+   //cantidad
    var canti=cantidad;
 
    console.log(total);
@@ -327,6 +347,7 @@ feather.replace();
     $('#mensaje3').text('');
     $('#importe').val(total);
     $('#sub_total').val(sub_total);
+    $('#IVA').val(iva);
     $('#monto_total').val(monto_total);
     $('#canti').val(canti);
     
@@ -335,6 +356,7 @@ feather.replace();
     $('#mensaje3').text('Debe ingresar la cantidad');
     $('#importe').val('');
     $('#sub_total').val('');
+    $('#IVA').val('');
     $('#monto_total').val('');
     $('#canti').val('');
     
@@ -390,6 +412,28 @@ feather.replace();
 
 
 
- 
     </script>
+
+<div class="modal fade" id="bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">IVA</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                       <td>% <input type="text" name="porcentaje" value="{{$key->porcentaje}}"></td>
+
+                                                       <button class="btn btn-info" id="other"></button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                        @endforeach
+
+
+ 
+
 
