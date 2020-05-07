@@ -17,6 +17,9 @@ class CreateVentaTabla extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('facturav_id');
             $table->unsignedBigInteger('clientes_id');
+
+            $table->foreign('facturav_id')->references('id')->on('facturav')->onDelete('cascade');
+            $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App;
 use App\facturav;
-use App\proveedor;
+use App\clientes;
 use App\inventario;
 use App\producto;
 use App\venta;
@@ -69,20 +69,35 @@ class FacturasVController extends Controller
         //registro en la tabla facturav----------------------------
        $facturav= new facturav();
 
-            $facturav->clientes_id=$request->clientes_id;
+             $facturav->clientes_id=$request->clientes_id;
             $facturav->productos_id=$request->productos_id;
             $facturav->n_factura=$request->n_factura;
             $facturav->fecha=$request->fecha;
+            $facturav->n_control=$request->n_control;
             $facturav->domicilio=$request->domicilio;
             $facturav->f_pago=$request->f_pago;
+            $facturav->divisa=$request->divisa;
             $facturav->cantidad=$request->cantidad;
             $facturav->importe=$request->importe;
             $facturav->sub_total=$request->sub_total;
+            $facturav->iva=$request->iva;
             $facturav->total=$request->total;
             $facturav->save();
 
-            if ($facturav->save()) {
+            
+
+            //-----------Registrar accion en libro de venta--------------------
+        $venta = new venta();
+
+            $venta->facturav_id=$facturav->id;
+            $venta->clientes_id=$request->clientes_id;
+            $venta->save();
+        //-------------------------------------------------------------------
+
+             if ($facturav->save()) {
             flash('Registro Exitoso!', 'success');
+
+
 
             //-------ACTUALIZAR EXISTENCIA-Inventario------------
 
@@ -166,7 +181,7 @@ foreach ($inventario as $val) {
     public function pdf($id_factura)
 
     {
-        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total
+        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total, facturav.iva, facturav.divisa, facturav.n_control
 
         FROM facturav, clientes, productos
 

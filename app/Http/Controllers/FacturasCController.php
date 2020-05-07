@@ -8,6 +8,7 @@ use App\proveedor;
 use App\inventario;
 use App\producto;
 use App\compra;
+use App\empresa;
 use Bitacora;
 use App\Alert;
 use App\iva;
@@ -33,7 +34,7 @@ class FacturasCController extends Controller
     
     {
         $mesactual = date('m');
-      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas, facturac.iva
+      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas, facturac.iva, facturac.id AS id_factura
 
         FROM facturac, proveedores
 
@@ -92,7 +93,7 @@ class FacturasCController extends Controller
             $fact_comp->n_control=$request->n_control;
             $fact_comp->proveedores_id=$request->proveedores_id;
             $fact_comp->productos_id=$request->productos_id;
-            $fact_comp->divisas=$request->divisa;
+            $fact_comp->divisas=$request->divisas;
              $fact_comp->iva=$request->iva;
              $fact_comp->p_iva=$request->p_iva;
             $fact_comp->save();
@@ -188,22 +189,26 @@ foreach ($inventario as $val) {
         //
     }
 
-       public function pdf()
+      public function pdf($id_factura)
 
     {
-        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.iva
+        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.correo, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturac.n_factura, facturac.total, facturac.fecha, facturac.cantidad, facturac.importe, facturac.sub_total, facturac.iva, facturac.divisas, facturac.n_control
 
-        FROM facturac, proveedores
+        FROM facturac, proveedores, productos
 
-        WHERE facturac.proveedores_id = proveedores.id');
+        WHERE facturac.proveedores_id = proveedores.id AND facturac.productos_id=productos.id AND facturac.id='.$id_factura );
 
-         $i = 1;
+        $i = 1;
 
-         $date = date('d-m-Y');
-        $dompdf = PDF::loadView('pdf.facturac', compact('facturac', 'i','date'));
+        $empresa = empresa::all();
+
+
+
+        $dompdf = PDF::loadView('pdf.facturac', compact('facturac', 'i','empresa'));
 
         return $dompdf->stream('facturac.pdf');
     }
+    
 
     
     public function ivaupdate (Request $request)

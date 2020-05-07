@@ -48,7 +48,7 @@ Route::put('ivaupdate', 'FacturasVController@ivaupdate')->name('ivaupdate');
 Route::put('ivaupdateC', 'FacturasCController@ivaupdate')->name('ivaupdateC');
 
 // Reportes en PDF
-Route::get('facturac.pdf', 'FacturasCController@pdf')->name('facturac.pdf');
+Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 // Reportes en Excel

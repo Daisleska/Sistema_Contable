@@ -24,8 +24,8 @@ class CajaChicaController extends Controller
     //consultar cajachica
     $cajachica = \DB::select('SELECT * FROM cajachica WHERE fecha=CURRENT_DATE');
 
-$semana = date('W')-1;
-$mes = date('F');
+    $semana = date('W')-1;
+    $mes = date('F');
 
  
     foreach ($cajachica as $val) {

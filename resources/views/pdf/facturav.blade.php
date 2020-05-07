@@ -14,7 +14,7 @@
     <style>
         img {
             width: 10%;
-            margin-left: 22cm;
+            margin-left: 20cm;
       
 
 
@@ -117,7 +117,8 @@
       <tr> 
             <th>
             Fecha: {{$val->fecha}} 
-            <br>N° Factura {{$val->n_factura}}</th> 
+           <br>N° Factura {{$val->n_factura}}
+           <br>N° de Control {{$val->n_control}}</th> 
            <th><img class="circular--square" src="../public/{{ $key->url_image }}"></th>  
             
       </tr>
@@ -185,24 +186,29 @@
                   <td id="c">{{$key->producto}}</td>
                   <td id="c">{{$key->descripcion}}</td>
                   <td id="c">{{$key->cantidad}}</td>
-                  <td id="c">{{number_format($key->precio,2,',','.')}} Bs.S</td>
-                  <td id="c">{{number_format($key->importe,2,',','.')}} Bs.S</td>
+                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$key->divisa}}</td>
+                  <td id="c">{{number_format($key->importe,2,',','.')}} {{$key->divisa}}</td>
                 </tr>
 
                 <tr>
                     <th id="alto" scope="row" colspan="2" style="text-align: right;">CANTIDAD DE ARTÍCULOS</td>
                     <td id="c">{{$key->cantidad}}</td>
                     <td id="c"><strong>SUB TOTAL</strong></td>
-                    <td id="c">{{number_format($key->sub_total,2,',','.')}} Bs.S</td>
+                    <td id="c">{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>
                     
                 </tr>
 
-
+                <tr>
+                  <th scope="row" colspan="3" id="alto" ></td>
+                  <td id="c"><strong>IVA</strong></td>
+                  <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} {{$key->divisa}}</td>
+                </tr>
+                 
 
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
                   <td id="c"><strong>TOTAL</strong></td>
-                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} Bs.S</td>
+                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                 </tr>
                  
                   @endforeach                                 

@@ -37,7 +37,7 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Compras</h4>
                    
                           <div class="float-right" >
-                                            <a href="{{ route('facturac.pdf') }}" class="btn btn-primary mt-2"
+                                            <a href="#" class="btn btn-primary mt-2"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i class="feather icon-file-text"
                                                     style="font-size: 20px"></i> Generar PDF</a>
@@ -70,10 +70,24 @@
                   <td>000{{$key->n_factura}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{number_format($key->total,2,',','.')}}  {{$key->divisas}}</td>
-                  <td></td>
+                
              
+                  <td>
+                 
+                                            <a href="{{ route('facturac.pdf', $key->id_factura) }}" class="btn btn-primary mt-2"
+                                                data-toggle="tooltip" 
+                                                title="Generar pdf"> <i data-feather="save"></i>
+                                            </a>
+              
+                       
                   
-                  
+                   <form action="{{ route('facturac.destroy', $key->id) }}" method="POST">
+                   {{ csrf_field() }}
+                   <input type="hidden" name="_method" value="DELETE">
+                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   </form>
+                   <br>
+               </td>
 
                 
                 </tr>

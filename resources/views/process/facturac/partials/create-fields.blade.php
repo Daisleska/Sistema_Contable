@@ -3,7 +3,7 @@
  <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
 
-            
+          
                              <tr>
                                 <th>Fecha</th>
                                 <th><input style="width: 160px;" readonly="readonly"  type="date" name="fecha" class="form-control"  value="<?php echo date("Y-m-d");?>"  required></th>
@@ -52,13 +52,6 @@
                                 <th>Nombre</th>
                                 <th><input style="width: 350px;" type="text" id="nomb" readonly="readonly" name="nombre" class="form-control"  value=""></th>
 
-                                 <th>Divisa</th>
-                                <th><select style="width: 50" name="divisa" class="form-control">
-                                <option value="VEF">VEF</option>
-                                <option selected="selected" value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="CLP">CLP</option>
-                                </select></th>
 
                             </tr>
                             <tr>
@@ -83,10 +76,21 @@
                                 <th>Forma de pago</th>
                                 <th>
                             <select required="required" name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
-                                  <option selected="selected" disabled="disabled">Selecciona una opción</option>
-                                  <option value="transferencia">Tranferencia</option>
+                                  
+                                  <option value="transferencia" selected="selected">Tranferencia</option>
                                   <option value="efectivo">Efectivo</option>
                                   <option value="cheque">Cheque</option>
+                                </select></th>
+
+                                <th>Divisa</th>
+                                <th><select style="width: 50" name="divisas" class="form-control">
+                                <option value="Bs.S">VEF</option>
+                                <option value="£">GBP</option>
+                                <option value="¥">JPY</option>
+                               <option value="¥">CNY</option>
+                               <option value="€">EUR</option>
+                               <option selected="selected" value="$">USD</option>
+     
                                 </select></th>
                             
 
@@ -115,7 +119,7 @@
                            
                 <tr>
                   <td><input style="width: 100px;" type="text"  id="cod" class="form-control"  value=""><small><span id="mensaje2" style="color:red"></span></small></td>
-                  <td><input style="width: 180px;" type="text"  id="producto"  class="form-control"  value=""></td>
+                  <td><input style="width: 180px;" type="text"  id="producto"  class="form-control"  value="" readonly="readonly"></td>
                   <td><input id="cantidad"  style="width: 100px;" type="number" name="cantidad" class="form-control" ><small><span id="mensaje3" style="color:red"></span></small></td>
                   <td><input id="precio" readonly="readonly" style="width: 100px;" type="text"  class="form-control"  value=""></td>
                   <td><input style="width: 100px;" type="text" name="importe" id="importe" readonly="readonly"  class="form-control"></td>

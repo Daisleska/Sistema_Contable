@@ -8,6 +8,6 @@ class venta extends Model
 {
      protected $table='venta';
 
-    protected $fillable=['id_facturav','id_clientes'];
+    protected $fillable=['facturav_id','clientes_id'];
 
 }

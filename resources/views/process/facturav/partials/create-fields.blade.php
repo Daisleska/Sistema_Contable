@@ -43,12 +43,30 @@
                                 <th>RUT</th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""> 
                              
-                    <small><span id="mensaje" style="color:red"></span></small>
+                                <small><span id="mensaje" style="color:red"></span></small>
                                 </th>
-                         
-                                
 
+                                <?php 
+
+                                 if($factura) {
+                                ?>
+
+                                <th>N°control</th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0-000000<?php  echo $factura->id +1; ?>" ></th>
+                         
                             </tr>
+                             <?php }else{
+                            ?>
+                              
+                              <th>N°control</th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0-0000001" ></th>
+
+
+
+                             </tr>
+                            <?php
+                          }?>
+                           
 
 
                             <tr>
@@ -65,6 +83,7 @@
                 </table>
 
 
+
 </div>
 <div class="row">
 
@@ -76,10 +95,21 @@
                                 <th>Forma de pago</th>
                                 <th>
                             <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
-                                  <option selected="selected" disabled="disabled">Selecciona una opción</option>
-                                  <option value="transferencia">Tranferencia</option>
+                                  
+                                  <option value="transferencia" selected="selected">Tranferencia</option>
                                   <option value="efectivo">Efectivo</option>
                                   <option value="cheque">Cheque</option>
+                                </select></th>
+
+                                <th>Divisa</th>
+                                <th><select style="width: 50" name="divisa" class="form-control">
+                                <option value="Bs.S">VEF</option>
+                                <option value="£">GBP</option>
+                                <option value="¥">JPY</option>
+                               <option value="¥">CNY</option>
+                               <option value="€">EUR</option>
+                               <option selected="selected" value="$">USD</option>
+     
                                 </select></th>
                             
 
@@ -152,8 +182,9 @@
 
                     <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
                     
-                    <td><input style="width: 100px;" type="text" name="domi" id="IVA" class="form-control" readonly="readonly" value=""></td>
-                    <input type="hidden" name="iva" id="iva" value="{{$key->porcentaje}}">
+                    <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
+                    
+                    <input type="hidden" name="IVA" id="iva" value="{{$key->porcentaje}}">
                     <td></td>
 
                       @endforeach

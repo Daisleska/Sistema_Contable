@@ -32,6 +32,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Ventas</h4>
+
+                    
                    
                  
                     <a href="{{ route('facturav.create') }}" class="btn btn-outline-primary">

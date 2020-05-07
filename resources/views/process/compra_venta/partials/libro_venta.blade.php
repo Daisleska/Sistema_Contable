@@ -25,33 +25,47 @@
                     
                     
                         <tbody>
-                           
+                    @foreach($venta as $key)       
                 <tr>
+                  <td>{{$key->facturav_id}}</td>
+                  <td>{{$key->fecha}}</td>
+                  <td>{{$key->n_factura}}</td>
+                  <td>{{$key->n_control}}</td>
+                  <td>{{$key->nombre}}</td>
+                  <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
+                  <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
+                  <td>{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>
+                  <td>{{number_format($key->iva,2,',','.')}} {{$key->divisa}}</td>
+                  <td>{{$key->porcentaje}} %</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-             
+                  @endforeach
+
                 
-                </tr>
-                <tr style="color: black;">
                 
-                      <th COLSPAN="5" style="text-align: right;">TOTAL</th>
+                 <tr style="color: black;">
+
+                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
+                      <?php
+                      //TOTALES
+                         $total_venta=array_sum($total_total);
+                         $sub_total=array_sum($total_subtotal);
+                         $iva_total=array_sum($total_IVA);
+                      //---------------------------------------
+                        ?>
+
+
+                      <th style="color: black;" >{{number_format( $total_venta, 2,',','.')}}</th>
+                      <th style="color: black;" >{{number_format( $sub_total, 2,',','.')}}</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
                      
-                      <td COLSPAN="8"></td>
+                      <th COLSPAN="6" style="color: black;"></th>
                       
                    
                 </tr>
            
-                          
                              </tbody>
                     </table>
