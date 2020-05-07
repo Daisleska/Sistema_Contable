@@ -102,7 +102,7 @@ class ProveedoresController extends Controller
      */
     public function update(Request $request,$id)
     {
-         $buscar=proveedor::where('ruf', $request->ruf)->where('id', '<>', $id)->get();
+        $buscar=proveedor::where('ruf', $request->ruf)->where('id', '<>', $id)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
@@ -111,7 +111,7 @@ class ProveedoresController extends Controller
             # podemos actualizar los datos
             $proveedor=proveedor::find($id);
             $proveedor->nombre=$request->nombre;
-            $proveedor->tipo_documento=$request->tipo_documento;
+$proveedor->tipo_documento=$request->tipo_documento;
             $proveedor->ruf=$request->ruf;
             $proveedor->representante=$request->representante;
             $proveedor->direccion=$request->direccion;
@@ -119,6 +119,15 @@ class ProveedoresController extends Controller
             $proveedor->telefono=$request->telefono;
             $proveedor->save();
 
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha modificado al proveedor';
+            $bitacoras->save();
+
+            flash('<i class="icon-circle-check"></i> Proveedor Actualizado satisfactoriamente!')->success()->important();
             return redirect ()->route('proveedores.index');
         }
     }

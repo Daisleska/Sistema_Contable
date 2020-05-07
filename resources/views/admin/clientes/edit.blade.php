@@ -22,9 +22,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form name="form" action="{{ route('clientes.update',$clientes->id)}}" method="PUT">
-                  @csrf
-              	@include('clientes.partials.edit-fields')
+              {!! Form::open(['route' => ['clientes.update', $clientes->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
+                @csrf
+              	@include('admin.clientes.partials.edit-fields')
               </form>
             </div>
             <!-- /.box-body -->

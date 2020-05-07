@@ -24,6 +24,8 @@ class CreateFacturacTabla extends Migration
             $table->integer('cantidad');
             $table->integer('importe');
             $table->integer('sub_total');
+            $table->integer('iva');
+            $table->integer('p_iva');
             $table->integer('total');
             $table->integer('n_control');
             $table->enum('divisas', ['VEF', 'USD' , 'EUR', 'CLP'])->default('USD');

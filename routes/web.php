@@ -28,6 +28,10 @@ Route::resource('empresa', 'EmpresaController');
 Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
+Route::resource('cotizacion', 'CotizacionesController');
+
+Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
+
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
 /*Perfin de usuarios*/
@@ -39,7 +43,9 @@ Route::resource('bitacoras','BitacoraController');
 
 
 //iva
-Route::get('ivaupdate/{porcen}', 'FacturasVController@ivaupdate')->name('ivaupdate');
+Route::put('ivaupdate', 'FacturasVController@ivaupdate')->name('ivaupdate');
+
+Route::put('ivaupdateC', 'FacturasCController@ivaupdate')->name('ivaupdateC');
 
 // Reportes en PDF
 Route::get('facturac.pdf', 'FacturasCController@pdf')->name('facturac.pdf');

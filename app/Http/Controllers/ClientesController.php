@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\cliente;
+use Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientesController extends Controller
 {
@@ -45,6 +48,15 @@ class ClientesController extends Controller
             $cliente->telefono=$request->telefono;
             $cliente->save();
 
+           $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha registrado un nuevo Cliente';
+            $bitacoras->save();
+       flash('<i class="icon-circle-check"></i> Cliente registrado exitosamente
+                ')->success()->important();
            return redirect()->to('clientes');
     }
 
@@ -80,14 +92,14 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id_cliente)
     {
-        $buscar=cliente::where('ruf', $request->ruf)->where('id', '<>', $id_cliente)->get();
+         $buscar=cliente::where('ruf', $request->ruf)->where('id', '<>', $id)->get();
 
         if (count($buscar)>0) {
             # no puede actualizar
             return redirect()-> route('clientes.index');
         } else {
             # podemos actualizar los datos
-            $cliente=cliente::find($id_cliente);
+            $cliente=cliente::find($id);
             $cliente->nombre=$request->nombre;
             $cliente->tipo_documento=$request->tipo_documento;
             $cliente->ruf=$request->ruf;     
@@ -95,6 +107,16 @@ class ClientesController extends Controller
             $cliente->direccion=$request->direccion;
             $cliente->telefono=$request->telefono;
             $cliente->save();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha modificado al Cliente';
+            $bitacoras->save();
+
+            flash('<i class="icon-circle-check"></i> Cliente Actualizado satisfactoriamente!')->success()->important();
 
             return redirect ()->route('clientes.index');
         }
@@ -110,6 +132,16 @@ class ClientesController extends Controller
     {
         $cliente = cliente::find($id);
         $cliente->delete();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado un Cliente';
+            $bitacoras->save();
+
+        flash('Registro eliminado satisfactoriamente');
 
         return back()->with('info', 'El cliente ha sido eliminado');
     }

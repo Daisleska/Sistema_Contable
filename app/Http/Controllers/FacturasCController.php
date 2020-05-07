@@ -8,9 +8,9 @@ use App\proveedor;
 use App\inventario;
 use App\producto;
 use App\compra;
-use App\divisa;
 use Bitacora;
 use App\Alert;
+use App\iva;
 use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -33,13 +33,12 @@ class FacturasCController extends Controller
     
     {
         $mesactual = date('m');
-      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas
+      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas, facturac.iva
 
         FROM facturac, proveedores
 
         WHERE facturac.proveedores_id = proveedores.id AND MONTH(facturac.fecha)='.$mesactual);
 
-    
 
 
        return view('process.facturac.index', compact('facturac', 'mesactual'));
@@ -52,8 +51,14 @@ class FacturasCController extends Controller
      */
     public function create()
     {
+/*
+         $facturac = \DB::select('SELECT iva
+
+        FROM facturac  LIMIT 0,1');*/
+
+        $iva= iva::all();
          
-        return view ('process.facturac.create');
+        return view ('process.facturac.create', compact('iva'));
 
     }
 
@@ -88,6 +93,8 @@ class FacturasCController extends Controller
             $fact_comp->proveedores_id=$request->proveedores_id;
             $fact_comp->productos_id=$request->productos_id;
             $fact_comp->divisas=$request->divisa;
+             $fact_comp->iva=$request->iva;
+             $fact_comp->p_iva=$request->p_iva;
             $fact_comp->save();
 
 //-----------Registrar accion en libro de compra--------------------
@@ -184,7 +191,7 @@ foreach ($inventario as $val) {
        public function pdf()
 
     {
-        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha
+        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.iva
 
         FROM facturac, proveedores
 
@@ -196,6 +203,18 @@ foreach ($inventario as $val) {
         $dompdf = PDF::loadView('pdf.facturac', compact('facturac', 'i','date'));
 
         return $dompdf->stream('facturac.pdf');
+    }
+
+    
+    public function ivaupdate (Request $request)
+    {
+  
+/*  dd($request);*/
+    $ivaupdate=iva::find($request->id);
+    $ivaupdate->porcentaje= $request->porcentaje;
+    $ivaupdate->save();
+    
+    return redirect()->back();
     }
 
 

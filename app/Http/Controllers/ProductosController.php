@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\producto;
 use App\inventario;
+use Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ProductosController extends Controller
 {
      /**
@@ -60,8 +63,7 @@ class ProductosController extends Controller
             $producto->stock_min=$request->stock_min;
             $producto->stock_max=$request->stock_max;
             $producto->save();
-
-
+           
            
         
             //---registro nuevo producto en inventario=======
@@ -73,7 +75,18 @@ class ProductosController extends Controller
              
              if ($inventario->save()) {
 
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha registrado un nuevo producto';
+            $bitacoras->save();
+            flash('<i class="icon-circle-check"></i> Producto registrado exitosamente
+                !')->success()->important();
            return redirect()->to('productos');
+
             }
             
                }
@@ -111,22 +124,34 @@ class ProductosController extends Controller
      */
     public function update(Request $request,$id_producto)
     {
-         $buscar=producto::where('codigo', $request->codigo)->where('id', '<>', $id_producto)->get();
+         $buscar=producto::where('codigo', $request->codigo)->where('id', '<>', $id)->get();
 
         if (count($buscar)>0) {
-             flash('<i class="icon-circle-check"></i> Ya tiene un producto registrado con este código!')->warning()->important();
+             
             return redirect()-> route('productos.index');
         } else {
             # podemos actualizar los datos
-            $producto=producto::find($id_proveedor);
-            $producto->ruf=$request->ruf;
-            $producto->nombre=$request->nombre;
-            $producto->descripcion=$request->descripcion;
-            $producto->precio=$request->precio;
+            $producto=producto::find($id);
+        $producto->codigo=$request->codigo;
+        $producto->nombre=$request->nombre;
+        $producto->descripcion=$request->descripcion;
+        $producto->existencia=$request->existencia;
+        $producto->unidad=$request->unidad;
+        $producto->precio=$request->precio;
+        $producto->stock_min=$request->stock_min;
+        $producto->stock_max=$request->stock_max;
             $producto->save();
 
-            flash('<i class="icon-circle-check"></i> Producto Actualizado con satisfactoriamente!')->success()->important();
+            $bitacoras = new App\Bitacora;
 
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha modificado un producto';
+            $bitacoras->save();
+
+
+            flash('<i class="icon-circle-check"></i> Producto Actualizado satisfactoriamente!')->success()->important();
             return redirect ()->route('productos.index');
         }
     }
@@ -141,6 +166,18 @@ class ProductosController extends Controller
    {
        $producto = producto::find($id);
         $producto->delete();  
+
+      
+        $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado un Producto';
+            $bitacoras->save();
+
+        flash('Registro eliminado satisfactoriamente!');
+
 
         return back()->with('info', 'El producto ha sido eliminado');
     

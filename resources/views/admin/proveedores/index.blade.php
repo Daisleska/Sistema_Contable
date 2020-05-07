@@ -43,7 +43,7 @@
                      <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>Nombre de la Empresa</th>
+                    <th>Nombre de la Empresa</th>
                                 <th>RUF</th>
                                 <th>Representante</th>
                                 <th>Direccion</th>
@@ -55,7 +55,7 @@
                     
                     
                         <tbody>
-                            @foreach($proveedores as $key)
+                    @foreach($proveedores as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
@@ -64,9 +64,11 @@
                   <td>{{$key->correo}}</td>
                   <td>{{$key->telefono}}</td>
                   <td>
-                        
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
-                    
+                        <form action="{{ route('proveedores.edit',$key->id) }}" method="GET">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="EDITAR">
+                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
+                        </form>
                        <br>
                         <form action="{{ route('proveedores.destroy', $key->id) }}" method="POST">
                         {{ csrf_field() }}

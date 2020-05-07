@@ -7,6 +7,7 @@
 
 @section('breadcrumb')
 
+
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
@@ -66,10 +67,9 @@
                   <td>{{number_format($key->precio,2,',','.')}}</td>
                   
                   <td>
-                       <form action="{{ route('productos.edit',$key->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
+                       <form action="{{ route('productos.edit',$key->id) }}" method="GET">
+                        <input type="hidden" name="_method" value="EDITAR">
+                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
                         <br>
                   
@@ -97,7 +97,14 @@
         </div><!-- end col-->
     </div>
  <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered">
+
+@section('script')
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
+@endsection
+
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="myCenterModalLabel">Información del Producto</h5>
@@ -106,8 +113,6 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                    
-                                                
                                                      <tr>
                                                         <p style="color:black;">Código: {{$key->codigo}} </p>
                                                     </tr>

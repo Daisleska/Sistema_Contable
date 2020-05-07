@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App;
 use App\inventario;
 use App\producto;
-use App\empresa;
 use Bitacora;
+use App\empresa;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +26,15 @@ class InventarioController extends Controller
         FROM productos, inventario
 
         WHERE inventario.productos_id = productos.id');
+
+  foreach ($inventario as $key) {
+           
+           $costo_t[]= $key->precio* $key->existencia;
+         }
+
+     /*     dd($costo_t);*/
   
-       return view('process.inventario.index', compact('inventario'));
+       return view('process.inventario.index', compact('inventario','costo_t'));
     }
 
     /**
@@ -106,9 +113,9 @@ class InventarioController extends Controller
         WHERE inventario.productos_id = productos.id');
 
          $i = 1;
-        $empresa = empresa::all();
 
-        $date = date('d-m-Y');
+         $empresa= empresa::all();
+         $date = date('d-m-Y');
         $dompdf = PDF::loadView('pdf.inventario', compact('inventario', 'i','date', 'empresa'));
         $dompdf->setPaper('a4', 'landscape');
 

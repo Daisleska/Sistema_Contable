@@ -28,6 +28,34 @@
             </div> <!-- end card-body-->
         </div> <!-- end card-->
     </div> <!-- end col-->
+
+
+     @foreach($iva as $key)
+<div class="modal fade" id="bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    {!! Form::open(['route' => ['ivaupdateC',$key->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{$key->id}}">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar IVA</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <p>Valor IVA actual:{{$key->porcentaje}}%</p>
+                                                       <td>% <input type="text" name="porcentaje" placeholder="Ingrese el nuevo valor IVA"></td>
+
+                                                       <button class="btn btn-info" id="other">~</button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                                {!! Form::close() !!}
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                        @endforeach
     @endsection
 
 @section('script')

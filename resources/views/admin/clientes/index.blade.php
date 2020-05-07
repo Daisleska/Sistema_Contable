@@ -23,6 +23,12 @@
 
 @section('content')
 <div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
+<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -38,7 +44,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>RUT</th>
+                                <th>RUF</th>
                                 <th>Correo</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
@@ -59,12 +65,12 @@
                   <td>{{$key->telefono}}</td>
                   
                    <td>
-                       <form action="{{ route('clientes.edit',$key->id) }}" method="POST">
+                       <form action="{{ route('clientes.edit',$key->id) }}" method="GET">
                         {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form>
-                   <br>
+                        <input type="hidden" name="_method" value="EDITAR">
+                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
+                      </form>
+                   <br><br>
                    <form action="{{ route('clientes.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
@@ -87,7 +93,9 @@
 @endsection
 
 @section('script')
-<!-- datatable js -->
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection
 

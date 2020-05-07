@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\inventario;
+use App\producto;
+use App\empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //valor del inventario-------------------------------------
+        $inventario = \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo  FROM productos, inventario WHERE inventario.productos_id = productos.id');
+         foreach ($inventario as $key) {   
+           $valor_inventario[]= $key->precio* $key->existencia;
+         }
+         //FIN valor del inventario-------------------------------------
+
+        return view('home', compact('valor_inventario'));
     }
 }

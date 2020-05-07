@@ -23,9 +23,9 @@
 
 @section('content')
 <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="padding-right: 50px;">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <table style="color: black;">
                       <?php
@@ -38,7 +38,7 @@
                         ?>
                         <tr >
                             <th>NOMBRE DE LA EMPRESA:</th>
-                            <th><?php echo e($key->nombre)?></th>
+                            <th ><?php echo e($key->nombre)?></th>
                         </tr>
                         <tr>
                             <th>MES:
@@ -82,7 +82,7 @@
                 </ul>
                 <div class="tab-content p-3 text-muted">
                     <div class="tab-pane show active" id="compras">
-                      @include('process.compra_venta.partials.libro_compra')
+                @include('process.compra_venta.partials.libro_compra')
                     </div>
 
                     <div class="tab-pane " id="ventas">

@@ -142,8 +142,6 @@
                     <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value=""></td>
                     <td></td>
                     
-
-                    
                 </tr>
 
                 <tr>
@@ -151,13 +149,15 @@
                     <td></td>
                     <td></td>
                     @foreach($iva as $key)
+
                     <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
                     
                     <td><input style="width: 100px;" type="text" name="domi" id="IVA" class="form-control" readonly="readonly" value=""></td>
                     <input type="hidden" name="iva" id="iva" value="{{$key->porcentaje}}">
                     <td></td>
 
-                    
+                      @endforeach
+              
                 </tr>
 
                 <tr>
@@ -414,24 +414,6 @@ feather.replace();
 
     </script>
 
-<div class="modal fade" id="bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">IVA</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                       <td>% <input type="text" name="porcentaje" value="{{$key->porcentaje}}"></td>
-
-                                                       <button class="btn btn-info" id="other"></button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
-                                        @endforeach
 
 
  

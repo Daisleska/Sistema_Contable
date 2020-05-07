@@ -51,10 +51,30 @@
                     </a>
                 </div>
             </div>
-                  
                     </div>
+                      @foreach($inventario as $key)
+                       <?php
+                        $existencia=$key->existencia;
+                        $precio=$key->precio;
+                        $costo_total=$precio*$existencia;
+
+                       
+                        $total_inventario =$costo_total;
+
+                      
+                        ?>
+                        @endforeach
+                        
+                       <?php
+                       
+                       
+                         $total_inventario=array_sum($costo_t);
+                      
+                      
+                        ?>
+                  
                     <div class="col-md-8">
-                         <p style="text-align: right; color: blue;">Valor Total Del Inventario <input id="total_inventario" type="text" name=""  readonly="readonly"></p>
+                         <p style="text-align: right; color: blue;">Valor Total Del Inventario <input id="total_inventario" type="text" name="" value="{{number_format($total_inventario, 2,',','.')}}" readonly="readonly"></p>
                     </div>
                 </div>    
 
@@ -72,14 +92,18 @@
                         </thead>
                 
                         <tbody>
-                        @foreach($inventario as $key)
-
-                        <?php
+                      
+                  @foreach($inventario as $key)
+                       <?php
                         $existencia=$key->existencia;
                         $precio=$key->precio;
                         $costo_total=$precio*$existencia;
 
+
+                      
+                        
                         ?>
+                       
                           
                           <tr>
                              <td>{{$key->nombre}}</td>
@@ -113,6 +137,10 @@
      
     var total = $("#costo_total").val();
     
+
+    var total_inventario += parseFloat(total).val();
+
+    console.log(total_inventario);
     
       if (total) {
         $("#total_inventario").text('0');

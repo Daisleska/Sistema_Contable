@@ -84,6 +84,13 @@
         </a>
     </li>
 
+     <li>
+         <a href="{{ route('cotizacion.calc_cotizacion') }}">
+            <i data-feather="file"></i>
+            <span>Cotizaciones</span>
+        </a>
+    </li>
+
      
      <li class="menu-title">Seguridad</li>
      <li>

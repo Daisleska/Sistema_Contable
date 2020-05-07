@@ -186,12 +186,15 @@ foreach ($inventario as $val) {
     
     
 
-    public function ivaupdate ($porcen){
+    public function ivaupdate (Request $request)
+    {
   
-   
-    $ivaupdate->porcentaje= $porcen;
+/*  dd($request);*/
+    $ivaupdate=iva::find($request->id);
+    $ivaupdate->porcentaje= $request->porcentaje;
     $ivaupdate->save();
     
+    return redirect()->back();
     }
 
 }

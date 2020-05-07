@@ -2,7 +2,7 @@
                         <thead>
                            
                             <tr style="color: black;">
-                                <th COLSPAN="8" style="text-align: center;">LIBRO DE COMPRAS</th>
+                                <th COLSPAN="9" style="text-align: center;">LIBRO DE COMPRAS</th>
                                 <th COLSPAN="8" style="text-align: left;">MES:{{$mesactual}}</th>
                             </tr>
 
@@ -36,11 +36,11 @@
                 </div>
               
 
-                            <tr style="color: black;">
-                                <th>N° OPE.</th>
-                                <th>FECHA</th>
+                            <tr style="color: black; font-size: 12px;">
+                                <th>N°</th>
+                                <th>FEC</th>
                                 <th>N° FACT.</th>
-                                <th>N° CONTROL</th>
+                                <th>N° CONT</th>
                                 <th>PROVEEDOR</th>
                                 <th>RUT</th>
                                 <th>COMPRAS IVA</th>
@@ -48,25 +48,25 @@
                                 <th>%</th>
                                 <th>IMPUEST</th>
                                 <th>COMPRAS NO GRAV.</th>
-                                <th>TOTAL COMPRAS</th>           
+                                <th>TOTAL COMPRA</th>           
                             </tr>
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 11px;">
                            
                       @foreach($compra as $item)
                 <tr>
-                  <?php $x=1;?>
-                  <td>{{ $x++ }}</td>
-                  <td>{{ $item->fecha}}</td>
-                  <td>000{{ $item->n_factura}}</td>
-                  <td>{{ $item->n_control}}</td>
+                 
+                  <td>{{ $num++ }}</td>
+                  <td>{{$item->fecha}}</td>
+                  <td>0{{ $item->n_factura}}</td>
+                  <td>0{{ $item->n_control}}</td>
                   <td>{{ $item->nombre}}</td>
                   <td>{{$item->tipo_documento}}-{{$item->ruf}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{number_format($item->iva, 2,',','.')}}</td>
+                  <td>{{number_format($item->sub_total, 2,',','.')}}</td>
+                  <td>0,{{$item->p_iva}}</td>
                   <td></td>
                   <td></td>
                   <td>{{number_format( $item->total, 2,',','.')}}</td>
@@ -74,16 +74,32 @@
              
                 
                 </tr>
+
+                          @endforeach
+
                 <tr style="color: black;">
-                
-                      <th COLSPAN="5" style="text-align: right;">TOTAL COMPRAS $</th>
+
+                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
+                      <?php
+                      //TOTALES
+                         $total_compra=array_sum($total_total);
+                         $sub_total=array_sum($total_subtotal);
+                         $iva_total=array_sum($total_IVA);
+                      //---------------------------------------
+                        ?>
+
+
+                      <th style="color: black;" >{{number_format( $iva_total, 2,',','.')}}</th>
+                      <th style="color: black;" >{{number_format( $sub_total, 2,',','.')}}</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
                      
-                      <td COLSPAN="7"></td>
+                      <th COLSPAN="6" style="color: black;">{{number_format( $total_compra, 2,',','.')}}</th>
                       
                    
                 </tr>
            
-                          @endforeach
                              </tbody>
                     </table>
 
@@ -144,4 +160,6 @@
         }
 
       });*/
+
+
   </script>

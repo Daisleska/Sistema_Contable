@@ -50,9 +50,10 @@
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Today
-                            Revenue</span>
-                        <h2 class="mb-0">$2100</h2>
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Valor Del
+                            Inventario</span>
+                              <?php $total_inventario=array_sum($valor_inventario);  ?>
+                   <h2 class="mb-0">{{number_format($total_inventario, 2,',','.')}}Bs.F</h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>

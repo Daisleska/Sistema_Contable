@@ -149,16 +149,22 @@
 
                     
                 </tr>
+               <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    @foreach($iva as $key)
 
-                <tr>
+                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
+                    
+                    <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
+                    <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td align="left"><strong>DOMICILIO</strong></td>
-                    <td><input id="cilio" style="width: 100px;" type="text"  readonly="readonly"class="form-control"></td></td>
-                    <td></td>
+
+                      @endforeach
+              
                 </tr>
-
+                
                 <tr>
                     <td></td>
                     <td></td>
@@ -279,10 +285,15 @@ feather.replace();
     
 //'-------------campo precio por unidad----------------------------'
  var preciot =$("#precio").val();
+  
+
           
     console.log(preciot);
 //----------importe-------------------       
 var total = cantidad*preciot;
+
+
+
 
 /*console.log(total);*/
 
@@ -296,6 +307,7 @@ var total = cantidad*preciot;
 
   //----------------cantidad de articulos-------------------
   var cantidades = $("#cantidad").val();
+   var iva =$("#iva").val();
 
    if(cantidades>0){
     $('#Cant_art').val(cantidades);
@@ -303,18 +315,26 @@ var total = cantidad*preciot;
   //------------Sub total-----------------------------------
   var sub_total = cantidad*preciot;
 
+
+   //iva 
+   iva=iva*sub_total/100;
+
+
 /*console.log(sub_total);*/
 
     if(sub_total>0){
         $('#sub_total').val(sub_total);
+        $('#IVA').val(iva);
       } else {
         $("#mensaje2").text('Debe Ingresar la cantidad');
         $('#sub_total').val('');
+        $('#IVA').val('');
+
       }
 
 
   //----------TOTAL A PAGAR-------------------       
-var total_pagar = cantidad*preciot;
+var total_pagar = sub_total+iva;
 
 /*console.log(total_pagar);*/
 
