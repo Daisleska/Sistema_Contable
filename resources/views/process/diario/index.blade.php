@@ -3,6 +3,9 @@
 @section('css')
 <!-- plugin css -->
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+
+<link href="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -51,7 +54,11 @@
                         }
                         ?>
 
+                    <th style="align-content: right;">
+                    `  <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
+                   </th>
                         </tr>
+
                     </table>
                   
               
@@ -97,16 +104,24 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+
+<!-- llamado al Modak----->
+    @include('process.diario.create')
+
+
 @endsection
 
 @section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
 @endsection
 
 <script type="text/javascript">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\inventario;
 use App\producto;
 use App\empresa;
+use App\cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,7 @@ class HomeController extends Controller
          }
          //FIN valor del inventario-------------------------------------
 
-        return view('home', compact('valor_inventario'));
+         $clientes= cliente::all();
+        return view('home', compact('valor_inventario','clientes'));
     }
 }

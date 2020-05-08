@@ -3,28 +3,25 @@
                             <tr style="color: black;">
                                 <th COLSPAN="13" style="text-align: center;">LIBRO DE VENTAS</th>
                             </tr>
-                            <tr style="color: black;">
-                                <th>Nº OPE.</th>
-                                <th>FECHA</th>
-                                <th>N. FACT.</th>
-                                <th>N. CONTR</th>
+                            <tr style="color: black; font-size: 12px;">
+                                <th>Nº</th>
+                                <th>FEC</th>
+                                <th>Nº.FACT</th>
+                                <th>Nº. CONTR</th>
                                 <th>CLIENTE</th>
                                 <th>RUT</th>
                                 <th>TOTAL VENTAS</th>
                                 <th>VENTAS EXENTAS</th>
                                 <th>VENTAS GRAVADAS</th>
                                 <th>TASA</th>
-                                <th>IMPUESTO</th>
+                                <th>IMPUEST</th>
                                 <th>MONTO RETENIDO</th>
                                 <th>COMPROB DE RETENC</th>
-                       
-
-                            
                             </tr>
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 11px;">
                     @foreach($venta as $key)       
                 <tr>
                   <td>{{$key->facturav_id}}</td>
@@ -49,9 +46,9 @@
                       <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
                       <?php
                       //TOTALES
-                         $total_venta=array_sum($total_total);
-                         $sub_total=array_sum($total_subtotal);
-                         $iva_total=array_sum($total_IVA);
+                         $total_venta=array_sum($total_venta);
+                         $sub_total=array_sum($total_subventa);
+                         $iva_total=array_sum($total_IVA_venta);
                       //---------------------------------------
                         ?>
 

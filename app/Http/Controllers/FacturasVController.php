@@ -107,9 +107,9 @@ class FacturasVController extends Controller
 
         WHERE inventario.productos_id='.$request->productos_id.' LIMIT 0,1');
 
-foreach ($inventario as $val) {
-       $nuevo=$request->cantidad - $val->exis_inv;
-}
+            foreach ($inventario as $val) {
+            $nuevo= $val->exis_inv - $request->cantidad ;
+            }
 
         $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->productos_id);
 

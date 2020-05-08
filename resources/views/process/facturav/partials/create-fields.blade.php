@@ -52,14 +52,14 @@
                                 ?>
 
                                 <th>N°control</th>
-                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0-000000<?php  echo $factura->id +1; ?>" ></th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="000000<?php  echo $factura->id +1; ?>" ></th>
                          
                             </tr>
                              <?php }else{
                             ?>
                               
                               <th>N°control</th>
-                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0-0000001" ></th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0000001" ></th>
 
 
 

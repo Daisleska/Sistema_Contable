@@ -51,8 +51,14 @@
                 <div class="media p-3">
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Valor Del
-                            
-                   <h2 class="mb-0"></h2>
+                            Inventario</span>
+                              <?php
+                              if ($valor_inventario) {
+                         $total_inventario=array_sum($valor_inventario);
+                               }else{
+                                $total_inventario=0;
+                               }  ?>
+                   <h2 class="mb-0">{{number_format($total_inventario, 2,',','.')}} <small>Bs.F</small></h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>
@@ -67,9 +73,14 @@
             <div class="card-body p-0">
                 <div class="media p-3">
                     <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Product
-                            Sold</span>
-                        <h2 class="mb-0">1065</h2>
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Clientes registrados</span>
+                         <?php
+                              if ($clientes) {
+                                $cantidad=count($clientes);
+                               }else{
+                                $cantidad=0;
+                               }  ?>
+                        <h2 class="mb-0" style="color: #006699;">{{$cantidad}}</h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-warning" data-feather="coffee"></span>

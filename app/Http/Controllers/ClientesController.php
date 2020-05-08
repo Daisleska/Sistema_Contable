@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\cliente;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

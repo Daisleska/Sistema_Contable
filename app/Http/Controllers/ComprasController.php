@@ -17,6 +17,9 @@ class ComprasController extends Controller
     public function index()
     {
 
+    $i=1;
+    $x=1;
+    $num=1;
     $mesactual = date('m');
     $meses = ['Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
@@ -32,14 +35,27 @@ class ComprasController extends Controller
            $total_subtotal[]= $key->sub_total;
            $total_IVA[]= $key->iva;
          }
-          $venta = venta::all();
+          
         //fin
 
+    // informacion para libro ventaas/////////////////////////
+           $venta =  \DB::select('SELECT  clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, venta.facturav_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa
 
-          $i=1;
-          $x=1;
-          $num=1;
-       return view('process.compra_venta.index', compact('compra', 'venta','i', 'mesactual', 'meses','x','num','costo_t', 'total_total','total_subtotal','total_IVA'));
+        FROM venta, clientes, facturav, iva
+
+        WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND MONTH(facturav.fecha)='.$mesactual);
+
+        /*dd($venta);
+*/
+         //para sumar los total de facturav
+        foreach ($venta as $key) {  
+           $total_venta[]= $key->total;
+           $total_subventa[]= $key->sub_total;
+           $total_IVA_venta[]= $key->iva;
+         }
+        //FIN informacion de VEENTASS========================================================
+
+       return view('process.compra_venta.index', compact('compra', 'venta','i', 'mesactual', 'meses','x','num','costo_t', 'total_total','total_subtotal','total_IVA'  , 'venta','total_venta','total_subventa','total_IVA_venta'));
     }
 
     /**
