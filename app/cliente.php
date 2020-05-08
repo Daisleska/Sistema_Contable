@@ -16,5 +16,6 @@ class cliente extends Model
     	return $this->belongsToMany('App\producto','facturav','clientes_id','productos_id')->withPivot('amount');
     }
 
+
 }
 

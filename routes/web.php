@@ -30,7 +30,7 @@ Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
 Route::resource('cotizacion', 'CotizacionesController');
 
-Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
+//Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
 
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
@@ -47,10 +47,13 @@ Route::put('ivaupdate', 'FacturasVController@ivaupdate')->name('ivaupdate');
 
 Route::put('ivaupdateC', 'FacturasCController@ivaupdate')->name('ivaupdateC');
 
+Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate');
+
 // Reportes en PDF
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
+Route::get('cotizacion.pdf/{id_cotizacion}', 'CotizacionesController@pdf')->name('cotizacion.pdf');
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');
 Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');

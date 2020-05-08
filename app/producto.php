@@ -27,4 +27,7 @@ class producto extends Model
     {
         return $this->belongsToMany('App\inventario','inventario','productos_id','facturac_id')->withPivot('amount');
     }
+
+
+    
 }
