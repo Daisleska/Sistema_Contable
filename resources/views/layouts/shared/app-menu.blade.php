@@ -40,7 +40,13 @@
             <span> Clientes </span>
         </a>
     </li>
-   
+    <li>
+        <a href="{{ route('cuentas.index') }}">
+            <i data-feather="plus"></i>
+            <span> Cuentas </span>
+        </a>
+    </li>
+
    <li class="menu-title">Facturas</li>
     <li>
         <a href="{{ route('facturav.index') }}">
@@ -95,7 +101,7 @@
      <li class="menu-title">Seguridad</li>
      <li>
         <a href="{{ route('bitacoras.index') }}">
-            <i data-feather="truck"></i>
+            <i data-feather="activity"></i>
             <span> Bitacora </span>
         </a>
     </li>

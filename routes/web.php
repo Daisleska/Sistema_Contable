@@ -1,11 +1,11 @@
 <?php
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('auth/login')->name('login');;
 });
 
 Auth::routes();
-
+Route::middleware('auth')->group(function () {
 /*buscadores para autocompletar*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
@@ -18,7 +18,7 @@ Route::get('compras/{mes}/{anio}/{dia}/buscador', 'ComprasController@buscador');
 Route::get('cotizacion/{product}/buscar_producto', 'CotizacionesController@buscar_producto');
 /*fin*/
 
-Route::middleware('auth')->group(function () {
+
 Route::resource('proveedores','ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
@@ -31,6 +31,7 @@ Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
 Route::resource('cotizacion', 'CotizacionesController');
+Route::resource('cuentas', 'CuentasController');
 
 //Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
 

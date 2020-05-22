@@ -16,11 +16,11 @@ class CreateDiarioTabla extends Migration
         Schema::create('diario', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('fecha');
-            $table->string('cuenta');
-            $table->string('referencia');
-            $table->string('debe');
-            $table->string('haber');
+            $table->string('descripcion')->nullable();
+            $table->integer('monto');
+            $table->enum('debe_haber',['debe','haber']);
             $table->timestamps();
+
         });
     }
 

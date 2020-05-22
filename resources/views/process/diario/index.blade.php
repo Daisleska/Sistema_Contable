@@ -55,7 +55,7 @@
                         ?>
 
                     <th style="align-content: right;">
-                    `  <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
+                     <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
                    </th>
                         </tr>
 
@@ -63,14 +63,14 @@
                   
               
 
-                    <table id="basic-datatable" class="table dt-responsive nowrap" >
+                    <table style="border-color: black; border: 1px;  " border="1" id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr style="color: black;">
                                 <th COLSPAN="13" style="text-align: center;">LIBRO DIARIO</th>
                             </tr>
-                            <tr style="color: black;">
+                            <tr style="color: black; font-size: 12px;">
                                 
-                                <th COLSPAN="2">FECHA</th>
+                                <th >FECHA</th>
                                 <th>CUENTA Y DESCRIPCIÓN</th>
                                 <th>REF.</th>
                                 <th>DEBE</th>
@@ -81,21 +81,28 @@
                         </thead>
                     
                     
-                        <tbody>
-                           
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-         
+                        <tbody  style="font-size: 11px; ">
+                       @foreach($diario as $key)  
+                <tr style=" border-bottom: 0.5px; border-style: solid; " >
+                  <td>{{$key->fecha}}</td>
+                  <td>{{$key->nombre}} <hr>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$key->descripcion}}</td>
+                  <td>{{$key->cuenta_id}}</td>
+                  <?php
+                  if ($key->debe_haber =='debe') {  
+                   ?>
+                  <td>{{$key->monto}}</td>
+                 
+                  <td> <hr> {{$key->monto}}</td>
+                  <?php }elseif($key->debe_haber =='haber') {
+                    ?>
+                  <td> <hr>{{$key->monto}}</td>
+                   <td>{{$key->monto}}</td>
+                    <?php }?>
                 
                 </tr>
               
            
-                          
+                          @endforeach
                              </tbody>
                     </table>
 

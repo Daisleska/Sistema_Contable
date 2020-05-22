@@ -8,6 +8,8 @@ class diario extends Model
 {
     protected $table='diario';
 
-    protected $fillable=['fecha', 'cuenta', 'referencia', 'debe', 'haber'];
+    protected $fillable=['fecha','descripcion','monto', 'debe_haber'];
 
 }
+
+

@@ -30,6 +30,7 @@ class ComprasController extends Controller
         WHERE compra.proveedores_id = proveedores.id AND compra.facturac_id = facturac.id AND MONTH(facturac.fecha)='.$mesactual);
 
          //para sumar los total de facturac
+
         foreach ($compra as $key) {  
            $total_total[]= $key->total;
            $total_subtotal[]= $key->sub_total;

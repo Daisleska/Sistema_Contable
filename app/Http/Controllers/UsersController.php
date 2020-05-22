@@ -131,6 +131,7 @@ class UsersController extends Controller
      */
     public function destroy(Request $request)
     {
+    	/*dd($request);*/
         $user=User::find($request->user_id);
         $user->status=$request->status;
         $user->save();

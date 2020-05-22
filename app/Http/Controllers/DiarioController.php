@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\diario;
+use App\cuenta;
+use App\cuenta_has_diario;
+use Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiarioController extends Controller
 {
@@ -14,8 +20,12 @@ class DiarioController extends Controller
      */
     public function index()
     {
-       $diario = diario::all();
-       return view('process.diario.index', compact('diario'));
+       $cuentas=cuenta::all();
+
+       $diario = \DB::select('SELECT * FROM diario, cuentas, cuenta_has_diario WHERE cuenta_has_diario.cuenta_id=cuentas.id AND cuenta_has_diario.diario_id=diario.id');
+      /* dd($diario);*/
+
+       return view('process.diario.index', compact('diario', 'cuentas'));
     }
 
     /**
@@ -36,7 +46,31 @@ class DiarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      /*  dd($request);*/
+            $diario= new diario();
+            $diario->fecha=$request->fecha;
+            $diario->descripcion=$request->descripcion;
+            $diario->monto=$request->monto;
+            $diario->debe_haber=$request->debe_haber;
+            $diario->save();
+
+            $cuenta_has_diario=new cuenta_has_diario();
+            $cuenta_has_diario->cuenta_id=$request->cuenta_id;
+            $cuenta_has_diario->diario_id=$request->diario_id;
+            $cuenta_has_diario->de_cuentas=$request->de_cuentas;
+            $cuenta_has_diario->a_cuentas=$request->a_cuentas;
+            $cuenta_has_diario->save();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha realizado un registro en libro diario';
+            $bitacoras->save();
+       flash('<i class="icon-circle-check"></i> Cliente registrado exitosamente
+                ')->success()->important();
+           return redirect()->to('diario');
     }
 
     /**

@@ -30,12 +30,24 @@ class HomeController extends Controller
     {
         //valor del inventario-------------------------------------
         $inventario = \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo  FROM productos, inventario WHERE inventario.productos_id = productos.id');
-         foreach ($inventario as $key) {   
+
+        if ($inventario) {
+            foreach ($inventario as $key) {   
            $valor_inventario[]= $key->precio* $key->existencia;
          }
-         //FIN valor del inventario-------------------------------------
 
+          //FIN valor del inventario-------------------------------------
          $clientes= cliente::all();
         return view('home', compact('valor_inventario','clientes'));
+
+        }else{
+            $valor_inventario=0;
+
+            $clientes= cliente::all();
+        return view('home', compact('valor_inventario','clientes'));
+
+        }
+        
+        
     }
 }

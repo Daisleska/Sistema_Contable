@@ -52,7 +52,19 @@
                                     <td>{{ $key->email }}</td>
                                     <td>{{ $key->user_type }}</td>
                                     <td>{{ $key->Empresa }}</td>
-                                    <td>{{ $key->status }}</td>
+                                        <?php 
+                                        if ($key->status=='Activo') {
+                                            ?>
+                                         <td style="color: green;">{{ $key->status }}</td>
+
+                                            <?php
+                                        }elseif ($key->status=='Suspendido') {
+                                            ?>
+                                        <td style="color: red;">{{ $key->status }}</td>
+                                        <?php
+                                        }
+                                        ?>
+                                    
                                     <td>
                                         
                                         <a href="{{ route('users.edit',$key->id) }}"><i class="mdi mdi-pencil"></i>edit</a>
@@ -106,9 +118,10 @@
                 <button type="submit" class="btn btn-success save-event waves-effect waves-light">Cambiar Estado</button>
                 
             </div>
-            {!! Form::close() !!}               </div>
+                    </div>
     </div>
 </div>
+ {!! Form::close() !!}      
 <!-- END MODAL -->
 
 @endsection
@@ -116,22 +129,6 @@
 @section('scripts')
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
 <script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
-
-<script type="text/javascript">
-
-    function cambiar_status(user_id,status) {
-        
-        if (status=="Activo") {
-            console.log(status);
-            $("#nuevo_status").text('Suspendido');
-            $("#status").val('Suspendido');
-        }else{
-            $("#nuevo_status").text('Activo');
-            $("#status").val('Activo');
-        }
-        $("#user_id").val(user_id);
-    }
-</script>
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}">
 </script>
@@ -142,6 +139,25 @@
 </script>
  
 @endsection
+<script>
+feather.replace();
+
+    function cambiar_status(user_id,status) {
+        
+        if (status=="Activo") {   
+      /*    console.log(status); */
+            $("#nuevo_status").text('Suspendido');
+            $("#status").val('Suspendido');
+        }else{
+            $("#nuevo_status").text('Activo');
+            $("#status").val('Activo');
+        }
+
+    
+        $("#user_id").val(user_id);
+          
+    }
+</script>
 
 
 @section('script-bottom')
