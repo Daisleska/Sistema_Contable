@@ -14,6 +14,8 @@ Route::get('inventario/{product}/buscar_inventario', 'InventarioController@busca
 Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@buscar_proveedor');
 
 Route::get('compras/{mes}/{anio}/{dia}/buscador', 'ComprasController@buscador');
+
+Route::get('cotizacion/{product}/buscar_producto', 'CotizacionesController@buscar_producto');
 /*fin*/
 
 Route::middleware('auth')->group(function () {
@@ -53,6 +55,7 @@ Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate'
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
+Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
 Route::get('cotizacion.pdf/{id_cotizacion}', 'CotizacionesController@pdf')->name('cotizacion.pdf');
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');

@@ -27,6 +27,7 @@ class CreateFacturavTabla extends Migration
             $table->integer('importe');
             $table->integer('sub_total');
             $table->integer('iva');
+            $table->string('p_iva');
             $table->integer('total');
 
             $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');

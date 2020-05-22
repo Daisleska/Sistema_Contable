@@ -200,7 +200,7 @@
 
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>IVA</strong></td>
+                  <td id="c"><strong>I.V.A {{$key->p_iva}}%</strong></td>
                   <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} {{$key->divisa}}</td>
                 </tr>
                  

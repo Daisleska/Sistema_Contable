@@ -46,6 +46,7 @@
                                 <small><span id="mensaje" style="color:red"></span></small>
                                 </th>
 
+
                                 <?php 
 
                                  if($factura) {
@@ -72,11 +73,13 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th><input style="width: 350px;" type="text" id="nomb" name="nombre" readonly="readonly" class="form-control"  value="" ></th>
+                                <th colspan="2"></th>
 
                             </tr>
                             <tr>
                                 <th>Dirección</th>
                                 <th><input style="width: 350px;" type="text" name="direccion" id="dir" readonly="readonly" class="form-control"  value=""></th>
+                                <th colspan="2"></th>
                             </tr>
                                                  
                         </tbody>
@@ -180,11 +183,11 @@
                     <td></td>
                     @foreach($iva as $key)
 
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
+                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}%</button></td>
                     
                     <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
                     
-                    <input type="hidden" name="IVA" id="iva" value="{{$key->porcentaje}}">
+                    <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
                     <td></td>
 
                       @endforeach

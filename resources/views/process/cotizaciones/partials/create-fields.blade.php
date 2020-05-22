@@ -43,17 +43,21 @@
                                 <th>RUT</th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""><small><span id="mensaje" style="color:red"></span></small>
                                 </th>
+                                <th colspan="2"></th>
                            
 
 
                             <tr>
                                 <th>Nombre</th>
                                 <th><input style="width: 350px;" type="text" id="nomb" name="nombre" readonly="readonly" class="form-control"  value="" ></th>
+                                <th colspan="2"></th>
 
                             </tr>
                             <tr>
                                 <th>Dirección</th>
                                 <th><input style="width: 350px;" type="text" name="direccion" id="dir" readonly="readonly" class="form-control"  value=""></th>
+                                <th colspan="2"></th>
+
                             </tr>
                                                  
                         </tbody>
@@ -78,6 +82,17 @@
                                 <option value="15" selected="selected">15 días</option>
                                 <option value="30">30 días</option>
                                </select></th>
+
+                                <th>Divisa</th>
+                                <th><select style="width: 50" name="divisa" class="form-control">
+                                <option value="Bs.S">VEF</option>
+                                <option value="£">GBP</option>
+                                <option value="¥">JPY</option>
+                               <option value="¥">CNY</option>
+                               <option value="€">EUR</option>
+                               <option selected="selected" value="$">USD</option>
+     
+                                </select></th>
                             
 
                             
@@ -86,9 +101,15 @@
                     
     </table>
 </div>
+ 
+                     
 
 <div class="row">
-       <table style="margin-left: 1cm; margin-right: 1cm;" id="tablaprueba" class="table dt-responsive nowrap">
+  <button type="button" style="margin-left: 1cm;" class="btn btn-info" data-toggle="modal" data-target="#mySmallModalLabel"><i data-feather="plus"></i>Agregar Producto</button>
+          <input type="hidden" id="ListaPro" name="ListaPro" value="" required />
+       <table style="margin-left: 1cm; margin-right: 1cm;" id="TablaPro" class="table dt-responsive nowrap"><div class="row mb-3">
+                           
+
                         <thead>
                             <tr>
                                 <th>Código</th>
@@ -96,7 +117,8 @@
                                 <th>Cantidad</th>
                                 <th>Valor de unidad</th>
                                 <th>Importe</th>
-                                <th>Agregar</th>
+                                <th>Opciones</th>
+                          
                               
 
                             
@@ -104,102 +126,51 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody id="ProSelected">
+
+                        </tbody>
+                        <tfoot>
+                                    <tr><th colspan="3"></th><th>SUB TOTAL<span id="total"></span></th><th><input  style="width: 100px;" type="text" name="sub_total"  class="form-control" readonly="readonly" value="" > </th></tr>
+
+                                     @foreach($descuento as $key)
+                                    <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}}%</button><span></span></th>
+                                      <th><input style="width: 100px;" type="text" name="descuento" id="descuent" class="form-control" readonly="readonly" value=""></th>
+
+                                      <input type="hidden" name="p_des" id="porcen" value="{{$key->porcen}}">
+                                      @endforeach
+                                    </tr>
+
+                                    @foreach($iva as $key)
+
+                                    <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}% </button><span></span></th>
+                                    <th><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></th>
+                    
+                                    <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
+                                    @endforeach
+                                    </tr>
+
+                                    <tr><th colspan="3"></th><th>TOTAL<span id=""></span></th><th><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></th></tr>
+
+
+
+                              
+                                    
+
+                 
+
+                             </tfoot>
                            
                 <tr>
-                  <input type="hidden" name="productos_id" id="productos_id">
-                  <td><input style="width: 100px;" type="text" name="codigo" id="cod" class="form-control"  value=""><small><span id="mensaje2" style="color:red"></span></small></td>
-                  <td><input style="width: 180px;" type="text" name="nombre" id="nombre" readonly="readonly" class="form-control"  value=""></td>
-                  <td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control"  value=""><span id="mensaje3" style="color:red"></span></small></td>
-                  <td><input style="width: 100px;" type="text" name="precio" id="precio" readonly="readonly" class="form-control"  value=""></td>
-                  <td><input style="width: 100px;" type="text" name="importe" id="importe" class="form-control"  readonly="readonly" value=""></td>
 
-                  <td><button onclick="agregarFila()" type="button" class="btn btn-info btn-sm">+</button>
-            
-                  
-
-                  </td>
+                </td>
                 
                 </tr>
 
     </tbody>
   </table>
 </div>
-
-<div class="row">
-       <table style="margin-left: 1cm; margin-right: 1cm;"  class="table dt-responsive nowrap">
-                      
-             <thead>
-
-                <tr>
-
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>SUB TOTAL</td>
-                    <td><input  style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value="" ></td> 
-                    <td></td>
-
                     
-                </tr>
-
-                <tr>
-                   
-                    
-                    <td colspan="3"></td>
-                    @foreach($descuento as $key)
-
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}} %</button></td>
-                    
-                    <td><input style="width: 100px;" type="text" name="descuento" id="descuent" class="form-control" readonly="readonly" value=""></td>
-                    
-                    <input type="hidden" name="d" id="porcen" value="{{$key->porcen}}">
-                    <td></td>
-
-                      @endforeach
-                   
-                  
-              
-                </tr>
-
-                <tr>
-                   
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    @foreach($iva as $key)
-
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
-                    
-                    <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
-                    
-                    <input type="hidden" name="IVA" id="iva" value="{{$key->porcentaje}}">
-                    <td></td>
-
-                      @endforeach
-                 
-
-                  
-                </tr>
-
-                <tr>
-                    
-                    <td colspan="3"></td>
-                    <td align="left"><strong>TOTAL</strong></td>
-                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></td>
-                   <td></td>
-                  
-                </tr>
-
-             
-                 </thead>    
-
-                </table>  
-
-
-
-                    
-                    <button style="margin-left: 1cm;" class="btn btn-primary" type="submit" id=guardar>Guardar</button>
+                    <button style="margin-left: 1cm;" class="btn btn-info" type="submit" id=guardar>Guardar</button>
                   
 
 
@@ -207,7 +178,47 @@
   
 </div>
 
+<!-- Modal -->
+        <div class="modal fade" id="mySmallModalLabel" role="dialog">
 
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" style="text-align: center;">Producto</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        
+                    </div>
+                    <div class="modal-body">
+                         <div class="form-group">
+                               
+                             
+                                    <th>Código <input type="text" name="cod" class="form-control" id="codi"></th>
+                                    <th>Nombre<input type="text" name="nom" id="nom" class="form-control" readonly="readonly"></th>
+                                    <th>Precio<input type="text" name="pre" id="pre" class="form-control" readonly="readonly"></th>
+                                    <th>Cantidad<input type="text" name="canti" id="canti" class="form-control"></th>
+                                   
+                                  
+                             
+                                    <input type="hidden" name="imp" id="impor">
+
+                                    <input type="hidden" name="productos_id" id="productos_id" value="">
+
+                                  
+                         
+
+                    <div class="modal-footer">
+                        <!--Uso la funcion onclick para llamar a la funcion en javascript-->
+                       <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                       <button type="button" onclick="agregarProducto()" id="boton" class="btn btn-info" data-dismiss="modal">Agregar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 
                                         
@@ -218,24 +229,166 @@
 "></script> 
 
 <script>
-function agregarFila(){
-  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input style="width: 100px;" type="text" name="codigo" class="form-control" id="cod" value=""><span id="mensaje2" style="color:red"></span></small></td><td><input style="width: 180px;" type="text" name="nombre" id="nombre" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control"  value=""><span id="mensaje3" style="color:red"></span></small></td><td><input style="width: 100px;" type="text" name="precio" id="precio" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="importe" id="importe" disabled="disabled" class="form-control"  value=""></td><td><button onclick="eliminarFila()" type="button" class="btn btn-danger btn-sm">-</button></td>';
-}
+//Producto
+feather.replace();
 
-function eliminarFila(){
-  var table = document.getElementById("tablaprueba");
-  var rowCount = table.rows.length;
-  //console.log(rowCount);
+      $("#codi").on('keyup',function (event) {
+
+        //asignar evento a la variable codigo
+        var cod = event.target.value;
+   // aignar el valor de codigo a la variable $producto
+    var product=$("#codi").val();
+    //si producto es mayor que 0
+    if(product.length>0){
+    //envio de datos a la ruta en web
+    $.get('/cotizacion/'+product+'/buscar_producto',function(data){
+      //resive el valor data de lo consultado en el controlador
+
+      // asignar a la variable result el valor de data
+      var resul = data;
+
+
+
+    /*  console.log(result);*/
+
+    //si result es menor o igual a 0 mostrar ese  mensaje
+      if (resul<=0) {
+        $("#mensaje2").text('Los datos no existen en el registro');
+
+
+      } else {
+        
+        $("#mensaje2").text('');
+
+        $('#nom').val(resul[0].nombre);
+
+        $('#pre').val(resul[0].precio);
+
+        $('#impor').val(importe);
+
+        $('#productos_id').val(resul[0].id);
+
+
+        
+
+      
+      }
+    });
+    }else{
+      $("#mensaje2").text('');
+      $("#nombre").val('');
+      $("#precio").val('');
+      $("#impor").val('');
+
+      
+    }
+  });
+
+//importe
+
+feather.replace();
+
+      $("#canti").on('keyup',function (event) {
+
+        //asignar evento a la variable codigo
+        var canti = event.target.value;
+   // aignar el valor de codigo a la variable $producto
+    var cant=$("#canti").val();
+    var preciot=$("#pre").val();
+
+    var importe=canti*preciot;
+
+    if (importe>0) {
+
   
-  if(rowCount <= 1)
-    alert('No se puede eliminar el encabezado');
-  else
-    table.deleteRow(rowCount -1);
-}
+    $('#impor').val(importe);
+
+
+    
+
+   }else{
+   
+    $('#impor').val('');
+   
+    
+   }
+   
+
+
+
+  });
 
 
 
 
+//agregar producto
+function RefrescaProducto(){
+        var ip = [];
+        var i = 0;
+        $('#guardar').attr('disabled','disabled'); //Deshabilito el Boton Guardar
+        $('.iProduct').each(function(index, element) {
+            i++;
+            ip.push({ id_pro : $(this).val() });
+        });
+        // Si la lista de Productos no es vacia Habilito el Boton Guardar
+        if (i > 0) {
+            $('#guardar').removeAttr('disabled','disabled');
+        }
+        var ipt=JSON.stringify(ip); //Convierto la Lista de Productos a un JSON para procesarlo en tu controlador
+        $('#ListaPro').val(encodeURIComponent(ipt));
+    }
+       function agregarProducto() {
+
+             
+            var sel = $('#pro_id').find(':selected').val(); 
+            //Capturo el Value del Producto
+            var text = $('#pro_id').find(':selected').text();
+            //Capturo el Nombre del Producto- Texto dentro del Select
+           var cod=document.getElementById("codi").value;
+           var nom=document.getElementById("nom").value;
+            var pre=document.getElementById("pre").value;
+             var cant=document.getElementById("canti").value;
+              var impor=document.getElementById("impor").value;
+             
+            
+            var sptext = text.split();
+            
+            var newtr = '<tr class="item"  data-id="'+sel+'">';
+
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="codigo" disabled="disabled" class="form-control" id="cod" value="'+cod+'"></td>';
+
+            newtr = newtr + '<td><input style="width: 180px;" type="text" name="nombre" id="nombre" disabled="disabled" class="form-control"  value="'+nom+'"></td>';
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control" disabled="disabled" value="'+cant+'"></td>';
+
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="precio" id="precio" disabled="disabled" class="form-control"  value="'+pre+'"></td>';
+
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="importe" id="importe" disabled="disabled" class="form-control"  value="'+impor+'"></td>';
+
+            newtr = newtr + '<td><button type="button" class="btn btn-danger btn-xs remove-item">x</button></td></tr>';
+            
+            $('#ProSelected').append(newtr); //Agrego el Producto al tbody de la Tabla con el id=ProSelected
+
+            RefrescaProducto();//Refresco Productos
+                
+            $('.remove-item').off().click(function(e) {
+                $(this).parent('td').parent('tr').remove(); //En accion elimino el Producto de la Tabla
+                if ($('#ProSelected tr.item').length == 0)
+                    $('#ProSelected .no-item').slideDown(300); 
+                RefrescaProducto();
+            });        
+           $('.iProduct').off().change(function(e) {
+                RefrescaProducto();
+           });
+    }
+
+$(document).ready(function() {
+    $("#boton").click(function(event) {
+   
+      $("#mySmallModalLabel input").val("");
+     
+    });
+    
+  });
 
 feather.replace();
 
@@ -282,77 +435,24 @@ feather.replace();
 
 
 //Producto
-feather.replace();
-
-      $("#cod").on('keyup',function (event) {
-
-        //asignar evento a la variable codigo
-        var cod = event.target.value;
-   // aignar el valor de codigo a la variable $producto
-    var product=$("#cod").val();
-    //si producto es mayor que 0
-    if(product.length>0){
-    //envio de datos a la ruta en web
-    $.get('/productos/'+product+'/buscar_producto',function(data){
-      //resive el valor data de lo consultado en el controlador
-
-      // asignar a la variable result el valor de data
-      var resul = data;
 
 
-
-    /*  console.log(result);*/
-
-    //si result es menor o igual a 0 mostrar ese  mensaje
-      if (resul<=0) {
-        $("#mensaje2").text('Los datos no existen en el registro');
-
-
-      } else {
-        
-        $("#mensaje2").text('');
-
-        $('#nombre').val(resul[0].nombre);
-        
-        $('#precio').val(resul[0].precio);
-
-        $('#productos_id').val(resul[0].id);
-
-
-        
-
-      
-      }
-    });
-    }else{
-      $("#mensaje2").text('');
-      $("#nombre").val('');
-      $("#precio").val('');
-      
-    }
-  });
-
-
-
-  $("#cantidad").on('keyup', function(event){
+  $("#canti").on('keyup', function(event){
 
   var cantidad = event.target.value;
-  var cantidad = $("#cantidad").val();
+  var cantidad = $("#canti").val();
+  var importe = $("#impor").val();
   var des= $("#porcen").val();
 
-  console.log(cantidad);
-
+ // console.log(importe);
+  
   //campo precio por unidad 
 
-  var preciot =$("#precio").val();
+   var sub_total=0;
+  //var preciot =$("#pre").val();
   var iva =$("#iva").val();
 
-  console.log(preciot);
-   //importe
-   var total = cantidad*preciot;
-   //sub_total
-   var sub_total=total;
-    
+
     var descu=des/100;
   
 
@@ -367,29 +467,25 @@ feather.replace();
 
    var monto_total=monto_t-descuent;
 
-   //cantidad
-   var canti=cantidad;
-
-   console.log(total);
+ 
 
    if (total>0) {
     $('#mensaje3').text('');
-    $('#importe').val(total);
     $('#sub_total').val(sub_total);
     $('#IVA').val(iva);
     $('#monto_total').val(monto_total);
     $('#descuent').val(descuent);
-    $('#canti').val(canti);
+
     
 
    }else{
     $('#mensaje3').text('Debe ingresar la cantidad');
-    $('#importe').val('');
+
     $('#sub_total').val('');
     $('#IVA').val('');
     $('#monto_total').val('');
     $('#descuent').val('');
-    $('#canti').val('');
+   
     
    }
    

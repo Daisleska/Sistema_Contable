@@ -5,7 +5,14 @@ namespace App\Http\Controllers;
 use App\cajachica;
 use App\facturav;
 use App\facturac;
+use App\empresa;
+use App\Alert;
+use PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 date_default_timezone_set('UTC');
 ini_set('max_execution_time', 3000);
@@ -282,6 +289,39 @@ foreach ($facturav as $x){
     {
         //
     }
+
+
+     public function pdf(Request $request)
+
+    {
+        $pdf= \DB::select('SELECT fecha, ingresos, egresos, saldo
+
+        FROM cajachica
+
+        WHERE fecha BETWEEN "'.$request->fecha.'" AND "'.$request->fecha2.'"');
+
+        $i = 1;
+
+        foreach ($pdf as $key) {  
+           $total_ingresos[]= $key->ingresos;
+           $total_egresos[]= $key->egresos;
+          
+         }
+          
+
+        $empresa = empresa::all();
+
+        $fecha=$request->fecha;
+        $fecha2=$request->fecha2;
+
+        $dompdf = PDF::loadView('pdf.cajachica', compact('pdf', 'fecha', 'fecha2','empresa', 'total_ingresos', 'total_egresos'));
+
+        return $dompdf->stream('cajachica.pdf');
+    }
+    
+    
+    
+
 
    
 

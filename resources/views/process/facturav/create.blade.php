@@ -45,15 +45,15 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar IVA</h5>
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar I.V.A</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <p>Valor IVA actual:{{$key->porcentaje}}%</p>
-                                                       <td>% <input type="text" name="porcentaje" placeholder="Ingrese el nuevo valor IVA"></td>
+                                                        <p>Valor I.V.A actual:{{$key->porcentaje}}%</p>
+                                                       <td>% <input type="text" name="porcentaje" id="pct" placeholder="Ingrese el nuevo valor IVA"></td>
 
                                                        <button class="btn btn-info" id="other">~</button>
                                                     </div>
@@ -72,7 +72,15 @@
 <!-- jQuery CDN -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 
+<script type="text/javascript">
+    $(function() {
+        
+        $("#pct").mask("99%");
+        
 
+    
+    });
+</script>  
    
 
 @endsection

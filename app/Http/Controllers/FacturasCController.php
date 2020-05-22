@@ -192,7 +192,7 @@ foreach ($inventario as $val) {
       public function pdf($id_factura)
 
     {
-        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.correo, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturac.n_factura, facturac.total, facturac.fecha, facturac.cantidad, facturac.importe, facturac.sub_total, facturac.iva, facturac.divisas, facturac.n_control
+        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.correo, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturac.n_factura, facturac.total, facturac.fecha, facturac.cantidad, facturac.importe, facturac.sub_total, facturac.iva, facturac.divisas, facturac.n_control, facturac.p_iva
 
         FROM facturac, proveedores, productos
 

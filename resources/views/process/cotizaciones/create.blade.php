@@ -43,17 +43,21 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar IVA</h5>
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar I.V.A</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <p>Valor IVA actual:{{$key->porcentaje}}%</p>
-                                                       <td>% <input type="text" name="porcentaje" placeholder="Ingrese el nuevo valor IVA"></td>
+                                                        <p>Valor I.V.A actual: {{$key->porcentaje}}%</p>
+                                                       <td><input type="text" name="porcentaje"  placeholder="Ingrese el nuevo valor" class="form-control"></td>
 
-                                                       <button class="btn btn-info" id="other">~</button>
+                                                       
+                                                       <div class="modal-footer">
+                                                     <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                     <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
+                                                     </div>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                                 {!! Form::close() !!}
@@ -81,10 +85,14 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <p>Valor Descuento actual:{{$key->porcen}}%</p>
-                                                       <td>% <input type="text" name="porcen" placeholder="Ingrese el nuevo valor Descuento"></td>
+                                                        <p>Valor Descuento actual: {{$key->porcen}}%</p>
+                                                       <td><input type="text" name="porcen" placeholder="Ingrese el nuevo valor" class="form-control"></td>
 
-                                                       <button class="btn btn-info" id="other">~</button>
+                                                       <div class="modal-footer">
+                                                        <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                       <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
+                                                   </div>
+
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                                 {!! Form::close() !!}
@@ -103,7 +111,13 @@
  --}}
 <script src="{{ asset('js/jquery/dist/jquery.js') }}"></script>
 <!-- jQuery CDN -->
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="{{ asset('js/jquery/dist/jquery.min.js') }}"></script>
+
+<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script>
+
+
+
 
 
    

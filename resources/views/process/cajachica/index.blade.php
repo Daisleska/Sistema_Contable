@@ -65,6 +65,15 @@
                             <tr >
                                 <th COLSPAN="13" style="text-align: center; color: black;">LIBRO DE CAJA CHICA</th>
                             </tr>
+                            <tr>
+                              <th><button  type="button" class="btn btn-danger btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm1"><i data-feather="minus-circle"></i></button>
+
+                              <button  type="button" class="btn btn-success btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm2"><i data-feather="plus-circle"></i></button>
+
+                              <button  type="button" class="btn btn-info btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm3"><i data-feather="download"></i></button></th>
+
+
+                            </tr>
                              <tr style="color: black;">
                                 <th COLSPAN="2">SALDO INICIAL</th>
                                <th></th>
@@ -112,6 +121,98 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+    <!-- egreso -->
+     <div class="modal fade" id="bs-example-modal-sm1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Registrar nuevo Egreso</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <tr>
+                                                          <th>
+                                                            Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
+
+                                                            Monto <input type="text" name="ingreso" class="form-control">
+
+                                                           N° Comprobante <input type="text" name="n_comp" class="form-control">
+                                                           Descripción <input type="text" name="descripcion" class="form-control"> 
+
+
+                                                          </th>
+                                                        </tr>
+                                                        <div class="modal-footer">
+                        
+                                                     <button type="button" class="btn btn-danger btn-xs remove-item" data-dismiss="modal" type="submit">Guardar</button>
+                                                     </div>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+     <!-- rembolso -->
+     <div class="modal fade" id="bs-example-modal-sm2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Registrar nuevo Rembolso</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                       <tr>
+                                                         <th>
+                                                           Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
+
+                                                           Monto <input type="text" name="ingreso" class="form-control">
+
+                                                           N° Comprobante <input type="text" name="n_comp" class="form-control">
+                                                           Descripción <input type="text" name="descripcion" class="form-control"> 
+                                                         </th>
+                                                       </tr>
+                                                       <div class="modal-footer">
+                        
+                                                     <button type="button" class="btn btn-success btn-xs remove-item" data-dismiss="modal">Guardar</button>
+                                                     </div>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+    <!-- pdf -->
+     <div class="modal fade" id="bs-example-modal-sm3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Rango de fecha</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <form  action="{{route('cajachica.pdf')}}" class="needs-validation" method="GET">
+                                                    <div class="modal-body">
+                                                      
+                                                      <tr>
+                                                        <th>Desde <input type="date" name="fecha" class="form-control" required="required">
+                                                        Hasta <input type="date" name="fecha2" class="form-control" required="required"></th>
+                                                      </tr>
+                                                      <div class="modal-footer">
+                        
+                                                     <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                     <button type="submit" class="btn btn-info btn-xs remove-item">Buscar</button>
+
+                                                     </div>
+                                                   </form>
+                                                    </div>
+                                                  
+                                                </div><!-- /.modal-content -->
+                                             
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 @endsection
 
 @section('script')

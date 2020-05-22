@@ -38,8 +38,9 @@ class CotizacionesController extends Controller
     public function create()
     {
         $iva= iva::all();
+        $producto= producto::all();
         $descuento= descuento::all();
-        return view('process.cotizaciones.create', compact('iva', 'descuento'));
+        return view('process.cotizaciones.create', compact('iva', 'descuento', 'producto'));
     }
 
     /**
@@ -70,7 +71,10 @@ class CotizacionesController extends Controller
             $cotizacion->importe=$request->importe;
             $cotizacion->sub_total=$request->sub_total;
             $cotizacion->descuento=$request->descuento;
+            $cotizacion->p_des=$request->p_des;
             $cotizacion->iva=$request->iva;
+            $cotizacion->p_iva=$request->p_iva;
+            $cotizacion->divisa=$request->divisa;
             $cotizacion->total=$request->total;
             $cotizacion->save();
 
@@ -158,7 +162,7 @@ class CotizacionesController extends Controller
     public function pdf($id_cotizacion)
 
     {
-        $cotizacion = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.cantidad, cotizaciones.importe, cotizaciones.sub_total, cotizaciones.iva, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento
+        $cotizacion = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.cantidad, cotizaciones.importe, cotizaciones.sub_total, cotizaciones.iva, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_iva, cotizaciones.p_des, cotizaciones.divisa
 
         FROM cotizaciones, clientes, productos
 
@@ -168,16 +172,23 @@ class CotizacionesController extends Controller
 
         $empresa = empresa::all();
 
-        $iva = iva::all();
-
-        $descuento = descuento::all();
 
 
-
-        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'i','empresa', 'iva', 'descuento'));
+        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'i','empresa'));
 
         return $dompdf->stream('cotizacion.pdf');
     }
+
+
+      public function buscar_producto($product)
+    {
+       return $producto=producto::where('codigo', $product)->get();
+        
+       
+
+    }
+
+  
     
 
   

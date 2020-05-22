@@ -81,6 +81,7 @@ class FacturasVController extends Controller
             $facturav->importe=$request->importe;
             $facturav->sub_total=$request->sub_total;
             $facturav->iva=$request->iva;
+            $facturav->p_iva=$request->p_iva;
             $facturav->total=$request->total;
             $facturav->save();
 
@@ -181,7 +182,7 @@ class FacturasVController extends Controller
     public function pdf($id_factura)
 
     {
-        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total, facturav.iva, facturav.divisa, facturav.n_control
+        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total, facturav.iva, facturav.divisa, facturav.n_control, facturav.p_iva
 
         FROM facturav, clientes, productos
 

@@ -25,7 +25,10 @@ class CreateCotizacionesTable extends Migration
             $table->integer('importe');
             $table->integer('sub_total');
             $table->integer('descuento');
+            $table->string('p_des');
             $table->integer('iva');
+            $table->string('p_iva');
+            $table->string('divisa');
             $table->integer('total');
 
             $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');

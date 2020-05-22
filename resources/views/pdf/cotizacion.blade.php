@@ -200,35 +200,35 @@
                   <td id="c">{{$key->producto}}</td>
                   <td id="c">{{$key->descripcion}}</td>
                   <td id="c">{{$key->cantidad}}</td>
-                  <td id="c">{{number_format($key->precio,2,',','.')}} </td>
-                  <td id="c">{{number_format($key->importe,2,',','.')}} </td>
+                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$key->divisa}} </td>
+                  <td id="c">{{number_format($key->importe,2,',','.')}} {{$key->divisa}} </td>
                 </tr>
 
                 <tr>
                     <th id="alto" scope="row" colspan="3"></td>
                     <td id="c"><strong>SUB TOTAL</strong></td>
-                    <td id="c">{{number_format($key->sub_total,2,',','.')}} </td>
+                    <td id="c">{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}} </td>
                     
                 </tr>
-                @foreach($iva as $k)
+               
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>I.V.A {{$k->porcentaje}} %</strong></td>
-                  <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} </td>
+                  <td id="c"><strong>I.V.A {{$key->p_iva}}%</strong></td>
+                  <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} {{$key->divisa}} </td>
                 </tr>
-                 @endforeach 
+             
                 
-                @foreach($descuento as $v)
+               
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>Descuento {{$v->porcen}} %</strong></td>
-                  <td scope="row" id="c">{{number_format($key->descuento,2,',','.')}} </td>
+                  <td id="c"><strong>Descuento {{$key->p_des}}%</strong></td>
+                  <td scope="row" id="c">{{number_format($key->descuento,2,',','.')}} {{$key->divisa}} </td>
                 </tr>
-                @endforeach
+               
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
                   <td id="c"><strong>TOTAL</strong></td>
-                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} </td>
+                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} {{$key->divisa}} </td>
                 </tr>
                  
                   @endforeach                                 

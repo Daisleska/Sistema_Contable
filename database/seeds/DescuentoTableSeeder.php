@@ -16,6 +16,7 @@ class DescuentoTableSeeder extends Seeder
          
           'porcen' => 20
           
+          
          
         ]);
     }

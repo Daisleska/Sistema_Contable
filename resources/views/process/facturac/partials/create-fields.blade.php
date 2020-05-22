@@ -51,12 +51,13 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th><input style="width: 350px;" type="text" id="nomb" readonly="readonly" name="nombre" class="form-control"  value=""></th>
+                                <th colspan="2"></th>
 
 
                             </tr>
                             <tr>
                                 <th>Dirección</th>
-                                <th><input style="width: 350px;" type="text" id="dir" readonly="readonly"  class="form-control"  value=""></th>
+                                <th><input style="width: 350px;" type="text" id="dir" readonly="readonly"  class="form-control"  value=""></th><th colspan="2"></th>
                             </tr>
                             <input type="hidden" name="proveedores_id" id="proveedores_id">
                             
@@ -159,7 +160,7 @@
                     <td></td>
                     @foreach($iva as $key)
 
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">IVA {{$key->porcentaje}} %</button></td>
+                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}} %</button></td>
                     
                     <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
                     <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">

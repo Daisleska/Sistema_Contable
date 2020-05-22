@@ -15,7 +15,7 @@ class CreateIvaTabla extends Migration
     {
         Schema::create('iva', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('porcentaje');
+            $table->string('porcentaje');
             $table->timestamps();
         });
     }
