@@ -8,6 +8,6 @@ class cajachica extends Model
 {
    protected $table='cajachica';
 
-    protected $fillable=['fecha','ingresos', 'egresos', 'saldo'];
+    protected $fillable=['fecha','ingresos', 'egresos', 'saldo', 'concepto', 'n_comp'];
 
 }

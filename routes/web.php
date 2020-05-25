@@ -57,6 +57,9 @@ Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('factur
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
+Route::get('cajachica.egreso','CajaChicaController@egreso')->name('cajachica.egreso');
+Route::get('cajachica.ingreso','CajaChicaController@ingreso')->name('cajachica.ingreso');
+Route::get('cajachica.index','CajaChicaController@index')->name('cajachica.index');
 Route::get('cotizacion.pdf/{id_cotizacion}', 'CotizacionesController@pdf')->name('cotizacion.pdf');
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');

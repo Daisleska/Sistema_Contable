@@ -75,8 +75,17 @@
 
                             </tr>
                              <tr style="color: black;">
-                                <th COLSPAN="2">SALDO INICIAL</th>
-                               <th></th>
+                                <th COLSPAN="3">SALDO INICIAL: 
+                                <?php
+
+                                 use App\cuenta;
+
+                                $cuenta=DB::table ('cuentas')->select('saldo')->get();
+                                ?>
+                                @foreach($cuenta as $key)
+                                {{number_format($key->saldo,2,',','.')}}</th>
+                               @endforeach
+
                               
                     
                                 <th>Semana:{{$semana}} /   Mes:{{$mes}}</th>
@@ -86,6 +95,7 @@
                                
                             
                                 <th>FECHA</th>
+                                <th>CONCEPTO</th>
                                 <th>INGRESOS</th>
                                 <th>EGRESOS</th>
                                 <th>SALDO</th>
@@ -101,6 +111,7 @@
                       @foreach($cajachica as $key)      
                 <tr>
                   <td>{{$key->fecha}}</td>
+                  <td>{{$key->concepto}}</td>
                   <td style="color: green;">+ {{number_format($key->ingresos,2,',','.')}}</td>
                   <td style="color: red;">- {{number_format($key->egresos,2,',','.')}}</td>
                   <td style="color: black;">{{number_format($key->saldo,2,',','.')}}</td>
@@ -131,23 +142,25 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+                                                    <form  action="{{route('cajachica.egreso')}}" class="needs-validation" method="GET">
                                                     <div class="modal-body">
                                                         <tr>
                                                           <th>
                                                             Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
 
-                                                            Monto <input type="text" name="ingreso" class="form-control">
+                                                            Monto <input type="text" name="egreso" class="form-control">
 
                                                            N° Comprobante <input type="text" name="n_comp" class="form-control">
-                                                           Descripción <input type="text" name="descripcion" class="form-control"> 
+                                                           Descripción <input type="text" name="concepto" class="form-control"> 
 
 
                                                           </th>
                                                         </tr>
                                                         <div class="modal-footer">
-                        
-                                                     <button type="button" class="btn btn-danger btn-xs remove-item" data-dismiss="modal" type="submit">Guardar</button>
+                                                     <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                     <button type="submit" class="btn btn-danger btn-xs remove-item">Guardar</button>
                                                      </div>
+                                                     </form>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
@@ -162,6 +175,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
+                                                    <form  action="{{route('cajachica.ingreso')}}" class="needs-validation" method="GET">
                                                     <div class="modal-body">
                                                        <tr>
                                                          <th>
@@ -170,13 +184,14 @@
                                                            Monto <input type="text" name="ingreso" class="form-control">
 
                                                            N° Comprobante <input type="text" name="n_comp" class="form-control">
-                                                           Descripción <input type="text" name="descripcion" class="form-control"> 
+                                                           Descripción <input type="text" name="concepto" class="form-control"> 
                                                          </th>
                                                        </tr>
                                                        <div class="modal-footer">
-                        
-                                                     <button type="button" class="btn btn-success btn-xs remove-item" data-dismiss="modal">Guardar</button>
+                                                     <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                     <button type="submit" class="btn btn-success btn-xs remove-item">Guardar</button>
                                                      </div>
+                                                     </form>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->

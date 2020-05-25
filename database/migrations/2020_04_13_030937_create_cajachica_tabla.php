@@ -19,6 +19,9 @@ class CreateCajachicaTabla extends Migration
             $table->string('ingresos');
             $table->string('egresos');
             $table->string('saldo');
+            $table->string('concepto');
+            $table->string('n_comp');
+            
 
             $table->timestamps();
         });

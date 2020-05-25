@@ -94,7 +94,7 @@
             <small class="float-left">Web: </small>
 
             
-            <img class="circular--square" src="../public/{{ $key->url_image }}">
+            <img class="circular--square" src="../public/{{$key->url_image }}">
      
 
          @endforeach
@@ -130,9 +130,9 @@
                         @foreach($pdf as $item)
                         <tr>
 
-                            <td id="c"><b></b></td>
+                            <td id="c"><b>{{$item->id}}</b></td>
                             <td id="c">{{$item->fecha}}</td>
-                            <td id="c"></td>
+                            <td id="c">{{$item->concepto}}</td>
                             <td id="c">{{number_format($item->ingresos, 2,',','.')}}</td>
                             <td id="c">{{number_format($item->egresos, 2,',','.')}}</td>
                             <td id="c">{{number_format($item->saldo, 2,',','.')}}</td>
