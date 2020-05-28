@@ -45,11 +45,20 @@
 
                       <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
                       <?php
-                      //TOTALES
+                      if ($total_venta >0) {
+                            //TOTALES
                          $total_venta=array_sum($total_venta);
                          $sub_total=array_sum($total_subventa);
                          $iva_total=array_sum($total_IVA_venta);
                       //---------------------------------------
+                      }else{
+                             //TOTALES
+                         $total_venta=0;
+                         $sub_total=0;
+                         $iva_total=0;
+                      //---------------------------------------
+                      }
+                 
                         ?>
 
 

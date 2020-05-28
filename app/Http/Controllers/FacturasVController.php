@@ -175,7 +175,26 @@ class FacturasVController extends Controller
      */
     public function destroy($id)
     {
-        //
+          /*      $hoy=date('Y-m-d');
+     $desde=\DB::select('SELECT  * FROM facturac  WHERE facturac.fecha='.$hoy.' AND facturac.id='.$id );
+*/
+        $this->actualizar_inventario_delete($id);
+        $this->actualizar_venta_delete($id);
+
+        $facturav = facturav::find($id);
+        $facturav->delete();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado una factura de compras';
+            $bitacoras->save();
+
+        flash('Registro eliminado satisfactoriamente');
+
+        return back();
     }
 
     
@@ -212,5 +231,43 @@ class FacturasVController extends Controller
     
     return redirect()->back();
     }
+
+     public function actualizar_venta_delete($id)
+    {
+         $venta_eliminar=venta::find($id);
+         if ($venta_eliminar != null) {
+           $venta_eliminar->delete();
+         }
+    }
+
+     public function actualizar_inventario_delete($id)
+    {
+
+        //consulta para obtener cantidad y id del producto----------
+        $sql=\DB::select('SELECT id, cantidad, productos_id FROM facturav
+        WHERE id='.$id );
+
+        foreach ($sql as $val) {
+       $producto_stock=$val->cantidad;
+       $id_producto= $val->productos_id;
+        }
+        //-----------------------------------------------------------
+        //consulta para obtener existencia de esos productos---------
+        $x=\DB::select('SELECT existencia FROM inventario
+        WHERE productos_id='.$id_producto );
+
+
+       foreach ($x as $val2) {
+       $existencia=$val2->existencia;
+        }
+        //------------------------------------------------------------
+        //regresar stock y actualizar---------------------------------
+       $regresar=$existencia+$producto_stock;
+       
+
+        $cambiar= \DB::select('UPDATE inventario SET existencia ='.$regresar.' WHERE inventario.productos_id='.$id_producto);
+
+    }
+
 
 }

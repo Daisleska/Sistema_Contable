@@ -75,7 +75,7 @@
 
                             </tr>
                              <tr style="color: black;">
-                                <th COLSPAN="3">SALDO INICIAL: 
+                                <th id="saldo" COLSPAN="3">SALDO INICIAL: 
                                 <?php
 
                                  use App\cuenta;
@@ -148,7 +148,7 @@
                                                           <th>
                                                             Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
 
-                                                            Monto <input type="text" name="egreso" class="form-control">
+                                                            Monto <input type="text" name="egreso" id="monto_egreso" class="form-control">
 
                                                            N° Comprobante <input type="text" name="n_comp" class="form-control">
                                                            Descripción <input type="text" name="concepto" class="form-control"> 
@@ -158,7 +158,7 @@
                                                         </tr>
                                                         <div class="modal-footer">
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button type="submit" class="btn btn-danger btn-xs remove-item">Guardar</button>
+                                                     <button type="submit" id="guardar_egreso" class="btn btn-danger btn-xs remove-item">Guardar</button>
                                                      </div>
                                                      </form>
                                                     </div>
@@ -233,6 +233,9 @@
 @section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+<script src="{{ URL::asset('js/feather.min.js')}}"></script>
+<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script> 
 @endsection
 
 @section('script-bottom')

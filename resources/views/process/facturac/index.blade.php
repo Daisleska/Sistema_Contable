@@ -74,18 +74,16 @@
              
                   <td>
                  
-                                            <a href="{{ route('facturac.pdf', $key->id_factura) }}" class="btn btn-primary mt-2"
-                                                data-toggle="tooltip" 
-                                                title="Generar pdf"> <i data-feather="save"></i>
-                                            </a>
+                   <a href="{{ route('facturac.pdf', $key->id_factura) }}" class="btn btn-primary mt-2" data-toggle="tooltip" title="Generar pdf"> <i data-feather="save"></i></a>
               
                        
                   
-                   <form action="{{ route('facturac.destroy', $key->id) }}" method="POST">
+                   <form name="formulario" action="{{ route('facturac.destroy', $key->id_factura) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
-                   </form>
+                           </form>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
+           
                    <br>
                </td>
 
@@ -117,3 +115,36 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar la factura?",
+        text : "Si elimina esta factura, todos los cambios alterados por ella regresaran a su estado original",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm, ){
+        if (confirm) {
+
+       document.formulario.submit();
+          }
+       });
+
+    }
+</script>

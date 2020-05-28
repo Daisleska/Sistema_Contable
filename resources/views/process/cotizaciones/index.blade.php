@@ -11,9 +11,8 @@
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
+                <li class="breadcrumb-item"><a href="/">home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">cotizaciones</li>
             </ol>
         </nav>
         <h4 class="mb-1 mt-0"></h4>
@@ -23,9 +22,10 @@
 
 @section('content')
 <div class="row">
-<div class="col-md-7"></div>
-<div class="col-md-5">
-  @include('flash::message')
+  <div class="col-md-7"></div>
+     <div class="col-md-5">
+        @include('flash::message')
+    </div>
 </div>
 <div class="row">
         <div class="col-12">

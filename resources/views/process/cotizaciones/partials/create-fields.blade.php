@@ -105,7 +105,7 @@
                      
 
 <div class="row">
-  <button type="button" style="margin-left: 1cm;" class="btn btn-info" data-toggle="modal" data-target="#mySmallModalLabel"><i data-feather="plus"></i>Agregar Producto</button>
+  <button type="button" id="boton" style="margin-left: 1cm;" class="btn btn-info" data-toggle="modal" data-target="#mySmallModalLabel"><i data-feather="plus"></i>Agregar Producto</button>
           <input type="hidden" id="ListaPro" name="ListaPro" value="" required />
        <table style="margin-left: 1cm; margin-right: 1cm;" id="TablaPro" class="table dt-responsive nowrap"><div class="row mb-3">
                            
@@ -130,7 +130,7 @@
 
                         </tbody>
                         <tfoot>
-                                    <tr><th colspan="3"></th><th>SUB TOTAL<span id="total"></span></th><th><input  style="width: 100px;" type="text" name="sub_total"  class="form-control" readonly="readonly" value="" > </th></tr>
+                                    <tr><th colspan="3"></th><th>SUB TOTAL<span id="total"></span></th><th><input  style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value="" > </th></tr>
 
                                      @foreach($descuento as $key)
                                     <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}}%</button><span></span></th>
@@ -229,99 +229,9 @@
 "></script> 
 
 <script>
-//Producto
-feather.replace();
+     
 
-      $("#codi").on('keyup',function (event) {
-
-        //asignar evento a la variable codigo
-        var cod = event.target.value;
-   // aignar el valor de codigo a la variable $producto
-    var product=$("#codi").val();
-    //si producto es mayor que 0
-    if(product.length>0){
-    //envio de datos a la ruta en web
-    $.get('/cotizacion/'+product+'/buscar_producto',function(data){
-      //resive el valor data de lo consultado en el controlador
-
-      // asignar a la variable result el valor de data
-      var resul = data;
-
-
-
-    /*  console.log(result);*/
-
-    //si result es menor o igual a 0 mostrar ese  mensaje
-      if (resul<=0) {
-        $("#mensaje2").text('Los datos no existen en el registro');
-
-
-      } else {
-        
-        $("#mensaje2").text('');
-
-        $('#nom').val(resul[0].nombre);
-
-        $('#pre').val(resul[0].precio);
-
-        $('#impor').val(importe);
-
-        $('#productos_id').val(resul[0].id);
-
-
-        
-
-      
-      }
-    });
-    }else{
-      $("#mensaje2").text('');
-      $("#nombre").val('');
-      $("#precio").val('');
-      $("#impor").val('');
-
-      
-    }
-  });
-
-//importe
-
-feather.replace();
-
-      $("#canti").on('keyup',function (event) {
-
-        //asignar evento a la variable codigo
-        var canti = event.target.value;
-   // aignar el valor de codigo a la variable $producto
-    var cant=$("#canti").val();
-    var preciot=$("#pre").val();
-
-    var importe=canti*preciot;
-
-    if (importe>0) {
-
-  
-    $('#impor').val(importe);
-
-
-    
-
-   }else{
-   
-    $('#impor').val('');
-   
-    
-   }
-   
-
-
-
-  });
-
-
-
-
-//agregar producto
+  //agregar producto
 function RefrescaProducto(){
         var ip = [];
         var i = 0;
@@ -380,6 +290,93 @@ function RefrescaProducto(){
                 RefrescaProducto();
            });
     }
+
+//Producto
+feather.replace();
+
+      $("#codi").on('keyup',function (event) {
+
+        //asignar evento a la variable codigo
+        var cod = event.target.value;
+   // aignar el valor de codigo a la variable $producto
+    var product=$("#codi").val();
+    //si producto es mayor que 0
+    if(product.length>0){
+    //envio de datos a la ruta en web
+    $.get('/cotizacion/'+product+'/buscar_producto',function(data){
+      //resive el valor data de lo consultado en el controlador
+
+      // asignar a la variable result el valor de data
+      var resul = data;
+
+
+
+    /*  console.log(result);*/
+
+    //si result es menor o igual a 0 mostrar ese  mensaje
+      if (resul<=0) {
+        $("#mensaje2").text('Los datos no existen en el registro');
+
+
+      } else {
+        
+        $("#mensaje2").text('');
+
+        $('#nom').val(resul[0].nombre);
+
+        $('#pre').val(resul[0].precio);
+
+        $('#impor').val(importe);
+
+        $('#productos_id').val(resul[0].id);
+      
+      }
+    });
+    }else{
+      $("#mensaje2").text('');
+      $("#nombre").val('');
+      $("#precio").val('');
+      $("#impor").val('');
+
+      
+    }
+  });
+
+//importe
+
+feather.replace();
+
+      $("#canti").on('keyup',function (event) {
+
+        //asignar evento a la variable codigo
+        var canti = event.target.value;
+   // aignar el valor de codigo a la variable $producto
+    var canti=$("#canti").val();
+    var preciot=$("#pre").val();
+    var importe =[canti*preciot];
+
+ 
+/*
+    if (importe.length = 1) {
+     var nuevo_importe =[canti*preciot];
+    Array.prototype.push.apply(importe, nuevo_importe);
+    console.log(importe);
+    }*/
+    if (importe>0) {
+
+    $('#impor').val(importe);
+
+    
+   }else{
+   
+    $('#impor').val('');  
+   }
+  });
+
+
+
+
+
 
 $(document).ready(function() {
     $("#boton").click(function(event) {
@@ -441,24 +438,29 @@ feather.replace();
 
   var cantidad = event.target.value;
   var cantidad = $("#canti").val();
+
   var importe = $("#impor").val();
+
+
   var des= $("#porcen").val();
 
- // console.log(importe);
-  
+  var x=[];
+  x.push(importe);
+
+
+let to = x.reduce((a, b)=> parseInt(a) + parseInt(b), 0);
+
   //campo precio por unidad 
 
-   var sub_total=0;
+   var sub_total = x;
+
   //var preciot =$("#pre").val();
   var iva =$("#iva").val();
 
-
     var descu=des/100;
-  
 
    //iva 
    iva=iva*sub_total/100;
-
 
    //total
    var monto_t=sub_total+iva;
@@ -469,7 +471,7 @@ feather.replace();
 
  
 
-   if (total>0) {
+   if (monto_t>0) {
     $('#mensaje3').text('');
     $('#sub_total').val(sub_total);
     $('#IVA').val(iva);
@@ -480,7 +482,6 @@ feather.replace();
 
    }else{
     $('#mensaje3').text('Debe ingresar la cantidad');
-
     $('#sub_total').val('');
     $('#IVA').val('');
     $('#monto_total').val('');
@@ -495,7 +496,10 @@ feather.replace();
   });
 
 
-
+/*var boton =document.getElementById("boton");
+    boton.onclick=function(e){
+      console.log('aja');
+    }*/
 
     </script>
 

@@ -10,18 +10,31 @@
     </li>
 
     <li class="menu-title">Registros</li>
+
+<?php
+   $x_empresa=\DB::select('SELECT * FROM empresa ');
+
+  if ($x_empresa) {
+
+   ?>
     <li>
         <a href="{{route('empresa.index')}}">
             <i data-feather="briefcase"></i>
             <span>Empresa</span>
         </a>
     </li>
-    {{--  <li>
-        <a href="{{route('users_view')}}">
+    <?php }elseif (empty($x_empresa)) { ?>
+
+     <li>
+        <a onclick="alert_empresa()">
             <i data-feather="briefcase"></i>
-            <span>eXCEL</span>
+            <span>Empresa</span>
         </a>
-    </li> --}}
+    </li>
+
+    <?php } ?>
+
+
     <li>
         <a href="{{ route('proveedores.index') }}">
             <i data-feather="truck"></i>
@@ -69,19 +82,51 @@
         </a>
     </li>
 
+<?php
+   $x=\DB::select('SELECT * FROM cuentas ');
+
+  if ($x) {
+
+   ?>
+
     <li>
         <a href="{{ route('cajachica.index') }}">
             <i data-feather="book-open"></i>
             <span>Caja Chica</span>
         </a>
     </li>
+<?php }elseif (empty($x)) {
+         ?>
+         <li>
+        <a onclick="alert_cajachica() ">
+            <i data-feather="book-open"></i>
+            <span>Caja Chica</span>
+        </a>
+    </li>
+    <?php } ?>
 
-    <li>
+
+<?php 
+$x_inventario=\DB::select('SELECT * FROM inventario');
+
+if ($x_inventario) {
+    ?>
+  <li>
         <a href="{{ route('inventario.index') }}">
             <i data-feather="book-open"></i>  
             <span>Inventario</span>
         </a>
     </li>
+    <?php }elseif (empty($x_inventario)) {
+        ?>
+        <li>
+        <a onclick="alert_inventario()">
+            <i data-feather="book-open"></i>  
+            <span>Inventario</span>
+        </a>
+    </li>
+    <?php } ?>
+    
 
     <li>
          <a href="{{ route('diario.index') }}">
@@ -106,3 +151,6 @@
         </a>
     </li>
   </ul>
+
+
+  @include('layouts.shared.alertas')

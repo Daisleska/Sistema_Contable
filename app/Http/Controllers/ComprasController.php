@@ -36,6 +36,15 @@ class ComprasController extends Controller
            $total_subtotal[]= $key->sub_total;
            $total_IVA[]= $key->iva;
          }
+
+         if ($total_total =0) {
+                            //TOTALES
+                         $total_total=0;
+                         $total_subtotal=0;
+                         $total_IVA=0;
+               
+                      //---------------------------------------
+                      }
           
         //fin
 
@@ -54,6 +63,14 @@ class ComprasController extends Controller
            $total_subventa[]= $key->sub_total;
            $total_IVA_venta[]= $key->iva;
          }
+
+         if ($total_venta = 0) {
+                             //TOTALES
+                         $total_venta=0;
+                         $total_subventa=0;
+                         $total_IVA_venta=0;
+                      //---------------------------------------
+                      }
         //FIN informacion de VEENTASS========================================================
 
        return view('process.compra_venta.index', compact('compra', 'venta','i', 'mesactual', 'meses','x','num','costo_t', 'total_total','total_subtotal','total_IVA'  , 'venta','total_venta','total_subventa','total_IVA_venta'));

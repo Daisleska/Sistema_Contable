@@ -6,6 +6,7 @@
 <!-- App css -->
 
 <link href="{{ URL::asset('Shreyu/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 
 @if(isset($isDark) && $isDark)
 <link href="{{ URL::asset('Shreyu/assets/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" />

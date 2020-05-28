@@ -31,8 +31,6 @@ class InventarioController extends Controller
            
            $costo_t[]= $key->precio* $key->existencia;
          }
-
-     /*     dd($costo_t);*/
   
        return view('process.inventario.index', compact('inventario','costo_t'));
     }

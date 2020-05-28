@@ -81,11 +81,20 @@
 
                       <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
                       <?php
-                      //TOTALES
+                      if ($total_total >0) {
+                            //TOTALES
                          $total_compra=array_sum($total_total);
                          $sub_total=array_sum($total_subtotal);
                          $iva_total=array_sum($total_IVA);
                       //---------------------------------------
+                      }else{
+                             //TOTALES
+                         $total_compra=0;
+                         $sub_total=0;
+                         $iva_total=0;
+                      //---------------------------------------
+                      }
+                 
                         ?>
 
 
