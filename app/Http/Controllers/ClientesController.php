@@ -79,8 +79,8 @@ class ClientesController extends Controller
      */
     public function edit($id_cliente)
     {
-        $cliente=cliente::find($id_cliente);
-        return view ('admin.clientes.edit', compact ('cliente'));
+        $clientes=cliente::find($id_cliente);
+        return view ('admin.clientes.edit', compact ('clientes'));
     }
 
     /**
@@ -90,7 +90,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_cliente)
+    public function update(Request $request, $id)
     {
          $buscar=cliente::where('ruf', $request->ruf)->where('id', '<>', $id)->get();
 

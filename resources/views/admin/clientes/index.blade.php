@@ -71,11 +71,12 @@
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                       </form>
                    <br><br>
-                   <form action="{{ route('clientes.destroy', $key->id) }}" method="POST">
+                   <form name="formulario" action="{{ route('clientes.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   
                    </form>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                   </td>
 
                 
@@ -103,3 +104,37 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar el Cliente?",
+        text : "Si elimina el Cliente, todos los datos del cliente seran eliminados",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+       document.formulario.submit();
+          }
+       });
+
+    }
+</script>
+

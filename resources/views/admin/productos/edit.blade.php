@@ -13,12 +13,12 @@
     </section>
 @endsection
 @section('content')
-<div class="content">
-	<div class="row">
-        <div class="col">
-          <div class="box">
+<div class="">
+	<div class="">
+        <div class="">
+          <div class="">
             <div class="box-header">
-              <h3 class="box-title">Modificar Productos</h3>
+              <h3 class="box-title" align="center">Modificar Productos</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

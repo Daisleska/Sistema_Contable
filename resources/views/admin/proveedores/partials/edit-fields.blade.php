@@ -1,9 +1,7 @@
 
-
 <div class="row form-group">
-
 	<div class="col col-md-2">
-		<label>Nombre de la Empresa</label>
+		<label>Nombre de la Empresa*</label>
 	</div>
 
 	<div class="col col-md-10">
@@ -15,13 +13,13 @@
 
 <div class="row form-group">
 	<div class="col col-md-2">
-		<label>RUF</label>
+		<label>RUF*</label>
 	</div>
-	<div class="col col-md-4">
+	<div class="col col-md-5">
 		<input type="text" name="tipo_documento" id="tipo_documento" title="Ingrese el tipo de documento" value="{{$proveedores->tipo_documento}}" required="required" class="form-control">
 	</div>
 
-	<div class="col col-md-4">
+	<div class="col col-md-5">
 		<input type="text" name="ruf" id="ruf" title="Ingrese el número de documento" value="{{$proveedores->ruf}}" required="required" class="form-control">
 	</div>
 </div>
@@ -31,7 +29,7 @@
 <div class="row form-group">
 
 	<div class="col col-md-2">
-		<label>Nombre</label>
+		<label>Nombre*</label>
 	</div>
 
 	<div class="col col-md-10">
@@ -43,9 +41,9 @@
 
 <div class="row form-group">
 <div class="col col-md-2">
-		<label>Dirección</label>
+		<label>Dirección*</label>
 	</div>
-	<div class="col col-md-4">
+	<div class="col col-md-10">
 		<input type="text" name="direccion" value="{{$proveedores->direccion}}"  id="direccion"  title="Ingrese la dirección" required="required" class="form-control">
 	</div>
 </div>
@@ -53,7 +51,7 @@
 <div class="row form-group">
 
 	<div class="col col-md-2">
-		<label>Correo</label>
+		<label>Correo*</label>
 	</div>
 
 	<div class="col col-md-10">
@@ -63,10 +61,10 @@
 
 <div class="row form-group">
 <div class="col col-md-2">
-		<label>Teléfono</label>
+		<label>Teléfono*</label>
 	</div>
-	<div class="col col-md-4">
-		<input type="text" name="telefono" value="{{$proveedores->telefono}}"  id="telefono"  title="Ingrese el número de  teléfono" required="required" class="form-control">
+	<div class="col col-md-10">
+		<input type="text" name="telefono" value="{{$proveedores->telefono}}"  id="telefono"  title="Ingrese el número de  teléfono" required="required" class="form-control" maxlength="12">
 	</div>
 </div>
 

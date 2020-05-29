@@ -18,14 +18,26 @@
         <div class="col">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Modificar Empresa</h3>
+              <h3 class="box-title" align="center">Modificar Empresa</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <form name="form" action="{{ route('empresa.update',$empresa->id)}}" method="PUT">
-                  @csrf
-              	@include('empresa.partials.edit-fields')
-              </form>
+            <style type="text/css">
+          .abs-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 20px;
+          }
+      
+    </style>
+            <div class="abs-center">
+
+              {!! Form::open(['route' => ['empresa.update', $empresa->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
+                @csrf
+            @include('admin.empresa.partials.edit-fields')
+
+              {!! Form::close() !!}
             </div>
             <!-- /.box-body -->
           </div>

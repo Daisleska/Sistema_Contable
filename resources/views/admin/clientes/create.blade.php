@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row" style="align-content: center;">
-    <div class="col-lg-6">
-        <div class="card">
+<div>
+    <div>
+        <div>
             <div class="card-body">
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Clientes</h4>
                 <p class="sub-header"></p>

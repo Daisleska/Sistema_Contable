@@ -20,8 +20,18 @@
             <div class="box-header">
 
             </div>
+            <style type="text/css">
+          .abs-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 20px;
+          }
+      
+    </style>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="abs-center">
 
              {!! Form::open(['route' => ['proveedores.update', $proveedores->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
                 @csrf

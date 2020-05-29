@@ -1,3 +1,73 @@
+<style type="text/css">
+          .abs-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        min-height: 20vh;
+          }
+      
+    </style>
+    <style type="text/css">
+          .b {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+      
+          }
+      
+    </style>
+    <style type="text/css">
+          .bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        
+          }
+      
+    </style>
+    <style type="text/css">
+          .var {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        
+          }
+      
+    </style>
+    <style type="text/css">
+          .abs{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        
+          }
+      
+    </style>
+    <style type="text/css">
+          .zz {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+                  }
+      
+    </style>
+    <style type="text/css">
+          .zl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+       
+          }
+      
+    </style>
+<div class="abs-center">
 <div class="row" style="margin-left: 0.3cm;">
     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre de la Empresa</label>
@@ -7,9 +77,9 @@
                         </div>
                     </div>
 </div>
+</div>
 
-
-
+<div class="b">
   <div class="row" style="margin-left: 0.3cm;">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">RUT</label>
@@ -36,6 +106,8 @@
 
                     </div>
     </div>
+    </div>
+    <div class="bar">
     <div class="row" style="margin-left: 0.3cm;">         
                 <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Correo</label>
@@ -45,7 +117,8 @@
                         </div>
                     </div>
     </div>
-
+</div>
+<div class="var">
     <div class="row" style="margin-left: 0.3cm;">
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección</label>
@@ -55,7 +128,8 @@
                         </div>
                     </div>
     </div>
-
+</div>
+<div class="abs">
      <div class="row" style="margin-left: 0.3cm;">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Código</label>
@@ -85,9 +159,10 @@
                        
                         </div>
                     </div>
+</div>
+</div>
 
-
-
+<div class="zz">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Imagen</label>
                         <input type="file" style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="image" id="image">
@@ -95,7 +170,8 @@
                        
                         </div>
                     </div>
-
+</div>
+<div class="zl">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Pie de página</label>
                          <input type="text" style="width: 310px; margin-left: 0.3cm;" class="form-control" placeholder="Ej: Dirección y Datos de contactos" name="page_foot" id="page_foot">
@@ -103,8 +179,7 @@
                         </div>
                     </div>
    </div>
+   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<button style="margin-left: 1cm;" class="btn btn-primary" type="submit">Guardar</button>
+   </div>
         
 
-                    <button style="margin-left: 1cm;" class="btn btn-primary" type="submit">Guardar</button>
-
-   

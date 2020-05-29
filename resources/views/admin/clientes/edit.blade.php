@@ -18,14 +18,15 @@
         <div class="col">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Modificar Clientes</h3>
+              <h3 class="box-title" align="center">Modificar Clientes</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+          
+            <div class="box">
               {!! Form::open(['route' => ['clientes.update', $clientes->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
                 @csrf
               	@include('admin.clientes.partials.edit-fields')
-              </form>
+              {!! Form::close() !!}
             </div>
             <!-- /.box-body -->
           </div>

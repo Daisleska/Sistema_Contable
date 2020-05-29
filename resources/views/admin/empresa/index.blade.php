@@ -66,19 +66,12 @@
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   
                    <td>
-                       <form action="{{ route('empresa.edit',$key->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
+                       <form action="{{ route('empresa.edit',$key->id) }}" method="GET">
+                       {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="EDITAR">
+                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
                    <br>
-                   <form action="{{ route('empresa.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
-                   </form>
-                   <br>
-
                    <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   </td>
 

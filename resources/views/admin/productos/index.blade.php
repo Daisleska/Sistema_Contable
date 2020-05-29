@@ -73,11 +73,11 @@
                         </form>
                         <br>
                   
-                   <form action="{{ route('productos.destroy', $key->id) }}" method="POST">
+                   <form name="formulario" action="{{ route('productos.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                    <br>
                  
                    <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
@@ -195,3 +195,37 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+
+
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar el Producto?",
+        text : "Si elimina el Producto, todos los datos del producto se eliminaran",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+       document.formulario.submit();
+          }
+       });
+
+    }
+</script>

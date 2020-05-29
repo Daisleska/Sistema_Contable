@@ -70,14 +70,15 @@
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
                        <br>
-                        <form action="{{ route('proveedores.destroy', $key->id) }}" method="POST">
+                        
+                        <form name="formulario" action="{{ route('proveedores.destroy', $key->id) }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                         </form>
+                        <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                     </td>
                 </tr>
-                @endforeach
+               @endforeach
                           
                              </tbody>
                     </table>
@@ -105,3 +106,36 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar el Proveedor?",
+        text : "Si elimina el Proveedor, todos los cambios alterados por ella regresaran a su estado original",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+       document.formulario.submit();
+          }
+       });
+
+    }
+</script>
