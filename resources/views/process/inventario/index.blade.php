@@ -51,7 +51,7 @@
                     </a>
                 </div>
             </div>
-                    </div>
+                    </div>  
                       @foreach($inventario as $key)
                        <?php
                         $existencia=$key->existencia;

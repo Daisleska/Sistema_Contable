@@ -80,7 +80,7 @@
 
                                  use App\cuenta;
 
-                                $cuenta=DB::table ('cuentas')->select('saldo')->get();
+                                $cuenta=DB::table ('cuentas')->select('saldo')->where('nombre', '=', 'Caja Chica')->get();
                                 ?>
                                 @foreach($cuenta as $key)
                                 {{number_format($key->saldo,2,',','.')}}</th>

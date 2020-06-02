@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\UserExport;
 use App\Exports\InventarioExport;
-
+use App\Exports\BitacoraExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -26,5 +26,12 @@ class ExcelController extends Controller
         //dd("DSA");
         return Excel::download(new InventarioExport, 'Inventario_view.xlsx');
     }
+    
 
+    public function bitacora_view() 
+    {
+        //dd("DSA");
+        return Excel::download(new BitacoraExport, 'Bitacora
+            _view.xlsx');
+    }
 }

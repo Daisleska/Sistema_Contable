@@ -30,6 +30,7 @@ Route::resource('empresa', 'EmpresaController');
 Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
+
 Route::resource('cotizacion', 'CotizacionesController');
 Route::resource('cuentas', 'CuentasController');
 
@@ -55,6 +56,8 @@ Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate'
 // Reportes en PDF
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
+Route::get('bitacora.pdf', 'BitacoraController@pdf')->name('bitacora.pdf');
+Route::get('diario.pdf', 'DiarioController@pdf')->name('diario.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
 Route::get('cajachica.egreso','CajaChicaController@egreso')->name('cajachica.egreso');
@@ -64,6 +67,7 @@ Route::get('cotizacion.pdf/{id_cotizacion}', 'CotizacionesController@pdf')->name
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');
 Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');
+Route::get('bitacora_view', 'ExcelController@bitacora_view')->name('bitacora_view');
 
 
 /*rutas para el backup*/

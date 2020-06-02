@@ -32,7 +32,7 @@
                         <div class="col-md-5">
                         <div class="form-group mt-3 mt-sm-0">
                             <label>Cuentas</label>
-                            <select  name="cuenta_id[]" required="required" data-plugin="customselect" class="form-control" data-placeholder="Seleccione la cuenta">
+                            <select  name="de_cuentas" required="required" data-plugin="customselect" class="form-control" data-placeholder="Seleccione la cuenta">
                                  @foreach($cuentas as $key)
                                 <option></option>
                                 <option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>
@@ -47,7 +47,7 @@
                         <div class="col-md-5">
                         <div class="form-group mt-3 mt-sm-0">
                             <label>Cuentas</label>
-                            <select  name="cuenta_id[]" required="required" data-plugin="customselect" class="form-control" data-placeholder="Seleccione la cuenta">
+                            <select  name="a_cuentas" required="required" data-plugin="customselect" class="form-control" data-placeholder="Seleccione la cuenta">
                                  @foreach($cuentas as $key)
                                 <option></option>
                                 <option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>

@@ -53,11 +53,33 @@
                          <?php
                         }
                         ?>
+                    </tr>
 
                     <th style="align-content: right;">
                      <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
-                   </th>
-                        </tr>
+                  
+            
+                       <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                   <a href="#" class="dropdown-item notify-item">
+                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
+                        <span>Excel</span>
+                    </a>
+                    <a href="{{ route('diario.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                    <a href="javascript:window.print()" class="dropdown-item notify-item">
+                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
+                        <span>Imprimir</span>
+                    </a>
+                
+                    </div></div></th>
+                  </tr>
 
                     </table>
                   
@@ -83,26 +105,28 @@
                     
                         <tbody  style="font-size: 11px; ">
                        @foreach($diario as $key)  
+                       
                 <tr style=" border-bottom: 0.5px; border-style: solid; " >
                   <td>{{$key->fecha}}</td>
-                  <td>{{$key->nombre}} <hr>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$key->descripcion}}</td>
+                  <td>{{$key->nombre}}<hr> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$key->descripcion}}</td>
                   <td>{{$key->cuenta_id}}</td>
                   <?php
                   if ($key->debe_haber =='debe') {  
                    ?>
-                  <td>{{$key->monto}}</td>
+                  <td>{{number_format($key->monto,2,',','.')}}</td>
                  
-                  <td> <hr> {{$key->monto}}</td>
+                  <td> <hr>{{number_format($key->monto,2,',','.')}}</td>
                   <?php }elseif($key->debe_haber =='haber') {
                     ?>
-                  <td> <hr>{{$key->monto}}</td>
-                   <td>{{$key->monto}}</td>
+                  <td> <hr>{{number_format($key->monto,2,',','.')}}</td>
+                   <td>{{number_format($key->monto,2,',','.')}}</td>
                     <?php }?>
                 
                 </tr>
               
            
                           @endforeach
+                           
                              </tbody>
                     </table>
 
