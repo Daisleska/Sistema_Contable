@@ -84,11 +84,7 @@
                    <br>
                  
                   </td>
-             
-                  
-                  
 
-                
                 </tr>
                 @endforeach
                           

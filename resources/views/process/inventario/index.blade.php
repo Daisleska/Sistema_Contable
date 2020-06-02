@@ -86,7 +86,7 @@
                                 <th>Código</th>
                                 <th>Existencia</th>
                                 <th>Unidad</th>
-                                <th>Costo</th>
+                                <th>Costo C/u</th>
                                 <th>Costo total</th>
                             </tr>
                         </thead>

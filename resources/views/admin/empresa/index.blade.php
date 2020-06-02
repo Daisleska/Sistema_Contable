@@ -33,8 +33,6 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
-                   
-                       
                     
                     
                     <a href="{{ route('empresa.create') }}" class="btn btn-outline-primary">
@@ -57,6 +55,12 @@
                     
                     
                         <tbody>
+                          <?php if ($empresa==0) { ?>
+                             @include('no_registros')
+
+                       <?php   }else{ ?>
+                        
+
                             @foreach($empresa as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
@@ -134,6 +138,7 @@
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
+                                        <?php }?>
 
 
  <script type="text/javascript">

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\proveedor;
-use App\Bitacora;
+use Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

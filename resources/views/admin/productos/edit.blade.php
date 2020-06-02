@@ -13,18 +13,18 @@
     </section>
 @endsection
 @section('content')
-<div class="">
-	<div class="">
-        <div class="">
-          <div class="">
+<div class="content">
+	<div class="row">
+        <div class="col">
+          <div class="box">
             <div class="box-header">
-              <h3 class="box-title" align="center">Modificar Productos</h3>
+              <h3 class="box-title">Modificar Productos</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {!! Form::open(['route' => ['productos.update', $productos->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
-                @csrf
-                @include('admin.productos.partials.edit-fields')
+              <form name="form" action="{{ route('productos.update',$productos->id)}}" method="PUT">
+                  @csrf
+              	@include('productos.partials.edit-fields')
               </form>
             </div>
             <!-- /.box-body -->

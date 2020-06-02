@@ -34,25 +34,69 @@
 
     <?php } ?>
 
+<?php
+   $x_proveedores=\DB::select('SELECT * FROM proveedores ');
 
+  if ($x_proveedores) { ?>
     <li>
         <a href="{{ route('proveedores.index') }}">
             <i data-feather="truck"></i>
             <span> Proveedores </span>
         </a>
    </li>
+    <?php }elseif (empty($x_proveedores)) {  ?>
+   <li>
+        <a href="{{ route('proveedores.create') }}">
+            <i data-feather="truck"></i>
+            <span> Proveedores </span>
+        </a>
+   </li>
+   <?php } ?>
+
+
+   <?php
+   $x_producto=\DB::select('SELECT * FROM productos ');
+
+  if ($x_producto) {
+
+   ?>
    <li>
         <a href="{{ route('productos.index') }}">
             <i data-feather="clipboard"></i>
             <span> Productos </span>
         </a>
     </li>
+
+    <?php }elseif (empty($x_producto)) {
+    ?>
+   <li>
+        <a href="{{ route('productos.create') }}">
+            <i data-feather="clipboard"></i>
+            <span> Productos </span>
+        </a>
+    </li>
+    <?php } ?>
+    <?php
+   $x_clientes=\DB::select('SELECT * FROM clientes ');
+
+  if ($x_clientes) {
+
+   ?>
     <li>
         <a href="{{ route('clientes.index') }}">
             <i data-feather="user-plus"></i>
             <span> Clientes </span>
         </a>
     </li>
+<?php }elseif (empty($x_clientes)) { ?>
+ <li>
+        <a href="{{ route('clientes.create') }}">
+            <i data-feather="user-plus"></i>
+            <span> Clientes </span>
+        </a>
+    </li>
+  <?php } ?>
+  
     <li>
         <a href="{{ route('cuentas.index') }}">
             <i data-feather="plus"></i>

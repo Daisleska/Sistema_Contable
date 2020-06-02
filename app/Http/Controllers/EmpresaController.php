@@ -17,8 +17,11 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-       $empresa = empresa::all();
-       return view('admin.empresa.index', compact('empresa'));
+       $empresa = \DB::select('SELECT * FROM empresa');
+       if (empty($empresa)) {
+        $empresa=0; 
+       }
+         return view('admin.empresa.index', compact('empresa'));
     }
 
     /**

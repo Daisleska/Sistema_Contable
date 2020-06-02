@@ -43,7 +43,7 @@
                      <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
-                    <th>Nombre de la Empresa</th>
+                                <th>Nombre de la Empresa</th>
                                 <th>RUF</th>
                                 <th>Representante</th>
                                 <th>Direccion</th>
@@ -55,7 +55,7 @@
                     
                     
                         <tbody>
-                    @foreach($proveedores as $key)
+                            @foreach($proveedores as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
@@ -64,21 +64,18 @@
                   <td>{{$key->correo}}</td>
                   <td>{{$key->telefono}}</td>
                   <td>
-                        <form action="{{ route('proveedores.edit',$key->id) }}" method="GET">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="EDITAR">
-                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form>
-                       <br>
                         
-                        <form name="formulario" action="{{ route('proveedores.destroy', $key->id) }}" method="POST">
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+                    
+                       <br>
+                        <form id="f_eliminar" action="{{ route('proveedores.destroy', $key->id) }}" method="POST" name="formulario">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         </form>
-                        <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_pro()" title="Eliminar"><i data-feather="trash-2"></i></button>
                     </td>
                 </tr>
-               @endforeach
+                @endforeach
                           
                              </tbody>
                     </table>
@@ -108,7 +105,7 @@
 @endsection
 
 <script type="text/javascript">
-      function alert_eliminar(){
+      function alert_eliminar_pro(){
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar el Proveedor?",
@@ -132,10 +129,10 @@
 
        }).then(function(confirm){
         if (confirm) {
-
-       document.formulario.submit();
+           document.getElementById('f_eliminar').submit();
           }
        });
 
     }
 </script>
+
