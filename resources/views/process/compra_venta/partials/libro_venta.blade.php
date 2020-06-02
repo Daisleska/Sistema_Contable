@@ -3,16 +3,16 @@
                             <tr style="color: black;">
                                 <th COLSPAN="13" style="text-align: center;">LIBRO DE VENTAS</th>
                             </tr>
-                            <tr style="color: black; font-size: 12px;">
+                            <tr style="color: black; font-size: 11px;">
                                 <th>Nº</th>
                                 <th>FEC</th>
                                 <th>Nº.FACT</th>
                                 <th>Nº. CONTR</th>
                                 <th>CLIENTE</th>
                                 <th>RUT</th>
-                                <th>TOTAL VENTAS</th>
-                                <th>VENTAS EXENTAS</th>
-                                <th>VENTAS GRAVADAS</th>
+                                <th>TOTAL VENTA</th>
+                                <th>VENTA EXENTA</th>
+                                <th>VENTA GRAVADA</th>
                                 <th>TASA</th>
                                 <th>IMPUEST</th>
                                 <th>MONTO RETENIDO</th>

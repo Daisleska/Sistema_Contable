@@ -1,3 +1,5 @@
+
+
 <div class="row" style="margin-left: 0.3cm;">
     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre de la Empresa</label>
@@ -7,7 +9,6 @@
                         </div>
                     </div>
 </div>
-
 
 
   <div class="row" style="margin-left: 0.3cm;">
@@ -35,7 +36,9 @@
                         </div>
 
                     </div>
+
     </div>
+
     <div class="row" style="margin-left: 0.3cm;">         
                 <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Correo</label>
@@ -45,6 +48,7 @@
                         </div>
                     </div>
     </div>
+
 
     <div class="row" style="margin-left: 0.3cm;">
                   <div class="form-group mb-3">
@@ -85,8 +89,7 @@
                        
                         </div>
                     </div>
-
-
+</div>
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Imagen</label>
@@ -103,8 +106,7 @@
                         </div>
                     </div>
    </div>
+
+     <button style="margin-left: 0.6cm;" class="btn btn-primary" type="submit">Guardar</button>
         
 
-                    <button style="margin-left: 1cm;" class="btn btn-primary" type="submit">Guardar</button>
-
-   

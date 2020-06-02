@@ -18,13 +18,12 @@
         <div class="col">
           <div class="box">
             <div class="box-header">
-
+              <h3 class="box-title">Modificar Proveedor</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
-             {!! Form::open(['route' => ['proveedores.update', $proveedores->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
-                @csrf
+              {!! Form::open(['route' => ['proveedores.update',$proveedores->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
+                  @csrf
               	@include('admin.proveedores.partials.edit-fields')
               </form>
             </div>

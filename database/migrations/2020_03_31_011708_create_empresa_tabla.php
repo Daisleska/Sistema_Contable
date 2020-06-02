@@ -21,7 +21,7 @@ class CreateEmpresaTabla extends Migration
             $table->string('email')->unique();
             $table->string('direccion');
             $table->string('codigo');
-            $table->integer('telefono');
+            $table->text('telefono');
             $table->string('image_name');
             $table->string('url_image');
             $table->text('page_foot');

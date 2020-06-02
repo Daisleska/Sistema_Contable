@@ -1,6 +1,7 @@
+<p>Campos obligatorios (*)</p>
 <div class="row" style="margin-left: 0.3cm;">
 <div class="form-group mb-3">
-                    <label style="margin-left: 0.3cm;">Código</label>
+                    <label style="margin-left: 0.3cm;">Código *</label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control"  value="{{ old('codigo') }}" placeholder="CA08" required>
                         <div class="valid-feedback">
                         </div>
@@ -9,7 +10,7 @@
 
 <div class="row" style="margin-left: 0.3cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Nombre</label>
+                        <label style="margin-left: 0.3cm;">Nombre *</label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control"  value="{{ old('nombre') }}" placeholder="Landing Page" required>
                         <div class="valid-feedback">
                         </div>
@@ -19,7 +20,7 @@
 <div class="row" style="margin-left: 0.3cm;">
                     
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Descripción</label>
+                        <label style="margin-left: 0.3cm;">Descripción </label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control"  value="{{ old('descripcion') }}" placeholder="" required>
                         <div class="valid-feedback">
                            
@@ -30,7 +31,7 @@
 <div class="row" style="margin-left: 0.3cm;">
 
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Existencia</label>
+                        <label style="margin-left: 0.3cm;">Existencia *</label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control"  name="existencia" value="{{ old('existencia') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
@@ -41,7 +42,7 @@
 <div class="row" style="margin-left: 0.3cm;">
 
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Unidad</label>
+                        <label style="margin-left: 0.3cm;">Unidad *</label>
                        
                         <select style="width: 380px; margin-left: 0.3cm;" class="form-control"  name="unidad">
                                     <option>Seleccione</option>
@@ -68,7 +69,7 @@
 
 
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Precio</label>
+                        <label style="margin-left: 0.3cm;">Precio c/u *</label>
                         <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control" name="precio" value="{{ old('precio') }}" placeholder="200.800,00" required>
                         <div class="valid-feedback">
                        
@@ -79,19 +80,16 @@
 <div class="row" style="margin-left: 0.3cm;">
 
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Stock Mínimo</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ old('stock_min') }}" placeholder="" required>
+                        <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Mínimo *</label>
+                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ old('stock_min') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
-</div>
 
-<div class="row" style="margin-left: 0.3cm;">
-                    
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Stock Máximo</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ old('stock_max') }}" placeholder="" required>
+                        <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Máximo *</label>
+                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ old('stock_max') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -101,4 +99,3 @@
 
 
 
-</div>

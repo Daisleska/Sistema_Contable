@@ -20,7 +20,7 @@ class CreateClientesTabla extends Migration
             $table->string('ruf')->unique();;
             $table->string('email')->unique();
             $table->string('direccion');
-            $table->integer('telefono');
+            $table->text('telefono');
             $table->timestamps();
         });
     }

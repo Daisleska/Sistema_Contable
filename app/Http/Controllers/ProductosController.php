@@ -109,10 +109,10 @@ class ProductosController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit( $id_producto)
     {
-        $producto=producto::find($id);
-        return view ('admin.productos.edit', compact ('producto'));
+        $productos=producto::find($id_producto);
+        return view ('admin.productos.edit', compact ('productos'));
     }
 
     /**
@@ -122,7 +122,7 @@ class ProductosController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id_producto)
+    public function update(Request $request,$id)
     {
          $buscar=producto::where('codigo', $request->codigo)->where('id', '<>', $id)->get();
 

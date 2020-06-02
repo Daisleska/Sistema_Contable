@@ -17,8 +17,11 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-       $empresa = empresa::all();
-       return view('admin.empresa.index', compact('empresa'));
+       $empresa = \DB::select('SELECT * FROM empresa');
+       if (empty($empresa)) {
+        $empresa=0; 
+       }
+         return view('admin.empresa.index', compact('empresa'));
     }
 
     /**
@@ -110,7 +113,7 @@ class EmpresaController extends Controller
      */
     public function edit($id_empresa)
     {
-         $empresa=empresa::find($id_cliente);
+         $empresa=empresa::find($id_empresa);
         return view ('admin.empresa.edit', compact ('empresa'));
     }
 
@@ -121,9 +124,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update (Request $request, $id)
     {
-
+           /** dd($request);*/
           if ($request->file('image')!=="") {
             $this->validate($request, [
             'image.*' => 'mimes:jpeg,jpg,png',

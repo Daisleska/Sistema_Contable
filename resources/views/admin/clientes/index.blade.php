@@ -23,12 +23,6 @@
 
 @section('content')
 <div class="row">
-        <div class="col-md-7" ></div>
-        <div class="col-md-5">
-            @include('flash::message')
-        </div>
-</div>
-<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -65,17 +59,18 @@
                   <td>{{$key->telefono}}</td>
                   
                    <td>
-                       <form action="{{ route('clientes.edit',$key->id) }}" method="GET">
+                       <form action="{{ route('clientes.edit',$key->id) }}" method="POST">
                         {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="EDITAR">
-                        <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                      </form>
-                   <br><br>
-                   <form action="{{ route('clientes.destroy', $key->id) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
+                        </form>
+                   <br>
+                    <form id="f_eliminar" name="formulario" action="{{ route('clientes.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   
                    </form>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                   </td>
 
                 
@@ -93,9 +88,7 @@
 @endsection
 
 @section('script')
-<script type="text/javascript">
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-</script>
+<!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection
 
@@ -103,3 +96,36 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar el Cliente?",
+        text : "Si elimina el Cliente, todos los datos del cliente seran eliminados",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+        document.getElementById('f_eliminar').submit();
+          }
+       });
+
+    }
+</script>

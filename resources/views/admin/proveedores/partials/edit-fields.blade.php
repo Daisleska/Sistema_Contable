@@ -1,5 +1,3 @@
-
-
 <div class="row form-group">
 
 	<div class="col col-md-2">

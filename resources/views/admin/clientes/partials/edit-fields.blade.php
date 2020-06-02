@@ -1,7 +1,9 @@
+<p>Campos obligatorios (*)</p>
+
 <div class="row form-group">
 
 	<div class="col col-md-2">
-		<label>Nombre</label>
+		<label>Nombre *</label>
 	</div>
 
 	<div class="col col-md-10">
@@ -12,7 +14,7 @@
 
 <div class="row form-group">
 	<div class="col col-md-2">
-		<label>RUF</label>
+		<label>RUF *</label>
 	</div>
 	<div class="col col-md-4">
 		<input type="text" name="tipo_documento" id="tipo_documento" title="Ingrese el tipo de documento" value="{{$clientes->tipo_documento}}" required="required" class="form-control">
@@ -27,7 +29,7 @@
 <div class="row form-group">
 
 	<div class="col col-md-2">
-		<label>Correo</label>
+		<label>Correo *</label>
 	</div>
 
 	<div class="col col-md-10">
@@ -37,7 +39,7 @@
 
 <div class="row form-group">
 <div class="col col-md-2">
-		<label>Dirección</label>
+		<label>Dirección *</label>
 	</div>
 	<div class="col col-md-4">
 		<input type="text" name="direccion" value="{{$clientes->direccion}}"  id="direccion"  title="Ingrese la dirección" required="required" class="form-control">
@@ -46,10 +48,10 @@
 
 <div class="row form-group">
 <div class="col col-md-2">
-		<label>Teléfono</label>
+		<label>Teléfono *</label>
 	</div>
 	<div class="col col-md-4">
-		<input type="text" name="telefono" value="{{$clientes->telefono}}"  id="telefono"  title="Ingrese el número de  teléfono" required="required" class="form-control">
+		<input type="text" name="telefono" value="{{$clientes->telefono}}"  id="telefono" maxlength="13"  title="Ingrese el número de  teléfono" required="required" class="form-control">
 	</div>
 </div>
 

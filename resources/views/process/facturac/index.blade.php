@@ -75,13 +75,12 @@
                   <td>
                  
                    <a href="{{ route('facturac.pdf', $key->id_factura) }}" class="btn btn-primary mt-2" data-toggle="tooltip" title="Generar pdf"> <i data-feather="save"></i></a>
-              
-                       
+                                
                   
-                   <form name="formulario" action="{{ route('facturac.destroy', $key->id_factura) }}" method="POST">
+                <form name="formulario" action="{{ route('facturac.destroy' , $key->id_factura) }}" method="POST">
                    {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                           </form>
+                    <input type="hidden" name="_method" value="DELETE">
+                </form>
                    <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
            
                    <br>
@@ -139,7 +138,7 @@
              
         },
 
-       }).then(function(confirm, ){
+       }).then(function(confirm ){
         if (confirm) {
 
        document.formulario.submit();

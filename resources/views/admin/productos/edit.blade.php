@@ -22,9 +22,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              {!! Form::open(['route' => ['productos.update', $productos->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
-                @csrf
-                @include('admin.productos.partials.edit-fields')
+              <form name="form" action="{{ route('productos.update',$productos->id)}}" method="PUT">
+                  @csrf
+              	@include('productos.partials.edit-fields')
               </form>
             </div>
             <!-- /.box-body -->
