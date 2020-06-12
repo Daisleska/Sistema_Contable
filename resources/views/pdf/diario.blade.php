@@ -106,50 +106,130 @@
     </div>
 
 
-             <h2 style="text-align: center;">Libro Diario</h2> <br>
+
              
-                            <table border="1" >
-               
-
-                    <thead class=>
-                        <tr>
-                            <th id="alto">Fecha</th>
-                            <th id="alto">Cuenta y Descripción</th>
-                            <th id="alto">Ref</th>
-                            <th id="alto">Debe</th>
-                            <th id="alto">Haber</th>
+             
+                        <table style="border-color: black; border: 1px; width: 800px;  " border="1">
+                        <thead>
+                            <tr style="color: black;">
+                                <th COLSPAN="5" style="text-align: center;">LIBRO DIARIO</th>
+                            </tr>
+                            <tr style="color: black; font-size: 12px;">
+                                
+                                <th style="text-align: center;">FECHA</th>
+                                <th style="text-align: center;">CUENTA Y DESCRIPCIÓN</th>
+                                <th style="text-align: center;">REF.</th>
+                                <th style="text-align: center;">DEBE</th>
+                                <th style="text-align: center;">HABER</th>
+                                
                             
-                       
-
-
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        @foreach($diario as $key)  
+                            </tr>
+                        </thead>
+                    
+                    
+                <tbody>
+                <?php   foreach($diario as $key)  { ?>
                        
                 <tr style=" border-bottom: 0.5px; border-style: solid; " >
-                  <td>{{$key->fecha}}</td>
-                  <td>{{$key->nombre}}<hr> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{$key->descripcion}}</td>
-                  <td>{{$key->cuenta_id}}</td>
-                  <?php
-                  if ($key->debe_haber =='debe') {  
-                   ?>
-                  <td>{{number_format($key->monto,2,',','.')}}</td>
+                  <td style="text-align: center;"><?php echo $key->fecha; ?></td>
+
+                <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
                  
-                  <td> <hr>{{number_format($key->monto,2,',','.')}}</td>
-                  <?php }elseif($key->debe_haber =='haber') {
-                    ?>
-                  <td> <hr>{{number_format($key->monto,2,',','.')}}</td>
-                   <td>{{number_format($key->monto,2,',','.')}}</td>
-                    <?php }?>
+                 <td>
+                   &nbsp;__________________________  <?php echo $i++;  ?>  __________________________<br><br>
+                 <?php   foreach($de_cuentas as $val) { 
                 
-                </tr>
-              
-           
+                  echo $val->nombre;  ?><br><?php } ?>&nbsp; &nbsp; &nbsp; &nbsp;
+
+                <?php $a_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.a_monto FROM cuentas, cuenta_has_diario WHERE cuentas.id=cuenta_has_diario.c_destino AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
+
+                 <?php  foreach($a_cuentas as $item)  { ?> 
+                 <?php echo $item->nombre; ?><br>&nbsp; &nbsp; &nbsp; &nbsp; <?php  } ?>
+                <hr> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $key->descripcion; ?></td>
+                
+                <td style="text-align: center; color: black; border: solid;"><br>
+                <?php   foreach($de_cuentas as $val) { 
+
+                
+
+                $cuenta=DB::table ('cuentas')->select('codigo')->where('id',$val->id )->get();
+                 ?>
+                 @foreach($cuenta as $key)
+                 {{$key->codigo}} @endforeach<br> <?php } 
+                 foreach($a_cuentas as $item)  { 
+
+                 
+
+                 $cuent=DB::table ('cuentas')->select('codigo')->where('id', $item->id )->get();
+
+                ?>
+                @foreach($cuent as $val)
+                 {{$val->codigo}} @endforeach<br> <?php } ?>
+
+
+
+                </td>
+                
+                <td style="text-align: center; color: black; border: solid;"><br>
+                <?php   foreach($de_cuentas as $val) { 
+                 
+                 echo number_format($val->de_monto,2,',','.'); 
+                $activo[]= $val->de_monto;
+                 
+                  ?> <br> <?php }?> 
+                   
+                </td>
+                <td style="text-align: center;"><br><br>
+
+                  
+                  <?php 
+
+                 
+                 $l=count($de_cuentas);
+                 
+
+                 for ($i=0; $i < $l; $i++) { 
+
+                   ?><br> <?php
+                 }
+                 foreach ($a_cuentas as $item) {
+                  
+                echo number_format($item->a_monto,2,',','.'); 
+                 $pasivo[]= $item->a_monto;
+                 
+                  ?> <br> <?php }?> 
+                 
+                  
+                 
+                 
+                
+                  
+                </td>
+
+                
+
+                
+                
+
+                
+                  
+               
+                             </tbody>
+                            <?php  }?>
+                          <tr >
+                                <?php $debe=array_sum($activo);
+                                $haber=array_sum($pasivo);  ?>
+                                <td colspan="3" style="text-align: center;">VAN</td>
+                                <td>{{number_format($debe,2,',','.')}}</td>
+                                <td>{{number_format($haber,2,',','.')}}</td>
+                          </tr>
                           
-                    </tbody>
-                    @endforeach
-                </table>
+                        
+                         
+                               
+                              
+                    </table>
+
         
 
 </body>

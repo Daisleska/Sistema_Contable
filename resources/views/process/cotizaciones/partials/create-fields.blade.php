@@ -118,53 +118,41 @@
                                 <th>Valor de unidad</th>
                                 <th>Importe</th>
                                 <th>Opciones</th>
-                          
-                              
-
-                            
                             </tr>
                         </thead>
+
+     <tbody id="ProSelected">
+
+            </tbody>
+              <tfoot>
+                                   
+                   <tr><th colspan="3"></th><th>SUB TOTAL<span id="total"></span></th><th><input  style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value="" > </th></tr>
+
+                  @foreach($descuento as $key)
+                  <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}}%</button><span></span></th>
+                  <th><input style="width: 100px;" type="text" name="descuento" id="descuent" class="form-control" readonly="readonly" value=""></th>
+
+                  <input type="hidden" name="p_des" id="porcen" value="{{$key->porcen}}">
+                  @endforeach
+                  </tr>
+
+                  @foreach($iva as $key)
+
+                  <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}% </button><span></span></th>
+                  <th><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></th>
                     
-                    
-                        <tbody id="ProSelected">
+                  <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
+                  @endforeach
+                  </tr>
 
-                        </tbody>
-                        <tfoot>
-                                    <tr><th colspan="3"></th><th>SUB TOTAL<span id="total"></span></th><th><input  style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value="" > </th></tr>
-
-                                     @foreach($descuento as $key)
-                                    <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}}%</button><span></span></th>
-                                      <th><input style="width: 100px;" type="text" name="descuento" id="descuent" class="form-control" readonly="readonly" value=""></th>
-
-                                      <input type="hidden" name="p_des" id="porcen" value="{{$key->porcen}}">
-                                      @endforeach
-                                    </tr>
-
-                                    @foreach($iva as $key)
-
-                                    <tr><th colspan="3"></th><th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}% </button><span></span></th>
-                                    <th><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></th>
-                    
-                                    <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
-                                    @endforeach
-                                    </tr>
-
-                                    <tr><th colspan="3"></th><th>TOTAL<span id=""></span></th><th><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></th></tr>
-
-
-
-                              
-                                    
-
-                 
-
-                             </tfoot>
+                  <tr><th colspan="3"></th><th>TOTAL<span id=""></span></th><th><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></th></tr>
+                  </tfoot>
                            
-                <tr>
+                 <tr>
 
-                </td>
+             </td>
                 
-                </tr>
+           </tr>
 
     </tbody>
   </table>
@@ -198,15 +186,11 @@
                                     <th>Nombre<input type="text" name="nom" id="nom" class="form-control" readonly="readonly"></th>
                                     <th>Precio<input type="text" name="pre" id="pre" class="form-control" readonly="readonly"></th>
                                     <th>Cantidad<input type="text" name="canti" id="canti" class="form-control"></th>
-                                   
-                                  
                              
                                     <input type="hidden" name="imp" id="impor">
 
                                     <input type="hidden" name="productos_id" id="productos_id" value="">
 
-                                  
-                         
 
                     <div class="modal-footer">
                         <!--Uso la funcion onclick para llamar a la funcion en javascript-->
@@ -265,14 +249,14 @@ function RefrescaProducto(){
             
             var newtr = '<tr class="item"  data-id="'+sel+'">';
 
-            newtr = newtr + '<td><input style="width: 100px;" type="text" name="codigo" disabled="disabled" class="form-control" id="cod" value="'+cod+'"></td>';
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="codigo[]" disabled="disabled" class="form-control" id="cod" value="'+cod+'"></td>';
 
-            newtr = newtr + '<td><input style="width: 180px;" type="text" name="nombre" id="nombre" disabled="disabled" class="form-control"  value="'+nom+'"></td>';
-            newtr = newtr + '<td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control" disabled="disabled" value="'+cant+'"></td>';
+            newtr = newtr + '<td><input style="width: 180px;" type="text" name="nombre[]" id="nombre" disabled="disabled" class="form-control"  value="'+nom+'"></td>';
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="cantidad[]" id="cantidad" class="form-control" disabled="disabled" value="'+cant+'"></td>';
 
-            newtr = newtr + '<td><input style="width: 100px;" type="text" name="precio" id="precio" disabled="disabled" class="form-control"  value="'+pre+'"></td>';
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="precio[]" id="precio" disabled="disabled" class="form-control"  value="'+pre+'"></td>';
 
-            newtr = newtr + '<td><input style="width: 100px;" type="text" name="importe" id="importe" disabled="disabled" class="form-control"  value="'+impor+'"></td>';
+            newtr = newtr + '<td><input style="width: 100px;" type="text" name="importe[]" id="importe" disabled="disabled" class="form-control"  value="'+impor+'"></td>';
 
             newtr = newtr + '<td><button type="button" class="btn btn-danger btn-xs remove-item">x</button></td></tr>';
             
@@ -353,9 +337,8 @@ feather.replace();
    // aignar el valor de codigo a la variable $producto
     var canti=$("#canti").val();
     var preciot=$("#pre").val();
-    var importe =[canti*preciot];
+    var importe =canti*preciot;
 
- 
 /*
     if (importe.length = 1) {
      var nuevo_importe =[canti*preciot];
@@ -434,7 +417,8 @@ feather.replace();
 //Producto
 
 
-  $("#canti").on('keyup', function(event){
+ 
+$("#canti").on('keyup', function(event){
 
   var cantidad = event.target.value;
   var cantidad = $("#canti").val();
@@ -469,8 +453,6 @@ let to = x.reduce((a, b)=> parseInt(a) + parseInt(b), 0);
 
    var monto_total=monto_t-descuent;
 
- 
-
    if (monto_t>0) {
     $('#mensaje3').text('');
     $('#sub_total').val(sub_total);
@@ -489,18 +471,8 @@ let to = x.reduce((a, b)=> parseInt(a) + parseInt(b), 0);
    
     
    }
-   
-
-
 
   });
-
-
-/*var boton =document.getElementById("boton");
-    boton.onclick=function(e){
-      console.log('aja');
-    }*/
-
     </script>
 
 

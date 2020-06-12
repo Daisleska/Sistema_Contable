@@ -85,16 +85,12 @@
     <div class="row">
         @foreach($empresa as $key)
             
+            <img class="circular--square" src="../public/{{ $key->url_image }}">
+            <h2>EICHE, C.L</h2>
             <small>RUT:{{$key->tipo_documento}}-{{$key->ruf}}</small>
-            <small id="fecha" style="margin-left: 16cm;">
-            Fecha: {{ $date }}</small><br>
             <small class="float-left">{{$key->direccion}}</small> <br>
             <small class="float-left">Telefono: +{{$key->codigo}} {{$key->telefono}}</small> /
             <small class="float-left">Correo: {{$key->email}}</small>
-
-            
-            <img class="circular--square" src="../public/{{ $key->url_image }}">
-            <h3 id="titulo">EICHE.cl</h3>
 
         </div>
 

@@ -6,6 +6,7 @@ use App;
 use App\diario;
 use App\empresa;
 use App\cuenta;
+use App\mayor;
 use App\cuenta_has_diario;
 use Bitacora;
 use PDF;
@@ -24,13 +25,19 @@ class DiarioController extends Controller
     {
        $cuentas=cuenta::all();
 
-       $diario = \DB::select('SELECT diario.id, diario.fecha, cuentas.nombre, diario.descripcion, cuentas.id, diario.monto, diario.debe_haber, cuenta_has_diario.cuenta_id, cuenta_has_diario.diario_id, cuenta_has_diario.de_cuentas FROM diario, cuentas, cuenta_has_diario WHERE cuenta_has_diario.cuenta_id=cuentas.id AND cuenta_has_diario.diario_id=diario.id');
+       $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id');
 
+       $i=1;
 
+    
+       return view('process.diario.index', compact('diario', 'cuentas', 'i'));
+    }
 
-      /* dd($diario);*/
+     public function mayor()
+    {
+      $cuentas=cuenta::all();
 
-       return view('process.diario.index', compact('diario', 'cuentas'));
+       return view('process.diario.mayor', compact('cuentas'));
     }
 
     /**
@@ -53,55 +60,121 @@ class DiarioController extends Controller
     {
       /*  dd($request);*/
 
-
-        //restar el valor que esta saliendo a la cuenta 
-
-        $cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->de_cuentas.'');
-
-        
-        foreach ($cuenta as $val) {
-        $saldo=$val->saldo;
-        }
          
-        $nuevosaldo=$saldo-$request->monto;
+             $lon=count($request->de_monto);
+             for ($i=0; $i < $lon ; $i++) { 
 
-        $cuenta = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuentas.'');
+                $montos[]=$request->de_monto[$i];
+            }  
 
-
-        //sumar el valor que esta entrando a la cuenta 
-        
-        $cuen = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->a_cuentas.'');
-
-        
-        foreach ($cuen as $val) {
-        $saldo=$val->saldo;
-        }
-         
-        $saldonuevo=$saldo+$request->monto;
-
-        $cuentas = \DB::select('UPDATE cuentas SET saldo ='.$saldonuevo.' WHERE id='.$request->a_cuentas.'');
+            $monto=array_sum($montos);
+            
 
 
             $diario= new diario();
             $diario->fecha=$request->fecha;
             $diario->descripcion=$request->descripcion;
-            $diario->monto=$request->monto;
-            $diario->debe_haber=$request->debe_haber;
+            $diario->monto=$monto;//¿?
             $diario->save();
+
+        //restar el valor que esta saliendo a la cuenta 
+
+        //$cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->de_cuentas.'');
+
+        
+        //foreach ($cuenta as $val) {
+        //$saldo=$val->saldo;
+        //}
+         
+        //$nuevosaldo=$saldo-$request->monto;
+
+        //$cuenta = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuentas.'');
+
+
+        //sumar el valor que esta entrando a la cuenta 
+        
+        //$cuen = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->a_cuentas.'');
+
+        
+        //foreach ($cuen as $val) {
+        //$saldo=$val->saldo;
+        //}
+         
+        //$saldonuevo=$saldo+$request->monto;
+
+        //$cuentas = \DB::select('UPDATE cuentas SET saldo ='.$saldonuevo.' WHERE id='.$request->a_cuentas.'');
+
 
              $id = \DB::select('SELECT id FROM diario ORDER BY id  DESC LIMIT 1');
             
             foreach ($id as $val) {
             $diario_id=$val->id;
+            } 
+
+            
+            //
+            $l=count($request->de_cuenta);
+            $lon=count($request->a_cuenta);
+            //dd($request->a_cuenta);
+
+            for ($i=0;$i<$l; $i++){
+           
+            for ($j=0;$j<=$l; $j++){
+            $cuenta_has_diario=new cuenta_has_diario();
+            $cuenta_has_diario->cuenta_id=$request->de_cuenta[$i];
+            $cuenta_has_diario->diario_id=$diario_id;
+            $cuenta_has_diario->c_destino=$request->a_cuenta[$j];
+            $cuenta_has_diario->de_monto=$request->de_monto[$i];
+            $cuenta_has_diario->a_monto=$request->a_monto[$j];
+            $cuenta_has_diario->save();
+
+            $consul= \DB::select('SELECT id, tipo FROM cuentas WHERE id='.$request->de_cuenta[$i].'');
+
+            foreach ($consul as $key) {
+                
+                if ($key->tipo=="activo" || $key->tipo=="egreso") {
+                   //Debe
+            $mayor=new mayor();
+            $mayor->cuenta_id=$key->id;
+            $mayor->debe=$request->de_monto[$i];
+            $mayor->save();
+                }else{
+                    //Haber
+            $mayor=new mayor();
+            $mayor->cuenta_id=$key->id;
+            $mayor->debe=$request->de_monto[$i];
+            $mayor->save();
+                }
+            }
+            
+
+            $consulta= \DB::select('SELECT id, tipo FROM cuentas WHERE id='.$request->a_cuenta[$j].'');
+            
+            
+            foreach ($consulta as $val) {
+                
+                if ($val->tipo=="activo" || $val->tipo=="egreso") {
+                   //Debe
+            $mayor=new mayor();
+            $mayor->cuenta_id=$request->a_cuenta[$j];
+            $mayor->haber=$request->a_monto[$j];
+            $mayor->save();
+                }else{
+                    //Haber
+            $mayor=new mayor();
+            $mayor->cuenta_id=$request->a_cuenta[$j];
+            $mayor->haber=$request->a_monto[$j];
+            $mayor->save();
+                }
             }
 
 
-            $cuenta_has_diario=new cuenta_has_diario();
-            $cuenta_has_diario->cuenta_id=$request->de_cuentas;
-            $cuenta_has_diario->diario_id=$diario_id;
-            $cuenta_has_diario->de_cuentas=$request->de_cuentas;
-            $cuenta_has_diario->a_cuentas=$request->a_cuentas;
-            $cuenta_has_diario->save();
+
+            }
+             
+            }
+
+
 
             $bitacoras = new App\Bitacora;
 
@@ -164,11 +237,11 @@ class DiarioController extends Controller
      public function pdf()
 
     {
-        $diario = \DB::select('SELECT diario.id, diario.fecha, cuentas.nombre, diario.descripcion, cuentas.id, diario.monto, diario.debe_haber, cuenta_has_diario.cuenta_id, cuenta_has_diario.diario_id, cuenta_has_diario.de_cuentas FROM diario, cuentas, cuenta_has_diario WHERE cuenta_has_diario.cuenta_id=cuentas.id AND cuenta_has_diario.diario_id=diario.id');
+        $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id');
 
-
+        $i=1;
         $empresa= empresa::all();
-        $dompdf = PDF::loadView('pdf.diario', compact('diario', 'empresa'));
+        $dompdf = PDF::loadView('pdf.diario', compact('diario', 'empresa', 'i'));
         $dompdf->setPaper('a4', 'landscape');
 
         return $dompdf->stream('diario.pdf');

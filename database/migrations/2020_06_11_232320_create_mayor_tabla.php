@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDiarioTabla extends Migration
+class CreateMayorTabla extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDiarioTabla extends Migration
      */
     public function up()
     {
-        Schema::create('diario', function (Blueprint $table) {
+        Schema::create('mayor', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
-            $table->string('descripcion')->nullable();
-            $table->integer('monto');
+            $table->unsignedBigInteger('cuenta_id');
+            $table->string('debe')->nullable();
+            $table->string('haber')->nullable();
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');
             $table->timestamps();
-
         });
     }
 
@@ -30,6 +30,6 @@ class CreateDiarioTabla extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diario');
+        Schema::dropIfExists('mayor');
     }
 }

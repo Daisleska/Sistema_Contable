@@ -17,9 +17,11 @@ class CreateCuentaHasDiarioTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cuenta_id');
             $table->unsignedBigInteger('diario_id');
-            $table->string('de_cuentas');
-            $table->string('a_cuentas');
+            $table->unsignedBigInteger('c_destino');
+            $table->string('de_monto');
+            $table->string('a_monto');
             $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');
+            $table->foreign('c_destino')->references('id')->on('cuentas')->onDelete('cascade');
             $table->foreign('diario_id')->references('id')->on('diario')->onDelete('cascade');
             $table->timestamps();
         });

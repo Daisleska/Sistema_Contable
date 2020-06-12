@@ -178,6 +178,12 @@ if ($x_inventario) {
             <span>Diario</span>
         </a>
     </li>
+    <li>
+         <a href="{{ route('diario.mayor') }}">
+            <i data-feather="book-open"></i>
+            <span>Mayor</span>
+        </a>
+    </li>
 
      <li>
          <a href="{{ route('cotizacion.index') }}">

@@ -38,6 +38,7 @@ Route::resource('cuentas', 'CuentasController');
 
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
+Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
 	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
