@@ -43,6 +43,9 @@
 
 
 @section('content')
+    <?php 
+    $user_type=\Auth::User()->user_type; 
+    ?> 
 
 <div class="row">
     <div class="col-md-6 col-xl-3">
@@ -53,6 +56,7 @@
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Valor Del
                             Inventario</span>
                               <?php
+                          
                               if ($valor_inventario) {
                          $total_inventario=array_sum($valor_inventario);
                                }else{

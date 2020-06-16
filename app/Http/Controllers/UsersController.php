@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\cambio_clave;
+use Illuminate\Support\Facades\Mail;
 
 
 class UsersController extends Controller
@@ -102,6 +104,7 @@ class UsersController extends Controller
                 $user=User::find($id);
                 $user->name=$request->name;
                 $user->email=$request->email;
+                $user->user_type=$request->user_type;
                 $user->Empresa=$request->Empresa;
                 $user->save();
                 
@@ -113,6 +116,7 @@ class UsersController extends Controller
                 $user=User::find($id);
                 $user->name=$request->name;
                 $user->email=$request->email;
+                $user->user_type=$request->user_type;
                 $user->Empresa=$request->Empresa;
                 $user->save();
                 
@@ -198,7 +202,31 @@ class UsersController extends Controller
     $user->avatar = $filename;
     $user->save();
  
-    return redirect()->route('users.profile');
+    return redirect()->route('profile');
+  }
+
+  public function cambiar_clave(Request $request) {
+ 
+    if ($request->password == $request->password_confirmation) {
+    $user=User::find($request->user_id);
+    $nueva_clave=$request->password;
+    $user->password=Hash::make($nueva_clave);
+    $user->save();
+
+//Envio de correo al usuario///////////////////////////////////
+    $destinatario=$user->email;
+    ini_set('max_execution_time', 360); //3 minutes
+    Mail::to($destinatario)->send(new cambio_clave($user, $nueva_clave)); 
+
+    flash('<i class="icon-circle-check"></i> Ha cambiado la clave de acceso exitosamente!')->success();
+     return redirect()->route('profile');
+    }else{
+        flash('<i class="icon-circle-check"></i> Las claves no coinciden, intente de nuevo!')->warning();
+         return redirect()->route('profile');
+    }
+    
+ 
+    
   }
    
 }

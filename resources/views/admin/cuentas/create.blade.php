@@ -20,8 +20,8 @@
 
                     <div class="row">                       
                          <div class="col-md-6">
-                            <label for="exampleInputEmail1">Nombre</label>
-                             <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                            <label for="exampleInputEmail1">Nombre *</label>
+                             <input required="required" type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
                        </div>  
 
                           <div class="col-md-6">
@@ -34,11 +34,14 @@
                     <div class="row">
                         <div class="col-md-4">
                         <div class="form-group mt-3 mt-sm-0">
-                            <label>Tipo</label>
+                            <label>Tipo *</label>
                             <select required="required" data-plugin="customselect" name="tipo" class="form-control" data-placeholder="Seleccione la cuenta">
-                                <option></option>
+                                <option selected="selected" readonly>Seleccionar</option>
                                 <option value="pasivo">Pasivo</option>
                                 <option value="activo">Activo</option>
+                                <option value="capital">Capital</option>
+                                <option value="egreso">Egreso</option>
+                                <option value="ingreso">Ingreso</option>
                             </select>
                         </div> 
 
@@ -46,19 +49,19 @@
 
                     
                          <div class="col-md-4">
-                            <label for="exampleInputEmail1">Código</label>
-                             <input type="text" name="codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                            <label for="exampleInputEmail1">Código *</label>
+                             <input required="required" type="text" name="codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
                        </div>  
 
                         <div class="col-md-4">
-                            <label for="exampleInputEmail1">Monto</label>
-                            <input name="saldo" type="number" class="form-control"  placeholder="Ingrese el monto">
+                            <label for="exampleInputEmail1">Monto *</label>
+                            <input required="required" name="saldo" type="number" class="form-control"  placeholder="Ingrese el monto">
                         </div>
  
                     </div>
-                 
+                    <p style="color: black; padding-top: 10px;">Campos Obligatorios (*)</p>
                     <br>
-                    <button  type="submit" class="btn btn-primary add_button3">Guardar</button>
+                    <button  type="submit" class="btn btn-primary">Guardar</button>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->
@@ -66,11 +69,4 @@
                   
     </div>
 
-
-
-
-             </div>
-        </div>
-    </div>
-</div>
 

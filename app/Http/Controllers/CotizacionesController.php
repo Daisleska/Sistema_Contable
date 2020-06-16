@@ -51,6 +51,7 @@ class CotizacionesController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $buscar=cotizacion::where ('n_cotizacion', $request->n_cotizacion)->get();
         if (count($buscar)>0) {
             # no permitir registrar

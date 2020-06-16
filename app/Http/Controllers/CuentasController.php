@@ -104,6 +104,22 @@ class CuentasController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $cuentas = cuenta::find($id);
+        $cuentas->delete();  
+
+      
+        $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado una cuenta';
+            $bitacoras->save();
+
+        flash('Registro eliminado satisfactoriamente!');
+
+
+        return back()->with('info', 'la cuenta ha sido eliminado');
+    
     }
 }

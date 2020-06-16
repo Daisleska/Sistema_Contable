@@ -183,7 +183,7 @@ class DiarioController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha realizado un registro en libro diario';
             $bitacoras->save();
-       flash('<i class="icon-circle-check"></i> Cliente registrado exitosamente
+       flash('<i class="icon-circle-check"></i> registro exitoso
                 ')->success()->important();
            return redirect()->to('diario');
     }
@@ -246,4 +246,14 @@ class DiarioController extends Controller
 
         return $dompdf->stream('diario.pdf');
     }
+
+    public function busquedaAjax($cuenta)
+   {
+        $buscar= \DB::select('SELECT mayor.id, mayor.cuenta_id, mayor.debe, cuentas.nombre, cuentas.codigo FROM mayor, cuentas WHERE cuenta_id='.$cuenta.' AND cuentas.id='.$cuenta.' AND mayor.debe IS NOT NULL');
+
+        $buscar2= \DB::select('SELECT  mayor.cuenta_id, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND mayor.haber IS NOT NULL');
+
+       
+        return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
+   }
 }

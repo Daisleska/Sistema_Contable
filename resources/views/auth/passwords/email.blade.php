@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Shreyu - Admin & Dashboard Template</title>
+        <title>Blatt | Recuperar clave</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -33,20 +33,23 @@
                                         <div class="mx-auto mb-5">
                                             <a href="index.html">
                                                 <img src="assets/images/logo.png" alt="" height="24" />
-                                                <h3 class="d-inline align-middle ml-1 text-logo">Shreyu</h3>
+                                                <h3 class="d-inline align-middle ml-1 text-logo">Blatt System</h3>
                                             </a>
 
                                         </div>
 
-                                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                                     
+                        <div class="row">
+                        
+                                     <div class="col-md-12">
+                                     @include('flash::message')
+                                    </div>
+                                </div>
+                 
                                         <h6 class="h5 mb-0 mt-4">{{ __('Recuperar Contraseña') }}</h6>
                                         <p class="text-muted mt-0 mb-4">Ingrese los siguientes datos</p>
 
-                                        <form method="POST" action="{{ route('password.email') }}">
+                                        <form method="POST" action="{{ route('recuperando_clave') }}">
                                             @csrf
 
 

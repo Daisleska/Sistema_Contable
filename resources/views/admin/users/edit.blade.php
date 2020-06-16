@@ -59,6 +59,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="user_type" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Tipo de usuario</label>
+
+                            <div class="col-md-6">
+                            <select name="user_type" class="form-control" >
+                                <option value="{{ $user->user_type }}">{{ $user->user_type }}</option>
+                                <?php if ($user->user_type=="Admin") { ?>
+                                <option value="Jefe">Jefe</option>
+                                <option value="Contador">Contador</option>
+                                <?php }elseif($user->user_type=="Jefe") { ?>
+                                <option value="Admin">Admin</option>
+                                <option value="Contador">Contador</option>
+                            <?php }elseif ($user->user_type=="Contador"){ ?>
+                                <option value="Admin">Admin</option>
+                                <option value="Jefe">Jefe</option>
+                                <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
                         
            				<div class="form-group row">
                             <label for="Empresa" class="col-md-3 col-form-label text-md-right">Nombre de la Empresa</label>

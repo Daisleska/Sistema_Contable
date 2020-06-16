@@ -71,7 +71,7 @@ class FacturasCController extends Controller
      */
     public function store(Request $request)
     {
-        /* dd($request);*/
+         dd($request);
        $buscar=facturac::where ('n_factura', $request->n_factura)->get();
         if (count($buscar)>0) {
             # no permitir registrar

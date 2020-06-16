@@ -46,6 +46,9 @@
 @endsection
 
 @section('content')
+   <?php 
+    $user_type=\Auth::User()->user_type; 
+    ?> 
  {{-- <style type="text/css">
     .loader {
     position: fixed;
@@ -60,6 +63,7 @@
 </style>
     
     <div class="loader"></div> --}}
+   
 <div class="row">
     <div class="col-md-6 col-xl-3">
         <div class="card">
@@ -628,6 +632,9 @@
 
 @section('script')
 <!-- optional plugins -->
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 
 <script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>

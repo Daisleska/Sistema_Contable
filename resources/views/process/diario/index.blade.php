@@ -106,13 +106,14 @@
                 <tbody>
                 <?php   foreach($diario as $key)  { ?>
                        
-                <tr>
+              <tr>
                   <td style="text-align: center; color: black; border: solid;"><?php echo $key->fecha; ?></td>
 
                 <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
                  
                  <td style="color: black; border: solid;">
-                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#45; <?php echo $i++;  ?> &#45;<br>
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#45; {{$i++}} &#45;
+                   <br>
                  <?php   foreach($de_cuentas as $val) { 
                 
                   echo $val->nombre;  ?><br><?php } ?>&nbsp; &nbsp; &nbsp; &nbsp;
@@ -174,36 +175,50 @@
                  $pasivo[]= $item->a_monto;
                  
                   ?> <br> <?php }?> 
-                 
-                  
-                 
-                 
-                
-                  
+  
                 </td>
-
-                
-
-                
-                
-
-                
-                  
-               
-                             </tbody>
+             </tr>
+     
                             <?php  }?>
                           
                           <tr style=" color: black; border: solid;">
-                                <?php $debe=array_sum($activo);
-                                $haber=array_sum($pasivo);  ?>
+                                <?php
+                                if (isset($activo)) {
+                                $debe=array_sum($activo);
+                                }else{
+                                	$activo[]=0; 
+                                }
+
+                                 if (isset($pasivo)) {
+                                $haber=array_sum($pasivo);
+                                }else{  
+                                 $pasivo[]=0;
+                                }
+
+                                 ?>
                                 <td colspan="3" style="text-align: center;">VAN</td>
-                                <td style="text-align: center; color: black; border: solid;">{{number_format($debe,2,',','.')}}</td>
+                                <?php if (isset($debe)) { ?>
+                                <td style="text-align: center; color: black; border: solid;">
+                                {{number_format($debe,2,',','.')}}</td>
+                                <?php 	}else{
+                                	$debe=0;
+                               ?>
+                                <td style="text-align: center; color: black; border: solid;">
+                                {{number_format($debe,2,',','.')}}</td>
+                                <?php } ?>
+
+                                <?php if (isset($haber)) { ?>
                                 <td style="text-align: center; color: black; border: solid;">{{number_format($haber,2,',','.')}}</td>
+                                <?php 	}else{
+                                	$debe=0;
+                                ?>
+                                <td style="text-align: center; color: black; border: solid;">{{number_format($haber,2,',','.')}}</td>
+                              <?php  } ?>
                           </tr>
                         
                          
                                
-                              
+                               </tbody>
                     </table>
 
                 </div> <!-- end card body-->

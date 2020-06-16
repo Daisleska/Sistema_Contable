@@ -145,7 +145,7 @@
                     </div>
 
                     <!-- All-->
-                    <a href="javascript:void(0);"
+                    <a href="{{ route('notificaciones.index') }}"
                         class="dropdown-item text-center text-primary notify-item notify-all border-top">
                         Ver Todo
                         <i class="fi-arrow-right"></i>

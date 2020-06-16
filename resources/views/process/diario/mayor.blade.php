@@ -7,6 +7,10 @@
 
 <link href="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.css') }}" rel="stylesheet" type="text/css" />
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('breadcrumb')
@@ -90,34 +94,29 @@
                                 <th COLSPAN="2" style="text-align: center;">LIBRO MAYOR</th>
                             </tr>
                             <tr>
-                                <th COLSPAN="2" style="margin-right: 10cm;"><select name="" class="form-control" data-placeholder="Elige" style="width: 4cm;">
+                                <th COLSPAN="4" style="margin-right: 10cm;"><select name="cuenta" id="cuenta" class="form-control" data-placeholder="Elige" style="width: 8cm;">
+                                    <option selected="selected" disabled="disabled">Seleccione una cuenta</option>
                                 @foreach($cuentas as $key)
-
+                                        
                                         <option value="{{ $key->id }}" id="id">{{ $key->nombre }}</option>
                                 @endforeach
-                                  
-                                  
      
                                 </select>
-                        <table style="border-color: black; border: 1px;  " border="1" id="basic-datatable" class="table dt-responsive nowrap" ><br>
+
+                               <button type="button" class="btn btn-primary" id="actu">Actualizar</button>
+                              
+                        <table style="border-color: black; border: 1px;  " border="1" class="table"><br>
                                  <thead>
                                      <tr>
-                                        <th colspan="2"></th>
+                                        <th colspan="2"  style="text-align: center; "><span style=" color: black;" id="titulo_cuenta"></span></th>
                                     </tr>
                                     <tr>
                                          <th style="text-align: center;">Debe</th>
                                          <th style="text-align: center;">Haber</th>
                                      </tr>
                                  </thead>
-                                 <tbody>
-                                     <tr>
-                                         <td></td>
-                                         <td></td>
-                                     </tr>
-                                     <tr>
-                                         <td></td>
-                                         <td></td>
-                                     </tr>
+                                 <tbody id="tbody">
+                                     
                                  </tbody>
                              </table></th>
                          </tr>
@@ -138,21 +137,20 @@
 <!-- llamado al Modak----->
 
 
-
 @endsection
 
-@section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.js') }}"></script>
-@endsection
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 
-@section('script-bottom')
+
+
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
-@endsection
+
 
 <script type="text/javascript">
 
@@ -168,6 +166,36 @@ var yy = date.getYear();
 var year = (yy < 1000) ? yy + 1900 : yy;
 
 //]]>
-
 </script>
+<script>
+$(document).ready(function(){
+    $("select[name=cuenta]").change(function(){
+       var cuenta= document.getElementById("cuenta").value;
+        tabla(cuenta);
+    });
+})
 
+    function tabla(cuenta){
+          
+                $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: '/busquedaAjax/'+cuenta+'/buscar',
+            type: 'POST',
+            success: function(res){
+                var js= JSON.parse(JSON.stringify({res}));
+                console.log(js);
+                var tabla;
+                for (var i = 0; i < js.length; i++) {
+               tabla+= '<tr><td style="text-align: center;">'+js[i].debe+'</td><td style="text-align: center;">'+js[i].haber+'</td></tr>';
+                }
+
+                $('#tbody').html(tabla);
+               
+            }
+
+        });
+    }
+/*    $('#actu').click(function(){
+        tabla();
+    });*/
+</script>

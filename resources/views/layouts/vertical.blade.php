@@ -59,6 +59,10 @@
 
 
     <div id="wrapper">
+                 <?php 
+    $user_type=\Auth::User()->user_type; 
+  
+    ?> 
 
         @include('layouts.shared.header')
         @include('layouts.shared.sidebar')
@@ -68,6 +72,7 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
                     @yield('breadcrumb')
+            
                     @yield('content')
                 </div>
             </div>

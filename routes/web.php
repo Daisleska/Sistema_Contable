@@ -4,7 +4,8 @@ Route::get('/', function () {
     return view('auth/login')->name('login');;
 });
 
-Auth::routes();
+Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
+Auth::routes(["verify" => true]);
 Route::middleware('auth')->group(function () {
 /*buscadores para autocompletar*/
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,6 +31,7 @@ Route::resource('empresa', 'EmpresaController');
 Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
+Route::resource('notificaciones', 'NotificacionesController');
 
 Route::resource('cotizacion', 'CotizacionesController');
 Route::resource('cuentas', 'CuentasController');
@@ -42,9 +44,13 @@ Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
 	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
+	Route::get('cambiar_clave','UsersController@cambiar_clave')->name('cambiar_clave');
 Route::resource('users','UsersController');
 /*Bitácora de acciones*/
 Route::resource('bitacoras','BitacoraController');
+
+
+Route::match(['get', 'post'], '/busquedaAjax/{cuenta}/buscar', 'DiarioController@busquedaAjax')->name('post');
 
 
 //iva

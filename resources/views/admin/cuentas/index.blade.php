@@ -77,11 +77,12 @@
                         </form>
                         <br>
                   
-                   <form action="{{ route('cuentas.destroy', $key->id) }}" method="POST">
+                   <form id="f_eliminar" name="formulario" action="{{ route('cuentas.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   
                    </form>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                    <br>
                  
                
@@ -127,3 +128,35 @@
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
 @endsection
+<script type="text/javascript">
+      function alert_eliminar(){
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar esta cuenta?",
+        text : "Si elimina esta cuenta , todos los datos relacionados con ella seran eliminados",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+        document.getElementById('f_eliminar').submit();
+          }
+       });
+
+    }
+</script>

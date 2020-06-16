@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Shreyu - Admin & Dashboard Template</title>
+        <title>Blatt | Recuperar clave</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -21,6 +21,12 @@
     </head>
 
  <body class="authentication-bg">
+    <div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
         
         <div class="account-pages my-5">
             <div class="container">
@@ -40,7 +46,7 @@
                                         <h6 class="h5 mb-0 mt-4">{{ __('Recuperar Contraseña') }}</h6>
                                         <p class="text-muted mt-0 mb-4">Ingrese los siguientes datos</p>
 
-                                        <form action="{{ route('password.update') }}" method="POST">
+                                        <form action="{{ route('recuperando_clave') }}" method="POST">
                                              @csrf
 
                                           <input type="hidden" name="token" value="{{ $token }}">

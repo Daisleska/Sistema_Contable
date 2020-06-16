@@ -32,6 +32,11 @@
     </div>
 </div>
 
+<div class="row">
+        <div class="col-md-12">
+            @include('flash::message')
+        </div>
+</div>
 {{-- content --}}
 
      <div class="row">
@@ -158,9 +163,15 @@
                     <div class="form-group row">
                         <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Tipo de Usuario:</b></label>
                         <label for="log_enterprise" class="col-md-6 col-form-label text-md-right">{{ $user->user_type }} </label>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Clave de acceso:</b></label>
+
+                        <button  type="button" class="btn btn-primary  col-form-label text-md-right" data-toggle="modal"
+                    data-target="#myModal">cambiar clave</button> 
                     </div>    
-                    
-                    {{-- <h4 class="card-title">Cambiar foto <br></h4> --}}         
+                           
                </div>
         </div>
     </div>
@@ -335,6 +346,7 @@
         </div>
     </div>
 
+ @include('admin.users.modal_cambiarClave')
 
 
 @endsection
