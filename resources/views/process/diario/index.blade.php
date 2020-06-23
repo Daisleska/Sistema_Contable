@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <table style="color: black;">
+                    <table >
                       <?php
                       use App\empresa;
 
@@ -39,15 +39,15 @@
                        
                       foreach($empresa as $key){
                         ?>
-                        <tr >
+                        <tr style="color: black;" >
                             <th>NOMBRE DE LA EMPRESA:</th>
                             <th><?php echo e($key->nombre)?></th>
                         </tr>
-                        <tr>
+                        <tr style="color: black;">
                             <th>MES:
                             <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
                         </tr>
-                        <tr>
+                        <tr style="color: black;">
                             <th>RUT:
                             <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
                          <?php
@@ -82,20 +82,20 @@
                   </tr>
 
                     </table>
-                  
+                  <br>
 
-                    <table style=" color: black; border: solid; width: 22cm;" border="1" id="basic-datatable" class="table dt-responsive nowrap">
-                        <thead style=" color: black; border: solid;">
-                            <tr style="color: black; border: solid;" >
-                                <th COLSPAN="5" style="text-align: center;">LIBRO DIARIO</th>
+                    <table  style="border-color: black; border: 1px;  " border="1" class="table">
+                        <thead >
+                            <tr>
+                                <th COLSPAN="5" style="color: black; text-align: center;">LIBRO DIARIO</th>
                             </tr>
-                            <tr style="color: black; font-size: 12px;">
+                            <tr style="color: black; ">
                                 
-                                <th style="text-align: center; color: black; border: solid;">FECHA</th>
-                                <th style="text-align: center; color: black; border: solid;">CUENTA Y DESCRIPCIÓN</th>
-                                <th style="text-align: center; color: black; border: solid;">REF.</th>
-                                <th style="text-align: center; color: black; border: solid;">DEBE</th>
-                                <th style="text-align: center; color: black; border: solid;">HABER</th>
+                                <th >FECHA</th>
+                                <th >CUENTA Y DESCRIPCIÓN</th>
+                                <th >REF.</th>
+                                <th >DEBE</th>
+                                <th >HABER</th>
                                 
                             
                             </tr>
@@ -107,11 +107,11 @@
                 <?php   foreach($diario as $key)  { ?>
                        
               <tr>
-                  <td style="text-align: center; color: black; border: solid;"><?php echo $key->fecha; ?></td>
+                  <td style="text-align: center; "><?php echo $key->fecha; ?></td>
 
                 <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
                  
-                 <td style="color: black; border: solid;">
+                 <td>
                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#45; {{$i++}} &#45;
                    <br>
                  <?php   foreach($de_cuentas as $val) { 
@@ -124,7 +124,7 @@
                  <?php echo $item->nombre; ?><br>&nbsp; &nbsp; &nbsp; &nbsp; <?php  } ?>
                 <br><hr>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<?php echo $key->descripcion; ?></td>
                 
-                <td style="text-align: center; color: black; border: solid;"><br>
+                <td style="text-align: center; "><br>
                 <?php   foreach($de_cuentas as $val) { 
 
                 
@@ -147,7 +147,7 @@
 
                 </td>
                 
-                <td style="text-align: center; color: black; border: solid;"><br>
+                <td style="text-align: center; "><br>
                 <?php   foreach($de_cuentas as $val) { 
                  
                  echo number_format($val->de_monto,2,',','.'); 
@@ -156,7 +156,7 @@
                   ?> <br> <?php }?> 
                    
                 </td>
-                <td style="text-align: center; color: black; border: solid;"><br>
+                <td style="text-align: center;  "><br>
 
                   
                   <?php 
@@ -181,7 +181,7 @@
      
                             <?php  }?>
                           
-                          <tr style=" color: black; border: solid;">
+                          <tr>
                                 <?php
                                 if (isset($activo)) {
                                 $debe=array_sum($activo);
@@ -198,21 +198,21 @@
                                  ?>
                                 <td colspan="3" style="text-align: center;">VAN</td>
                                 <?php if (isset($debe)) { ?>
-                                <td style="text-align: center; color: black; border: solid;">
+                                <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
                                 <?php 	}else{
                                 	$debe=0;
                                ?>
-                                <td style="text-align: center; color: black; border: solid;">
+                                <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
                                 <?php } ?>
 
                                 <?php if (isset($haber)) { ?>
-                                <td style="text-align: center; color: black; border: solid;">{{number_format($haber,2,',','.')}}</td>
+                                <td style="text-align: center;  ">{{number_format($haber,2,',','.')}}</td>
                                 <?php 	}else{
-                                	$debe=0;
+                                	$haber=0;
                                 ?>
-                                <td style="text-align: center; color: black; border: solid;">{{number_format($haber,2,',','.')}}</td>
+                                <td style="text-align: center; ">{{number_format($haber,2,',','.')}}</td>
                               <?php  } ?>
                           </tr>
                         

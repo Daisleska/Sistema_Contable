@@ -185,6 +185,13 @@ if ($x_inventario) {
         </a>
     </li>
 
+    <li>
+         <a href="{{ route('diario.balance') }}">
+            <i data-feather="book-open"></i>
+            <span>Balance General</span>
+        </a>
+    </li>
+
      <li>
          <a href="{{ route('cotizacion.index') }}">
             <i data-feather="file"></i>

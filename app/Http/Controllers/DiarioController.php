@@ -40,6 +40,13 @@ class DiarioController extends Controller
        return view('process.diario.mayor', compact('cuentas'));
     }
 
+      public function balance()
+    {
+      
+
+       return view('process.diario.balance');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -114,12 +121,13 @@ class DiarioController extends Controller
             
             //
             $l=count($request->de_cuenta);
+
             $lon=count($request->a_cuenta);
-            //dd($request->a_cuenta);
+            
 
             for ($i=0;$i<$l; $i++){
            
-            for ($j=0;$j<=$l; $j++){
+            for ($j=0;$j<$lon; $j++){
             $cuenta_has_diario=new cuenta_has_diario();
             $cuenta_has_diario->cuenta_id=$request->de_cuenta[$i];
             $cuenta_has_diario->diario_id=$diario_id;
@@ -127,6 +135,7 @@ class DiarioController extends Controller
             $cuenta_has_diario->de_monto=$request->de_monto[$i];
             $cuenta_has_diario->a_monto=$request->a_monto[$j];
             $cuenta_has_diario->save();
+
 
             $consul= \DB::select('SELECT id, tipo FROM cuentas WHERE id='.$request->de_cuenta[$i].'');
 
@@ -248,12 +257,36 @@ class DiarioController extends Controller
     }
 
     public function busquedaAjax($cuenta)
-   {
-        $buscar= \DB::select('SELECT mayor.id, mayor.cuenta_id, mayor.debe, cuentas.nombre, cuentas.codigo FROM mayor, cuentas WHERE cuenta_id='.$cuenta.' AND cuentas.id='.$cuenta.' AND mayor.debe IS NOT NULL');
+   {    
+        //Datos de cuenta
+        $cuen= \DB::select('SELECT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE mayor.cuenta_id='.$cuenta.' AND cuentas.id='.$cuenta.' LIMIT 1');
 
+        //Debe
+        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe FROM mayor WHERE cuenta_id='.$cuenta.' AND mayor.debe IS NOT NULL');
+         
+         //haber
         $buscar2= \DB::select('SELECT  mayor.cuenta_id, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND mayor.haber IS NOT NULL');
 
        
-        return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
+       
+        //return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
+        return $datos = array("cuen" => $cuen, "buscar" => $buscar, "buscar2" => $buscar2 );
+   }
+
+
+
+
+   public function busqueda($anio)
+   {
+        //$activo= \DB::select('');
+
+        //SELECT DISTINCT cuentas.codigo, cuentas.nombre, mayor.debe FROM mayor, cuentas WHERE cuentas.tipo="activo" falta por fecha y que no se repitan las cuentas 
+
+        //$pasivo= \DB::select('');
+       
+          //return $a=20;
+       
+        //return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
+        //return $datos = array("buscar" => $activo, "buscar2" => $pasivo );
    }
 }
