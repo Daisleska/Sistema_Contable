@@ -18,7 +18,7 @@
         <div class="col">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title" align="center">Modificar Empresa</h3>
+              <h3 class="box-title" align="center">Modificar Datos de Empresa</h3>
             </div>
             <!-- /.box-header -->
             <style type="text/css">

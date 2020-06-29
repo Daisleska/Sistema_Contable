@@ -46,10 +46,10 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Verifica tu correo electrónico'))
+            ->subject(Lang::getFromJson('Confirma tu correo electrónico'))
             ->line(Lang::getFromJson('Por favor has click en el botón de aquí abajo para verificar tu correo electrónico.'))
             ->action(Lang::getFromJson('Verifica tu correo'), $verificationUrl)
-            ->line(Lang::getFromJson('Si crees que tú no has creado esta cuenta, entonces,  no realices ninguna acción.'));
+            ->line(Lang::getFromJson('Si tú no has creado esta cuenta, entonces,  no realices ninguna acción.'));
     }
 
     /**

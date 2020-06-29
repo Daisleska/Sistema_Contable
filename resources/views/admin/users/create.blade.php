@@ -80,7 +80,19 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        
+
+                         <div class="form-group row">
+                            <label for="user_type" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Tipo de usuario</label>
+
+                             <div class="col-md-6">
+                             <select name="user_type" class="form-control" >
+                                <option value="Administrador">Administrador</option>
+                                <option value="Jefe">Jefe</option>
+                                <option value="Contador">Contador</option>
+                            </select>
+                             </div>
+                        </div>          
+                               
            				<div class="form-group row">
                             <label for="Empresa" class="col-md-3 col-form-label text-md-right">Nombre de la Empresa</label>
 

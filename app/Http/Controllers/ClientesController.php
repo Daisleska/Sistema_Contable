@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\cliente;
-use App\Bitacora;
+use Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -109,7 +110,6 @@ class ClientesController extends Controller
             $cliente->save();
 
             $bitacoras = new App\Bitacora;
-
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
             $bitacoras->role =  Auth::user()->user_type;

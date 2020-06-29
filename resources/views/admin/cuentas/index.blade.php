@@ -5,7 +5,7 @@
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 
 <link href="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multi-select.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -104,13 +104,7 @@
 
     <!-- llamado al Modak----->
     @include('admin.cuentas.create')
- 
 
-@section('script')
-<script type="text/javascript">
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-</script>
-@endsection
 
 
     <!-- end row-->
@@ -120,7 +114,11 @@
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
+
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection
 
 @section('script-bottom')

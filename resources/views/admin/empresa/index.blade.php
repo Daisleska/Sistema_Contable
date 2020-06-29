@@ -28,6 +28,7 @@
 <div class="col-md-5">
   @include('flash::message')
 </div>
+</div>
 <div class="row">
         <div class="col-12">
             <div class="card">
@@ -35,8 +36,8 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
                     
                     
-                    <a href="{{ route('empresa.create') }}" class="btn btn-outline-primary">
-                   Registrar</a>
+                    {{-- <a href="{{ route('empresa.create') }}" class="btn btn-outline-primary">
+                   Registrar</a> --}}
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
@@ -48,8 +49,6 @@
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Opciones</th>
-
-                            
                             </tr>
                         </thead>
                     
@@ -61,7 +60,7 @@
                        <?php   }else{ ?>
                         
 
-                            @foreach($empresa as $key)
+              @foreach($empresa as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>

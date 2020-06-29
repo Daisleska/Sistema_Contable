@@ -29,7 +29,7 @@
             @include('flash::message')
         </div>
 </div>
-<div class="row">
+  <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -79,14 +79,10 @@
                           
                              </tbody>
                     </table>
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-
-        
 </div>
-    <!-- end row-->
+</div>
+</div>
+</div>
 @endsection
 
 @section('script')

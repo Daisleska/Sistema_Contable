@@ -72,9 +72,12 @@
                       
                       
                         ?>
+                        <div class="col-md-4">
+                          <h4 style="text-align: right;">Valor Total Del Inventario</h4>
+                        </div>
                   
-                    <div class="col-md-8">
-                         <p style="text-align: right; color: blue;">Valor Total Del Inventario <input id="total_inventario" type="text" name="" value="{{number_format($total_inventario, 2,',','.')}}" readonly="readonly"></p>
+                    <div class="col-md-4">
+                         <input  id="total_inventario" class="form-control" type="text" name="" value="{{number_format($total_inventario, 2,',','.')}}" readonly="readonly">
                     </div>
                 </div>    
 

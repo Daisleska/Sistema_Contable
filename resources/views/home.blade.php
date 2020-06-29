@@ -65,7 +65,7 @@
                    <h2 class="mb-0">{{number_format($total_inventario, 2,',','.')}} <small>Bs.F</small></h2>
                     </div>
                     <div class="align-self-center">
-                        <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>
+                        <span class="icon-lg icon-dual-success" data-feather="dollar-sign"></span>
                     </div>
                 </div>
             </div>
@@ -87,14 +87,63 @@
                         <h2 class="mb-0" style="color: #006699;">{{$cantidad}}</h2>
                     </div>
                     <div class="align-self-center">
-                        <span class="icon-lg icon-dual-warning" data-feather="coffee"></span>
+                        <span class="icon-lg icon-dual-warning" data-feather="user-check"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="media p-3">
+                    <div class="media-body">
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Productos</span>
+                              <?php
+                          
+                              if ($productos) {
+                         $cantidad_productos=count($productos);
+                               }else{
+                                $cantidad_productos=0;
+                               }  ?>
+                   <h2 class="mb-0">{{$cantidad_productos}} </h2>
+                    </div>
+                    <div class="align-self-center">
+                        <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="media p-3">
+                    <div class="media-body">
+                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Proveedores</span>
+                         <?php
+                              if ($proveedores) {
+                                $cantidad_proveedores=count($proveedores);
+                               }else{
+                                $cantidad_proveedores=0;
+                               }  ?>
+                        <h2 class="mb-0" style="color: #006699;"> {{$cantidad_proveedores}}</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <span class="icon-lg icon-dual-info" data-feather="truck"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- stats + charts -->
+@if($user_type=="Contador")
+<div class="row">
  <div class="col-xl-6">
         <div class="card">
             <div class="card-body pb-0">
@@ -121,6 +170,8 @@
             </div>
         </div>
     </div>
+</div>
+@endif
 <!-- row -->
 @endsection
 @section('script')
@@ -129,8 +180,42 @@
 <script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 @endsection
-
-@section('script-bottom')
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 <!-- init js -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
-@endsection
+{{-- Alerta si el usuario no ha registrado los datos de la empresa! --}}
+<?php $data_e = \DB::select('SELECT * FROM empresa'); ?> 
+@if (empty($data_e)) 
+<script>
+    $(function(){
+        alerta_empresa();
+    });
+ 
+    function alerta_empresa() {
+        swal({
+        icon : "info",
+        title : "Registre su empresa",
+        text : "Le sugerimos registre los datos de su empresa o negocio, Gracias!.",
+        buttons : {
+            cancel: {
+                text: "Mas tarde",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Ir a registrar",
+                value: true,
+                visible: true,   
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+            window.location="{{ route('empresa.create') }}";      
+          }
+       });
+    }
+</script>
+@endif

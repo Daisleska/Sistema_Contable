@@ -19,13 +19,16 @@ class InventarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-     
     {
-      $inventario = \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo
+
+     $anio_actual = date('Y');
+
+    $inventario = \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo
 
         FROM productos, inventario
 
-        WHERE inventario.productos_id = productos.id');
+        WHERE inventario.productos_id = productos.id AND YEAR(inventario.updated_at)='.$anio_actual);
+
 
   foreach ($inventario as $key) {
            

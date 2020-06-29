@@ -5,7 +5,7 @@
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 
 <link href="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multi-select.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -84,7 +84,7 @@
                     </table>
                   <br>
 
-                    <table  style="border-color: black; border: 1px;  " border="1" class="table">
+                    <table id="basic-datatable" class="table dt-responsive nowrap" style="border-color: black; border: 1px;" border="1" >
                         <thead >
                             <tr>
                                 <th COLSPAN="5" style="color: black; text-align: center;">LIBRO DIARIO</th>
@@ -237,7 +237,7 @@
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
 @endsection
 
 @section('script-bottom')

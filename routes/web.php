@@ -3,12 +3,13 @@
 Route::get('/', function () {
     return view('auth/login')->name('login');;
 });
-
 Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
-Auth::routes(["verify" => true]);
-Route::middleware('auth')->group(function () {
+
+Auth::routes(['verify' => true]);
+Route::middleware('auth', 'verified')->group(function () {
 /*buscadores para autocompletar*/
 Route::get('/home', 'HomeController@index')->name('home');
+/*buscar para autocompletar*/
 Route::get('clientes/{cliente}/buscar_cliente', 'ClientesController@buscar_cliente');
 Route::get('productos/{product}/buscar_producto', 'ProductosController@buscar_producto');
 Route::get('inventario/{product}/buscar_inventario', 'InventarioController@buscar_inventario');
@@ -46,6 +47,8 @@ Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
 Route::get('profile','UsersController@profile')->name('profile');
 	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
 	Route::get('cambiar_clave','UsersController@cambiar_clave')->name('cambiar_clave');
+
+	Route::put('cambiar_tipo','UsersController@cambiar_tipo')->name('cambiar_tipo');
 Route::resource('users','UsersController');
 /*Bitácora de acciones*/
 Route::resource('bitacoras','BitacoraController');

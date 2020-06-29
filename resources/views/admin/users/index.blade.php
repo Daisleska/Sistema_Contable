@@ -25,7 +25,12 @@
     </div>
 </div>
 
-
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
@@ -67,12 +72,13 @@
                                     
                                     <td>
                                         
-                                        <a href="{{ route('users.edit',$key->id) }}"><i class="mdi mdi-pencil"></i>edit</a>
+                                        <a onclick="cambiar_tipo('{{ $key->id }}')"
+                                           class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event2" title="Cambiar Tipo" ><i class="mdi mdi-pencil"></i>Cambiar tipo</a>
                                        
 
                                        
-                                        <a onclick="cambiar_status('{{ $key->id }}','{{ $key->status }}')" class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event" title="Cambiar Status"><i class="mdi mdi-bell"></i>
-                                        cambiar</a>
+                                        <a onclick="cambiar_status('{{ $key->id }}','{{ $key->status }}')" class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event" title="Cambiar Estado"><i class="mdi mdi-bell"></i>
+                                        Cambiar estado</a>
                                       
                                     </td>
                                 </tr>
@@ -124,6 +130,47 @@
  {!! Form::close() !!}      
 <!-- END MODAL -->
 
+
+
+<!--INICIO DEL MODAL para cambiar user type -->
+
+<div class="modal none-border" id="my-event2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Cambiar Tipo de usuario</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            {!! Form::open(['route' => ['cambiar_tipo'], 'method' => 'PUT']) !!}
+                @csrf
+            <div class="modal-body">
+              
+                <input type="hidden" name="user_id" id="user_id2">
+
+                <div class="form-group row">
+                            <label for="user_type" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Tipo de usuario</label>
+
+                             <div class="col-md-6">
+                             <select name="user_type" class="form-control" >
+                                <option value="Administrador">Administrador</option>
+                                <option value="Jefe">Jefe</option>
+                                <option value="Contador">Contador</option>
+                            </select>
+                             </div>
+                        </div>    
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-success save-event waves-effect waves-light">Guardar</button>
+                
+            </div>
+                    </div>
+    </div>
+</div>
+ {!! Form::close() !!}      
+<!-- END MODAL -->
+
 @endsection
 
 @section('scripts')
@@ -131,11 +178,6 @@
 <script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}">
-</script>
-  
-{{-- 
-      $('#zero_config').DataTable();
- --}}
 </script>
  
 @endsection
@@ -157,10 +199,28 @@ feather.replace();
         $("#user_id").val(user_id);
           
     }
+
+ function cambiar_tipo(user_id) {
+        $("#user_id2").val(user_id);
+          
+    }
 </script>
 
-
-@section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
-@endsection
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+
+@if (isset($x)) 
+<script>
+    $(function(){
+        alerta_exitosa();
+    });
+  function alerta_exitosa() {
+    console.log('holaaaa');
+      swal({
+            icon : "success",
+            title : "Actualización exitosa",
+        });
+    }
+</script>
+@endif

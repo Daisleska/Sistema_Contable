@@ -137,6 +137,14 @@ class DiarioController extends Controller
             $cuenta_has_diario->save();
 
 
+            }
+             
+            }
+
+
+            //Para de cuentas 
+            for ($i=0; $i<$l ; $i++) { 
+
             $consul= \DB::select('SELECT id, tipo FROM cuentas WHERE id='.$request->de_cuenta[$i].'');
 
             foreach ($consul as $key) {
@@ -155,8 +163,12 @@ class DiarioController extends Controller
             $mayor->save();
                 }
             }
-            
+            } 
 
+
+            //Para a cuentas 
+            for ($j=0; $j<$lon ; $j++) { 
+            
             $consulta= \DB::select('SELECT id, tipo FROM cuentas WHERE id='.$request->a_cuenta[$j].'');
             
             
@@ -165,23 +177,18 @@ class DiarioController extends Controller
                 if ($val->tipo=="activo" || $val->tipo=="egreso") {
                    //Debe
             $mayor=new mayor();
-            $mayor->cuenta_id=$request->a_cuenta[$j];
+            $mayor->cuenta_id=$val->id;
             $mayor->haber=$request->a_monto[$j];
             $mayor->save();
                 }else{
                     //Haber
             $mayor=new mayor();
-            $mayor->cuenta_id=$request->a_cuenta[$j];
+            $mayor->cuenta_id=$val->id;
             $mayor->haber=$request->a_monto[$j];
             $mayor->save();
                 }
             }
-
-
-
-            }
-             
-            }
+            } 
 
 
 

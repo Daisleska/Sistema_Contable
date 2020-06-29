@@ -1,58 +1,5 @@
-<?php
-   $x=\DB::select('SELECT * FROM users');
-
-  if (empty($x)) {
-
-   ?>
-   <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Sistema Contable</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        
-        <!-- App favicon -->
-
-        <link rel="shortcut icon" href="{{ asset('Shreyu/assets/images/favicon.ico')}}">
-
-        <link rel="stylesheet" href="{{asset('Shreyu/assets/libs/smartwizard/smart_wizard.min.css') }}" type="text/css" />
-
-        <!-- App css -->
-        <link href="{{ asset('Shreyu/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('Shreyu/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('Shreyu/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <body class="authentication-bg" {{-- style="background-image: url('Shreyu/assets/images/fondo1.jpg'); background-size: cover;  " --}}>
-        
-     @include('auth.empresa_login')
-
-
-        <script src="{{asset('Shreyu/assets/js/vendor.min.js')}}"></script>
-
-        <!-- App js -->
-        <script src="{{asset('Shreyu/assets/js/app.min.js')}}"></script>
-
-        <script src="{{asset('Shreyu/assets/js/pages/form-wizard.init.js') }}"></script>
-
-        <script src="{{asset('Shreyu/assets/libs/smartwizard/jquery.smartWizard.min.js') }}"></script>
-        
-    </body>
-</html>
-
-<?php }else{
-
-
-?>
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <title>Sistema Contable</title>
@@ -64,7 +11,7 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('Shreyu/assets/images/favicon.ico')}}">
 
-        <link rel="stylesheet" href="{{ URL::asset('Shreyu/assets/libs/smartwizard/smartwizard.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ URL::asset('Shreyu/assets/libs/smartwizard/smart_wizard.min.css') }}" type="text/css" />
 
         <!-- App css -->
         <link href="{{ asset('Shreyu/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -74,7 +21,13 @@
     </head>
 
     <body class="authentication-bg" {{-- style="background-image: url('Shreyu/assets/images/fondo1.jpg'); background-size: cover;  " --}}>
-        
+    @if (session()->has('flash'))
+    <div class="container">
+        <div class="alert alert-success">
+            {{ session('flash')}}
+        </div>
+    </div>
+    @endif  
         <div class="account-pages my-5">
             <div class="container">
                 <div class="row justify-content-center">
@@ -183,11 +136,7 @@
 
         <script src="{{asset('Shreyu/assets/js/pages/form-wizard.init.js') }}"></script>
 
-        <script src="{{asset('Shreyu/assets/libs/smartwizard/smartwizard.min.js') }}"></script>
+        <script src="{{asset('Shreyu/assets/libs/smartwizard/jquery.smartWizard.min.js') }}"></script>
         
     </body>
 </html>
-
-<?php }
-?>
-    

@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
        		'name' => 'Hector hernandez',
        		'email' => 'hectorher149@gmail.com',
        		'password' => bcrypt('123456'),
-          'user_type' => 'Admin',
+          'user_type' => 'Administrador',
           'Empresa' =>'EICHE',
           'avatar' => '1_1584161024.jpg'
        	]);  
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Administrador',
           'email' => 'admin@admin.com',
           'password' => bcrypt('12345678'),
-          'user_type' => 'Admin',
+          'user_type' => 'Contador',
           'Empresa' =>'EICHE',
           'avatar' => '1_1584161024.jpg'
         ]);    

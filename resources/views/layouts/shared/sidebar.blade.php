@@ -31,8 +31,7 @@
 
                 <div class="dropdown-divider"></div>
 
-                <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
+                <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="preventDefault()">
                     <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
                     <span>Salir</span>
                 </a>
@@ -55,3 +54,33 @@
 
 </div>
 <!-- Left Sidebar End -->
+
+<script type="text/javascript">
+      function preventDefault(){
+       swal({
+        icon : "warning",
+        title : "¿Esta seguro que desea salir?",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Salir",
+                value: true,
+                visible: true,      
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+        document.getElementById('logout-form').submit();
+          }
+       });
+
+    }
+</script>

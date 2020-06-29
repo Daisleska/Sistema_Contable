@@ -645,6 +645,7 @@
 
 @section('script-bottom')
 <!-- init js -->
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
 @endsection
 

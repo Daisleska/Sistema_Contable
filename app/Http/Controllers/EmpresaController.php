@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\empresa;
-use App\Bitacora;
+use Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -79,19 +80,17 @@ class EmpresaController extends Controller
             $empresa->page_foot=$request->page_foot;
             $empresa->save();
 
-           flash('¡Información de la empresa registrada exitosamente!', 'success');
-
            /*registrar accion en bitacora*/
-            $bitacoras = new Bitacora;
+            $bitacoras =new Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado la información de la empresa';
             $bitacoras->save();
-       
 
-           return redirect()->to('empresa');
+            flash('¡Información de la empresa registrada exitosamente!', 'success');
+           return redirect()->to('empresa.index');
     }
 
     /**

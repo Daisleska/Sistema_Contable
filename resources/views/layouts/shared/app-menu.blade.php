@@ -4,7 +4,7 @@
     <li>
         <a href="{{ route('home') }}">
             <i data-feather="home"></i>
-            <span class="badge badge-success float-right">1</span>
+            <span class="badge badge-info float-right">5</span>
             <span> Inicio </span>
         </a>
     </li>
@@ -199,7 +199,7 @@ if ($x_inventario) {
         </a>
     </li>
 
-     
+  @if(\Auth::User()->user_type=="Administrador")
      <li class="menu-title">Seguridad</li>
      <li>
         <a href="{{ route('bitacoras.index') }}">
@@ -207,6 +207,7 @@ if ($x_inventario) {
             <span> Bitacora </span>
         </a>
     </li>
+    @endif
   </ul>
 
 

@@ -7,16 +7,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
@@ -28,15 +18,16 @@ class LoginController extends Controller
 
     public function authenticated($request, $user){
        
-        if(\Auth::user()->user_type == 'Admin'){
-           /* dd(\Auth::user()->user_type);*/
+        if(\Auth::user()->status =='Activo'){
+         
             return redirect()->route('home');
-        }else{
-            //dd(\Auth::user()->role);
-            return redirect()->route('login');
+
+        }elseif (\Auth::user()->status == 'Suspendido'){
+
+           return redirect()->to('login')->with('flash', 'Tu usuario esta suspendido');
          }
      }
- /*   protected $redirectTo = '/home';*/
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.

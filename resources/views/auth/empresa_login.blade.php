@@ -20,7 +20,7 @@
                 <div class="mx-auto mb-5">
                  <a href="{{ url('/login') }}"><b></b>
                      <img src="{{ asset('Shreyu/assets/images/logo.png')}}" alt="" height="24" />
-                         <h3 class="d-inline align-middle ml-1 text-logo">Blatt</h3>
+                         <h3 class="d-inline align-middle ml-1 text-logo">Blatt System</h3>
 
                      </a>
                   <h6 class="h5 mb-0 mt-4">¡Bienvenido!</h6>
@@ -40,19 +40,19 @@
                                     <div class="form-group">
                                         <label for="sw-dots-userName">Nombre de la empresa</label>
                                         <input type="text" class="form-control" id="sw-dots-userName"
-                                            placeholder="Ingrese el nombre">
+                                            placeholder="Ingrese el nombre de la empresa...">
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="sw-dots-password"> ruf</label>
-                                        <input type="password" id="sw-dots-password" class="form-control"
-                                            placeholder="Enter Password...">
+                                        <label for="sw-dots-password"> RUF</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Ingresa el RUF...">
                                     </div>
 
                                     <div class="form-group mb-0">
                                         <label for="sw-dots-confirm">Correo</label>
-                                        <input type="password" id="sw-dots-confirm" class="form-control"
-                                            placeholder="Enter Re Password...">
+                                        <input type="email" id="sw-dots-confirm" class="form-control"
+                                            placeholder="Ingresa el Correo...">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -63,12 +63,12 @@
                                     <div class="form-group">
                                         <label for="sw-dots-first-name">Nombre y apellido</label>
                                         <input type="text" id="sw-dots-first-name" class="form-control"
-                                            placeholder="Ingrese el nombre...">
+                                            placeholder="Ingrese el nombre y el apellido...">
                                     </div>
                                     <div class="form-group">
                                         <label for="sw-dots-last-name">Correo</label>
                                         <input type="email" id="sw-dots-last-name" class="form-control"
-                                            placeholder="Ingrese el correo...">
+                                            placeholder="Ingrese el Correo...">
                                     </div>
 
                                     <div class="form-group mb-0">
@@ -97,7 +97,7 @@
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
                                                     id="sm-dots-customCheck">
-                                                <label class="custom-control-label" for="sm-dots-customCheck">Acepta los terminos y condiciones</label>
+                                                <label class="custom-control-label" for="sm-dots-customCheck">Acepto los terminos y condiciones</label>
                                             </div>
                                         </div>
                                     </div>

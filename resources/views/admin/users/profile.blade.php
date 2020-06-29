@@ -3,23 +3,15 @@
 
 @extends('layouts.app')
 
-@section('sub-title')
-<title>Blatt | Mi Perfil</title>
-@endsection
-@section('css')
-<link href="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
-
 
 @section('content')
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
             <h4 class="page-title">Mi Cuenta</h4>
-
-            <a class="btn btn-soft-primary" href="{{ route('users.index') }}"> Listado</a>
-            
-                
+         @if(\Auth::User()->user_type=="Administrador")
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="{{ route('users.index') }}"> Lista de usuarios</a>
+         @endif        
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -168,7 +160,7 @@
                     <div class="form-group row">
                         <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Clave de acceso:</b></label>
 
-                        <button  type="button" class="btn btn-primary  col-form-label text-md-right" data-toggle="modal"
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  type="button" class="btn btn-primary  col-form-label text-md-right" data-toggle="modal"
                     data-target="#myModal">cambiar clave</button> 
                     </div>    
                            

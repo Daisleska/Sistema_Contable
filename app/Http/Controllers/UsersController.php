@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App;
+Use Bitacora;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +59,15 @@ class UsersController extends Controller
         //$this->guard()->login($user);
         //$this->registered($request, $user);
         /*flash('<i class="icon-circle-check"></i> Usuario registrado con satisfactoriamente!')->success()->important();*/
+
+           $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Se Ha registrado un nuevo usuario';
+            $bitacoras->save();
+
         return redirect()->to('users');
 
     }
@@ -174,6 +186,7 @@ class UsersController extends Controller
             'email' => $data['email'],
             'user_type' => 'jefe',
             'password' => Hash::make($data['password']),
+            'user_type' =>$data['user_type'],
             'Empresa' => $data['Empresa'],
         ]);
     }
@@ -228,5 +241,28 @@ class UsersController extends Controller
  
     
   }
+
+   public function cambiar_tipo(Request $request) {
+ 
+    $user=User::find($request->user_id);
+    $new_type=$request->user_type;
+    $user->user_type=$new_type;
+    $user->save(); 
+
+    if ($user) {
+       $x=1;
+
+     $users= User::all();
+
+        return view('admin.users.index',compact('users','x'));
+    }else{
+        $x=2;
+         $users= User::all();
+
+        return view('admin.users.index',compact('users','x'));
+      }
+    }
+    
+ 
    
 }

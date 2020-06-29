@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('css')
+<!-- plugin css -->
+<link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
 <!-- Pre-loader end -->
@@ -62,7 +67,7 @@
                         
                                 <div class="card-block ">
                                     <div class="dt-responsive table-responsive" >
-                                        <table id="simpletable" class="table table-striped table-bordered nowrap text-center" >
+                                        <table id="key-datatable" class="table dt-responsive nowrap">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -104,8 +109,15 @@
 </div>
 
 
+@endsection
 
-</body>
+@section('script')
 
-</html>
+<!-- datatable js -->
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+@endsection
+
+@section('script-bottom')
+<!-- Datatables init -->
+<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection

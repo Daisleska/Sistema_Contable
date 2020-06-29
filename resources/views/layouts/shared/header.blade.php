@@ -22,17 +22,7 @@
         </ul>
 
         <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
-            <li class="d-none d-sm-block">
-                <div class="app-search">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Buscar...">
-                            <span data-feather="search"></span>
-                        </div>
-                    </form>
-                </div>
-            </li>
-
+           
             <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="Cambiar lenguaje">
                 <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
@@ -154,11 +144,14 @@
                 </div>
             </li>
 
+
             <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left" title="Configuración">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle">
                     <i data-feather="settings"></i>
                 </a>
             </li>
+
+            
 
             <li class="dropdown notification-list align-self-center profile-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
@@ -174,34 +167,12 @@
                         <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
                     </div>
                 </a>
-                <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
-                    <a href="{{ route('profile') }}" class="dropdown-item notify-item">
-                        <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
-                        <span>Mi Cuenta</span>
-                    </a>
+            </li>
 
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
-                        <span>Configuración</span>
-                    </a>
-
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
-                        <span>Soporte</span>
-                    </a>
-
-                    <a href="pages-lock-screen.html" class="dropdown-item notify-item">
-                        <i data-feather="lock" class="icon-dual icon-xs mr-2"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a href="/pages-logout" class="dropdown-item notify-item">
-                        <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
-                        <span>Salir</span>
-                    </a>
-                </div>
+             <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left" title="Salir">
+                <a href="javascript:void(0);" onclick="preventDefault()" class="nav-link ">
+                    <i data-feather="log-out"></i>
+                </a>
             </li>
         </ul>
     </div>

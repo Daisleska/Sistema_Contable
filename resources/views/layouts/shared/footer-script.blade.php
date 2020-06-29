@@ -9,7 +9,7 @@
 </script>
 
 
-<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+{{-- <script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script> --}}
 
 {{-- <script type="text/javascript">
 $(window).load(function() {

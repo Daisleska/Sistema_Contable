@@ -81,7 +81,8 @@ class CuentasController extends Controller
      */
     public function edit($id)
     {
-        //
+         $cuentas=cuenta::find($id);
+        return view ('admin.cuentas.edit', compact ('cuentas'));
     }
 
     /**
@@ -93,7 +94,33 @@ class CuentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $buscar=cuenta::where('codigo', $request->codigo)->where('id', '<>', $id)->get();
+
+        if (count($buscar)>0) {
+             
+            return redirect()-> route('cuentas.index');
+        } else {
+            # podemos actualizar los datos
+            $cuenta=cuenta::find($id);
+            $cuenta->codigo=$request->codigo;
+            $cuenta->nombre=$request->nombre;
+            $cuenta->descripcion=$request->descripcion;
+            $cuenta->tipo=$request->tipo;
+            $cuenta->saldo=$request->saldo;
+            $cuenta->save();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha modificado una Cuenta';
+            $bitacoras->save();
+
+
+            flash('<i class="icon-circle-check"></i> Cuenta Actualizada satisfactoriamente!')->success()->important();
+            return redirect ()->route('cuentas.index');
+        }
     }
 
     /**
