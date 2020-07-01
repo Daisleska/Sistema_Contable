@@ -54,16 +54,20 @@
                         <span>Imprimir</span>
                     </a>
                 
-                    </div></div></th>
+                    </div></div>
+                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger" title="Cerrar">Cerrar Libro</a></th>
+                  
           </table>
                   <br>
 
-                    <table id="basic-datatable" class="table dt-responsive nowrap" style="border-color: black; border: 1px;" border="1" >
+                   <table id="basic-datatable" class="table dt-responsive nowrap" style="border-color: black; border: 1px;" border="1" >
                         <thead >
                             <tr>
-                                <th COLSPAN="5" style="color: black; text-align: center;">LIBRO DIARIO</th>
+                             
+                                <th COLSPAN="5" style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LIBRO DIARIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Folio N° <?php echo $n_folio?></th>
+                              
                             </tr>
-                            <tr style="color: black;">
+                            <tr style="color: black; ">
                                 
                                 <th >FECHA</th>
                                 <th >CUENTA Y DESCRIPCIÓN</th>
@@ -77,22 +81,22 @@
                         
                     
                     
-                <tbody style="font-size: 12px;"  >
+                <tbody>
                 <?php   foreach($diario as $key)  { ?>
                        
               <tr>
                   <td style="text-align: center; "><?php echo $key->fecha; ?></td>
 
-                <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
+                <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.n_asiento='.$key->n_asiento.' AND YEAR(cuenta_has_diario.fecha)=YEAR(CURRENT_DATE)'); ?>
                  
                  <td>
-                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#45; {{$i++}} &#45;
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&#45; {{$key->n_asiento}} &#45;
                    <br>
                  <?php   foreach($de_cuentas as $val) { 
                 
                   echo $val->nombre;  ?><br><?php } ?>&nbsp; &nbsp; &nbsp; &nbsp;
 
-                <?php $a_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.a_monto FROM cuentas, cuenta_has_diario WHERE cuentas.id=cuenta_has_diario.c_destino AND cuenta_has_diario.diario_id='.$key->id_d.''); ?>
+                <?php $a_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.a_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.c_destino AND cuenta_has_diario.n_asiento='.$key->n_asiento.' AND YEAR(cuenta_has_diario.fecha)=YEAR(CURRENT_DATE)'); ?>
 
                  <?php  foreach($a_cuentas as $item)  { ?> 
                  <?php echo $item->nombre; ?><br>&nbsp; &nbsp; &nbsp; &nbsp; <?php  } ?>
@@ -154,14 +158,13 @@
              </tr>
      
                             <?php  }?>
-                                
-                      
-                           <tr style="color: black;" >
+                          
+                          <tr>
                                 <?php
                                 if (isset($activo)) {
                                 $debe=array_sum($activo);
                                 }else{
-                                  $activo[]=0; 
+                                    $activo[]=0; 
                                 }
 
                                  if (isset($pasivo)) {
@@ -169,14 +172,14 @@
                                 }else{  
                                  $pasivo[]=0;
                                 }
-                                
+
                                  ?>
                                 <td colspan="3" style="text-align: center;">VAN</td>
                                 <?php if (isset($debe)) { ?>
                                 <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
                                 <?php   }else{
-                                  $debe=0;
+                                    $debe=0;
                                ?>
                                 <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
@@ -185,12 +188,14 @@
                                 <?php if (isset($haber)) { ?>
                                 <td style="text-align: center;  ">{{number_format($haber,2,',','.')}}</td>
                                 <?php   }else{
-                                  $haber=0;
+                                    $haber=0;
                                 ?>
                                 <td style="text-align: center; ">{{number_format($haber,2,',','.')}}</td>
                               <?php  } ?>
                           </tr>
-                                                     
+                        
+                         
+                               
                                </tbody>
                     </table>
 
