@@ -25,13 +25,85 @@ class DiarioController extends Controller
     {
        $cuentas=cuenta::all();
 
-       $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id');
 
-       $i=1;
+       $d= \DB::select('SELECT * FROM diario WHERE anio=YEAR(CURRENT_DATE) and estado="Abierto"');
+
+       if ($d) {
+
+        $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d, n_asiento FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id AND diario.anio=YEAR(CURRENT_DATE)');
+
+        $n= \DB::select('SELECT n_folio FROM diario WHERE anio=YEAR(CURRENT_DATE)');
+        
+        foreach($n as $val) {
+            $n_folio=$val->n_folio;
+        }
+
+      
 
     
-       return view('process.diario.index', compact('diario', 'cuentas', 'i'));
+       return view('process.diario.index', compact('diario', 'cuentas', 'n_folio'));
+
+           
+       }else{
+
+        return view('process.diario.index1', compact('cuentas'));
+
+       }
+
+       
     }
+
+
+    public function abrir(){
+
+           $ldiario=diario::select('id', 'n_folio')->take(1)->orderBy('id', 'desc')->first();
+          
+           if($ldiario) {
+           
+               
+           $id=$ldiario->id+1;
+           $folio=$ldiario->n_folio+1;
+
+           $d= \DB::select ('INSERT INTO diario (`id`, `n_folio`, `anio`, `estado`) VALUES ("'.$id.'", "'.$folio.'",YEAR(CURRENT_DATE),"Abierto")');
+            
+          
+            
+
+           }else{
+
+        
+            $d= \DB::select ('INSERT INTO diario (`id`, `n_folio`, `anio`, `estado`) VALUES (1,1,YEAR(CURRENT_DATE),"Abierto")');
+
+
+     
+            }
+
+            $cuentas=cuenta::all();
+       
+             $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d, n_asiento FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id AND diario.anio=YEAR(CURRENT_DATE)');
+
+             $n= \DB::select('SELECT n_folio FROM diario WHERE anio=YEAR(CURRENT_DATE)');
+        
+             foreach($n as $val) {
+              $n_folio=$val->n_folio;
+              }
+
+    
+       return view('process.diario.index', compact('diario', 'cuentas', 'n_folio'));
+
+    }
+
+     
+     public function cerrar($n_folio){
+
+        $cuentas=cuenta::all();
+        $diario = \DB::select('UPDATE diario SET estado ="Cerrado" WHERE n_folio='.$n_folio);
+ 
+         return view('process.diario.index1', compact('cuentas'));
+
+
+     }
+
 
      public function mayor()
     {
@@ -40,12 +112,7 @@ class DiarioController extends Controller
        return view('process.diario.mayor', compact('cuentas'));
     }
 
-    /*  public function balance()
-    {
       
-
-       return view('process.diario.balance');
-    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -68,22 +135,6 @@ class DiarioController extends Controller
       /*  dd($request);*/
 
          
-             $lon=count($request->de_monto);
-             for ($i=0; $i < $lon ; $i++) { 
-
-                $montos[]=$request->de_monto[$i];
-            }  
-
-            $monto=array_sum($montos);
-            
-
-
-            $diario= new diario();
-            $diario->fecha=$request->fecha;
-            $diario->descripcion=$request->descripcion;
-            $diario->monto=$monto;//¿?
-            $diario->save();
-
         //restar el valor que esta saliendo a la cuenta 
 
         //$cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->de_cuentas.'');
@@ -123,14 +174,32 @@ class DiarioController extends Controller
             $l=count($request->de_cuenta);
 
             $lon=count($request->a_cuenta);
+
+
+            $diario= \DB::select('SELECT n_asiento FROM cuenta_has_diario, diario WHERE diario.anio=YEAR(CURRENT_DATE) AND diario.n_folio=cuenta_has_diario.diario_id ORDER BY n_asiento DESC LIMIT 1');
+          
+           if($diario) {
+
+           foreach ($diario as $key) {
+           
+            $n_asiento=$key->n_asiento+1;
+            }
+           }else{
+
+            $n_asiento=1;
+
+           }
             
 
             for ($i=0;$i<$l; $i++){
            
             for ($j=0;$j<$lon; $j++){
             $cuenta_has_diario=new cuenta_has_diario();
-            $cuenta_has_diario->cuenta_id=$request->de_cuenta[$i];
+            $cuenta_has_diario->fecha=$request->fecha;
+            $cuenta_has_diario->descripcion=$request->descripcion;
+            $cuenta_has_diario->n_asiento=$n_asiento;
             $cuenta_has_diario->diario_id=$diario_id;
+            $cuenta_has_diario->cuenta_id=$request->de_cuenta[$i];
             $cuenta_has_diario->c_destino=$request->a_cuenta[$j];
             $cuenta_has_diario->de_monto=$request->de_monto[$i];
             $cuenta_has_diario->a_monto=$request->a_monto[$j];
@@ -296,4 +365,6 @@ class DiarioController extends Controller
         //return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
         //return $datos = array("buscar" => $activo, "buscar2" => $pasivo );
    }
+
 }
+

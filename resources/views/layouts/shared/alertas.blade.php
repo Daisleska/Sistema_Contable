@@ -75,4 +75,23 @@
        });
 
     }
+
+
+      function alert_diario(){
+        swal({
+        icon : "info",
+        title : "¡Existe un libro generado este año!",
+        text : "Debe esperar al siguiente año para registrar un nuevo Folio",
+        buttons : {
+            confirm: {
+                text: "OK",
+                value: true,
+                visible: true,       
+            },
+             
+        },
+
+       });
+
+    }
 </script>

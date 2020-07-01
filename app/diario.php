@@ -8,7 +8,7 @@ class diario extends Model
 {
     protected $table='diario';
 
-    protected $fillable=['fecha','descripcion','monto'];
+    protected $fillable=['id','n_folio','anio','estado'];
 
 }
 

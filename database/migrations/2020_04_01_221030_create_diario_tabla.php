@@ -15,9 +15,9 @@ class CreateDiarioTabla extends Migration
     {
         Schema::create('diario', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('fecha');
-            $table->string('descripcion')->nullable();
-            $table->integer('monto');
+            $table->integer('n_folio');
+            $table->string('anio');
+            $table->enum('estado',['Abierto','Cerrado']);
             $table->timestamps();
 
         });
