@@ -94,7 +94,7 @@
                                 <th COLSPAN="2" style="text-align: center;">LIBRO MAYOR</th>
                             </tr>
                             <tr>
-                                <th COLSPAN="4" style="margin-right: 10cm;"><select name="cuenta" id="cuenta" class="form-control" data-placeholder="Elige" style="width: 8cm;">
+                                <th COLSPAN="6" style="margin-right: 10cm;"><select name="cuenta" id="cuenta" class="form-control" data-placeholder="Elige" style="width: 8cm;">
                                     <option selected="selected" disabled="disabled">Seleccione una cuenta</option>
                                 @foreach($cuentas as $key)
                                         
@@ -106,6 +106,7 @@
                                <!--<button type="button" class="btn btn-primary" id="actu">Actualizar</button>-->
                               
                         <table style="border-color: black; border: 1px;  " border="1" class="table"><br>
+                        
                                  <thead id="thead">
                                      
                                  </thead>

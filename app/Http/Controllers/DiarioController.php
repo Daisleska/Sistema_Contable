@@ -40,12 +40,12 @@ class DiarioController extends Controller
        return view('process.diario.mayor', compact('cuentas'));
     }
 
-      public function balance()
+    /*  public function balance()
     {
       
 
        return view('process.diario.balance');
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.

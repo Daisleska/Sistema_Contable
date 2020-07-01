@@ -135,7 +135,7 @@
 
     <li>
         <a href="{{ route('cajachica.index') }}">
-            <i data-feather="book-open"></i>
+            <i data-feather="archive"></i>
             <span>Caja Chica</span>
         </a>
     </li>
@@ -143,7 +143,7 @@
          ?>
          <li>
         <a onclick="alert_cajachica() ">
-            <i data-feather="book-open"></i>
+            <i data-feather="archive"></i>
             <span>Caja Chica</span>
         </a>
     </li>
@@ -157,7 +157,7 @@ if ($x_inventario) {
     ?>
   <li>
         <a href="{{ route('inventario.index') }}">
-            <i data-feather="book-open"></i>  
+            <i data-feather="box"></i>  
             <span>Inventario</span>
         </a>
     </li>
@@ -165,7 +165,7 @@ if ($x_inventario) {
         ?>
         <li>
         <a onclick="alert_inventario()">
-            <i data-feather="book-open"></i>  
+            <i data-feather="box"></i>  
             <span>Inventario</span>
         </a>
     </li>
@@ -180,15 +180,15 @@ if ($x_inventario) {
     </li>
     <li>
          <a href="{{ route('diario.mayor') }}">
-            <i data-feather="book-open"></i>
+            <i data-feather="arrow-up-circle"></i>
             <span>Mayor</span>
         </a>
     </li>
 
     <li>
-         <a href="{{ route('diario.balance') }}">
-            <i data-feather="book-open"></i>
-            <span>Balance General</span>
+         <a href="{{ route('balances.index') }}">
+            <i data-feather="bold"></i>
+            <span>Balances</span>
         </a>
     </li>
 

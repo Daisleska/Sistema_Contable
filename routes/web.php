@@ -36,13 +36,13 @@ Route::resource('notificaciones', 'NotificacionesController');
 
 Route::resource('cotizacion', 'CotizacionesController');
 Route::resource('cuentas', 'CuentasController');
-
+Route::resource('balances', 'BalancesController');
 //Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
 
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
 Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
-Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
+/*Route::get('diario.balance','DiarioController@balance')->name('diario.balance');*/
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
 	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');

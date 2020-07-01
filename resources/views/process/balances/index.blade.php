@@ -6,7 +6,7 @@
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 
 <link href="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('Shreyu/assets/libs/multiselect/multi-select.css') }}" rel="stylesheet" type="text/css" />
 
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -35,7 +35,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <table style="color: black;">
+                    <h3 style="text-align: center; color: black;">BALANCES</h3>
+                     <table style="color: black;">
                       
 
                     <th style="align-content: right;">
@@ -60,74 +61,79 @@
                     </a>
                 
                     </div></div></th>
+              
+                    @foreach($a as $ke)
+            <form  method="GET" action="{{route('balances.show', $ke->year)}}">
+                
+                    <th style="align-content: left;" >
+                        <select name="anio" id="anio" class="form-control" data-placeholder="Elige" style="width: 4cm;">
+                     
+                     <option selected="selected" value="{{$ke->year}}">{{$ke->year}}</option>
+                     @endforeach
+                 </select> 
+                    </th>
+                    <th>
+                    <button class="btn btn-success" >Buscar</button>
+                        
+                    </th>
+                </form>
                   </tr>
 
 
                     </table>
                   <br>
-              
-
-                    <table style="border-color: black; border: 1px;  " border="1" id="basic-datatable" class="table dt-responsive nowrap" >
-                        <thead>
-                            <?php
-                      use App\empresa;
-
-                      $empresa=DB::table ('empresa')->select('nombre')->get();
-
-                       
-                      foreach($empresa as $key){ ?>
-                            <tr style="color: black;" id="anio">
-                                <th COLSPAN="2" style="text-align: center;"><?php echo $key->nombre; ?><br> BALANCE GENERAL</th>
-                                <?php }  ?>
-                            </tr>
-                            <tr>
-                                <th COLSPAN="4" style="margin-right: 10cm;"><select name="anio" id="anio" class="form-control" data-placeholder="Elige" style="width: 4cm;">
-                                    <option selected="selected" disabled="disabled">Seleccione</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2019">2019</option>
-
-     
-                                </select>
-
-                               <!--<button type="button" class="btn btn-primary" id="actu">Actualizar</button>-->
-                              
-                        <table style="border-color: black; border: 1px;  " border="1" class="table"><br>
-                                 <thead style="text-align: center; color: black;">
-                                    <th>Número</th>
-                                    <th>Cuentas</th>
-                                    <th>Movimientos <br>Deudor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Acreedor</th>
-                                    <th>Saldo <br>Deudor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Acreedor</th>
-                                     
-                                 </thead>
-                                 <tbody id="tbody">
-                                     
-                                 </tbody>
-                             </table></th>
-                         </tr>
-                        </thead>
-                          
+                      
 
 
-                          
-                             
-                    </table>
+                    <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#comprobacion" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                            <span class="d-block d-sm-none"><i class="uil-home-alt"></i></span>
+                            <span class="d-none d-sm-block">Comprobación</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#GyP" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                            <span class="d-block d-sm-none"><i class="uil-user"></i></span>
+                            <span class="d-none d-sm-block">Ganancias y Perdidas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#general" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            <span class="d-block d-sm-none"><i class="uil-envelope"></i></span>
+                            <span class="d-none d-sm-block">General</span>
+                        </a>
+                    </li>
+                </ul>
+                   <div class="tab-content p-3 text-muted">
+                    <div class="tab-pane show active" id="comprobacion">
+                @include('process.balances.comprobacion')
+                    </div>
+
+                    <div class="tab-pane " id="GyP">
+                        @include('process.balances.ganancia_perdida')
+                    </div>
+                    <div class="tab-pane" id="general">
+                       @include('process.balances.general')
+                    </div>
+                </div>
+
+
+
+
+                   
 
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
     <!-- end row-->
-
-<!-- llamado al Modak----->
-
-
 @endsection
 
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/multiselect.min.js') }}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
 
 
 
@@ -142,32 +148,13 @@ $(document).ready(function(){
     $("select[name=anio]").change(function(){
        var anio= document.getElementById("anio").value;
     
-        tabla(anio);
+     document.getElementById('buscar').submit();
     });
 })
 
-    function tabla(anio){
-          
-                $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/busqueda/'+anio+'/buscar',
-            type: 'POST',
-            success: function(res){
-               // var js= JSON.parse(JSON.stringify({res}));
-                //console.log(res.buscar);
-               
-                var tabla;
-                $('#tbody').html(tabla);
-
-
-
-                
-               
-            }
-
-        });
-    }
 /*    $('#actu').click(function(){
         tabla();
     });*/
 </script>
+
+

@@ -30,36 +30,12 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <table >
-                      <?php
-                      use App\empresa;
-
-  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
-
-                       
-                      foreach($empresa as $key){
-                        ?>
-                        <tr style="color: black;" >
-                            <th>NOMBRE DE LA EMPRESA:</th>
-                            <th><?php echo e($key->nombre)?></th>
-                        </tr>
-                        <tr style="color: black;">
-                            <th>MES:
-                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
-                        </tr>
-                        <tr style="color: black;">
-                            <th>RUT:
-                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
-                         <?php
-                        }
-                        ?>
-                    </tr>
-
+                  <table >
                     <th style="align-content: right;">
                      <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
                   
             
-                       <div class="btn-group">                           
+                <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Descargar
@@ -79,9 +55,7 @@
                     </a>
                 
                     </div></div></th>
-                  </tr>
-
-                    </table>
+          </table>
                   <br>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap" style="border-color: black; border: 1px;" border="1" >
@@ -89,7 +63,7 @@
                             <tr>
                                 <th COLSPAN="5" style="color: black; text-align: center;">LIBRO DIARIO</th>
                             </tr>
-                            <tr style="color: black; ">
+                            <tr style="color: black;">
                                 
                                 <th >FECHA</th>
                                 <th >CUENTA Y DESCRIPCIÓN</th>
@@ -103,7 +77,7 @@
                         
                     
                     
-                <tbody>
+                <tbody style="font-size: 12px;"  >
                 <?php   foreach($diario as $key)  { ?>
                        
               <tr>
@@ -180,13 +154,14 @@
              </tr>
      
                             <?php  }?>
-                          
-                          <tr>
+                                
+                      
+                           <tr style="color: black;" >
                                 <?php
                                 if (isset($activo)) {
                                 $debe=array_sum($activo);
                                 }else{
-                                	$activo[]=0; 
+                                  $activo[]=0; 
                                 }
 
                                  if (isset($pasivo)) {
@@ -194,14 +169,14 @@
                                 }else{  
                                  $pasivo[]=0;
                                 }
-
+                                
                                  ?>
                                 <td colspan="3" style="text-align: center;">VAN</td>
                                 <?php if (isset($debe)) { ?>
                                 <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
-                                <?php 	}else{
-                                	$debe=0;
+                                <?php   }else{
+                                  $debe=0;
                                ?>
                                 <td style="text-align: center; ">
                                 {{number_format($debe,2,',','.')}}</td>
@@ -209,28 +184,24 @@
 
                                 <?php if (isset($haber)) { ?>
                                 <td style="text-align: center;  ">{{number_format($haber,2,',','.')}}</td>
-                                <?php 	}else{
-                                	$haber=0;
+                                <?php   }else{
+                                  $haber=0;
                                 ?>
                                 <td style="text-align: center; ">{{number_format($haber,2,',','.')}}</td>
                               <?php  } ?>
                           </tr>
-                        
-                         
-                               
+                                                     
                                </tbody>
                     </table>
 
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-    </div>
+                   
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
     <!-- end row-->
-
 <!-- llamado al Modak----->
     @include('process.diario.create')
-
-
 @endsection
 
 @section('script')
@@ -246,19 +217,3 @@
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
 @endsection
 
-<script type="text/javascript">
-
-function makeArray() {
-for (i = 0; i<makeArray.arguments.length; i++)
-this[i + 1] = makeArray.arguments[i];}
-var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
-'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var yy = date.getYear();
-var year = (yy < 1000) ? yy + 1900 : yy;
-
-//]]>
-
-</script>

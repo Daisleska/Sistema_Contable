@@ -100,11 +100,7 @@
                        <?php
                         $existencia=$key->existencia;
                         $precio=$key->precio;
-                        $costo_total=$precio*$existencia;
-
-
-                      
-                        
+                        $costo_total=$precio*$existencia; 
                         ?>
                        
                           
