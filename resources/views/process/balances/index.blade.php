@@ -130,17 +130,19 @@
     <!-- end row-->
 @endsection
 
+@section('script')
+
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
+@endsection 
 
-
-
+@section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
-
+@endsection
 
 
 <script>

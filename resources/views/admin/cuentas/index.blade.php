@@ -43,7 +43,7 @@
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
                                 <th>Ref</th>
                                 <th>Código</th>
@@ -60,7 +60,7 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                             @foreach($cuentas as $key)
                 <tr>
                   <td>{{$key->id}}</td>

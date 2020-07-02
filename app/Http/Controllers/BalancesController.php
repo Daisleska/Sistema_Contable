@@ -19,36 +19,30 @@ class BalancesController extends Controller
      */
     public function index()
     {
+    /*-----------------datos para balance de comprobacion---------------*/
     $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
 
-    $anio = date('Y');
+        $anio = date('Y');
         $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
         $cuenta=count($comprobacion);
         $i=1;
 
-        foreach ($comprobacion as $val) {
-        
+        foreach ($comprobacion as $val) {      
         
         $res= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
-        foreach ($res as $key) {
-        
-        
+        foreach ($res as $key) {      
         $res_cuenta[$i][0]=$key->cuenta_debe;
         $res_cuenta[$i][1]=$key->cuenta_haber;
-
-         
-
         }
         $i++;
         }//
-
-
         $totales_C= \DB::select('SELECT SUM(mayor.debe) AS debe, SUM(mayor.haber) AS haber FROM  mayor WHERE YEAR(mayor.created_at)='.$anio.'');
+    /*------------------------FIN COMPROBACION-------------------------*/
+    /*-----------Datos para balance de ganancias y perdidas------------*/
 
 
-
-          
+    /*---------------------FIN GANANCIAS Y PERDIDAS--------------------*/
        return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C'));
     }
 
@@ -81,23 +75,28 @@ class BalancesController extends Controller
      */
     public function show(Request $request)
     {
-         $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
+      /*-----------------datos para balance de comprobacion---------------*/
+        $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
 
-    $anio = $request->anio;
-        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
+        $anio = $request->anio;
+        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
         $cuenta=count($comprobacion);
         $i=1;
 
-        while ( $i <= $cuenta) {
-        $res_cuenta[]= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$i.' AND YEAR(mayor.created_at)='.$anio.'');
-        $i++;
+        foreach ($comprobacion as $val) {      
+        
+        $res= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
+
+        foreach ($res as $key) {      
+        $res_cuenta[$i][0]=$key->cuenta_debe;
+        $res_cuenta[$i][1]=$key->cuenta_haber;
         }
-
-
+        $i++;
+        }//
         $totales_C= \DB::select('SELECT SUM(mayor.debe) AS debe, SUM(mayor.haber) AS haber FROM  mayor WHERE YEAR(mayor.created_at)='.$anio.'');
+    /*------------------------FIN COMPROBACION-------------------------*/
 
-          
-       return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C'));
+        return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C'));
     }
 
     /**

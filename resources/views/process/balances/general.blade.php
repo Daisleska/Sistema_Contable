@@ -1,6 +1,3 @@
-<?php
-
- ?>
 
 {{-- TABLA PARA LOS ACTIVOS --}}
    <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
@@ -12,7 +9,7 @@
                	<th>VALOR 2</th>
              </thead>
             		 <tbody>
-                             <tr style="font-size: 12px;">
+                             <tr style="font-size: 10px;">
                               
                                   <td></td>
                                   <td></td>       
@@ -39,7 +36,7 @@
                	<th>VALOR 2</th>
              </thead>
             		 <tbody>
-                             <tr style="font-size: 12px;">
+                             <tr style="font-size: 10px;">
                               
                                   <td></td>
                                   <td></td>       
@@ -66,7 +63,7 @@
                	<th>VALOR 2</th>
              </thead>
             		 <tbody>
-                             <tr style="font-size: 12px;">
+                             <tr style="font-size: 10px;">
                                   <td></td>
                                   <td></td>       
                                   <td></td>

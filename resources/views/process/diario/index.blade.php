@@ -55,7 +55,9 @@
                     </a>
                 
                     </div></div>
-                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger" title="Cerrar">Cerrar Libro</a></th>
+                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger" title="Cerrar">Cerrar Libro</a>
+
+                 <a href="{{ route('historial') }}"  class="btn btn-info" title="Ver Historial">Historial</a></th>
                   
           </table>
                   <br>

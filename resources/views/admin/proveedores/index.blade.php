@@ -41,9 +41,9 @@
 
 
                      <table id="key-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
-                                <th>Nombre de la Empresa</th>
+                                <th>Nombre</th>
                                 <th>RUF</th>
                                 <th>Representante</th>
                                 <th>Direccion</th>
@@ -54,7 +54,7 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                             @foreach($proveedores as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>

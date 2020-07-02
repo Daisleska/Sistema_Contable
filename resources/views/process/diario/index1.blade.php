@@ -61,9 +61,10 @@
                       ?>
 
                       <th><a onclick="alert_diario()" class="btn btn-danger" style="color: white;">
-                      Abrir Libro</a></th>
-            
-                      </a>
+                      Abrir Libro</a>
+
+                    <a href="{{ route('historial') }}"  class="btn btn-info" title="Ver Historial">Historial</a></th>            
+                    
                     <?php
                     }else{
                     ?>

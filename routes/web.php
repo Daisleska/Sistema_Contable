@@ -43,6 +43,7 @@ Route::resource('balances', 'BalancesController');
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
 Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
+Route::get('diario.historial','DiarioController@historial')->name('historial');
 Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');

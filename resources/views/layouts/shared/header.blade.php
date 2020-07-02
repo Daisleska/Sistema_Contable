@@ -23,7 +23,7 @@
 
         <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
            
-            <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="Cambiar lenguaje">
+           {{--  <li class="dropdown d-none d-lg-block" data-toggle="tooltip" data-placement="left" title="ar lenguaje">
                 <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <i data-feather="globe"></i>
@@ -53,7 +53,7 @@
                             class="align-middle">rusia</span>
                     </a>
                 </div>
-            </li>
+            </li> --}}
 
 
             <li class="dropdown notification-list" data-toggle="tooltip" data-placement="left"

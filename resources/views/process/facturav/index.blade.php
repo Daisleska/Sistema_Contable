@@ -41,7 +41,7 @@
                     Registrar</a>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
                                 <th>Fecha</th>
                                 <th>N° Factura</th>
@@ -55,7 +55,7 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                      @foreach($facturav as $key) 
 
                 <tr>

@@ -33,7 +33,7 @@
                                     <?php  
                                   }else{
                                     ?>
-                                    <td>&nbsp; &nbsp;&nbsp; {{$key->nombre}}</td> 
+                                    <td>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; {{$key->nombre}}</td> 
                                     <?php
                                   }
                                   ?>

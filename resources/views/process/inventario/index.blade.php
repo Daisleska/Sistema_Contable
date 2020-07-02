@@ -83,7 +83,7 @@
 
 
                      <table id="key-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
                                 <th>Descripción</th>
                                 <th>Código</th>
@@ -94,7 +94,7 @@
                             </tr>
                         </thead>
                 
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                       
                   @foreach($inventario as $key)
                        <?php

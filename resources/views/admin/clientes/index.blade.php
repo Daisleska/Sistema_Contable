@@ -36,7 +36,7 @@
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
                                 <th>Nombre</th>
                                 <th>RUF</th>
@@ -50,7 +50,7 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                             @foreach($clientes as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>

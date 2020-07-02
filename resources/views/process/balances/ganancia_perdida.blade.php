@@ -11,25 +11,20 @@
                 <th>AJUSTE</th>
              </thead>
              <tbody>
-                       
-                
-                             <tr style="font-size: 12px;">
+                      <tr style="font-size: 12px;">
                               
-                                  <td></td>
-                                  <td></td>       
-                                  <td></td>
-                                  <td></td>
+                          <td></td>
+                          <td></td>       
+                          <td></td>
+                          <td></td>
                         
-                            </tr>
+                      </tr>
 
-                            <tr  style="text-align: center; font-size: 12px; color: black;" >
-                            	<td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
-                            	<td></td>
-                            	<td></td>
-                            	<td></td>
-                            </tr>
-              
-                            
-                                 
-         </tbody>
+                      <tr  style="text-align: center; font-size: 12px; color: black;" >
+                      	<td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
+                      	<td></td>
+                      	<td></td>
+                      	<td></td>
+                      </tr>
+            </tbody>
 </table>

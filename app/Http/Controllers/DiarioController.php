@@ -350,7 +350,12 @@ class DiarioController extends Controller
    }
 
 
+ public function historial()
+   {
+    $historial= \DB::select('SELECT * FROM diario');
 
+      return view('process.diario.historial_diario', compact('historial'));
+   }
 
    public function busqueda($anio)
    {

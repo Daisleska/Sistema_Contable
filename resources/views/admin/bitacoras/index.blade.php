@@ -68,7 +68,7 @@
                                 <div class="card-block ">
                                     <div class="dt-responsive table-responsive" >
                                         <table id="key-datatable" class="table dt-responsive nowrap">
-                                            <thead>
+                                            <thead style="font-size: 12px;">
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nombre</th>
@@ -78,7 +78,7 @@
                                                
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody style="font-size: 12px;">
                                              @foreach($bitacora as $item)
                                                 <tr>
                                                 
