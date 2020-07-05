@@ -31,19 +31,50 @@ class BalancesController extends Controller
         
         $res= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
+
         foreach ($res as $key) {      
         $res_cuenta[$i][0]=$key->cuenta_debe;
         $res_cuenta[$i][1]=$key->cuenta_haber;
+
+        $saldos[]=$res_cuenta[$i][0] - $res_cuenta[$i][1]; 
         }
         $i++;
+
         }//
+
         $totales_C= \DB::select('SELECT SUM(mayor.debe) AS debe, SUM(mayor.haber) AS haber FROM  mayor WHERE YEAR(mayor.created_at)='.$anio.'');
     /*------------------------FIN COMPROBACION-------------------------*/
     /*-----------Datos para balance de ganancias y perdidas------------*/
 
+    //Formulas//
+// * Ventas Netas:  
+// Vn = Vb - Desct - Rbj - DelV
 
+
+    
     /*---------------------FIN GANANCIAS Y PERDIDAS--------------------*/
-       return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C'));
+    /*-------------Datos para el balance general----------------------*/
+
+    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
+    $j=1;
+
+    foreach ($general as $gen) {
+
+     $gener= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$gen->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
+
+
+        foreach ($gener as $keyk) {    
+        $res_saldo_general[$j][0]=$gen->nombre;
+        $res_saldo_general[$j][1]=$gen->tipo;  
+        $res_saldo_general[$j][2]=$keyk->cuenta_debe;
+        $res_saldo_general[$j][3]=$keyk->cuenta_haber;
+        }
+        $j++;
+
+    }
+   /* dd($res_saldo_general);*/
+
+       return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general'));
     }
 
     /**

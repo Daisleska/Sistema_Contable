@@ -11,15 +11,18 @@
                 <th>AJUSTE</th>
              </thead>
              <tbody>
+
+
+                      @foreach($saldos as $saldo)  
+
                       <tr style="font-size: 12px;">
-                              
                           <td></td>
-                          <td></td>       
+                          <td>{{$saldo}}</td>       
                           <td></td>
                           <td></td>
                         
                       </tr>
-
+                      @endforeach
                       <tr  style="text-align: center; font-size: 12px; color: black;" >
                       	<td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
                       	<td></td>

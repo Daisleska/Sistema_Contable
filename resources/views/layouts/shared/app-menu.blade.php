@@ -11,29 +11,13 @@
 
     <li class="menu-title">Registros</li>
 
-<?php
-   $x_empresa=\DB::select('SELECT * FROM empresa ');
-
-  if ($x_empresa) {
-
-   ?>
-    <li>
-        <a href="{{route('empresa.index')}}">
-            <i data-feather="briefcase"></i>
-            <span>Empresa</span>
+  <li>
+     <a href="javascript: void(0);">
+            <i data-feather="edit"></i>
+            <span> Registros Generales </span>
+            <span class="menu-arrow"></span>
         </a>
-    </li>
-    <?php }elseif (empty($x_empresa)) { ?>
-
-     <li>
-        <a onclick="alert_empresa()">
-            <i data-feather="briefcase"></i>
-            <span>Empresa</span>
-        </a>
-    </li>
-
-    <?php } ?>
-
+        <ul class="nav-second-level" aria-expanded="false">
 <?php
    $x_proveedores=\DB::select('SELECT * FROM proveedores ');
 
@@ -103,9 +87,21 @@
             <span> Cuentas </span>
         </a>
     </li>
+        </ul>
+  </li>
+
+
 
    <li class="menu-title">Facturas</li>
-    <li>
+
+   <li>
+      <a href="javascript: void(0);">
+            <i data-feather="file-text"></i>
+            <span>Facturas</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <ul class="nav-second-level" aria-expanded="false">
+           <li>
         <a href="{{ route('facturav.index') }}">
             <i data-feather="log-out"></i>
             <span> Facturas de Ventas </span>
@@ -117,40 +113,20 @@
             <span> Facturas de Compras </span>
         </a>
     </li>
+        </ul>
+   </li>
+   
 
-    <li class="menu-title">Libros</li>
-    <li>
-        <a href="{{ route('compra.index') }}">
-            <i data-feather="book-open"></i>  
-            <span>Compra - Venta</span>
-        </a>
-    </li>
-
-<?php
-   $x=\DB::select('SELECT * FROM cuentas ');
-
-  if ($x) {
-
-   ?>
+    <li class="menu-title">Libros Principales</li>
 
     <li>
-        <a href="{{ route('cajachica.index') }}">
-            <i data-feather="archive"></i>
-            <span>Caja Chica</span>
+      <a href="javascript: void(0);">
+            <i data-feather="book"></i>
+            <span>Libros Principales</span>
+            <span class="menu-arrow"></span>
         </a>
-    </li>
-<?php }elseif (empty($x)) {
-         ?>
-         <li>
-        <a onclick="alert_cajachica() ">
-            <i data-feather="archive"></i>
-            <span>Caja Chica</span>
-        </a>
-    </li>
-    <?php } ?>
-
-
-<?php 
+        <ul class="nav-second-level" aria-expanded="false">
+          <?php 
 $x_inventario=\DB::select('SELECT * FROM inventario');
 
 if ($x_inventario) {
@@ -184,6 +160,47 @@ if ($x_inventario) {
             <span>Mayor</span>
         </a>
     </li>
+        </ul>
+    </li>
+
+<li>
+   <a href="javascript: void(0);">
+            <i data-feather="book-open"></i>
+            <span>Otros Libros</span>
+            <span class="menu-arrow"></span>
+        </a>
+        <ul class="nav-second-level" aria-expanded="false">
+           <li>
+        <a href="{{ route('compra.index') }}">
+            <i data-feather="book-open"></i>  
+            <span>Compra - Venta</span>
+        </a>
+    </li>
+
+<?php
+   $x=\DB::select('SELECT * FROM cuentas ');
+
+  if ($x) {
+
+   ?>
+
+    <li>
+        <a href="{{ route('cajachica.index') }}">
+            <i data-feather="archive"></i>
+            <span>Caja Chica</span>
+        </a>
+    </li>
+<?php }elseif (empty($x)) {
+         ?>
+         <li>
+        <a onclick="alert_cajachica() ">
+            <i data-feather="archive"></i>
+            <span>Caja Chica</span>
+        </a>
+    </li>
+    <?php } ?>
+        </ul>
+</li>
 
     <li>
          <a href="{{ route('balances.index') }}">

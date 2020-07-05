@@ -18,6 +18,22 @@
                     <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
                     <span>Mi Cuenta</span>
                 </a>
+                       <?php
+   $x_empresa=\DB::select('SELECT * FROM empresa ');
+
+  if ($x_empresa) {
+
+   ?>
+                <a href="{{route('empresa.index')}}" class="dropdown-item notify-item">
+                    <i data-feather="briefcase" class="icon-dual icon-xs mr-2"></i>
+                    <span>Empresa</span>
+                </a>
+     <?php }elseif (empty($x_empresa)) { ?>
+                <a onclick="alert_empresa()" class="dropdown-item notify-item">
+                    <i data-feather="briefcase" class="icon-dual icon-xs mr-2"></i>
+                    <span>Empresa</span>
+                </a>
+     <?php } ?>
 
                 <a href="{{ url('backup') }}" class="dropdown-item notify-item">
                     <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
