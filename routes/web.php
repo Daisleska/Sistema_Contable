@@ -18,6 +18,12 @@ Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@bu
 Route::get('compras/{mes}/{anio}/{dia}/buscador', 'ComprasController@buscador');
 
 Route::get('cotizacion/{product}/buscar_producto', 'CotizacionesController@buscar_producto');
+
+
+Route::get('clients/{user_id}/search','CotizacionesController@search_clients');
+    Route::get('products/{user_id}/search','CotizacionesController@search_products');
+    Route::get('products/{product_id}/add','CotizacionesController@products_add');
+    Route::get('watch/{quotation_id}/watch','CotizacionesController@watch')->name('quotations.watch');
 /*fin*/
 
 
@@ -47,10 +53,10 @@ Route::get('diario.historial','DiarioController@historial')->name('historial');
 Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
-	Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
-	Route::get('cambiar_clave','UsersController@cambiar_clave')->name('cambiar_clave');
+    Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
+    Route::get('cambiar_clave','UsersController@cambiar_clave')->name('cambiar_clave');
 
-	Route::put('cambiar_tipo','UsersController@cambiar_tipo')->name('cambiar_tipo');
+    Route::put('cambiar_tipo','UsersController@cambiar_tipo')->name('cambiar_tipo');
 Route::resource('users','UsersController');
 /*Bitácora de acciones*/
 Route::resource('bitacoras','BitacoraController');
@@ -95,7 +101,7 @@ Route::get('backup/create', 'BackupController@create')->name('backup.create');
 Route::get('backup/restore/{filename}', 'BackupController@restore')->name('backup.restore');
 Route::get('backup/download/{filename}', 'BackupController@download')->name('backup.download');
 Route::get('backup/delete/{filename}', 'BackupController@delete')->name('backup.delete');
-	});
+    });
 /*fin backup*/
 
 

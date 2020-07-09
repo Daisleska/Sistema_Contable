@@ -209,8 +209,7 @@
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js')}}
 "></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
-"></script> 
+ 
 
 <script>
      

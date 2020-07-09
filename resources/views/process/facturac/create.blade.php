@@ -60,7 +60,9 @@
 
 @section('script')
 <!-- Plugin js-->
-<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsley.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>
+
 
 <script src="{{ asset('js/jquery/dist/jquery.js') }}"></script>
 

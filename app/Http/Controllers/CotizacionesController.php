@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\cotizacion;
 use App\producto;
 use App\iva;
+use App\cliente;
+use App\User;
 use App\descuento;
 use Bitacora;
 use App\empresa;
@@ -37,10 +39,29 @@ class CotizacionesController extends Controller
      */
     public function create()
     {
+        $hoy=date('Y-m-d');
         $iva= iva::all();
-        $producto= producto::all();
+        $products= producto::all();
         $descuento= descuento::all();
-        return view('process.cotizaciones.create', compact('iva', 'descuento', 'producto'));
+        $clients=cliente::all();
+        $users=User::all();
+        return view('process.cotizaciones.create', compact('iva', 'descuento', 'products','users', 'clients','hoy'));
+    }
+
+     public function search_clients($user_id)
+    {
+        return $clients=cliente::where('id','<>','0')->get();
+    }
+
+    public function search_products($user_id)
+    {
+        return $products=producto::where('id','<>','0')->get();
+    }
+
+    public function products_add($product_id)
+    {
+    
+        return $products=producto::where('id',$product_id)->get(); 
     }
 
     /**
@@ -51,7 +72,7 @@ class CotizacionesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+      /*dd($request);*/
         $buscar=cotizacion::where ('n_cotizacion', $request->n_cotizacion)->get();
         if (count($buscar)>0) {
             # no permitir registrar
@@ -59,8 +80,22 @@ class CotizacionesController extends Controller
             return redirect()->back();
         } else {
             # permitir regitrar
+        $i=1;
+       /* dd($num);*/
+      foreach ($request->product_id as $val) {  
+        $total=\DB::select('SELECT  id, precio FROM productos WHERE id='.$val);
+
+            foreach ($total as $valor) {      
+        $totales[$i][0]=$valor->id;
+        $totales[$i][1]=$valor->precio;
+        }
+        $i++;
+      }
+
+        dd($totales);
         //registro en la tabla cotizaciones----------------------------
-       $cotizacion= new cotizacion();
+
+            $cotizacion= new cotizacion();
 
             $cotizacion->clientes_id=$request->clientes_id;
             $cotizacion->productos_id=$request->productos_id;
@@ -69,14 +104,17 @@ class CotizacionesController extends Controller
             $cotizacion->c_pago=$request->c_pago;
             $cotizacion->validez=$request->validez;
             $cotizacion->cantidad=$request->cantidad;
-            $cotizacion->importe=$request->importe;
+ /*           $cotizacion->importe=$request->importe;*/
             $cotizacion->sub_total=$request->sub_total;
             $cotizacion->descuento=$request->descuento;
             $cotizacion->p_des=$request->p_des;
             $cotizacion->iva=$request->iva;
-            $cotizacion->p_iva=$request->p_iva;
+/*            $cotizacion->p_iva=$request->p_iva;*/
             $cotizacion->divisa=$request->divisa;
             $cotizacion->total=$request->total;
+            $cotizacion->comentarios=$request->comentarios;
+            $cotizacion->address_to=$request->address_to;
+            $cotizacion->email_comments=$request->email_comments;
             $cotizacion->save();
 
             
