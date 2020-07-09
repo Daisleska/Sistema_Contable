@@ -228,4 +228,4 @@ if ($x_inventario) {
   </ul>
 
 
-  @include('layouts.shared.alertas')
+@include('layouts.shared.alertas')

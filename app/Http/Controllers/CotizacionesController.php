@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\cotizacion;
 use App\producto;
 use App\iva;
@@ -11,6 +12,8 @@ use App\descuento;
 use Bitacora;
 use App\empresa;
 use App\Alert;
+use App\Mail\email_Cotizacion;
+use Mail;
 use PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +29,7 @@ class CotizacionesController extends Controller
      */
     public function index()
     {  
-       $cotizacion = \DB::select('SELECT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.id AS id_cotizacion, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
 
 
        return view('process.cotizaciones.index', compact('cotizacion'));
@@ -80,7 +83,8 @@ class CotizacionesController extends Controller
             return redirect()->back();
         } else {
             # permitir regitrar
-        $i=1;
+        $i=0;
+      
        /* dd($num);*/
       foreach ($request->product_id as $val) {  
         $total=\DB::select('SELECT  id, precio FROM productos WHERE id='.$val);
@@ -88,41 +92,56 @@ class CotizacionesController extends Controller
             foreach ($total as $valor) {      
         $totales[$i][0]=$valor->id;
         $totales[$i][1]=$valor->precio;
+
+        
+        $sub_totales[$i]=$request->amount[$i]*$valor->precio;
+
         }
         $i++;
+      
       }
 
-        dd($totales);
-        //registro en la tabla cotizaciones----------------------------
+        $sub_total=array_sum($sub_totales);
+        $descuento=$sub_total*$request->p_des/100;
+        $total=$sub_total-$descuento;
 
+        //dd($totales, $request->amount, $sub_totales, $sub_total, $total);
+        //registro en la tabla cotizaciones----------------------------
+        $coun=count($sub_totales);
+        for ($i=0; $i <$coun ; $i++) { 
+            
             $cotizacion= new cotizacion();
 
-            $cotizacion->clientes_id=$request->clientes_id;
-            $cotizacion->productos_id=$request->productos_id;
             $cotizacion->n_cotizacion=$request->n_cotizacion;
             $cotizacion->fecha=$request->fecha;
+            $cotizacion->clientes_id=$request->clientes_id;
+            $cotizacion->productos_id=$totales[$i][0];
             $cotizacion->c_pago=$request->c_pago;
             $cotizacion->validez=$request->validez;
-            $cotizacion->cantidad=$request->cantidad;
- /*           $cotizacion->importe=$request->importe;*/
-            $cotizacion->sub_total=$request->sub_total;
-            $cotizacion->descuento=$request->descuento;
+            $cotizacion->cantidad=$request->amount[$i];
+            $cotizacion->importe=$sub_totales[$i];
+            $cotizacion->sub_total=$sub_total;
+            $cotizacion->descuento=$descuento;
             $cotizacion->p_des=$request->p_des;
-            $cotizacion->iva=$request->iva;
-/*            $cotizacion->p_iva=$request->p_iva;*/
+
+            //$cotizacion->iva=$request->iva;
+            //$cotizacion->p_iva=$request->p_iva;
+
             $cotizacion->divisa=$request->divisa;
-            $cotizacion->total=$request->total;
+            $cotizacion->total=$total;
+
             $cotizacion->comentarios=$request->comentarios;
             $cotizacion->address_to=$request->address_to;
             $cotizacion->email_comments=$request->email_comments;
             $cotizacion->save();
 
-            
-             if ($cotizacion->save()) {
+        }
+            if ($cotizacion->save()) {
+
+            $clientes=cliente::find($request->clientes_id);
+            Mail::to($clientes->email)->send(new email_Cotizacion($cotizacion->id)); 
+
             flash('¡Registro Exitoso!', 'success');
-
-
-
        //registrar accion en bitacora-----------------------------------
             $bitacoras = new App\Bitacora;
 
@@ -198,14 +217,14 @@ class CotizacionesController extends Controller
     }
 
 
-    public function pdf($id_cotizacion)
+    public function pdf($n_cotizacion)
 
     {
-        $cotizacion = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.cantidad, cotizaciones.importe, cotizaciones.sub_total, cotizaciones.iva, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_iva, cotizaciones.p_des, cotizaciones.divisa
+        $cotizacion = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.cantidad, cotizaciones.importe, cotizaciones.sub_total, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_des, cotizaciones.divisa, cotizaciones.comentarios, cotizaciones.address_to, cotizaciones.email_comments
 
         FROM cotizaciones, clientes, productos
 
-        WHERE cotizaciones.clientes_id = clientes.id AND cotizaciones.productos_id=productos.id AND cotizaciones.id='.$id_cotizacion );
+        WHERE cotizaciones.clientes_id = clientes.id AND cotizaciones.productos_id=productos.id AND cotizaciones.id='.$n_cotizacion);
 
         $i = 1;
 
@@ -219,13 +238,13 @@ class CotizacionesController extends Controller
     }
 
 
-      public function buscar_producto($product)
-    {
-       return $producto=producto::where('codigo', $product)->get();
+    //   public function buscar_producto($product)
+    // {
+    //    return $producto=producto::where('codigo', $product)->get();
         
        
 
-    }
+    // }
 
   
     

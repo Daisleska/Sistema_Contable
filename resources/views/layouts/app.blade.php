@@ -75,6 +75,7 @@
 <script src="{{ URL::asset('Shreyu/assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js')}}"></script>
 
 @endsection

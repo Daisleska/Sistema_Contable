@@ -20,16 +20,20 @@ class CreateCotizacionesTable extends Migration
             $table->unsignedBigInteger('clientes_id');
             $table->unsignedBigInteger('productos_id');
             $table->string('c_pago')->nullable();
-            $table->string('validez');
             $table->integer('cantidad');
             $table->integer('importe');
+            $table->string('validez');
             $table->integer('sub_total');
             $table->integer('descuento');
             $table->string('p_des');
-            $table->integer('iva');
-            $table->string('p_iva');
+/*          $table->integer('iva');
+            $table->string('p_iva');*/
             $table->string('divisa');
             $table->integer('total');
+            $table->string('comentarios')->nullable();
+            $table->string('address_to');
+            $table->string('email_comments')->nullable();
+
 
             $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->foreign('productos_id')->references('id')->on('productos')->onDelete('cascade');

@@ -73,7 +73,7 @@
                     
 
                         <div class="float-right" >
-                                            <a href="{{ route('cotizacion.pdf', $key->id_cotizacion) }}" class="btn btn-primary mt-2"
+                                            <a href="{{ route('cotizacion.pdf', $key->n_cotizacion) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>

@@ -5,15 +5,15 @@
 <script type="text/javascript">
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
-
+<script src="{{ URL::asset('sweetalert/sweetalert.min.js') }}"></script>
 {{-- 
 <script src="{{ URL::asset('js/jquery/dist/jquery.js') }}"></script> --}}
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 $(window).load(function() {
     $(".loader").fadeOut("slow");
 });
-</script>
+</script> --}}
  
 
  {{-- cdn del vue.js --}}
