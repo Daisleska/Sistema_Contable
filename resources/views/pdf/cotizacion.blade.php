@@ -8,13 +8,10 @@
     <link href="{{ public_path('../resources/views/pdf/boostrap/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css" />
 
-
-
-
-    <style>
+  <style>
         img {
             width: 10%;
-            margin-left: 11cm;
+         
       
 
 
@@ -112,131 +109,136 @@
    
 
       
-      <table>
-      
-      <tr>  
+      <table border="0"  width="470">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
 
-            <th style="text-align: right;">
-            Número: {{$val->n_cotizacion}}
-           <br>
-           Fecha: {{$val->fecha}} 
-           
-           </th>
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
 
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
             
+            
+     
+<hr>
+
+      </table>  
+
+
+    <br><br>
+     <table border="0"  width="470">
+
+      <tr> 
+           
+ 
+         
+           <th style="text-align: right;">
+            Fecha de Emisión: {{$val->fecha}} </th>  
             
       </tr>
-      <tr>
-            
-          <th style="text-align: left;">
-           {{$key->nombre}}
-           <br>
-           {{$key->tipo_documento}}-{{$key->ruf}}
-           <br>
-           {{$key->direccion}}
-           <br>
-           {{$key->email}}
-           
-           </th> 
-           <th><img class="circular--square" src="../public/{{ $key->url_image }}"></th>  
-           
-            
-            
-      </tr>      
-      </table>
-    
      
-        <hr>
-        <br>
-        <table>
+      <tr>
+           <th style="text-align: right;">N° {{$val->n_cotizacion}}</th>
 
+    </tr>
+
+      </table>
+
+ 
+        <!--tabla empresa y cliente -->
+
+
+    
+     <table  border="0" width="470">
+  
+
+       
         <tr>
+          <br>
+          <td  align="left"><b>Cliente:</b> {{ $val->nombre }} <b> RUT: </b> {{ $val->tipo_documento }}-{{ $val->ruf }}</td>
+        </tr>
+       <tr>
+          <td  align="left"><b>Comentarios de Correo:</b> {{ $val->email_comments }}</td>
+        </tr>
+        <tr>
+          <td  align="left"><b>Correo para envío:</b> {{ $val->email }}</td>
+        </tr>
+        <tr>
+          <td  align="left"><b>Oferta Válida por:</b> {{ $val->validez }} días</td>
+        </tr>
+        <tr>
+          <td  align="left"><b>Forma de Pago:</b> {{ $val->c_pago }} | <b>Moneda:</b>{{ $val->divisa }} </td>
+        </tr>
+        <tr>
+          <td  align="left"><b>Dirigido a:</b></td>
+        </tr>
 
+</table>
+     @endforeach 
+               @endforeach
+  
          
-         <th id="l">CLIENTE</th>
-        
-        </tr>
-         <tr>
-        
-           
-           <th id="l">{{$val->nombre}}</th>
-          
-                
-        </tr>
-        <tr>
-        
-           
-           <th id="l">{{$val->direccion}}</th>
-                
-        </tr>
-        
-        <tr>
-        
-           
-           <th id="l">{{$val->email}}</th>
-                
-        </tr>
-        @endforeach
-        @endforeach  
-
-        </table>
-        <br><br>
         
         <table border="1"  width="470">
          
                 <thead>
-                <tr style="background-color:#008080;">
+                  <tr>
+                <th colspan="5" style="text-align: center;">PRODUCTOS</th>
+              </tr>
+                <tr>
                    <th id="alto">Producto</th>
                    <th id="alto">Descripción</th>
-                   <th id="alto">Cantidad</th>
                    <th id="alto">Precio</th> 
+                   <th id="alto">Cantidad</th>
                    <th id="alto">Importe</th>
                 </tr>
 
                 </thead>
                 <tbody>
-                @foreach($cotizacion as $key)
+                @foreach($producto as $key)
+                 @foreach($cotizacion as $val)
                 <tr>
-                  <td id="c">{{$key->producto}}</td>
+                  <td id="c">{{$key->nombre}}</td>
                   <td id="c">{{$key->descripcion}}</td>
+                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$val->divisa}} </td>
                   <td id="c">{{$key->cantidad}}</td>
-                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$key->divisa}} </td>
-                  <td id="c">{{number_format($key->importe,2,',','.')}} {{$key->divisa}} </td>
+                  <td id="c">{{number_format($key->importe,2,',','.')}} {{$val->divisa}}</td>
                 </tr>
-
+               @endforeach 
+               @endforeach
+               @foreach($cotizacion as $val)
                 <tr>
                     <th id="alto" scope="row" colspan="3"></td>
                     <td id="c"><strong>SUB TOTAL</strong></td>
-                    <td id="c">{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}} </td>
+                    <td id="c">{{number_format($val->sub_total,2,',','.')}} {{$val->divisa}}</td>
                     
                 </tr>
-               
+
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>I.V.A {{$key->p_iva}}%</strong></td>
-                  <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} {{$key->divisa}} </td>
-                </tr>
-             
-                
-               
-                <tr>
-                  <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>Descuento {{$key->p_des}}%</strong></td>
-                  <td scope="row" id="c">{{number_format($key->descuento,2,',','.')}} {{$key->divisa}} </td>
+                  <td id="c"><strong>Desc {{$val->p_des}}%</strong></td>
+                  <td scope="row" id="c">{{number_format($val->descuento,2,',','.')}} {{$val->divisa}}</td>
                 </tr>
                
                 <tr>
                   <th scope="row" colspan="3" id="alto" ></td>
                   <td id="c"><strong>TOTAL</strong></td>
-                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} {{$key->divisa}} </td>
+                  <td scope="row" id="c">{{number_format($val->total,2,',','.')}} {{$val->divisa}}</td>
                 </tr>
-                 
-                  @endforeach                                 
+                 @endforeach 
+                                                  
                 </tbody>
                 </table>
-       
-        
-
     </div>
 
 

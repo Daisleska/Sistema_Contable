@@ -178,7 +178,7 @@ if ($x_inventario) {
     </li>
 
 <?php
-   $x=\DB::select('SELECT * FROM cuentas ');
+   $x=\DB::select('SELECT * FROM cuentas WHERE nombre="Caja Chica" OR nombre="Caja" ');
 
   if ($x) {
 

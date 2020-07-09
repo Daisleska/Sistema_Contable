@@ -220,23 +220,21 @@ class CotizacionesController extends Controller
     public function pdf($n_cotizacion)
 
     {
-        $cotizacion = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.cantidad, cotizaciones.importe, cotizaciones.sub_total, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_des, cotizaciones.divisa, cotizaciones.comentarios, cotizaciones.address_to, cotizaciones.email_comments
+        $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.direccion, clientes.email, clientes.tipo_documento, clientes.ruf, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.sub_total, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_des, cotizaciones.divisa, cotizaciones.comentarios, cotizaciones.address_to, cotizaciones.email_comments FROM cotizaciones, clientes WHERE cotizaciones.clientes_id = clientes.id AND cotizaciones.n_cotizacion='.$n_cotizacion);
 
-        FROM cotizaciones, clientes, productos
+        
+        $producto= \DB::select('SELECT productos.id, productos.nombre, productos.precio, productos.descripcion, cotizaciones.cantidad, cotizaciones.importe FROM cotizaciones, productos WHERE  cotizaciones.productos_id=productos.id AND cotizaciones.n_cotizacion='.$n_cotizacion);
 
-        WHERE cotizaciones.clientes_id = clientes.id AND cotizaciones.productos_id=productos.id AND cotizaciones.id='.$n_cotizacion);
 
-        $i = 1;
 
         $empresa = empresa::all();
 
 
 
-        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'i','empresa'));
+        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'producto','empresa'));
 
         return $dompdf->stream('cotizacion.pdf');
     }
-
 
     //   public function buscar_producto($product)
     // {

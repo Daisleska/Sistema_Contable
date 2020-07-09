@@ -45,8 +45,9 @@ class FacturasVController extends Controller
     public function create()
 
     {   
+        $products=producto::all();
         $iva= iva::all();
-        return view('process.facturav.create', compact('iva'));
+        return view('process.facturav.create', compact('iva', 'products'));
       
     }
 

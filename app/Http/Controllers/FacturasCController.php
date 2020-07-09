@@ -56,10 +56,10 @@ class FacturasCController extends Controller
          $facturac = \DB::select('SELECT iva
 
         FROM facturac  LIMIT 0,1');*/
-
+        $products=producto::all();
         $iva= iva::all();
          
-        return view ('process.facturac.create', compact('iva'));
+        return view ('process.facturac.create', compact('iva', 'products'));
 
     }
 

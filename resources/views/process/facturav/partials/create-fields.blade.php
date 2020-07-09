@@ -124,44 +124,41 @@
 </div>
 
 <div class="row">
-       <table style="margin-left: 1cm; margin-right: 1cm;" id="tablaprueba" class="table dt-responsive nowrap">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Descripción del producto</th>
-                                <th>Cantidad</th>
-                                <th>Valor de unidad</th>
-                                <th>Importe</th>
-                                <th>Agregar</th>
-                              
-
-                            
-                            </tr>
-                        </thead>
-                    
-                    
-                        <tbody>
-                           
-                <tr>
-                  <input type="hidden" name="productos_id" id="productos_id">
-                  <td><input style="width: 100px;" type="text" name="codigo" id="cod" class="form-control"  value=""><small><span id="mensaje2" style="color:red"></span></small></td>
-                  <td><input style="width: 180px;" type="text" name="nombre" id="nombre" readonly="readonly" class="form-control"  value=""></td>
-                  <td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control"  value=""><span id="mensaje3" style="color:red"></span></small></td>
-                  <td><input style="width: 100px;" type="text" name="precio" id="precio" readonly="readonly" class="form-control"  value=""></td>
-                  <td><input style="width: 100px;" type="text" name="importe" id="importe" class="form-control"  readonly="readonly" value=""></td>
-
-                  <td><button onclick="agregarFila()" type="button" class="btn btn-info btn-sm">+</button>
-            
-                  
-
-                  </td>
-                
-                </tr>
-
-    </tbody>
-  </table>
+       <div class="col-lg-12">
+                                <label for="name"> <b style="color:red;">*</b>Productos:</label>
+                                <select  class="select2 form-control custom-select" style="width: 100%; height:36px;" name="productos_id" id="products_select">
+                                    <option selected="selected" disabled="disabled" readonly>Seleccione el Producto</option>
+                                    @foreach($products as $key)
+                                        <option value="{{ $key->id }}">{{ $key->nombre }} | {{ $key->unidad }} | {{ $key->existencia }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 </div>
 
+<div class="row mb-3">
+                            <div class="col-lg-12">
+                                <label for="cedula"> <b style="color:red;">*</b>Lista de Productos:</label>
+                                <div class="table-responsive">
+                                    <table id="lista_productos" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Unidad</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr><th colspan="4"></th><th>Total: <span id="total"></span></th><th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></th></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 <div class="row">
        <table style="margin-left: 1cm; margin-right: 1cm;"  class="table dt-responsive nowrap">
                         <thead>
@@ -444,7 +441,75 @@ feather.replace();
     }
   });
 
+$(document).ready( function(){
+    var LineNum=0;
+    $("#products_select").on("change", function (event) {
+        var id = event.target.value;
 
+
+        $.get("/products/"+id+"/add",function (data) {
+        
+
+           //$("#lista_productos").empty();
+           
+            
+            if(data.length > 0){
+                LineNum++;
+                for (var i = 0; i < data.length ; i++) 
+                {
+                    //$('#products_select').children('option[value="'+id+'"]').attr('disabled',true);
+                    //$("#lista_productos").append('<tr>'); 
+                    //$("#products").removeAttr('disabled');
+                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code></button></td></tr>');
+                    //$("#lista_productos").append('</tr>');
+                }
+
+            }else{
+                
+                //$("#client_id").attr('disabled', false);
+
+            }
+        });
+    });
+
+    
+});
+
+function EliminarLinea(rnum,id_opcion) {
+    var next=id_opcion-1;
+    //console.log(id_opcion+" siguiente "+next);
+    /*$('#products_select').children('option[value="'+next+'"]').attr('selected',true);
+    $('#products_select').children('option[value="'+id_opcion+'"]').removeAttr('disabled');*/
+    $('#Line'+rnum).remove();
+        return true;
+}
+
+function add_amount(argument) {
+    //console.log(argument.value+"vbnm,");
+    var total=0;
+    
+    
+  $(".amount").each(function() {
+    console.log($(this).val()+"dfghjkl");
+    if (isNaN(parseFloat($(this).val()))) {
+
+      total += 0;
+
+    } else {
+
+      total += parseFloat($(this).val());
+
+    }
+
+  });
+
+  //alert(total);
+  $(".total_amount").val(total);
+  document.getElementById('total').innerHTML = total;
+
+
+
+}
 
     </script>
 
