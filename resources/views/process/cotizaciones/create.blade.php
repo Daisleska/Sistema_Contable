@@ -16,14 +16,15 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cotización</h4>
+                <br>
+                <h3 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cotización</h3>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('cotizacion.store')}}" class="needs-validation" method="post"  novalidate>
                     
                     @csrf
                    <div class="card-body">
-                        <h4 class="card-title"> <p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h4>
+                        <h7 class="card-title"> <p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h4>
                         <div class="row mb-3">
                             <div class="col-lg-4">
                                 
@@ -129,44 +130,36 @@
                                             
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="4"></th><th>Total: <span id="total"></span></th><th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></th></tr>
+                                            <tr><th colspan="3" style="text-align: right;">CANTIDAD DE ARTÍCULOS: </th><th colspan="2" ><span id="total"></span></th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></tr>
                                         </tfoot>
                                     </table>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
+                            @foreach($descuento as $key)
+
                             <div class="col-lg-4">
-                                <label for="Comentarios">Comentarios:</label>
-                                <input type="text" class="form-control" placeholder="Ej: Todo Bien" name="comentarios" id="comments" value="{{ old('comments') }}">
-                            </div>
-                            <div class="col-lg-4">
-                                <label for="Descuento"> Descuento:</label>
-                                <input type="number" class="form-control" name="p_des" id="discount" value="{{ old('discount') }}">
-                            </div>
+                            <label for="Comentarios"><b>Condiciones Generales:</b></label>
                         </div>
-                        {{-- <div class="row mb-3">
-                            <div class="col-lg-8">
-                                <label for="Comentarios">Archivos:</label>
-                                <input type="file" multiple="multiple" class="form-control" placeholder="Ej: Todo Bien" name="files[]" id="files" >
+                    </div>
+                     <div class="row mb-3">
+                            <div class="col-lg-2">
+                            <p>Descuento</p> 
+                                <label for="Descuento"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm2">DESC  {{$key->porcen}}%</button></label>
+                                <input type="hidden" class="form-control" name="p_des" id="discount" value="{{$key->porcen}}">
                             </div>
-                        </div> --}}
-                        <div class="row mb-3">
-                            <div class="col-lg-4">
-                            <label for="Comentarios"><b>Condiciones Generales:</b></label>  
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                        <div class="col-lg-4" >  
+                             @endforeach
+                             <div class="col-lg-3" >  
                         <p>Validez de oferta</p>   
-                          <select style="width: 50" name="validez" class="form-control">
+                          <select style="width: 160px;" name="validez" class="form-control">
                                 <option value="15" selected="selected">15 días</option>
                                 <option value="30">30 días</option>
                                </select>
-                            </div>
-                            <div class="col-lg-4">
+                          </div>
+                            <div class="col-lg-3">
                                  <p>Divisa</p>
-                                <select style="width: 50" name="divisa" class="form-control">
+                                <select style="width: 160px;" name="divisa" class="form-control">
                                 <option value="Bs.S">VEF</option>
                                 <option value="£">GBP</option>
                                 <option value="¥">JPY</option>
@@ -178,27 +171,41 @@
                             </div>
                             <div class="col-lg-4">
                                  <p>Forma de pago</p>
-                              <select name="c_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
+                              <select style="width: 250px;" name="c_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
                                   
                                   <option value="efectivo" selected="selected">Efectivo</option>
                                   <option value="transferencia">Transferencia</option>
                                   
                                 </select>
                             </div>
+
                         </div>
-                      
+
+                        {{-- <div class="row mb-3">
+                            <div class="col-lg-8">
+                                <label for="Comentarios">Archivos:</label>
+                                <input type="file" multiple="multiple" class="form-control" placeholder="Ej: Todo Bien" name="files[]" id="files" >
+                            </div>
+                        </div> --}}
+                        
+                       
                         <div class="row mb-3">
                             <div class="col-lg-4">
                             <label for="Comentarios"><b>Adiciones al Correo:</b></label>    
                             </div>
                         </div>
                         <div class="row mb-3">
+
+                            <div class="col-lg-4">
+                                <label for="Comentarios">Comentarios:</label>
+                                <input type="text" class="form-control" placeholder="Ej: Todo Bien" name="comentarios" id="comments" value="{{ old('comments') }}">
+                            </div>
                             
                             <div class="col-lg-4">
                                 <label for="adiciones">Dirigido a:</label>
                                 <input type="text"  value="{{old('address_to')}}" required="required"  class="form-control" placeholder="Ej: José Quintero" name="address_to" id="address_to">
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <label for="Comentarios Correo">Comentarios del Correo:</label>
                                 <textarea class="form-control" name="email_comments" id="email_comments"></textarea>
                             </div>
@@ -214,6 +221,40 @@
             </div> <!-- end card-body-->
         </div> <!-- end card-->
     </div> <!-- end col-->
+
+    @foreach($descuento as $key)
+<div class="modal fade" id="bs-example-modal-sm2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    {!! Form::open(['route' => ['descupdate',$key->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
+                    @csrf
+
+                    <input type="hidden" name="id" value="{{$key->id}}">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar Descuento</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <p>Valor Descuento actual: {{$key->porcen}}%</p>
+                                                       <td><input type="text" name="porcen" placeholder="Ingrese el nuevo valor" class="form-control"></td>
+
+                                                       <div class="modal-footer">
+                                                        <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                       <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
+                                                   </div>
+
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                                {!! Form::close() !!}
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                        @endforeach
+
+
+
 
  @endsection
 
@@ -294,7 +335,7 @@ $(document).ready( function(){
                     //$('#products_select').children('option[value="'+id+'"]').attr('disabled',true);
                     //$("#lista_productos").append('<tr>'); 
                     //$("#products").removeAttr('disabled');
-                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code></button></td></tr>');
+                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code><i class="uil-minus"></i></button></td></tr>');
                     //$("#lista_productos").append('</tr>');
                 }
 

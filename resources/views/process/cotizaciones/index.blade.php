@@ -62,12 +62,12 @@
                      
                 @foreach($cotizacion as $key) 
                 <tr>
-                  <td>{{$key->fecha}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha)) }}</td>
                   <td>{{$key->n_cotizacion}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{$key->email}}</td>
-                  <td>{{number_format($key->total,2,',','.')}}</td>
+                  <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>
                       
                     

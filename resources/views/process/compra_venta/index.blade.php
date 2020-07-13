@@ -58,7 +58,37 @@
     <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
-          {{--       <h5 class="header-title mb-3 mt-0">Libros:</h5> --}}
+                <h5 class="header-title mb-3 mt-0" style="text-align: center;">Compra y Venta</h5>
+
+                <div class="row">
+                    <div class="col-md-3">
+                      <input type="date" id="dia" name="dia" class="form-control">
+                    </div>
+
+                    <div class="col-md-2">
+                      <select id="mes" name="mes" class="form-control">
+                        <option readonly >Mes</option>
+                      @foreach($meses as $mes)
+                          <option value="{{$x++}}">
+                            {{$mes}}
+                           </option> 
+                           @endforeach
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <select id="anio" name="anio" class="form-control">
+                        <option disabled="disabled" selected="selected">Año</option>
+                        <?php for ($i=2018; $i <=2030; $i++) { ?>
+                          <option value="{{$i}}">
+                            {{$i}}
+                           </option> 
+                           <?php } ?>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="buscador();">Buscar</button>
+                </div>
+                <br>
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -80,6 +110,8 @@
                         </a>
                     </li> --}}
                 </ul>
+
+              
                 <div class="tab-content p-3 text-muted">
                     <div class="tab-pane show active" id="compras">
                 @include('process.compra_venta.partials.libro_compra')

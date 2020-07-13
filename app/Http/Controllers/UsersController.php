@@ -117,7 +117,6 @@ class UsersController extends Controller
                 $user->name=$request->name;
                 $user->email=$request->email;
                 $user->user_type=$request->user_type;
-                $user->Empresa=$request->Empresa;
                 $user->save();
                 
                 flash('<i class="icon-circle-check"></i> Usuario actualizado con satisfactoriamente!')->success()->important();
@@ -129,7 +128,6 @@ class UsersController extends Controller
                 $user->name=$request->name;
                 $user->email=$request->email;
                 $user->user_type=$request->user_type;
-                $user->Empresa=$request->Empresa;
                 $user->save();
                 
                 flash('<i class="icon-circle-check"></i> Usuario actualizado con satisfactoriamente!')->success()->important();
@@ -152,7 +150,7 @@ class UsersController extends Controller
         $user->status=$request->status;
         $user->save();
 
-        flash('<i class="icon-circle-check"></i> Status de Usuario actualizado a '.$request->status.' !')->success()->important();
+        flash('<i class="icon-circle-check"></i> Estado de Usuario actualizado a '.$request->status.' !')->success()->important();
                 return redirect()->to('users');
     }
 
@@ -187,7 +185,6 @@ class UsersController extends Controller
             'user_type' => 'jefe',
             'password' => Hash::make($data['password']),
             'user_type' =>$data['user_type'],
-            'Empresa' => $data['Empresa'],
         ]);
     }
 

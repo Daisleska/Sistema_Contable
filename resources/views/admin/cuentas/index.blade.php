@@ -39,7 +39,7 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cuentas</h4>
                     <p class="sub-header"></p>
                    
-                     <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
+                     <a href="{{ route('cuentas.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
@@ -75,7 +75,7 @@
                         <input type="hidden" name="_method" value="EDITAR">
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
-                        <br>
+                        &nbsp;&nbsp;
                   
                    <form id="f_eliminar" name="formulario" action="{{ route('cuentas.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
@@ -83,7 +83,7 @@
                    
                    </form>
                    <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
-                   <br>
+                   
                  
                
                   
@@ -102,30 +102,19 @@
         </div><!-- end col-->
     </div>
 
-    <!-- llamado al Modak----->
-    @include('admin.cuentas.create')
-
-
 
     <!-- end row-->
 @endsection
 
+
 @section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
 
 <script type="text/javascript">
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
-@endsection
 
-@section('script-bottom')
-<!-- Datatables init -->
-<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
-@endsection
 <script type="text/javascript">
       function alert_eliminar(){
        swal({
@@ -158,3 +147,11 @@
 
     }
 </script>
+
+@endsection
+
+@section('script-bottom')
+<!-- Datatables init -->
+<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
+
+@endsection

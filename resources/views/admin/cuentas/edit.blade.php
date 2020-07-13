@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('css')
+<!-- plugin css -->
+<link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content-header')
 <section class="content-header">
       <h1> 
@@ -88,4 +91,14 @@
       </div>
       <!-- /.row -->
 </div>
+@endsection
+@section('script')
+
+<!-- datatable js -->
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+@endsection
+
+@section('script-bottom')
+<!-- Datatables init -->
+<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection

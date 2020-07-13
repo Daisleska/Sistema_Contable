@@ -29,7 +29,8 @@ class CotizacionesController extends Controller
      */
     public function index()
     {  
-       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+
 
 
        return view('process.cotizaciones.index', compact('cotizacion'));
@@ -137,9 +138,9 @@ class CotizacionesController extends Controller
 
         }
             if ($cotizacion->save()) {
-
+             $pdf=$this->pdf($request->n_cotizacion);
             $clientes=cliente::find($request->clientes_id);
-            Mail::to($clientes->email)->send(new email_Cotizacion($cotizacion->id)); 
+            Mail::to($clientes->email)->send(new email_Cotizacion($cotizacion->id, $pdf)); 
 
             flash('¡Registro Exitoso!', 'success');
        //registrar accion en bitacora-----------------------------------
@@ -222,7 +223,16 @@ class CotizacionesController extends Controller
     {
         $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.direccion, clientes.email, clientes.tipo_documento, clientes.ruf, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.fecha, cotizaciones.sub_total, cotizaciones.c_pago, cotizaciones.validez, cotizaciones.descuento, cotizaciones.p_des, cotizaciones.divisa, cotizaciones.comentarios, cotizaciones.address_to, cotizaciones.email_comments FROM cotizaciones, clientes WHERE cotizaciones.clientes_id = clientes.id AND cotizaciones.n_cotizacion='.$n_cotizacion);
 
+        foreach ($cotizacion as $key) {
+            
+          
         
+            $fechaven=date("d-m-Y",strtotime($key->fecha. "+" .$key->validez. "days"));
+            $fechae=date("d-m-Y", strtotime($key->fecha));
+
+       }
+         
+    
         $producto= \DB::select('SELECT productos.id, productos.nombre, productos.precio, productos.descripcion, cotizaciones.cantidad, cotizaciones.importe FROM cotizaciones, productos WHERE  cotizaciones.productos_id=productos.id AND cotizaciones.n_cotizacion='.$n_cotizacion);
 
 
@@ -231,7 +241,7 @@ class CotizacionesController extends Controller
 
 
 
-        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'producto','empresa'));
+        $dompdf = PDF::loadView('pdf.cotizacion', compact('cotizacion', 'producto','empresa', 'fechaven', 'fechae'));
 
         return $dompdf->stream('cotizacion.pdf');
     }

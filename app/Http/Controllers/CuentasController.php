@@ -31,7 +31,8 @@ class CuentasController extends Controller
      */
     public function create()
     {
-         return view ('admin.cuentas.create');
+        $cuentas=cuenta::all();
+         return view ('admin.cuentas.create', compact('cuentas'));
     }
 
     /**

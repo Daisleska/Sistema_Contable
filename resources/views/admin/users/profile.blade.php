@@ -6,7 +6,8 @@
 
 @section('content')
 <div class="page-breadcrumb">
-    <div class="row">
+    <div class="row ">
+        <div class="card col-md-12">
         <div class="col-12 d-flex no-block align-items-center">
             <h4 class="page-title">Mi Cuenta</h4>
          @if(\Auth::User()->user_type=="Administrador")
@@ -22,6 +23,7 @@
             </div>
         </div>
     </div>
+ </div>
 </div>
 
 <div class="row">
@@ -39,10 +41,10 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       <img width="20px" height="20px" src="{{ asset('uploads/avatars/'.$user->avatar) }}" class="avatar-lg rounded-circle" />
                     </a>
-                     <h4>cambiar foto</h4>
+                     <h4>Cambiar Foto</h4>
         {{ Form::open(['route' => ['user.profile.update'], 'files' => true, 'method' => 'PATCH']) }}
           <p>{{ Form::file('avatar') }}</p>
-          <p>{{ Form::submit('Cambiar', ['name' => 'submit']) }}</p>
+          <button type="submit" class="btn btn-primary">Cambiar</button>
         {{ Form::close() }}
                         <h5 class="mt-2 mb-0">{{ Auth::user()->name }}</h5>
                         <h6 class="text-muted font-weight-normal mt-2 mb-0">{{ Auth::user()->user_type }}
@@ -71,12 +73,6 @@
                             <tr>
                                 <th scope="row">Tel.</th>
                                 <td>(424) 459 0130</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Direc.</th>
-                                <td>San mateo
-                                 Aragua
-                                  VEN</td>
                             </tr>
                         </tbody>
                     </table>
@@ -160,8 +156,8 @@
                     <div class="form-group row">
                         <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Clave de acceso:</b></label>
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  type="button" class="btn btn-primary  col-form-label text-md-right" data-toggle="modal"
-                    data-target="#myModal">cambiar clave</button> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  type="button" class="btn btn-info" data-toggle="modal"
+                    data-target="#myModal">Cambiar clave</button> 
                     </div>    
                            
                </div>

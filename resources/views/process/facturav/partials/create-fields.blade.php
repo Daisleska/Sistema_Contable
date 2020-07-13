@@ -40,7 +40,7 @@
 
                                
 
-                                <th>RUT</th>
+                                <th><b style="color:red;">*</b>RUT </th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""> 
                              
                                 <small><span id="mensaje" style="color:red"></span></small>
@@ -95,7 +95,7 @@
                             <tr>
                                 <th>Domicilio</th>
                                 <th><input style="width: 150px;" type="text" name="domicilio" id="domicilio" class="form-control"  value="" required></th>
-                                <th>Forma de pago</th>
+                                <th><b style="color:red;">*</b>Forma de pago</th>
                                 <th>
                             <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
                                   
@@ -104,7 +104,7 @@
                                   <option value="cheque">Cheque</option>
                                 </select></th>
 
-                                <th>Divisa</th>
+                                <th><b style="color:red;">*</b>Divisa</th>
                                 <th><select style="width: 50" name="divisa" class="form-control">
                                 <option value="Bs.S">VEF</option>
                                 <option value="£">GBP</option>
@@ -153,8 +153,9 @@
                                             
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="4"></th><th>Total: <span id="total"></span></th><th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></th></tr>
+                                            <tr><th colspan="3" style="text-align: right;">CANTIDAD DE ARTÍCULOS: </th><th colspan="2" ><span id="total"></span></th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></tr>
                                         </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -166,26 +167,28 @@
 
                 <tr>
                     
-                    <td COLSPAN="2" style="text-align: right;"><strong>CANTIDAD DE ARTÍCULOS</strong></td>
-                    <td><input style="width: 100px;" type="text" name="cantidad" id="canti"  class="form-control" readonly="readonly" value=""></td>
-                    <td><strong style="text-align: left;">SUBTOTAL</strong></td>
-                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total"  class="form-control" readonly="readonly" value=""></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="right"><strong >SUBTOTAL</strong></td>
+                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount" readonly="readonly" value=""></td>
                     <td></td>
                     
                 </tr>
 
                 <tr>
-                    <td></td>
+                    
+                     <td></td>
                     <td></td>
                     <td></td>
                     @foreach($iva as $key)
 
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}%</button></td>
+                    <td align="right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}%</button></td>
                     
                     <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
                     
                     <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
-                    <td></td>
+                  
 
                       @endforeach
               
@@ -195,9 +198,10 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td align="left"><strong>TOTAL</strong></td>
+                    <td align="right"><strong>TOTAL</strong></td>
                     <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></td>
-                    <td></td>
+
+                   
                 </tr>
 
              
@@ -217,32 +221,21 @@
 </div>
 
 
+<script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsley.min.js') }}"></script>
+
+<!-- jQuery CDN -->
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+
+<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script>
 
 
                                         
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.min.js')}}
-"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
-"></script> 
 
 <script>
-function agregarFila(){
-  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input style="width: 100px;" type="text" name="codigo" class="form-control" id="cod" value=""><span id="mensaje2" style="color:red"></span></small></td><td><input style="width: 180px;" type="text" name="nombre" id="nombre" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="cantidad" id="cantidad" class="form-control"  value=""><span id="mensaje3" style="color:red"></span></small></td><td><input style="width: 100px;" type="text" name="precio" id="precio" disabled="disabled" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="importe" id="importe" disabled="disabled" class="form-control"  value=""></td><td><button onclick="eliminarFila()" type="button" class="btn btn-danger btn-sm">-</button></td>';
-}
-
-function eliminarFila(){
-  var table = document.getElementById("tablaprueba");
-  var rowCount = table.rows.length;
-  //console.log(rowCount);
-  
-  if(rowCount <= 1)
-    alert('No se puede eliminar el encabezado');
-  else
-    table.deleteRow(rowCount -1);
-}
-
-
 
 
 
@@ -290,113 +283,6 @@ feather.replace();
   });
 
 
-//Producto
-feather.replace();
-
-      $("#cod").on('keyup',function (event) {
-
-        //asignar evento a la variable codigo
-        var cod = event.target.value;
-   // aignar el valor de codigo a la variable $producto
-    var product=$("#cod").val();
-    //si producto es mayor que 0
-    if(product.length>0){
-    //envio de datos a la ruta en web
-    $.get('/productos/'+product+'/buscar_producto',function(data){
-      //resive el valor data de lo consultado en el controlador
-
-      // asignar a la variable result el valor de data
-      var resul = data;
-
-
-
-    /*  console.log(result);*/
-
-    //si result es menor o igual a 0 mostrar ese  mensaje
-      if (resul<=0) {
-        $("#mensaje2").text('Los datos no existen en el registro');
-
-
-      } else {
-        
-        $("#mensaje2").text('');
-
-        $('#nombre').val(resul[0].nombre);
-        
-        $('#precio').val(resul[0].precio);
-
-        $('#productos_id').val(resul[0].id);
-
-
-        
-
-      
-      }
-    });
-    }else{
-      $("#mensaje2").text('');
-      $("#nombre").val('');
-      $("#precio").val('');
-      
-    }
-  });
-
-
-
-  $("#cantidad").on('keyup', function(event){
-
-  var cantidad = event.target.value;
-  var cantidad = $("#cantidad").val();
-
-  console.log(cantidad);
-
-  //campo precio por unidad 
-
-  var preciot =$("#precio").val();
-  var iva =$("#iva").val();
-
-  console.log(preciot);
-   //importe
-   var total = cantidad*preciot;
-   //sub_total
-   var sub_total=total;
-
-
-   //iva 
-   iva=iva*sub_total/100;
-
-
-   //total
-   var monto_total=sub_total+iva;
-
-   //cantidad
-   var canti=cantidad;
-
-   console.log(total);
-
-   if (total>0) {
-    $('#mensaje3').text('');
-    $('#importe').val(total);
-    $('#sub_total').val(sub_total);
-    $('#IVA').val(iva);
-    $('#monto_total').val(monto_total);
-    $('#canti').val(canti);
-    
-
-   }else{
-    $('#mensaje3').text('Debe ingresar la cantidad');
-    $('#importe').val('');
-    $('#sub_total').val('');
-    $('#IVA').val('');
-    $('#monto_total').val('');
-    $('#canti').val('');
-    
-   }
-   
-
-
-
-  });
 
 
 //=========STOCK DISPONIBLE --------------------------------
@@ -451,7 +337,7 @@ $(document).ready( function(){
         
 
            //$("#lista_productos").empty();
-           
+       
             
             if(data.length > 0){
                 LineNum++;
@@ -460,7 +346,7 @@ $(document).ready( function(){
                     //$('#products_select').children('option[value="'+id+'"]').attr('disabled',true);
                     //$("#lista_productos").append('<tr>'); 
                     //$("#products").removeAttr('disabled');
-                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code></button></td></tr>');
+                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount" required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code><i class="uil-minus"></i></button></td></tr>');
                     //$("#lista_productos").append('</tr>');
                 }
 
@@ -486,35 +372,47 @@ function EliminarLinea(rnum,id_opcion) {
 
 function add_amount(argument) {
     //console.log(argument.value+"vbnm,");
-    var total=0;
-    
-    
+ var total=0;
+ var sub_total=0;
+ var id= $('#products_select').find(':selected').val();
+
+     $.get("/products/"+id+"/add",function (data) {
+        
+        var precio=data[0].precio;
+
   $(".amount").each(function() {
-    console.log($(this).val()+"dfghjkl");
+   /* console.log($(this).val()+"dfghjkl");*/
+      var cantidad = $(".amount").val();
     if (isNaN(parseFloat($(this).val()))) {
 
       total += 0;
-
+       sub_total += 0;
     } else {
 
       total += parseFloat($(this).val());
 
+        sub_total = eval(parseInt(precio)* parseInt(cantidad));
+   
     }
+   
+        console.log(cantidad);
+     console.log(precio);
+   console.log(sub_total);
 
   });
-
-  //alert(total);
+//cantidad de productos///
   $(".total_amount").val(total);
   document.getElementById('total').innerHTML = total;
+//SUB TOTAL/////////////////////////////
+    $(".sub_total_amount").val(sub_total);
+  document.getElementById('sub_total').innerHTML = sub_total;
+});
 
 
 
+      /*var cantidad= parseFloat($(this).val());*/
 }
 
     </script>
-
-
-
- 
 
 

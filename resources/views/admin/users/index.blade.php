@@ -1,29 +1,9 @@
 @extends('layouts.app')
-
-@section('sub-title')
-<title>Blatt | Usuarios</title>
-@endsection
-
 @section('css')
-
+<!-- plugin css -->
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
-<div class="page-breadcrumb">
-    <div class="row">
-        <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Usuarios</h4>
-            <div class="ml-auto text-right">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
         <div class="col-md-7" ></div>
@@ -36,10 +16,12 @@
 		<div class="col-12">
 			<div class="card">
                 <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">Usuarios</h4>
+                    <br>
                     <h5 class="card-title"><a href="{{ route('users.create') }}" style="color: white;" class="btn btn-info align-right">Registrar</a></h5>
 
                     <div class="table-responsive">
-                        <table id="basic-datatable" class="table dt-responsive nowrap">
+                        <table id="key-datatable" class="table dt-responsive nowrap">
                             <thead style="font-size: 12px;">
                                 <tr>
                                     <th>Nombre</th>
@@ -70,30 +52,19 @@
                                         }
                                         ?>
                                     
-                                    <td>
+                                   <td>
                                         
-                                        <a onclick="cambiar_tipo('{{ $key->id }}')"
-                                           class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event2" title="Cambiar Tipo" ><i class="mdi mdi-pencil"></i>Cambiar tipo</a>
+                                        <a title="Cambiar tipo" onclick="cambiar_tipo('{{ $key->id }}')"
+                                           class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event2" title="Cambiar Tipo" ><i data-feather="edit"></i>
+                                       </a>
                                        
-
-                                       
-                                        <a onclick="cambiar_status('{{ $key->id }}','{{ $key->status }}')" class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event" title="Cambiar Estado"><i class="mdi mdi-bell"></i>
-                                        Cambiar estado</a>
+                                        <a title="Cambiar estado" onclick="cambiar_status('{{ $key->id }}','{{ $key->status }}')" class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event" title="Cambiar Estado"><i data-feather="book"></i>
+                                        </a>
                                       
-                                    </td>
+                                   </td>
                                 </tr>
                                 @endforeach 
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Correo</th>
-                                    <th>Tipo</th>
-                                    <th>Empresa</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -114,7 +85,7 @@
             {!! Form::open(['route' => ['users.destroy',1033], 'method' => 'DELETE']) !!}
                 @csrf
             <div class="modal-body">
-                <strong>Está seguro de Cambiar el Estado de éste usuario?</strong>
+                <strong>¿Está seguro de Cambiar el Estado de éste usuario?</strong>
                 <input type="hidden" name="user_id" id="user_id">
                 <input type="hidden" name="status" id="status">
                
@@ -162,7 +133,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-success save-event waves-effect waves-light">Guardar</button>
+                <button type="submit" class="btn btn-primary save-event waves-effect waves-light">Guardar</button>
                 
             </div>
                     </div>
@@ -173,16 +144,18 @@
 
 @endsection
 
-@section('scripts')
-<script src="{{ URL::asset('js/feather.min.js')}}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
+@section('script')
 <!-- datatable js -->
-<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}">
-</script>
- 
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection
-<script>
-feather.replace();
+
+@section('script-bottom')
+<!-- Datatables init -->
+<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
+@endsection
+
+
+<script type="text/javascript">
 
     function cambiar_status(user_id,status) {
         
@@ -206,9 +179,7 @@ feather.replace();
     }
 </script>
 
-<!-- Datatables init -->
-<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+
 
 @if (isset($x)) 
 <script>

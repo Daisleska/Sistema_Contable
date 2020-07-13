@@ -6,35 +6,7 @@
                                 <th COLSPAN="8" style="text-align: left;">MES:{{$mesactual}}</th>
                             </tr>
 
-                <div class="row">
-                    <div class="col-md-3">
-                      <input type="date" id="dia" name="dia" class="form-control">
-                    </div>
-
-                    <div class="col-md-2">
-                      <select id="mes" name="mes" class="form-control">
-                        <option readonly >Mes</option>
-                      @foreach($meses as $mes)
-                          <option value="{{$x++}}">
-                            {{$mes}}
-                           </option> 
-                           @endforeach
-                      </select>
-                    </div>
-
-                    <div class="col-md-2">
-                      <select id="anio" name="anio" class="form-control">
-                        <option disabled="disabled" selected="selected">Año</option>
-                        <?php for ($i=2018; $i <=2030; $i++) { ?>
-                          <option value="{{$i}}">
-                            {{$i}}
-                           </option> 
-                           <?php } ?>
-                      </select>
-                    </div>
-                    <button class="btn btn-primary" onclick="buscador();">Buscar</button>
-                </div>
-              
+                
 
                             <tr style="color: black; font-size: 12px;">
                                 <th>N°</th>

@@ -1,20 +1,17 @@
-<div class="modal fade" id="bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-              <div class="modal-header">
+@extends('layouts.app')
+
+@section('content')
+<div class="row" style=" align-items: center; justify-content: center;">
+    <div class="col-lg-12">                
+        <div class="card">
+            <div class="card-body">
                 <?php
                 $fecha= date('d-m-Y');
                 ?>
-                <h5 class="modal-title" id="myExtraLargeModalLabel">Registro de cuentas</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                     </button>
-                </div>
-             <div class="modal-body">
-               
-    <div class="col-xl-6">
-        <div class="card">
-            <div class="card-body">
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cuentas</h4> <p style="color: black; padding-top: 10px;">Fecha: {{$fecha}}</p>
+                <p class="sub-header"></p>
+                <p style="color: black; padding-top: 10px;">Campos Obligatorios (*)</p>
+
                  {!! Form::open(['route' => ['cuentas.store'], 'method' => 'POST', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
                     @csrf
 
@@ -59,7 +56,7 @@
                         </div>
  
                     </div>
-                    <p style="color: black; padding-top: 10px;">Campos Obligatorios (*)</p>
+                    
                     <br>
                     <button  type="submit" class="btn btn-primary">Guardar</button>
 
@@ -67,6 +64,32 @@
         </div> <!-- end card-->
        {!! Form::close() !!}
                   
-    </div>
+
+            </div> <!-- end card-body-->
+        </div> <!-- end card-->
+    </div> <!-- end col-->
+    @endsection
+
+@section('script')
+<script src="{{ URL::asset('Shreyu/assets/libs/select2/select2.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/multiselect/jquery.multi-select.js') }}"></script>
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+
+<script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

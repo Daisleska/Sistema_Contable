@@ -8,7 +8,7 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Usuarios</h4>
+           
                 
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
@@ -30,7 +30,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
                     @csrf
                     <div class="card-body">
-                        <h4 class="card-title">Registrar Usuarios <br> <p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h4>
+                        <h4 class="card-title" style="text-align: center;">Usuarios</h4> <br> <h5><p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h5>
                     	<div class="form-group row">
                             <label for="name" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Nombre</label>
 
@@ -93,7 +93,7 @@
                              </div>
                         </div>          
                                
-           				<div class="form-group row">
+           				{{-- <div class="form-group row">
                             <label for="Empresa" class="col-md-3 col-form-label text-md-right">Nombre de la Empresa</label>
 
                             <div class="col-md-6">
@@ -105,7 +105,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>             
+                        </div>     --}}         
                     <div class="border-top">
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">Guardar</button>

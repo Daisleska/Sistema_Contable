@@ -64,7 +64,7 @@
                     
                     
                         <tbody>
-                           @foreach($facturac as $key)
+                           @forelse($facturac as $key)
                 <tr>
                   <td>{{$key->fecha}}</td>
                   <td>000{{$key->n_factura}}</td>
@@ -91,8 +91,12 @@
 
                 
                 </tr>
+                    @empty
+                        <tr>
+                            <td style="align-content: center;">No hay ningun registro</td>
+                        </tr>
            
-                          @endforeach
+                          @endforelse
                              </tbody>
                     </table>
 

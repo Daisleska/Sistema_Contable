@@ -100,7 +100,7 @@
 
         
         
-        <h3 class="float-center" id="titulo">_________________________   COTIZACIÓN ___________________________</h3>
+        
      
       
   
@@ -132,8 +132,10 @@
      
 <hr>
 
-      </table>  
 
+      </table>  
+      <br>
+<h3 class="float-center" id="titulo">COTIZACIÓN</h3>
 
     <br><br>
      <table border="0"  width="470">
@@ -141,15 +143,19 @@
       <tr> 
            
  
-         
-           <th style="text-align: right;">
-            Fecha de Emisión: {{$val->fecha}} </th>  
-            
+         <th style="text-align: right;">N° {{$val->n_cotizacion}}</th>
+
+           
+      </tr>
+      <tr>  
+             
+            <th style="text-align: right;">
+            Fecha de Emisión: {{$fechae}} </th>
       </tr>
      
       <tr>
-           <th style="text-align: right;">N° {{$val->n_cotizacion}}</th>
-
+           <th style="text-align: right;">
+            Fecha de Vencimiento: {{$fechaven}} </th>
     </tr>
 
       </table>
@@ -167,18 +173,11 @@
           <br>
           <td  align="left"><b>Cliente:</b> {{ $val->nombre }} <b> RUT: </b> {{ $val->tipo_documento }}-{{ $val->ruf }}</td>
         </tr>
-       <tr>
-          <td  align="left"><b>Comentarios de Correo:</b> {{ $val->email_comments }}</td>
-        </tr>
-        <tr>
-          <td  align="left"><b>Correo para envío:</b> {{ $val->email }}</td>
-        </tr>
+       
         <tr>
           <td  align="left"><b>Oferta Válida por:</b> {{ $val->validez }} días</td>
         </tr>
-        <tr>
-          <td  align="left"><b>Forma de Pago:</b> {{ $val->c_pago }} | <b>Moneda:</b>{{ $val->divisa }} </td>
-        </tr>
+        
         <tr>
           <td  align="left"><b>Dirigido a:</b></td>
         </tr>
@@ -239,9 +238,18 @@
                                                   
                 </tbody>
                 </table>
+                <br>
     </div>
-
-
+     @foreach($cotizacion as $val)
+     <table border="0" width="470">
+     <tr>
+          <td  align="left"><b>Comentarios de Correo:</b> {{ $val->email_comments }}</td>
+      </tr>
+      <tr>
+          <td  align="left"><b>Forma de Pago:</b> {{ $val->c_pago }} | <b>Moneda:</b>{{ $val->divisa }} </td>
+      </tr>
+    </table>
+      @endforeach 
 </body>
 
 </html>
