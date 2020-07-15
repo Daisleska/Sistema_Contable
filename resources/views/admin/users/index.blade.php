@@ -18,7 +18,12 @@
                 <div class="card-body">
                     <h4 class="card-title" style="text-align: center;">Usuarios</h4>
                     <br>
-                    <h5 class="card-title"><a href="{{ route('users.create') }}" style="color: white;" class="btn btn-info align-right">Registrar</a></h5>
+                    <h5 class="card-title">
+
+                        <a href="{{ route('users.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  
+
+                    {{--     <a href="{{ route('users.create') }}" style="color: white;" class="btn btn-info align-right">Registrar</a></h5> --}}
 
                     <div class="table-responsive">
                         <table id="key-datatable" class="table dt-responsive nowrap">

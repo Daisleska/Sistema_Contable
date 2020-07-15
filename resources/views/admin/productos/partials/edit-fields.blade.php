@@ -1,80 +1,125 @@
+<p>Campos obligatorios (*)</p>
+<div class="row" style="margin-left: 0.3cm;">
 <div class="form-group mb-3">
-                    <label for="validationCustom01">Código</label>
-                        <input type="text" name="codigo" class="form-control" id="validationCustom01" value="{{ $product->codigo }}">
+                    <label style="margin-left: 0.3cm;">Código *</label>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control"  value="{{ $productos->codigo }}" placeholder="CA08" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
+</div>
+
+<div class="row" style="margin-left: 0.3cm;">
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="validationCustom02" value="{{ $product->nombre }}">
+                        <label style="margin-left: 0.3cm;">Nombre *</label>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control"  value="{{ $productos->nombre }}" placeholder="Landing Page" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
+</div>
+
+<div class="row" style="margin-left: 0.3cm;">
                     
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Descrpción</label>
-                        <input type="text"  name="descripcion" class="form-control" id="validationCustom02"value="{{ $product->descripcion }}">
+                        <label style="margin-left: 0.3cm;">Descripción </label>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control" value="{{ $productos->descripcion }}" placeholder="" required>
                         <div class="valid-feedback">
                            
                         </div>
                     </div>
+</div>
+
+<div class="row" style="margin-left: 0.3cm;">
 
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Existencia</label>
-                        <input type="text" class="form-control" id="validationCustom02" name="existencia" value="{{ $product->existencia}}">
+                        <label style="margin-left: 0.3cm;">Existencia *</label>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control"  name="existencia" value="{{ $productos->existencia}}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
+</div>
 
+<div class="row" style="margin-left: 0.3cm;">
 
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Unidad</label>
+                        <label style="margin-left: 0.3cm;">Unidad *</label>
                        
-                        <select class="form-control" id="validationCustom02" name="unidad">
-                       
-                                    <option>Select</option>
+                        <select style="width: 380px; margin-left: 0.3cm;" class="form-control"  name="unidad">
                                     <optgroup label="Seleccione una unidad">
-                                        <option value="Caja" @if($product->unity=="Caja") selected="selected" @endif >Caja</option>
-                                        <option value="Bulto" @if($product->unity=="Bulto") selected="selected" @endif >Bulto</option>
-                                        <option value="Saco" @if($product->unity=="Saco") selected="selected" @endif >Saco</option>
-                                        <option value="M3" @if($product->unity=="M3") selected="selected" @endif >M3</option>
-                                        <option value="Resma" @if($product->unity=="Resma") selected="selected" @endif >Resma</option>
-                                        <option value="Paquete" @if($product->unity=="Paquete") selected="selected" @endif >Paquete</option>
-                                        <option value="kilo" @if($product->unity=="kilo") selected="selected" @endif >kilo</option>
-                                        <option value="Barril" @if($product->unity=="Barril") selected="selected" @endif >Barril</option>
-                                        <option value="Litros" @if($product->unity=="Litros") selected="selected" @endif >Litros</option>
-                                        <option value="Individual" @if($product->unity=="Individual") selected="selected" @endif >Individual</option>
+                                        <option value="Caja" @if($productos->unity=="Caja") selected="selected" @endif >Caja</option>
+                                        <option value="Bulto" @if($productos->unity=="Bulto") selected="selected" @endif >Bulto</option>
+                                        <option value="Saco" @if($productos->unity=="Saco") selected="selected" @endif >Saco</option>
+                                        <option value="M3" @if($productos->unity=="M3") selected="selected" @endif >M3</option>
+                                        <option value="Resma" @if($productos->unity=="Resma") selected="selected" @endif >Resma</option>
+                                        <option value="Paquete" @if($productos->unity=="Paquete") selected="selected" @endif >Paquete</option>
+                                        <option value="kilo" @if($productos->unity=="kilo") selected="selected" @endif >kilo</option>
+                                        <option value="Barril" @if($productos->unity=="Barril") selected="selected" @endif >Barril</option>
+                                        <option value="Litros" @if($productos->unity=="Litros") selected="selected" @endif >Litros</option>
+                                        <option value="Individual" @if($productos->unity=="Individual") selected="selected" @endif >Individual</option>
                                     </optgroup>
                                 </select>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
+</div>
+
+<div class="row" style="margin-left: 0.3cm;">
 
 
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Precio</label>
-                        <input type="text" class="form-control" id="validationCustom02" name="precio" value="{{ $product->precio }}">
+                        <label style="margin-left: 0.3cm;">Precio c/u *</label>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control" name="precio" value="{{ $productos->precio }}" placeholder="200.800,00" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+</div>
+
+<div class="row" style="margin-left: 0.3cm;">
+
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Mínimo *</label>
+                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ $productos->stock_min }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="validationCustom02">Stock Mínimo</label>
-                        <input type="text" class="form-control" id="validationCustom02" name="stock_min" value="{{ $product->stock_min }}">
+                        <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Máximo *</label>
+                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ $productos->stock_max }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
-                    
-                    <div class="form-group mb-3">
-                        <label for="validationCustom02">Stock Máximo</label>
-                        <input type="text" class="form-control" id="validationCustom02" name="stock_max" value="{{ $product->stock_max }}">
-                        <div class="valid-feedback">
-                       
-                        </div>
-                    </div>
+</div>
+                    <button style="margin-left: 0.6cm;" class="btn btn-primary" type="submit">Guardar</button>
 
-<input type="submit" class="btn btn-primary" value="Guardar">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

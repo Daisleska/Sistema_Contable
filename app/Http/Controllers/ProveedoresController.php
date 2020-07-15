@@ -54,7 +54,9 @@ class ProveedoresController extends Controller
             $proveedor->representante=$request->representante;
             $proveedor->direccion=$request->direccion;
             $proveedor->correo=$request->correo;
+            $proveedor->codigo=$request->codigo;
             $proveedor->telefono=$request->telefono;
+
             $proveedor->save();
 
              /*registrar accion en bitacora*/
@@ -112,11 +114,12 @@ class ProveedoresController extends Controller
             # podemos actualizar los datos
             $proveedor=proveedor::find($id);
             $proveedor->nombre=$request->nombre;
-$proveedor->tipo_documento=$request->tipo_documento;
+            $proveedor->tipo_documento=$request->tipo_documento;
             $proveedor->ruf=$request->ruf;
             $proveedor->representante=$request->representante;
             $proveedor->direccion=$request->direccion;
             $proveedor->correo=$request->correo;
+            $proveedor->codigo=$request->codigo;
             $proveedor->telefono=$request->telefono;
             $proveedor->save();
 

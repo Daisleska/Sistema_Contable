@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use App\cliente;
+use App;
 use Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
@@ -46,6 +46,7 @@ class ClientesController extends Controller
             $cliente->ruf=$request->ruf;
             $cliente->email=$request->email;
             $cliente->direccion=$request->direccion;
+            $cliente->codigo=$request->codigo;
             $cliente->telefono=$request->telefono;
             $cliente->save();
 
@@ -106,6 +107,7 @@ class ClientesController extends Controller
             $cliente->ruf=$request->ruf;     
             $cliente->email=$request->email;
             $cliente->direccion=$request->direccion;
+            $cliente->codigo=$request->codigo;
             $cliente->telefono=$request->telefono;
             $cliente->save();
 
@@ -116,7 +118,7 @@ class ClientesController extends Controller
             $bitacoras->action = 'Ha modificado al Cliente';
             $bitacoras->save();
 
-            flash('<i class="icon-circle-check"></i> Cliente Actualizado satisfactoriamente!')->success()->important();
+            flash('<i class="icon-circle-check"></i> ¡Cliente Actualizado satisfactoriamente!')->success()->important();
 
             return redirect ()->route('clientes.index');
         }

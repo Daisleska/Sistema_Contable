@@ -24,28 +24,31 @@
 @section('content')
 
 <div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
+  <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Clientes</h4>
-                   
-                  
                     
-                    <a href="{{ route('clientes.create') }}" class="btn btn-outline-primary">
-                   Registrar</a>
+                    <a href="{{ route('clientes.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+
+                    <br></br>
 
 
-                    <table id="basic-datatable" class="table dt-responsive nowrap">
+                     <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
                                 <th>Nombre</th>
-                                <th>RUF</th>
+                                <th>RUT</th>
+                                <th>Direccion</th>
                                 <th>Correo</th>
-                                <th>Dirección</th>
-                                <th>Teléfono</th>
+                                <th>Telefono</th>
                                 <th>Opciones</th>
-
-                            
                             </tr>
                         </thead>
                     
@@ -55,42 +58,39 @@
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
-                  <td>{{$key->email}}</td>
                   <td>{{$key->direccion}}</td>
-                  <td>{{$key->telefono}}</td>
-                  
-                   <td>
-                       <form action="{{ route('clientes.edit',$key->id) }}" method="POST">
+                  <td>{{$key->email}}</td>
+                  <td>+{{$key->codigo}} {{$key->telefono}}</td>
+                  <td>
+                        
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+                    
+                       <br>
+                        <form id="f_eliminar" action="{{ route('clientes.destroy', $key->id) }}" method="POST" name="formulario">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
-                   <br>
-                    <form id="f_eliminar" name="formulario" action="{{ route('clientes.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   
-                   </form>
-                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
-                  </td>
-
-                
+                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_pro()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                    </td>
                 </tr>
                 @endforeach
                           
                              </tbody>
                     </table>
-
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
-        </div><!-- end col-->
-    </div>
-    <!-- end row-->
+</div>
+</div>
+</div>
+</div>
 @endsection
 
 @section('script')
+
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection
 
 @section('script-bottom')
@@ -99,11 +99,11 @@
 @endsection
 
 <script type="text/javascript">
-      function alert_eliminar(){
+      function alert_eliminar_cli(){
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar el Cliente?",
-        text : "Si elimina el Cliente, todos los datos del cliente seran eliminados",
+        text : "Si elimina el Cliente, todos los cambios alterados por el regresaran a su estado original",
         buttons : {
             cancel: {
                 text: "Cancelar",
@@ -123,10 +123,10 @@
 
        }).then(function(confirm){
         if (confirm) {
-
-        document.getElementById('f_eliminar').submit();
+           document.getElementById('f_eliminar').submit();
           }
        });
 
     }
 </script>
+

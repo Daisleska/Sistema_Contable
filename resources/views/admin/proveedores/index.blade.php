@@ -35,8 +35,8 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Proveedores</h4>
                     
-                    <a href="{{ route('proveedores.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
+                    <a href="{{ route('proveedores.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  
                     <br></br>
 
 

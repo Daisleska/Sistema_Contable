@@ -53,7 +53,10 @@
                          <?php
                         }
                         ?>
+                        
                     </tr>
+                    <br>
+
                     <?php
                     $diario= \DB::select('SELECT * FROM diario WHERE anio=YEAR(CURRENT_DATE)');
 
@@ -63,23 +66,45 @@
                       <th><a onclick="alert_diario()" class="btn btn-danger" style="color: white;">
                       Abrir Libro</a>
 
-                    <a href="{{ route('historial') }}"  class="btn btn-info" title="Ver Historial">Historial</a></th>            
+                               
                     
                     <?php
                     }else{
                     ?>
                     <th><a href="{{ route('diario.abrir') }}" class="btn btn-danger">
                       Abrir Libro  
-                    </a></th>
+                    </a>
 
                     <?php
 
                   }
                   ?>
-
-                  </tr>
-
                   
+                  </tr>
+                   
+                     <table id="key-datatable" class="table dt-responsive nowrap">
+                      <thead>
+                        <th>N° Folio</th>
+                        <th>Año</th>
+                        <th>Estado</th>
+                        <th>Opciones</th>
+                      </thead>
+                      <tbody>
+                          @foreach($historial as $valor)
+                        <tr>
+                          <td>{{$valor->n_folio}}</td>
+                          <td>{{$valor->anio}}</td>
+                          @if($valor->estado=='Abierto')
+                          <td style="color: green;">{{$valor->estado}}</td>
+                          @elseif($valor->estado=='Cerrado')
+                          <td style="color: red;">{{$valor->estado}}</td>
+                          @endif
+                          <td><a href="{{ route('diario.individual', $valor->n_folio) }}" class="btn btn-info btn-xs remove-item"><i class="uil-cloud-download"></i></a></td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                     </table>
+              
 
                 </div> <!-- end card body-->
             </div> <!-- end card -->

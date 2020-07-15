@@ -1,58 +1,99 @@
-<p>Campos obligatorios (*)</p>
+<p class="row" style="margin-left: 0.3cm;">Campos obligatorios (*)</p>
 
-<div class="row form-group">
 
-	<div class="col col-md-2">
-		<label>Nombre *</label>
-	</div>
-
-	<div class="col col-md-10">
-		<input type="text" value="{{$clientes->nombre}}" name="nombre" id="nombre"  title="Ingrese el nombre" class="form-control">
-	</div>
+<div class="row" style="margin-left: 0.3cm;">
+    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Nombre *</label>
+                        <input style="width: 350px; margin-left: 0.3cm; " type="text" value="{{$clientes->nombre}}" name="nombre" class="form-control" placeholder="EICHE" required>
+                        <div class="valid-feedback">
+                           
+                        </div>
+                    </div>
 </div>
 
 
-<div class="row form-group">
-	<div class="col col-md-2">
-		<label>RUF *</label>
-	</div>
-	<div class="col col-md-4">
-		<input type="text" name="tipo_documento" id="tipo_documento" title="Ingrese el tipo de documento" value="{{$clientes->tipo_documento}}" required="required" class="form-control">
-	</div>
+  <div class="row" style="margin-left: 0.3cm;">
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">RUT *</label>
+                            <select value="{{$clientes->tipo_documento}}" name="tipo_documento" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 90px; margin-left: 0.3cm; " >
+                                  
+                                  <option value="C">C</option>
+                                  <option value="E">E</option>
+                                  <option value="J">J</option>
+                                  <option value="P">P</option>
+                                  
+                                  
+                                </select></th>
+                            <div class="valid-feedback">
+                            </div>
+                    </div>
+   
 
-	<div class="col col-md-4">
-		<input type="text" name="ruf" id="ruf" title="Ingrese el número de documento" value="{{$clientes->ruf}}" required="required" class="form-control">
-	</div>
+  
+                <div class="form-group mb-3">
+                    <label style="color: white;">...</label>    
+                        <input value="{{$clientes->ruf}}" style="width: 250px; margin-left: 0.3cm;" type="text" class="form-control"  name="ruf" placeholder="9876584-J" required>
+                        <div class="valid-feedback">
+                        </div>
+
+                    </div>
+
+    </div>
+
+    <div class="row" style="margin-left: 0.3cm;">         
+                <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Correo *</label>
+                        <input value="{{$clientes->email}}" style="width: 350px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="eiche@gmail.com" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+    </div>
 
 
+    <div class="row" style="margin-left: 0.3cm;">
+                  <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Dirección *</label>
+                        <input value="{{$clientes->direccion}}" style="width: 350px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+    </div>
 
-<div class="row form-group">
+     <div class="row" style="margin-left: 0.3cm;">
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Teléfono *</label>
+                    
+                            <select value="{{$clientes->codigo}}" name="codigo" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 90px; margin-left: 0.3cm; " >
+                                  
+                                  <option value="51">+51</option>
+                                  <option value="54">+54</option>
+                                  <option value="55">+55</option>
+                                  <option value="56">+56</option>
+                                  <option value="57">+57</option>
+                                  <option value="58">+58</option>
+                                  <option value="591">+591</option>
+                                  <option value="593">+593</option>
+                                  <option value="595">+595</option>
+                                  <option value="598">+598</option>
+                                  
+                                </select></th>
+                            <div class="valid-feedback">
+                            </div>
+                    </div>
 
-	<div class="col col-md-2">
-		<label>Correo *</label>
-	</div>
-
-	<div class="col col-md-10">
-		<input type="email" value="{{$clientes->email}}" name="email" id="email" title="Ingrese el correo" class="form-control">
-	</div>
+                 <div class="form-group mb-3">
+                        <label style="color: white;">...</label>
+                        <input value="{{$clientes->telefono}}" style="width: 250px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
 </div>
 
-<div class="row form-group">
-<div class="col col-md-2">
-		<label>Dirección *</label>
-	</div>
-	<div class="col col-md-4">
-		<input type="text" name="direccion" value="{{$clientes->direccion}}"  id="direccion"  title="Ingrese la dirección" required="required" class="form-control">
-	</div>
-</div>
+                    
 
-<div class="row form-group">
-<div class="col col-md-2">
-		<label>Teléfono *</label>
-	</div>
-	<div class="col col-md-4">
-		<input type="text" name="telefono" value="{{$clientes->telefono}}"  id="telefono" maxlength="13"  title="Ingrese el número de  teléfono" required="required" class="form-control">
-	</div>
-</div>
+                    
+                        <button style="margin-left: 0.6cm;" class="btn btn-primary" type="submit">Guardar</button>
 
-<input type="submit" class="btn btn-primary" value="Guardar">clientes

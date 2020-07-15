@@ -11,60 +11,42 @@
     <style>
         img {
             width: 10%;
-            margin-left: 20cm;
-            margin-right: 2.5cm;
-            border-radius: 50%;
+        
       
 
 
         }
+     
+
+        #alto {
+          
+          /* Alto de las celdas */
+          height: 40px;
+        }
+
+        body {
+          font-family: "Times New Roman", serif;
+          margin: 0mm 1.2cm 1cm 1cm;
+         }
+
 
         h3 {
             text-align: center;
         }
 
-      
-
         small {
             margin-top: 20%;
-            color:black;
-
         }
 
-      
         #titulo {
-            text-align: right;
-       
+            text-align: center;
+
         }
 
         #membrete {
-            text-align: right;
-            margin-left: 15px;
+            text-align: center;
+            margin-top: 35px;
         }
-
-        #fecha {
-            margin-right: 15px;
-        }
-
-        @font-face {
-            font-family: 'Times-Bold';
-            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
-        }
-
-        body {
-            font-family: 'Times-Bold';
-       
-          margin: 1cm 2cm 2cm 1cm;
-         }
-
-
-        table {
-            border-collapse: collapse;
-            width: 105%;
-
-
-        }
-
 
         #l {
             text-align: left;
@@ -77,40 +59,80 @@
             height: 40px;
         }
 
-       
+        
 
+
+        @font-face {
+            font-family: 'Times-Bold';
+            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
+        }
+
+        body {
+            font-family: 'Times-Bold';
+        }
+
+        table {
+           
+            border-collapse: collapse;
+
+        }
+
+        #tabla {
+
+            margin-top: -150px;
+
+        }
+
+        #a{
+            text-align: right;
+           margin-right: 2cm; 
+        }
+
+        .circular--square {
+       border-radius: 60%;
+         }
 
     </style>
 </head>
 
-<body>
-    <div class="row">
-        @foreach($empresa as $key)
-            <h2>EICHE, C.L</h2>
-            <small class="float-left">{{$key->direccion}}</small><br>
-            <small>RUT: {{$key->tipo_documento}}-{{$key->ruf}}</small>
-            <small class="float-left">Telefono: +{{$key->codigo}} {{$key->telefono}}</small><br>
-            <small class="float-left">Correo: {{$key->email}}</small>
-            <small class="float-left">Web: </small>
+<body> 
+    @foreach($empresa as $key)
+    <table border="0"  width="470">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
 
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
             
-            <img class="circular--square" src="../public/{{$key->url_image }}">
+            
      
 
          @endforeach
 
-        </div>
+      </table>  
    
 
         
 
     </div>
-
+<br>
 
              <h2 style="text-align: center;">Movimientos de Caja Chica</h2> <br>
-             <h4>Rango de impresión: {{$fecha}} al {{$fecha2}}</h4>
+             <h4>Rango de impresión: {{date("d-m-Y", strtotime($fecha))}} al {{date("d-m-Y", strtotime($fecha2))}}</h4>
              
-              <table border="1" >
+              <table border="1" width="470" >
                
 
                     <thead class=>
@@ -131,7 +153,7 @@
                         <tr>
 
                             <td id="c"><b>{{$item->id}}</b></td>
-                            <td id="c">{{$item->fecha}}</td>
+                            <td id="c">{{date("d-m-Y", strtotime($item->fecha))}}</td>
                             <td id="c">{{$item->concepto}}</td>
                             <td id="c">{{number_format($item->ingresos, 2,',','.')}}</td>
                             <td id="c">{{number_format($item->egresos, 2,',','.')}}</td>
@@ -141,15 +163,24 @@
                         </tr>
                         @endforeach
                         <tr>
-                        <?php
-                         $total_ingreso=array_sum($total_ingresos);
-                         $total_egreso=array_sum($total_egresos);
+
+                        <?php 
                        
-                         ?>
+
+                        $total_ingreso=array_sum($total_ingresos);       
+                        $total_egreso=array_sum($total_egresos);
+                        ?>
+
+
+                        
+                         
+                        
+                     
                             <th colspan="3"></th>
                             <th>{{number_format($total_ingreso, 2,',','.')}}</th>
                             <th>{{number_format($total_egreso, 2,',','.')}}</th>
-                            <th></th>
+                            <th>{{number_format($item->saldo, 2,',','.')}}</th>
+
                             
                         </tr>
                     </tbody>

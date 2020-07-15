@@ -11,58 +11,42 @@
     <style>
         img {
             width: 10%;
-            margin-left: 20cm;
-            margin-right: 2.5cm;
-            border-radius: 50%;
+        
       
 
 
         }
+     
+
+        #alto {
+          
+          /* Alto de las celdas */
+          height: 40px;
+        }
+
+        body {
+          font-family: "Times New Roman", serif;
+          margin: 0mm 1.2cm 1cm 1cm;
+         }
+
 
         h3 {
             text-align: center;
         }
 
-      
-
         small {
             margin-top: 20%;
-            color:black;
-
         }
 
         #titulo {
-            text-align: right;
-       
+            text-align: center;
+
         }
 
         #membrete {
-            text-align: right;
-            margin-left: 15px;
+            text-align: center;
+            margin-top: 35px;
         }
-
-        #fecha {
-            margin-right: 15px;
-        }
-
-        @font-face {
-            font-family: 'Times-Bold';
-            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
-        }
-
-        body {
-            font-family: 'Times-Bold';
-       
-          margin: 2.5cm 2.5cm 2.5cm 2.5cm;
-         }
-
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-
-        }
-
 
         #l {
             text-align: left;
@@ -75,38 +59,78 @@
             height: 40px;
         }
 
-       
+        
 
+
+        @font-face {
+            font-family: 'Times-Bold';
+            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
+        }
+
+        body {
+            font-family: 'Times-Bold';
+        }
+
+        table {
+           
+            border-collapse: collapse;
+
+        }
+
+        #tabla {
+
+            margin-top: -150px;
+
+        }
+
+        #a{
+            text-align: right;
+           margin-right: 2cm; 
+        }
+
+        .circular--square {
+       border-radius: 60%;
+         }
 
     </style>
 </head>
 
 <body>
-    <div class="row">
-        @foreach($empresa as $key)
-            
-            <img class="circular--square" src="../public/{{ $key->url_image }}">
-            <h2>EICHE, C.L</h2>
-            <small>RUT:{{$key->tipo_documento}}-{{$key->ruf}}</small>
-            <small class="float-left">{{$key->direccion}}</small> <br>
-            <small class="float-left">Telefono: +{{$key->codigo}} {{$key->telefono}}</small> /
-            <small class="float-left">Correo: {{$key->email}}</small>
+    @foreach($empresa as $key)
+    <table border="0"  width="470">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
 
-        </div>
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
+            
+            
+     
 
          @endforeach
 
-        </div>
-   
+      </table>  
 
         
 
     </div>
 
 
-             <h2 style="text-align: center;">Inventario</h2> <br>
+             <h2 style="text-align: center;">Libro de Inventario</h2> <br>
              
-                            <table border="1" >
+                            <table border="1" width="470">
                
 
                     <thead class=>
@@ -132,11 +156,20 @@
                             <td id="c">{{$item->existencia}}</td>
                             <td id="c">{{$item->unidad}}</td>
                             <td id="c">{{number_format($item->precio, 2,',','.')}}</td>
+                            
+                            <?php 
+                            $importe=$item->precio*$item->existencia;
+                             $totales[]=$importe; ?>
                         
 
                         </tr>
                         @endforeach
                     </tbody>
+                    <tr>
+                        <?php $total=array_sum($totales); ?>
+                        <th colspan="5" style="text-align: center; color: black;"> Total en Inventario</th>
+                        <th><?php echo number_format($total, 2,',','.'); ?></th>
+                    </tr>
                 </table>
         
 

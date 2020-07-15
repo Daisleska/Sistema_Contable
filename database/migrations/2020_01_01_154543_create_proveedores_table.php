@@ -21,6 +21,7 @@ class CreateProveedoresTable extends Migration
             $table->string('representante');
             $table->string('correo')->unique();
             $table->string('direccion');
+            $table->string('codigo');
             $table->text('telefono');
             $table->timestamps();
         });

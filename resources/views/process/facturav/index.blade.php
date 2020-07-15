@@ -37,8 +37,7 @@
                     
                    
                  
-                    <a href="{{ route('facturav.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
+                    <a href="{{ route('facturav.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>

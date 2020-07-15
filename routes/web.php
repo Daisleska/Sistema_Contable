@@ -51,6 +51,7 @@ Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')-
 Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
 Route::get('diario.historial','DiarioController@historial')->name('historial');
 Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
+
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
     Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');
@@ -78,6 +79,8 @@ Route::put('ivaupdateC', 'FacturasCController@ivaupdate')->name('ivaupdateC');
 Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate');
 
 // Reportes en PDF
+Route::get('diario.individual/{n_folio}','DiarioController@individual')->name('diario.individual');
+
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('bitacora.pdf', 'BitacoraController@pdf')->name('bitacora.pdf');

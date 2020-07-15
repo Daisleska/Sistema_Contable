@@ -14,7 +14,7 @@
     <style>
         img {
             width: 10%;
-            margin-left: 20cm;
+        
       
 
 
@@ -112,28 +112,32 @@
    
 
       
-      <table>
+      <table border="0"  width="470">
       
       <tr> 
-            <th>
+           <th style="text-align: left;">
             Fecha: {{$val->fecha}} 
-           <br>N° Factura {{$val->n_factura}}
-           <br>N° de Control {{$val->n_control}}</th> 
-           <th><img class="circular--square" src="../public/{{ $key->url_image }}"></th>  
+           </th>
+ 
+           <th rowspan="3"><img class="circular--square" src="../public/{{ $key->url_image }}"></th>  
             
       </tr>
       <tr>
-            
+           
+           <th style="text-align: left;">N° Factura {{$val->n_factura}}</th>
+
+    </tr>
+    <tr>
+           <th style="text-align: left;">N° de Control {{$val->n_control}}</th> 
            
             
             
       </tr>      
       </table>
-    
      
         <hr>
         <br>
-        <table>
+        <table border="0"  width="470">
 
         <tr>
 
@@ -171,7 +175,7 @@
         <table border="1"  width="470">
          
                 <thead>
-                <tr style="background-color:#008080;">
+                <tr>
                    <th id="alto">Producto</th>
                    <th id="alto">Descripción</th>
                    <th id="alto">Cantidad</th>

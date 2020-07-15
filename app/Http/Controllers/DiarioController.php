@@ -46,7 +46,9 @@ class DiarioController extends Controller
            
        }else{
 
-        return view('process.diario.index1', compact('cuentas'));
+         $historial= \DB::select('SELECT * FROM diario WHERE estado="Cerrado"');
+
+        return view('process.diario.index1', compact('historial','cuentas'));
 
        }
 
@@ -98,8 +100,10 @@ class DiarioController extends Controller
 
         $cuentas=cuenta::all();
         $diario = \DB::select('UPDATE diario SET estado ="Cerrado" WHERE n_folio='.$n_folio);
+        $historial= \DB::select('SELECT * FROM diario WHERE estado="Cerrado"');
+
  
-         return view('process.diario.index1', compact('cuentas'));
+         return view('process.diario.index1', compact('cuentas', 'historial'));
 
 
      }
@@ -132,36 +136,60 @@ class DiarioController extends Controller
      */
     public function store(Request $request)
     {
-      /*  dd($request);*/
+      
 
          
         //restar el valor que esta saliendo a la cuenta 
 
-        //$cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->de_cuentas.'');
+        $d_cuenta=count($request->de_cuenta);
 
-        
-        //foreach ($cuenta as $val) {
-        //$saldo=$val->saldo;
-        //}
-         
-        //$nuevosaldo=$saldo-$request->monto;
 
-        //$cuenta = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuentas.'');
+        for ($i=0; $i <$d_cuenta ; $i++) { 
+
+            //cosultamos 
+            $cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->de_cuenta[$i].'');
+
+
+            foreach ($cuenta as $val) {
+
+            $saldo=$val->saldo;
+
+            }
+
+            $nuevosaldo=$saldo-$request->de_monto[$i];
+
+     
+
+            $cuen = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuenta[$i].'');
+
+
+        }
+
 
 
         //sumar el valor que esta entrando a la cuenta 
-        
-        //$cuen = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->a_cuentas.'');
 
-        
-        //foreach ($cuen as $val) {
-        //$saldo=$val->saldo;
-        //}
+        $a_cuentas=count($request->a_cuenta);
+
+        for ($i=0; $i <$a_cuentas ; $i++) { 
+ 
+            //cosultamos 
+            $cuenta = \DB::select('SELECT saldo FROM cuentas WHERE id='.$request->a_cuenta[$i].'');
+
+            foreach ($cuenta as $key) {
+
+            $saldo=$key->saldo;
+
+            }
+
+            $nuevosaldo=$saldo+$request->a_monto[$i];
          
-        //$saldonuevo=$saldo+$request->monto;
+            $cuen = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->a_cuenta[$i].'');
 
-        //$cuentas = \DB::select('UPDATE cuentas SET saldo ='.$saldonuevo.' WHERE id='.$request->a_cuentas.'');
 
+        }
+        
+       
 
              $id = \DB::select('SELECT id FROM diario ORDER BY id  DESC LIMIT 1');
             
@@ -322,26 +350,48 @@ class DiarioController extends Controller
      public function pdf()
 
     {
-        $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id');
+       
+        $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d, n_asiento FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id AND diario.anio=YEAR(CURRENT_DATE)');
 
-        $i=1;
+        $n= \DB::select('SELECT n_folio FROM diario WHERE anio=YEAR(CURRENT_DATE)');
+
+        foreach($n as $val) {
+            $n_folio=$val->n_folio;
+        }
+
         $empresa= empresa::all();
-        $dompdf = PDF::loadView('pdf.diario', compact('diario', 'empresa', 'i'));
-        $dompdf->setPaper('a4', 'landscape');
-
+        $dompdf = PDF::loadView('pdf.diario', compact('diario', 'empresa', 'n_folio'));
+       
         return $dompdf->stream('diario.pdf');
+    }
+
+
+    public function individual($n_folio){
+
+        $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d, n_asiento, diario.anio FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id AND diario.n_folio='.$n_folio.'');
+
+      
+
+        $empresa= empresa::all();
+
+        $dompdf = PDF::loadView('pdf.individual', compact('diario', 'empresa', 'n_folio'));
+
+       
+
+        return $dompdf->stream('individual.pdf');
+
     }
 
     public function busquedaAjax($cuenta)
    {    
         //Datos de cuenta
-        $cuen= \DB::select('SELECT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE mayor.cuenta_id='.$cuenta.' AND cuentas.id='.$cuenta.' LIMIT 1');
+        $cuen= \DB::select('SELECT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE mayor.cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) LIMIT 1');
 
         //Debe
-        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe FROM mayor WHERE cuenta_id='.$cuenta.' AND mayor.debe IS NOT NULL');
+        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) AND mayor.debe IS NOT NULL');
          
          //haber
-        $buscar2= \DB::select('SELECT  mayor.cuenta_id, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND mayor.haber IS NOT NULL');
+        $buscar2= \DB::select('SELECT  mayor.cuenta_id, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) AND mayor.haber IS NOT NULL');
 
        
        

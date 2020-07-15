@@ -43,10 +43,9 @@
                                                     style="font-size: 20px"></i> Generar PDF</a>
                                         </div>
 
-                    
+                          <a href="{{ route('facturac.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+
                   
-                    <a href="{{ route('facturac.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>

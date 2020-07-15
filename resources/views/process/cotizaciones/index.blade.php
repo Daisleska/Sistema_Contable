@@ -33,11 +33,8 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cotizaciones</h4>
 
-                    
-                   
-                 
-                    <a href="{{ route('cotizacion.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
+                     <a href="{{ route('cotizacion.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>

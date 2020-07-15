@@ -19,6 +19,7 @@ class ProveedoresTableSeeder extends Seeder
        		'representante' => 'Pablo',
             'direccion' => 'chile',
             'correo' => 'eiche@gmail.com',
+            'codigo' => '+58',
             'telefono' => '0212222222'
        	]);
         \DB::table('proveedores')->insert([
@@ -29,6 +30,7 @@ class ProveedoresTableSeeder extends Seeder
            'representante' => 'Cesar',
             'correo' => 'eihe@gmail.com',
             'direccion' => 'chile',
+            'codigo' => '+58',
             'telefono' => '0212222222'
         ]);
 
@@ -39,7 +41,8 @@ class ProveedoresTableSeeder extends Seeder
           'ruf' => 1256787,
            'representante' => 'Cesar',
             'correo' => 'eihhe@gmail.com',
-            'direccion' => 'chile',
+            'direccion' => 'chile',\
+            'codigo' => '+58',
             'telefono' => '0342222222'
         ]);
         \DB::table('proveedores')->insert([
@@ -50,6 +53,7 @@ class ProveedoresTableSeeder extends Seeder
            'representante' => 'Cesar',
             'correo' => 'eihjje@gmail.com',
             'direccion' => 'chile',
+            'codigo' => '+58',
             'telefono' => '0212227222'
         ]);
         

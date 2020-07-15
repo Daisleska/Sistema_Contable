@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ public_path('../resources/views/pdf/boostrap/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css" />
-   <style>
+    <style>
         img {
             width: 10%;
         
@@ -96,7 +96,7 @@
 </head>
 
 <body>
-    @foreach($empresa as $key)
+       @foreach($empresa as $key)
     <table border="0"  width="470">
         <tr>
        
@@ -124,12 +124,12 @@
       </table> 
 
         </div>
-   <br>
+   
 
         
 
     </div>
-
+<br>
             </table>
                   <br>
 
@@ -137,7 +137,7 @@
                         <thead >
                             <tr>
                              
-                                <th COLSPAN="5" style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; LIBRO DIARIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Folio N° <?php echo $n_folio?></th>
+                                <th COLSPAN="5" style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;LIBRO DIARIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Folio N° <?php echo $n_folio?></th>
                               
                             </tr>
                             <tr style="color: black; ">
@@ -160,7 +160,7 @@
               <tr>
                   <td style="text-align: center; "><?php echo $key->fecha; ?></td>
 
-                <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.n_asiento='.$key->n_asiento.' AND YEAR(cuenta_has_diario.fecha)=YEAR(CURRENT_DATE)'); ?>
+                <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.diario_id='.$n_folio.' AND YEAR(cuenta_has_diario.fecha)='.$key->anio.' AND cuenta_has_diario.n_asiento='.$key->n_asiento.''); ?>
                  
                  <td>
                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &#45; {{$key->n_asiento}} &#45;
@@ -169,7 +169,7 @@
                 
                   echo $val->nombre;  ?><br><?php } ?>&nbsp; &nbsp; &nbsp; &nbsp;
 
-                <?php $a_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.a_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.c_destino AND cuenta_has_diario.n_asiento='.$key->n_asiento.' AND YEAR(cuenta_has_diario.fecha)=YEAR(CURRENT_DATE)'); ?>
+                <?php $a_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.a_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.c_destino AND cuenta_has_diario.diario_id='.$n_folio.' AND YEAR(cuenta_has_diario.fecha)='.$key->anio.' AND cuenta_has_diario.n_asiento='.$key->n_asiento.''); ?>
 
                  <?php  foreach($a_cuentas as $item)  { ?> 
                  <?php echo $item->nombre; ?><br>&nbsp; &nbsp; &nbsp; &nbsp; <?php  } ?>

@@ -7,18 +7,6 @@
 
 @section('breadcrumb')
 
-<div class="row page-title">
-    <div class="col-md-12">
-        <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/"></a></li>
-                <li class="breadcrumb-item"><a href=""></a></li>
-                <li class="breadcrumb-item active" aria-current="page"></li>
-            </ol>
-        </nav>
-        <h4 class="mb-1 mt-0"></h4>
-    </div>
-</div>
 @endsection
 
 @section('content')
@@ -34,10 +22,8 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Productos</h4>
                     <p class="sub-header"></p>
-                   
-                    <a href="{{ route('productos.create') }}" class="btn btn-outline-primary">
-                    Registrar</a>
 
+                   <a href="{{ route('productos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
@@ -66,21 +52,24 @@
                   <td>{{number_format($key->precio,2,',','.')}}</td>
                   
                   <td>
-                       <form action="{{ route('productos.edit',$key->id) }}" method="POST">
+
+                    <button type="button" class="btn btn-info btn-xs remove-item" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+
+                      {{--  <form action="{{ route('productos.edit',$key->id) }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form>
-                        <br>
+                        </form> --}}
+                      
                   
                    <form id="f_eliminar" name="formulario" action="{{ route('productos.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
                    </form>
-                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   <button  class="btn btn-danger btn-xs" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                    <br>
                  
-                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
+                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   
                  </td>
 
@@ -144,44 +133,16 @@
                                         </div><!-- /.modal -->
 
 
- <script type="text/javascript">
-    //descripcion, monto
-  
-  function detalles(id, codigo, nombre, descripcion, existencia, unidad, precio, stock_min, stock_max){
-
-  $.ajax({
-        url: 'index.blade.php',
-        type: 'POST',
-        data: {codigo: codigo, nombre: nombre, descripcion: descripcion, existencia: existencia, unidad: unidad, precio: precio, stock_min: stock_min, stock_max: stock_max}
-    }).success(function(respuesta){
-        // console.log(respuesta);
-        $('#tablita').html(respuesta);
-    });
-   
-  $("#id").text(id);
-  $("#codigo").text(codigo);
-    $("#nombre").text(nombre);
-    $("#descripcion").text(descripcion);
-    $("#existencia").text(existencia);
-    $("#unidad").text(unidad);
-    $("#precio").text(precio);
-    $("#stock_min").text(stock_min);
-    $("#stock_max").text(stock_max);
-
-
-}
-
-    
-  
-
-</script>
-
     <!-- end row-->
 @endsection
 
 @section('script')
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+
+<script type="text/javascript">
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection
 
 @section('script-bottom')
@@ -221,3 +182,31 @@
     }
 </script>
 
+ <script type="text/javascript">
+    //descripcion, monto
+  
+  function detalles(id, codigo, nombre, descripcion, existencia, unidad, precio, stock_min, stock_max){
+
+  $.ajax({
+        url: 'index.blade.php',
+        type: 'POST',
+        data: {codigo: codigo, nombre: nombre, descripcion: descripcion, existencia: existencia, unidad: unidad, precio: precio, stock_min: stock_min, stock_max: stock_max}
+    }).success(function(respuesta){
+        // console.log(respuesta);
+        $('#tablita').html(respuesta);
+    });
+   
+  $("#id").text(id);
+  $("#codigo").text(codigo);
+    $("#nombre").text(nombre);
+    $("#descripcion").text(descripcion);
+    $("#existencia").text(existencia);
+    $("#unidad").text(unidad);
+    $("#precio").text(precio);
+    $("#stock_min").text(stock_min);
+    $("#stock_max").text(stock_max);
+
+
+}
+
+</script>

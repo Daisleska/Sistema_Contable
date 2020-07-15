@@ -171,7 +171,7 @@
                     <td></td>
                     <td></td>
                     <td align="right"><strong >SUBTOTAL</strong></td>
-                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount" readonly="readonly" value=""></td>
+                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount form-control" readonly="readonly" value=""></td>
                     <td></td>
                     
                 </tr>
@@ -346,7 +346,7 @@ $(document).ready( function(){
                     //$('#products_select').children('option[value="'+id+'"]').attr('disabled',true);
                     //$("#lista_productos").append('<tr>'); 
                     //$("#products").removeAttr('disabled');
-                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount" required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code><i class="uil-minus"></i></button></td></tr>');
+                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount form-control" id="amount" required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code><i class="uil-minus"></i></button></td></tr>');
                     //$("#lista_productos").append('</tr>');
                 }
 
@@ -372,6 +372,7 @@ function EliminarLinea(rnum,id_opcion) {
 
 function add_amount(argument) {
     //console.log(argument.value+"vbnm,");
+    setInterval("add_amount", 1000);
  var total=0;
  var sub_total=0;
  var id= $('#products_select').find(':selected').val();
@@ -382,7 +383,7 @@ function add_amount(argument) {
 
   $(".amount").each(function() {
    /* console.log($(this).val()+"dfghjkl");*/
-      var cantidad = $(".amount").val();
+      var cantidad = $(this).val()+"dfghjkl";
     if (isNaN(parseFloat($(this).val()))) {
 
       total += 0;
@@ -391,8 +392,11 @@ function add_amount(argument) {
 
       total += parseFloat($(this).val());
 
-        sub_total = eval(parseInt(precio)* parseInt(cantidad));
-   
+      sub_total = eval(parseInt(precio) * parseInt(cantidad));
+    
+        sub_total.forEach(function (item) {
+          console.log(item);
+        });
     }
    
         console.log(cantidad);
