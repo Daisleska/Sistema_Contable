@@ -15,9 +15,11 @@ class CreateMayorTabla extends Migration
     {
         Schema::create('mayor', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('chd_as');
             $table->unsignedBigInteger('cuenta_id');
             $table->string('debe')->nullable();
             $table->string('haber')->nullable();
+
             $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');
             $table->timestamps();
         });

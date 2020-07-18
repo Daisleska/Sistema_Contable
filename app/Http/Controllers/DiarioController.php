@@ -239,6 +239,10 @@ class DiarioController extends Controller
             }
 
 
+
+           
+
+
             //Para de cuentas 
             for ($i=0; $i<$l ; $i++) { 
 
@@ -249,12 +253,14 @@ class DiarioController extends Controller
                 if ($key->tipo=="activo" || $key->tipo=="egreso") {
                    //Debe
             $mayor=new mayor();
+            $mayor->chd_as=$n_asiento;
             $mayor->cuenta_id=$key->id;
             $mayor->debe=$request->de_monto[$i];
             $mayor->save();
                 }else{
                     //Haber
             $mayor=new mayor();
+            $mayor->chd_as=$n_asiento;
             $mayor->cuenta_id=$key->id;
             $mayor->debe=$request->de_monto[$i];
             $mayor->save();
@@ -274,12 +280,14 @@ class DiarioController extends Controller
                 if ($val->tipo=="activo" || $val->tipo=="egreso") {
                    //Debe
             $mayor=new mayor();
+            $mayor->chd_as=$n_asiento;
             $mayor->cuenta_id=$val->id;
             $mayor->haber=$request->a_monto[$j];
             $mayor->save();
                 }else{
                     //Haber
             $mayor=new mayor();
+            $mayor->chd_as=$n_asiento;
             $mayor->cuenta_id=$val->id;
             $mayor->haber=$request->a_monto[$j];
             $mayor->save();
@@ -390,7 +398,12 @@ class DiarioController extends Controller
         //Debe
         $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
 
-       
+
+        $descrip= \DB::select('SELECT DISTINCT descripcion, fecha FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id='.$cuenta.' OR cuenta_has_diario.c_destino='.$cuenta.' ORDER BY n_asiento ASC');
+        
+
+        $info= \DB::select('SELECT DISTINCT n_asiento, n_folio FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id='.$cuenta.' OR cuenta_has_diario.c_destino='.$cuenta.' ORDER BY n_asiento ASC');
+     
 
            $saldo=0;
            $i=0;
@@ -419,7 +432,7 @@ class DiarioController extends Controller
         
      
         //return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
-        return $datos = array("cuen" => $cuen, "buscar" => $buscar, "saldos" => $saldos );
+        return $datos = array("cuen" => $cuen, "buscar" => $buscar, "saldos" => $saldos, "descrip" => $descrip, "info" => $info );
    }
 
 

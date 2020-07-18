@@ -182,20 +182,25 @@ $(document).ready(function(){
                 console.log(res.cuen);
                 console.log(res.buscar);
                 console.log(res.saldos);
+                console.log(res.descrip);
+                console.log(res.info);
                 var cuent=res.cuen;
                 var buscar=res.buscar;
                 var saldo=res.saldos;
+                var descripcion=res.descrip;
+                var datos=res.info;
                 var debe =[];
                 var haber =[];
                 var tabla;
+                
 
- 
-                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'</th></tr><tr style="color: black;"><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th><th style="text-align: center;">Saldo</th></tr>';
+
+              
+                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'</th></tr><tr style="color: black;"><th style="text-align: center;">Fecha</th><th style="text-align: center;">Explicación</th><th style="text-align: center;">Ref.</th><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th><th style="text-align: center;">Saldo</th></tr>';
                 
                 
                   for (var i =0; i<buscar.length; i++) {
-                   
-                   
+                    tabla+= '<tr><td style="text-align: center;">'+descripcion[i].fecha+'</td><td style="text-align: left;">'+descripcion[i].descripcion+'</td><td style="text-align: center;">'+datos[i].n_folio+'/'+datos[i].n_asiento+'</td>';
               
 
                     if (buscar[i].debe) {
@@ -204,7 +209,7 @@ $(document).ready(function(){
                         var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
                         var formatter = new Intl.NumberFormat(locale, options);
 
-                         tabla+= '<tr><td style="text-align: center;">'+formatter.format(buscar[i].debe)+'</td><td></td>';
+                         tabla+= '<td style="text-align: center;">'+formatter.format(buscar[i].debe)+'</td><td></td>';
                          $('#tbody').html(tabla);  
                          
 
@@ -219,7 +224,7 @@ $(document).ready(function(){
                         var formatter = new Intl.NumberFormat(locale, options);
 
 
-                        tabla+= '<tr><td></td><td style="text-align: center;">'+formatter.format(buscar[i].haber)+'</td>';
+                        tabla+= '<td></td><td style="text-align: center;">'+formatter.format(buscar[i].haber)+'</td>';
                          $('#tbody').html(tabla);  
 
                        
@@ -245,19 +250,28 @@ $(document).ready(function(){
                         var formatter = new Intl.NumberFormat(locale, options);
                        
 
-                if (debe.length >0) {  
-                var saldod=(new Function("return " +debe.join('+')))();
-                tabla+= '<tr><th  style="text-align: center; color:black;">'+formatter.format(saldod)+'</th>';
+               var sdebe = debe.filter(function (el) {
+                return el != null;
+                  });
+                
+                var shaber = haber.filter(function (el) {
+                return el != null;
+                  });
+
+               if (debe.length >0) { 
+
+                var saldod=(new Function("return " +sdebe.join('+')))();
+                tabla+= '<tr><th></th><th></th><th></th><th  style="text-align: center; color:black;">'+formatter.format(saldod)+'</th>';
                 $('#tbody').html(tabla);
                 }else{
                 var saldod=0;
-                tabla+= '<tr><th style="text-align: center;"></th>';
+                tabla+= '<tr><th></th><th></th><th></th><th style="text-align: center;"></th>';
                 $('#tbody').html(tabla);
                 }
 
 
                 if (haber.length >0) { 
-                var saldoh=(new Function("return " +haber.join('+')))();
+                var saldoh=(new Function("return " +shaber.join('+')))();
                 tabla+= '<th  style="text-align: center; color:black;">'+formatter.format(saldoh)+'</th>';
                 $('#tbody').html(tabla);
                 }else{
@@ -266,13 +280,14 @@ $(document).ready(function(){
                 $('#tbody').html(tabla);
                 }
 
+
+
                 tabla+= '<th style="text-align: center;"></th></tr>';
 
                 $('#tbody').html(tabla);
 
                 $('#thead').html(nom);
                 
-
 
             }
 
