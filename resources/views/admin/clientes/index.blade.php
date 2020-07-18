@@ -70,7 +70,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         </form>
-                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_pro()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cli()" title="Eliminar"><i data-feather="trash-2"></i></button>
                     </td>
                 </tr>
                 @endforeach

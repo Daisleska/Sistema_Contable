@@ -132,7 +132,8 @@
                                             
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="4"></th><th>Total: <span id="total"></span></th><th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></th></tr>
+                                           <tr><th colspan="3" style="text-align: right;">CANTIDAD DE ARTÍCULOS: </th><th colspan="2" ><span id="total"></span></th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></th>
+                                            <span id="totalsub"></span><input type="hidden" name="subtotales" id="subtotales"></tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -140,48 +141,48 @@
                         </div>
 
 <div class="row">
-       <table style="margin-left: 1cm; margin-right: 1cm;"  class="table dt-responsive nowrap">
+        <table style="margin-left: 1cm; margin-right: 1cm;"  class="table dt-responsive nowrap">
                         <thead>
 
 
                 <tr>
                     
-                    <td COLSPAN="2" style="text-align: right;"><strong>CANTIDAD DE ARTÍCULOS</strong>
-                    <td><input id="Cant_art" style="width: 100px;" type="number" readonly="readonly" name="cantidad_articulos" class="form-control"></td>
-                    <td><strong style="text-align: left;">SUBTOTAL</strong></td>
-                    <td><input style="width: 100px;" id="sub_total" type="number" name="sub_total" readonly="readonly"  class="form-control"  ></td>
                     <td></td>
-                    
-
+                    <td></td>
+                    <td></td>
+                    <td align="right"><strong >SUBTOTAL</strong></td>
+                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount form-control" readonly="readonly" value=""></td>
+                    <td></td>
                     
                 </tr>
-               <tr>
-                    <td></td>
+
+                <tr>
+                    
+                     <td></td>
                     <td></td>
                     <td></td>
                     @foreach($iva as $key)
 
-                    <td align="left"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}} %</button></td>
+                    <td align="right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}%</button></td>
                     
                     <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
+                    
                     <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
-                    <td></td>
+                  
 
                       @endforeach
               
                 </tr>
-                
+
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td align="left"><strong>TOTAL</strong></td>
-                    <td><input id="total_final" style="width: 100px;" type="number" name="total" readonly="readonly" class="form-control"></td></td>
-                  {{--  --}}
-                    <td></td>
-                </tr>
+                    <td align="right"><strong>TOTAL</strong></td>
+                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="monto_total form-control" readonly="readonly" value=""></td>
+      </tr>
+
              
-                          
                         </tbody>
 
                 </table>  
@@ -189,34 +190,24 @@
 
 
                     
-                    <button disabled="disabled" class="btn btn-primary" id="guardar" type="submit">Guardar</button>
+                    <button class="btn btn-primary" id="guardar" type="submit">Guardar</button>
+</div>
 
 
-<script>
-function agregarFila(){
-  document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td><input style="width: 100px;" type="text" name="codigo" class="form-control" id="cod" for="cod" value=""></td><td><input style="width: 180px;" type="text" name="nombre" readonly="readonly" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="cantidad" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="precio" readonly="readonly" class="form-control"  value=""></td><td><input style="width: 100px;" type="text" name="importe" readonly="readonly" class="form-control"  value=""></td><td><button onclick="eliminarFila()" type="button" class="btn btn-danger btn-sm">-</button></td>';
-}
+<script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsley.min.js') }}"></script>
 
-function eliminarFila(){
-  var table = document.getElementById("tablaprueba");
-  var rowCount = table.rows.length;
-  //console.log(rowCount);
-  
-  if(rowCount <= 1)
-    alert('No se puede eliminar el encabezado');
-  else
-    table.deleteRow(rowCount -1);
-}
+<!-- jQuery CDN -->
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 
- </script>
+<script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
+"></script>
 
 
-
+                                        
 <script src="{{ URL::asset('js/feather.min.js')}}"></script>
-<script src="{{ URL::asset('js/jquery/dist/jquery.js')}}"></script>
-
-{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> --}}
-<script>
+<script type="text/javascript">
 
 feather.replace();
 
@@ -281,84 +272,9 @@ feather.replace();
 
 //calcular factura
 
-//--------campo cantidad de productos-----------------------------
-    $("#cantidad").on('keyup',function (event)  {
-
-     var cantidad = event.target.value;
-    var cantidad = $("#cantidad").val();
-
-    console.log(cantidad);
-    
-//'-------------campo precio por unidad----------------------------'
- var preciot =$("#precio").val();
-  
-
-          
-    console.log(preciot);
-//----------importe-------------------       
-var total = cantidad*preciot;
-
-
-
-
-/*console.log(total);*/
-
-    if(total>0){
-        $('#importe').val(total);
-      } else {
-        $("#mensaje2").text('Debe Ingresar la cantidad');
-        $('#importe').val('');
-       
-      }
-
-  //----------------cantidad de articulos-------------------
-  var cantidades = $("#cantidad").val();
-   var iva =$("#iva").val();
-
-   if(cantidades>0){
-    $('#Cant_art').val(cantidades);
-   }
-  //------------Sub total-----------------------------------
-  var sub_total = cantidad*preciot;
-
-
-   //iva 
-   iva=iva*sub_total/100;
-
-
-/*console.log(sub_total);*/
-
-    if(sub_total>0){
-        $('#sub_total').val(sub_total);
-        $('#IVA').val(iva);
-      } else {
-        $("#mensaje2").text('Debe Ingresar la cantidad');
-        $('#sub_total').val('');
-        $('#IVA').val('');
-
-      }
-
-
-  //----------TOTAL A PAGAR-------------------       
-var total_pagar = sub_total+iva;
-
-/*console.log(total_pagar);*/
-
-    if(total_pagar>0){
-        $('#total_final').val(total_pagar);
-          $('#guardar').prop('disabled',false);
-      } else {
-        $("#mensaje2").text('Debe Ingresar la cantidad');
-        $('#total_final').val('');
-          $('#guardar').prop('disabled',true);
-       
-      }
-  });
-
-
 
 //=========STOCK DISPONIBLE --------------------------------
-    $("#cod").on('keyup',function (event) {
+   /* $("#cod").on('keyup',function (event) {
         //asignar evento a la variable ruf
         var cod = event.target.value;
      
@@ -390,7 +306,8 @@ var total_pagar = sub_total+iva;
       }
     });
     }
-  });
+  });*/
+
 
     $(document).ready( function(){
     var LineNum=0;
@@ -411,14 +328,12 @@ var total_pagar = sub_total+iva;
                     //$('#products_select').children('option[value="'+id+'"]').attr('disabled',true);
                     //$("#lista_productos").append('<tr>'); 
                     //$("#products").removeAttr('disabled');
-                    $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount" id="amount required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code></button></td></tr>');
+                      $("#lista_productos").append('<tr id="Line'+LineNum+'"><td><input type="hidden" name="product_id[]" id="product_id" value="'+ data[i].id + '">' + data[i].nombre +'</td><td>' + data[i].unidad +'</td><td>'+ data[i].precio +'</td><td><input onchange="add_amount(this)" type="number" name="amount[]" class="amount form-control" id="amount" required="required"></td><td><button type="button" onclick="EliminarLinea('+LineNum+','+data[i].id+');"  class="btn btn-danger btn-sm"><i class="m-r-10 mdi mdi-delete"><code class="m-r-10"></code><i class="uil-minus"></i></button></td></tr>');
                     //$("#lista_productos").append('</tr>');
                 }
 
-            }else{
-                
+            }else{     
                 //$("#client_id").attr('disabled', false);
-
             }
         });
     });
@@ -435,29 +350,55 @@ function EliminarLinea(rnum,id_opcion) {
         return true;
 }
 
+   setInterval("add_amount", 1000);
 function add_amount(argument) {
     //console.log(argument.value+"vbnm,");
-    var total=0;
-    
-    
+ var total=0;
+ var sub_total= Number($("#subtotales").val());
+ /*  console.log(sub_total);*/
+ var total_amount=0;
+ var IVA_total=0;
+ var iva = $("#iva").val();
+ var f_total =0;
+ var id= $('#products_select').find(':selected').val();
+
+     $.get("/products/"+id+"/add",function (data) {
+        
+        var precio=data[0].precio;
+
+      var cantidad = argument.value;
   $(".amount").each(function() {
-    console.log($(this).val()+"dfghjkl");
+   /* console.log($(this).val()+"dfghjkl");*/
     if (isNaN(parseFloat($(this).val()))) {
 
-      total += 0;
-
+       total += 0;
+       sub_total += 0;
+       total_amount += 0;
+       IVA_total += 0;
+       f_total += 0;
     } else {
 
-      total += parseFloat($(this).val());
+        total += parseFloat($(this).val()); 
 
     }
-
   });
-
-  //alert(total);
+        sub_total +=  parseFloat(precio) * parseFloat(cantidad); 
+        IVA_total += parseFloat(sub_total) / parseFloat(iva);
+        f_total = parseFloat(sub_total) + parseFloat(IVA_total);    
+        console.log(f_total);
+//cantidad de productos///
   $(".total_amount").val(total);
   document.getElementById('total').innerHTML = total;
+  $(".monto_total").val(f_total);
+  document.getElementById('monto_total').innerHTML = f_total;
+  $("#subtotales").val(sub_total);
+  document.getElementById('totalsub').innerHTML = sub_total;
+  $("#IVA").val(IVA_total);
+  document.getElementById('IVA').innerHTML = IVA_total;
+  $(".sub_total_amount").val(sub_total);
+  document.getElementById('sub_total').innerHTML = sub_total;
 
+});
 
 
 }

@@ -153,7 +153,9 @@
                                             
                                         </tbody>
                                         <tfoot>
-                                            <tr><th colspan="3" style="text-align: right;">CANTIDAD DE ARTÍCULOS: </th><th colspan="2" ><span id="total"></span></th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount"></tr>
+                                            <tr><th colspan="3" style="text-align: right;">CANTIDAD DE ARTÍCULOS: </th><th colspan="2" ><span id="total"></span></th><input type="hidden" name="total_cantidad" id="total_amount" class="total_amount">
+                                            <span id="totalsub"></span><input type="hidden" name="subtotales" id="subtotales"></tr>
+
                                         </tfoot>
                                         
                                     </table>
@@ -199,17 +201,13 @@
                     <td></td>
                     <td></td>
                     <td align="right"><strong>TOTAL</strong></td>
-                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="form-control" readonly="readonly" value="" ></td>
-
-                   
-                </tr>
+                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="monto_total form-control" readonly="readonly" value=""></td>
+      </tr>
 
              
                         </tbody>
 
                 </table>  
-
-
 
                     
                     <button style="margin-left: 1cm;" class="btn btn-primary" type="submit" id=guardar>Guardar</button>
@@ -370,46 +368,54 @@ function EliminarLinea(rnum,id_opcion) {
         return true;
 }
 
+    setInterval("add_amount", 1000);
 function add_amount(argument) {
     //console.log(argument.value+"vbnm,");
-    setInterval("add_amount", 1000);
  var total=0;
- var sub_total=0;
+ var sub_total= Number($("#subtotales").val());
+ /*  console.log(sub_total);*/
+ var total_amount=0;
+ var IVA_total=0;
+ var iva = $("#iva").val();
+ var f_total =0;
  var id= $('#products_select').find(':selected').val();
 
      $.get("/products/"+id+"/add",function (data) {
         
         var precio=data[0].precio;
 
+      var cantidad = argument.value;
   $(".amount").each(function() {
    /* console.log($(this).val()+"dfghjkl");*/
-      var cantidad = $(this).val()+"dfghjkl";
     if (isNaN(parseFloat($(this).val()))) {
 
-      total += 0;
+       total += 0;
        sub_total += 0;
+       total_amount += 0;
+       IVA_total += 0;
+       f_total += 0;
     } else {
 
-      total += parseFloat($(this).val());
+        total += parseFloat($(this).val()); 
 
-      sub_total = eval(parseInt(precio) * parseInt(cantidad));
-    
-        sub_total.forEach(function (item) {
-          console.log(item);
-        });
     }
-   
-        console.log(cantidad);
-     console.log(precio);
-   console.log(sub_total);
-
   });
+        sub_total +=  parseFloat(precio) * parseFloat(cantidad); 
+        IVA_total += parseFloat(sub_total) / parseFloat(iva);
+        f_total = parseFloat(sub_total) + parseFloat(IVA_total);    
+        console.log(f_total);
 //cantidad de productos///
   $(".total_amount").val(total);
   document.getElementById('total').innerHTML = total;
-//SUB TOTAL/////////////////////////////
-    $(".sub_total_amount").val(sub_total);
+  $(".monto_total").val(f_total);
+  document.getElementById('monto_total').innerHTML = f_total;
+  $("#subtotales").val(sub_total);
+  document.getElementById('totalsub').innerHTML = sub_total;
+  $("#IVA").val(IVA_total);
+  document.getElementById('IVA').innerHTML = IVA_total;
+  $(".sub_total_amount").val(sub_total);
   document.getElementById('sub_total').innerHTML = sub_total;
+
 });
 
 

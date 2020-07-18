@@ -37,7 +37,7 @@
                   
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
-                        <thead>
+                        <thead style="font-size: 12px;">
                             <tr>
                                 <tr>
                                     <th>Fecha</th>
@@ -55,7 +55,7 @@
                         </thead>
                     
                     
-                        <tbody>
+                        <tbody style="font-size: 12px;">
                      
                 @foreach($cotizacion as $key) 
                 <tr>

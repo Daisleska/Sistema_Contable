@@ -59,7 +59,7 @@ class FacturasVController extends Controller
      */
     public function store(Request $request)
     {
-
+        /*dd($request);*/
     $buscar=facturav::where ('n_factura', $request->n_factura)->get();
         if (count($buscar)>0) {
             # no permitir registrar
@@ -78,7 +78,7 @@ class FacturasVController extends Controller
             $facturav->domicilio=$request->domicilio;
             $facturav->f_pago=$request->f_pago;
             $facturav->divisa=$request->divisa;
-            $facturav->cantidad=$request->cantidad;
+            $facturav->cantidad=$request->amount;
             $facturav->importe=$request->importe;
             $facturav->sub_total=$request->sub_total;
             $facturav->iva=$request->iva;
@@ -110,7 +110,7 @@ class FacturasVController extends Controller
         WHERE inventario.productos_id='.$request->productos_id.' LIMIT 0,1');
 
             foreach ($inventario as $val) {
-            $nuevo= $val->exis_inv - $request->cantidad ;
+            $nuevo= $val->exis_inv - $request->amount ;
             }
 
         $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->productos_id);

@@ -204,7 +204,7 @@ if ($x_inventario) {
 
     <li>
          <a href="{{ route('balances.index') }}">
-            <i data-feather="book-open"></i>
+            <i data-feather="bold"></i>
             <span>Balances</span>
         </a>
     </li>

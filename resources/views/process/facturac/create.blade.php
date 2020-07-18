@@ -13,7 +13,7 @@
         </div>
 </div>
 <div class="row" style="align-content: center;">
-    <div class="col-lg-13">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Facturas</h4>

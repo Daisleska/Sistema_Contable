@@ -86,7 +86,7 @@ class FacturasCController extends Controller
             $fact_comp->fecha=$request->fecha;
             $fact_comp->domicilio=$request->domicilio;
             $fact_comp->f_pago=$request->f_pago;
-            $fact_comp->cantidad=$request->cantidad_articulos;
+            $fact_comp->cantidad=$request->amount;
             $fact_comp->importe=$request->importe;
             $fact_comp->sub_total=$request->sub_total;
             $fact_comp->total=$request->total;
