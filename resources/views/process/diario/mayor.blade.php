@@ -181,231 +181,99 @@ $(document).ready(function(){
                //res me trae 3 arreglos, para acceder a cada uno por separado utilizo el punto (.)
                 console.log(res.cuen);
                 console.log(res.buscar);
-                console.log(res.buscar2);
+                console.log(res.saldos);
                 var cuent=res.cuen;
                 var buscar=res.buscar;
-                var bus=res.buscar2;
+                var saldo=res.saldos;
                 var debe =[];
                 var haber =[];
                 var tabla;
 
  
-                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'</th></tr><tr style="color: black;"><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th></tr>';
+                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'</th></tr><tr style="color: black;"><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th><th style="text-align: center;">Saldo</th></tr>';
                 
-                //como el debe y haber vienen separado necesito saber quien es mayor para mediante un ciclo recorrerlo y así se puedan mostrar todos los datos 
+                
+                  for (var i =0; i<buscar.length; i++) {
+                   
+                   
+              
 
-                //compruebo a traves de su longitud  
-                if (buscar.length < bus.length) {
-                //recorro el ciclo con el mayor
-                for (var i = 0; i < bus.length; i++) {
-                //como bus es el mayor, quiere decir que hay más haber que debe, entonces mientras i sea menor a buscar (debe), se mostraran uno de cada uno
-                    if (i < buscar.length ) {
-                       //codigo JavaScript para formatear los montos//
-                        var d =buscar[i].debe;
-                        var h =bus[i].haber;
-                        
+                    if (buscar[i].debe) {
+
                         var locale = 'de';
                         var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
                         var formatter = new Intl.NumberFormat(locale, options);
-                        //________________________________________________//
 
-                    //Muestro en la tabla 
-                     tabla+= '<tr><td style="text-align: center;">'+formatter.format(d)+'</td><td style="text-align: center;">'+formatter.format(h)+'</td></tr>';
-                     //Guardo en el array para luego sumar y tener los totales y saldo    
-                        debe[i]=buscar[i].debe;
-                        haber[i]=bus[i].haber;
+                         tabla+= '<tr><td style="text-align: center;">'+formatter.format(buscar[i].debe)+'</td><td></td>';
+                         $('#tbody').html(tabla);  
+                         
 
+                         debe[i]=buscar[i].debe;
 
-                    } else {
-                        //Aquí es cuando ya no hay debe y solo quedan haber, para que se muestre solo el ultimo mencionado  
-
-                        //codigo JavaScript para formatear los montos//
-                        var h =bus[i].haber;
-                        
-                        var locale = 'de';
-                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-                        var formatter = new Intl.NumberFormat(locale, options);
-                        //_________________________________________________//
-
-                        tabla+= '<tr><td style="text-align: center;"></td><td style="text-align: center;">'+formatter.format(h)+'</td></tr>';
-                       
-                        haber[i]=bus[i].haber;
-                       
-
-                    }
-
-
-
-                
-                }//Fin del primer ciclo 
-                        
-                        //codigo JavaScript para formatear los montos//
-                        var locale = 'de';
-                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-                        var formatter = new Intl.NumberFormat(locale, options);
-                        //________________________________________________//
-
-                //Totales: suma los arreglos del debe y del haber 
-                if (debe.length >0) { 
-                // Funcion JavaScript para sumar array
-                var saldod=(new Function("return " +debe.join('+')))();
-                tabla+= '<tr><th  style="text-align: center; color:black;">'+formatter.format(saldod)+'</th>';
-
-                }else{
-                //En caso que este vacio 
-                var saldod=0;
-                tabla+= '<tr><th style="text-align: center;"></th>';
-                }
-                
-
-                //Lo mismo que en el debe obvio
-                if (haber.length >0) { 
-                var saldoh=(new Function("return " +haber.join('+')))();
-                tabla+= '<th style="text-align: center; color:black; ">'+formatter.format(saldoh)+'</th></tr>';
-                }else{
-                var saldoh=0;
-                tabla+= '<th style="text-align: center;"></th></tr>';
-                }
- 
-                
-                
-                $('#tbody').html(tabla);
-                
-
-                //Fin del primer If
-                }else {
-
-                //Aquí se recorrera buscar porque es el array que trae más 
-
-                for (var i = 0; i < buscar.length; i++) {
-                //El principio del ciclo... 
-                
-                //
-                if (i < bus.length) {
-                //como buscar es el mayor, quiere decir que hay más debe que haber, entonces mientras i sea menor a bus (haber), se mostraran uno de cada uno
-                        //codigo JavaScript para formatear los montos//
-                        var d =buscar[i].debe;
-                        var h =bus[i].haber;
-                        
-                        var locale = 'de';
-                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-                        var formatter = new Intl.NumberFormat(locale, options);
-                        //____________________________________________________//
-
-                    //Se muestran y se guardan en el array
-                    tabla+= '<tr><td style="text-align: center;">'+formatter.format(d)+'</td><td style="text-align: center;">'+formatter.format(h)+'</td></tr>';
-                        
-                        debe[i]=buscar[i].debe;
-                        haber[i]=bus[i].haber;
-
-                        
-
-                    } else{
-
-                        //Aquí es cuando ya no hay haber y solo quedan debe, para que se muestre solo el ultimo mencionado  
-
-                        //codigo JavaScript para formatear los montos//
-                         var d =buscar[i].debe;
-                        
-                        var locale = 'de';
-                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-                        var formatter = new Intl.NumberFormat(locale, options);
-                        //_____________________________________________________//
-
-                    tabla+= '<tr><td style="text-align: center;">'+formatter.format(d)+'</td><td style="text-align: center;"></td></tr>';
-
-                     debe[i]=buscar[i].debe;
-                    
-
-                    }
-
-
-                }
-                
-                
-                        //codigo JavaScript para formatear los montos//
-                        var locale = 'de';
-                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-                        var formatter = new Intl.NumberFormat(locale, options);
-                        //____________________________________________________// 
-                
-
-                //Esto es lo de totales que es lo mismo de arriba pero para otra condición 
-                if (debe.length >0) {  
-                var saldod=(new Function("return " +debe.join('+')))();
-                tabla+= '<tr><th  style="text-align: center; color:black;">'+formatter.format(saldod)+'</th>';
-                }else{
-                var saldod=0;
-                tabla+= '<th><td style="text-align: center;"></th>';
-                }
-            
-                if (haber.length >0) { 
-                var saldoh=(new Function("return " +haber.join('+')))();
-                tabla+= '<th  style="text-align: center; color:black;">'+formatter.format(saldoh)+'</th></tr>';
-                }else{
-                var saldoh=0;
-                tabla+= '<th style="text-align: center;"></th></tr>';
-                }
- 
-                //Esto es para el saldo 
-
-                if (cuent[0].tipo=="activo" || cuent[0].tipo=="egreso") {
-
-                    //Aquí van los activos, egresos...
-                    //Para el saldo del activo, el saldo debe tiene que ser mayor que el saldo haber
-                    if (saldod>saldoh) {
-
-                        //se realiza la resta y se muestra dando un saldo positivo 
-                        var saldo=saldod-saldoh;
-               
-                        tabla+= '<tr><th style="text-align: center; color: black;">'+formatter.format(saldo)+'</th><th style="text-align: center; color: black;"></th></tr>';
-
-
-                    }else {
-                        //Esto dara un saldo negativo (error), por ello se emite el mensaje 
-
-                        tabla+= '<tr><th style="text-align: center; color: black;">saldo credito revisar</th><th style="text-align: center; color: black;"></th></tr>';
-                    }
-
-                    $('#tbody').html(tabla);
-
-                }else {
-
-                    //Aquí entran los pasivos, patrimonios...
-                    //Para el saldo del pasivo, el saldo haber tiene que ser mayor que el saldo debe
-
-                  if (saldoh>saldod) {
-                        
-                         //se realiza la resta y se muestra dando un saldo positivo 
-                        var saldo=saldoh-saldod;
-
-                        tabla+= '<tr><th style="text-align: center; color: black;"></th><th style="text-align: center; color: black;">'+formatter.format(saldo)+'</th></tr>';
+                     $('#tbody').html(tabla);
 
                     }else{
 
-                        //Esto dara un saldo negativo (error), por ello se emite el mensaje 
-                        
-                        tabla+= '<tr><th style="text-align: center; color: black;"></th><th style="text-align: center; color: black;">saldo debito revisar</th></tr>';
-                      
+                        var locale = 'de';
+                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
+                        var formatter = new Intl.NumberFormat(locale, options);
+
+
+                        tabla+= '<tr><td></td><td style="text-align: center;">'+formatter.format(buscar[i].haber)+'</td>';
+                         $('#tbody').html(tabla);  
+
+                       
+
+                     $('#tbody').html(tabla);
+
+                     haber[i]=buscar[i].haber;
 
                     }
-                    
-                    $('#tbody').html(tabla);
 
+                        var locale = 'de';
+                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
+                        var formatter = new Intl.NumberFormat(locale, options);
+                       
+                         tabla+= '<td style="text-align: center;">'+formatter.format(Math.abs(saldo[i]))+'</td></tr>';
+
+
+
+                    }
+
+                     var locale = 'de';
+                        var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
+                        var formatter = new Intl.NumberFormat(locale, options);
+                       
+
+                if (debe.length >0) {  
+                var saldod=(new Function("return " +debe.join('+')))();
+                tabla+= '<tr><th  style="text-align: center; color:black;">'+formatter.format(saldod)+'</th>';
+                $('#tbody').html(tabla);
+                }else{
+                var saldod=0;
+                tabla+= '<tr><th style="text-align: center;"></th>';
+                $('#tbody').html(tabla);
                 }
-               
-                 $('#tbody').html(tabla);
+
+
+                if (haber.length >0) { 
+                var saldoh=(new Function("return " +haber.join('+')))();
+                tabla+= '<th  style="text-align: center; color:black;">'+formatter.format(saldoh)+'</th>';
+                $('#tbody').html(tabla);
+                }else{
+                var saldoh=0;
+                tabla+= '<th style="text-align: center;"></th>';
+                $('#tbody').html(tabla);
                 }
 
+                tabla+= '<th style="text-align: center;"></th></tr>';
 
+                $('#tbody').html(tabla);
 
-
-                
                 $('#thead').html(nom);
-
-
                 
-               
+
+
             }
 
         });

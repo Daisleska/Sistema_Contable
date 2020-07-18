@@ -14,29 +14,136 @@ $utilidad = '12000';
             		 <tbody>
 
                   @foreach($res_saldo_general as $general)
-                             <tr>
-                            @if($general[1] =='activo')  
+                             
+                            @if($general[1] =='activo' && $general[2] =='Circulante' )  
 
                            
-                              <?php $saldo= $general[2] - $general[3]; 
+                              <?php $saldo= $general[3] - $general[4]; 
                               ?>
+                              
+                                   <tr>
 
                                   <td style="text-align: center;">{{$general[0]}}</td>
                             
-                                  <td style="text-align: center;">{{$saldo}}</td>       
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
                                   <td></td>
                                   <td></td>
                             
                       
                             </tr>
                    @endif
-                      @endforeach   
+
+                      @endforeach  
+
+
+                          @foreach($res_saldo_general as $general)
+                             <tr>
+                            @if($general[1] =='activo' && $general[2] =='Realizable' )  
+
+                           
+                              <?php $saldo= $general[3] - $general[4]; 
+                              ?>
+
+                                  <td style="text-align: center;">{{$general[0]}}</td>
+                            
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
+                                  <td></td>
+                                  <td></td>
+                            
+                      
+                            </tr>
+                   @endif
+
+                      @endforeach  
+
+                           @foreach($res_saldo_general as $general)
+                             <tr>
+                            @if($general[1] =='activo' && $general[2] =='Fijo tangible' )  
+
+                           
+                              <?php $saldo= $general[3] - $general[4]; 
+                              ?>
+
+                                  <td style="text-align: center;">{{$general[0]}}</td>
+                            
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
+                                  <td></td>
+                                  <td></td>
+                            
+                      
+                            </tr>
+                   @endif
+
+                      @endforeach 
+
+
+                           @foreach($res_saldo_general as $general)
+                             <tr>
+                            @if($general[1] =='activo' && $general[2] =='Fijo intangible' )  
+
+                           
+                              <?php $saldo= $general[3] - $general[4]; 
+                              ?>
+
+                                  <td style="text-align: center;">{{$general[0]}}</td>
+                            
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
+                                  <td></td>
+                                  <td></td>
+                            
+                      
+                            </tr>
+                   @endif
+
+                      @endforeach  
+
+
+                          @foreach($res_saldo_general as $general)
+                             <tr>
+                            @if($general[1] =='activo' && $general[2] =='Cargo diferido' )  
+
+                           
+                              <?php $saldo= $general[3] - $general[4]; 
+                              ?>
+
+                                  <td style="text-align: center;">{{$general[0]}}</td>
+                            
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
+                                  <td></td>
+                                  <td></td>
+                            
+                      
+                            </tr>
+                   @endif
+
+                      @endforeach  
+
+                          @foreach($res_saldo_general as $general)
+                             <tr>
+                            @if($general[1] =='activo' && $general[2] =='Otros activos' )  
+
+                           
+                              <?php $saldo= $general[3] - $general[4]; 
+                              ?>
+
+                                  <td style="text-align: center;">{{$general[0]}}</td>
+                            
+                                  <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
+                                  <td></td>
+                                  <td></td>
+                            
+                      
+                            </tr>
+                   @endif
+
+                      @endforeach  
+  
 
                             <tr  style="text-align: center; font-size: 12px; color: black;" >
-                            	<td>TOTAL ACTIVO</td>
-                            	<td></td>
-                            	<td></td>
-                              <td></td>
+                            	<th>TOTAL ACTIVO</th>
+                            	<th></th>
+                            	<th></th>
+                              <th></th>
                        
                             </tr>  
                                     
@@ -56,11 +163,59 @@ $utilidad = '12000';
             		 <tbody>
                    @foreach($res_saldo_general as $general2)
                              <tr >
-                               @if($general2[1] =='pasivo')  
+                               @if($general2[1] =='pasivo' && $general2[2]=='Circulante')  
                                
-                              <?php $saldo2=  $general2[2] - $general2[3]; ?>
+                              <?php $saldo2=  $general2[3] - $general2[4]; ?>
+
                                   <td style="text-align: center;">{{$general2[0]}}</td>
-                                  <td style="text-align: center;">{{$saldo2}}</td>      
+                                  <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
+                                  <td></td>
+                                  <td></td>
+                               
+                              @endif
+                            </tr>
+                    @endforeach
+
+
+                    @foreach($res_saldo_general as $general2)
+                             <tr >
+                               @if($general2[1] =='pasivo' && $general2[2]=='A largo plazo')  
+                               
+                              <?php $saldo2=  $general2[3] - $general2[4]; ?>
+
+                                  <td style="text-align: center;">{{$general2[0]}}</td>
+                                  <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
+                                  <td></td>
+                                  <td></td>
+                               
+                              @endif
+                            </tr>
+                    @endforeach
+
+
+                    @foreach($res_saldo_general as $general2)
+                             <tr >
+                               @if($general2[1] =='pasivo' && $general2[2]=='Crédito diferido')  
+                               
+                              <?php $saldo2=  $general2[3] - $general2[4]; ?>
+
+                                  <td style="text-align: center;">{{$general2[0]}}</td>
+                                  <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
+                                  <td></td>
+                                  <td></td>
+                               
+                              @endif
+                            </tr>
+                    @endforeach
+
+                    @foreach($res_saldo_general as $general2)
+                             <tr >
+                               @if($general2[1] =='pasivo' && $general2[2]=='Otros pasivos')  
+                               
+                              <?php $saldo2=  $general2[3] - $general2[4]; ?>
+
+                                  <td style="text-align: center;">{{$general2[0]}}</td>
+                                  <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
                                   <td></td>
                                   <td></td>
                                
@@ -68,10 +223,10 @@ $utilidad = '12000';
                             </tr>
                     @endforeach
                             <tr  style="text-align: center; font-size: 12px; color: black;" >
-                            	<td>TOTAL PASIVO</td>
-                            	<td></td>
-                            	<td></td>
-                              <td></td>
+                            	<th>TOTAL PASIVO</th>
+                            	<th></th>
+                            	<th></th>
+                              <th></th>
                        
                             </tr>            
          </tbody>
@@ -92,7 +247,7 @@ $utilidad = '12000';
                              <tr>
                                  @if($general3[1] == 'capital')
                             
-                              <?php $saldo3=  $general3[2] - $general3[3]; ?>  
+                              <?php $saldo3=  $general3[3] - $general3[4]; ?>  
                                   <td style="text-align: center;">{{$general3[0]}}</td>
                                   <td style="text-align: center;">{{$saldo3}}</td>       
                                   <td></td>

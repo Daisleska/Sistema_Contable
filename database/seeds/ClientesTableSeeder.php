@@ -18,7 +18,7 @@ class ClientesTableSeeder extends Seeder
             'ruf' => '25897654',
             'email' => 'santiago02@gmail.com',
             'direccion' => 'Cagua',
-            'codigo' => '+58',
+            'codigo' => '58',
             'telefono' => '0412786768',
             
           

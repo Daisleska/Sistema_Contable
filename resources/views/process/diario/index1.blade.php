@@ -63,16 +63,16 @@
                       if ($diario) {
                       ?>
 
-                      <th><a onclick="alert_diario()" class="btn btn-danger" style="color: white;">
-                      Abrir Libro</a>
+                      <th><a onclick="alert_diario()" class="btn btn-danger btn-xs remove-item" style="color: white;" title="Abrir Libro"><i data-feather="book-open"></i>
+                      </a>
 
                                
                     
                     <?php
                     }else{
                     ?>
-                    <th><a href="{{ route('diario.abrir') }}" class="btn btn-danger">
-                      Abrir Libro  
+                    <th><a href="{{ route('diario.abrir') }}" class="btn btn-danger btn-xs remove-item" title="Abrir Libro"><i data-feather="book-open"></i>
+
                     </a>
 
                     <?php
@@ -99,7 +99,7 @@
                           @elseif($valor->estado=='Cerrado')
                           <td style="color: red;">{{$valor->estado}}</td>
                           @endif
-                          <td><a href="{{ route('diario.individual', $valor->n_folio) }}" class="btn btn-info btn-xs remove-item"><i class="uil-cloud-download"></i></a></td>
+                          <td><a href="{{ route('diario.individual', $valor->n_folio) }}" class="btn btn-info btn-xs remove-item"><i data-feather="download"></i></a></td>
                         </tr>
                         @endforeach
                       </tbody>

@@ -27,13 +27,13 @@
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
-                                  if ($key->tipo=="activo" || $key->tipo=="egreso") {
+                                  if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
                                     ?>
-                                    <td>{{$key->nombre}}</td>
+                                    <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>
                                     <?php  
                                   }else{
                                     ?>
-                                    <td>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; {{$key->nombre}}</td> 
+                                    <td> {{$key->nombre}}</td> 
                                     <?php
                                   }
                                   ?>
@@ -86,8 +86,9 @@
 
                     </tr>
                     
-                          
+                        
                             <?php
+
                              $sdebe=array_sum($saldod);
                              $shaber=array_sum($saldoh);
                              ?>       

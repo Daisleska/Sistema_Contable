@@ -48,6 +48,7 @@ class CuentasController extends Controller
             $cuenta->nombre=$request->nombre;
             $cuenta->descripcion=$request->descripcion;
             $cuenta->tipo=$request->tipo;
+            $cuenta->t_cuenta=$request->t_cuenta;
             $cuenta->saldo=$request->saldo;
             $cuenta->save();
 
@@ -58,7 +59,7 @@ class CuentasController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado una nueva cuenta';
             $bitacoras->save();
-       flash('<i class="icon-circle-check"></i> Nueva cuenta registrada exitosamente
+       flash('<i class="icon-circle-check"></i> ¡Nueva cuenta registrada exitosamente!
                 ')->success()->important();
            return redirect()->to('cuentas');
     }
@@ -107,6 +108,7 @@ class CuentasController extends Controller
             $cuenta->nombre=$request->nombre;
             $cuenta->descripcion=$request->descripcion;
             $cuenta->tipo=$request->tipo;
+            $cuenta->t_cuenta=$request->t_cuenta;
             $cuenta->saldo=$request->saldo;
             $cuenta->save();
 
@@ -119,7 +121,7 @@ class CuentasController extends Controller
             $bitacoras->save();
 
 
-            flash('<i class="icon-circle-check"></i> Cuenta Actualizada satisfactoriamente!')->success()->important();
+            flash('<i class="icon-circle-check"></i> ¡Cuenta Actualizada satisfactoriamente!')->success()->important();
             return redirect ()->route('cuentas.index');
         }
     }
@@ -144,7 +146,7 @@ class CuentasController extends Controller
             $bitacoras->action = 'Ha Eliminado una cuenta';
             $bitacoras->save();
 
-        flash('Registro eliminado satisfactoriamente!');
+        flash('¡Registro eliminado satisfactoriamente!');
 
 
         return back()->with('info', 'la cuenta ha sido eliminado');

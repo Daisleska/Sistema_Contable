@@ -45,7 +45,7 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
-                                <th>Ref</th>
+                                
                                 <th>Código</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
@@ -63,7 +63,7 @@
                         <tbody style="font-size: 12px;">
                             @foreach($cuentas as $key)
                 <tr>
-                  <td>{{$key->id}}</td>
+                  
                   <td>{{$key->codigo}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->descripcion}}</td>

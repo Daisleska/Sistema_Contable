@@ -32,7 +32,7 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <h3 style="text-align: center;">Historial Libro Diario</h3>
                     <br>
-                    <a href="{{ route('diario.index') }}"  class="btn btn-primary" title="Volver">Regresar</a></th>
+                    <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">
                       <thead>
                         <th>N° Folio</th>
@@ -50,7 +50,7 @@
                           @elseif($valor->estado=='Cerrado')
                           <td style="color: red;">{{$valor->estado}}</td>
                           @endif
-                          <td></td>
+                          <td><a href="{{ route('diario.individual', $valor->n_folio) }}" class="btn btn-info btn-xs remove-item"><i data-feather="download"></i></a></td>
                         </tr>
                         @endforeach
                       </tbody>

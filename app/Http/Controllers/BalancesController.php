@@ -23,7 +23,7 @@ class BalancesController extends Controller
     $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
 
         $anio = date('Y');
-        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
+        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.codigo');
         $cuenta=count($comprobacion);
         $i=1;
 
@@ -55,7 +55,7 @@ class BalancesController extends Controller
     /*---------------------FIN GANANCIAS Y PERDIDAS--------------------*/
     /*-------------Datos para el balance general----------------------*/
 
-    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo');
+    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, cuentas.t_cuenta, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY saldo DESC');
     $j=1;
 
     foreach ($general as $gen) {
@@ -66,13 +66,14 @@ class BalancesController extends Controller
         foreach ($gener as $keyk) {    
         $res_saldo_general[$j][0]=$gen->nombre;
         $res_saldo_general[$j][1]=$gen->tipo;  
-        $res_saldo_general[$j][2]=$keyk->cuenta_debe;
-        $res_saldo_general[$j][3]=$keyk->cuenta_haber;
+        $res_saldo_general[$j][2]=$gen->t_cuenta;
+        $res_saldo_general[$j][3]=$keyk->cuenta_debe;
+        $res_saldo_general[$j][4]=$keyk->cuenta_haber;
         }
         $j++;
 
     }
-   /* dd($res_saldo_general);*/
+   //dd($res_saldo_general);
 
        return view('process.balances.index', compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general'));
     }

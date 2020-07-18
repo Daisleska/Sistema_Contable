@@ -385,24 +385,47 @@ class DiarioController extends Controller
     public function busquedaAjax($cuenta)
    {    
         //Datos de cuenta
-        $cuen= \DB::select('SELECT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE mayor.cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) LIMIT 1');
-
+        $cuen= \DB::select('SELECT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE cuentas.id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) LIMIT 1');
+      
         //Debe
-        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) AND mayor.debe IS NOT NULL');
-         
-         //haber
-        $buscar2= \DB::select('SELECT  mayor.cuenta_id, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) AND mayor.haber IS NOT NULL');
+        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe, mayor.haber FROM mayor WHERE cuenta_id='.$cuenta.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
 
        
-       
+
+           $saldo=0;
+           $i=0;
+          foreach ($buscar as $key) {
+
+           if ($key->debe) {
+               $debe=$key->debe;
+           }else{
+
+            $debe=0;
+           }
+           
+           if ($key->haber) {
+               $haber=$key->haber;
+           }else{
+
+            $haber=0;
+           }
+
+           $saldo=$saldo+$debe-$haber;
+
+           $saldos[$i]=$saldo;
+           $i++;
+     }
+        
+        
+     
         //return response()->json(['buscar' => $buscar, 'buscar2'=> $buscar2]);
-        return $datos = array("cuen" => $cuen, "buscar" => $buscar, "buscar2" => $buscar2 );
+        return $datos = array("cuen" => $cuen, "buscar" => $buscar, "saldos" => $saldos );
    }
 
 
  public function historial()
    {
-    $historial= \DB::select('SELECT * FROM diario');
+    $historial= \DB::select('SELECT * FROM diario WHERE estado="Cerrado"');
 
       return view('process.diario.historial_diario', compact('historial'));
    }

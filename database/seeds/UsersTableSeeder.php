@@ -25,7 +25,16 @@ class UsersTableSeeder extends Seeder
           'password' => bcrypt('12345678'),
           'user_type' => 'Contador',
           'avatar' => '1_1584161024.jpg'
-        ]);    
+        ]); 
+
+
+         \DB::table('users')->insert([
+          'name' => 'Daisleska Vilera',
+          'email' => 'dvilera610@gmail.com',
+          'password' => bcrypt('Dailes20'),
+          'user_type' => 'Administrador',
+          'avatar' => '1_1586365399.jpg'
+        ]); 
     }
 
 

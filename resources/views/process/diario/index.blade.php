@@ -30,15 +30,39 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                  <table >
+                  <table style="color: black;" >
+
+                     <?php
+                      use App\empresa;
+
+  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
+
+                       
+                      foreach($empresa as $key){
+                        ?>
+                        <tr >
+                            <th>NOMBRE DE LA EMPRESA: <?php echo e($key->nombre)?></th>
+                        </tr>
+                        <tr>
+                            <th>MES:
+                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
+                        </tr>
+                        <tr>
+                            <th>RUT:
+                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
+                         <?php
+                        }
+                        ?>
+                        <br>
+                    </tr>
                     <th style="align-content: right;">
-                     <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
+                     <button  type="button" class="btn btn-secondary  btn-xs remove-item" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
                   
             
                 <div class="btn-group">                           
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <button type="button" class="btn btn-primary btn-xs remove-item" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" title="Descargar">
+                    <i data-feather="download"></i>
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
                    <a href="#" class="dropdown-item notify-item">
@@ -55,9 +79,9 @@
                     </a>
                 
                     </div></div>
-                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger" title="Cerrar">Cerrar Libro</a>
+                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger btn-xs remove-item" title="Cerrar"><i data-feather="unlock"></i></a>
 
-                 <a href="{{ route('historial') }}"  class="btn btn-info" title="Ver Historial">Historial</a></th>
+                 <a href="{{ route('historial') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
                   
           </table>
                   <br>
@@ -222,5 +246,21 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
+
 @endsection
 
+<script type="text/javascript">
+
+function makeArray() {
+for (i = 0; i<makeArray.arguments.length; i++)
+this[i + 1] = makeArray.arguments[i];}
+var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
+'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var yy = date.getYear();
+var year = (yy < 1000) ? yy + 1900 : yy;
+
+//]]>
+</script>

@@ -26,12 +26,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Libro Inventario</h4>
+                    
                     <br>
-
+<h2 style="text-align: center; color: black;" class="header-title mt-0 mb-1">LIBRO DE INVENTARIO</h2>
                 <div class="row">
                     <div class="col-md-4">
                        <div class="btn-group">
+
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Descargar
@@ -72,18 +73,17 @@
                       
                       
                         ?>
-                        <div class="col-md-4">
-                          <h4 style="text-align: right;">Valor Total Del Inventario</h4>
-                        </div>
-                  
-                    <div class="col-md-4">
-                         <input  id="total_inventario" class="form-control" type="text" name="" value="{{number_format($total_inventario, 2,',','.')}}" readonly="readonly">
-                    </div>
+                        
                 </div>    
 
+                               <h6 style="text-align: right; color: black;"><p>
+                                VALOR TOTAL: <?php echo number_format($total_inventario, 2,',','.');  ?></p></h6>
+                         
 
                      <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
+                          
+                             
                             <tr>
                                 <th>Descripción</th>
                                 <th>Código</th>
