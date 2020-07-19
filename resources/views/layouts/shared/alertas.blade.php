@@ -94,4 +94,23 @@
        });
 
     }
+
+
+    function alert_balance(){
+        swal({
+        icon : "info",
+        title : "¡No existe un libro diario abierto actualmente!",
+        text : " Por favor verifique si posee algun registro",
+        buttons : {
+            confirm: {
+                text: "OK",
+                value: true,
+                visible: true,       
+            },
+             
+        },
+
+       });
+
+    }
 </script>

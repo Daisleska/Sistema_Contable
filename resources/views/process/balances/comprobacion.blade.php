@@ -27,6 +27,7 @@
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
+                                  
                                   if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
                                     ?>
                                     <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>

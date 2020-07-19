@@ -32,29 +32,6 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                   <table style="color: black;" >
 
-                     <?php
-                      use App\empresa;
-
-  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
-
-                       
-                      foreach($empresa as $key){
-                        ?>
-                        <tr >
-                            <th>NOMBRE DE LA EMPRESA: <?php echo e($key->nombre)?></th>
-                        </tr>
-                        <tr>
-                            <th>MES:
-                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
-                        </tr>
-                        <tr>
-                            <th>RUT:
-                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
-                         <?php
-                        }
-                        ?>
-                        <br>
-                    </tr>
                     <th style="align-content: right;">
                      <button  type="button" class="btn btn-secondary  btn-xs remove-item" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
                   
@@ -87,7 +64,7 @@
                   <br>
 
                    <table id="basic-datatable" class="table dt-responsive nowrap" style="border-color: black; border: 1px;" border="1" >
-                        <thead >
+                        <thead style="font-size: 12px;">
                             <tr>
                              
                                 <th COLSPAN="5" style="color: black;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LIBRO DIARIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Folio N° <?php echo $n_folio?></th>
@@ -107,7 +84,7 @@
                         
                     
                     
-                <tbody>
+                <tbody style="font-size: 12px;">
                 <?php   foreach($diario as $key)  { ?>
                        
               <tr>
@@ -231,6 +208,21 @@
     </div><!-- end col-->
 </div>
     <!-- end row-->
+<script type="text/javascript">
+
+function makeArray() {
+for (i = 0; i<makeArray.arguments.length; i++)
+this[i + 1] = makeArray.arguments[i];}
+var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
+'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth() + 1;
+var yy = date.getYear();
+var year = (yy < 1000) ? yy + 1900 : yy;
+
+//]]>
+</script>
 <!-- llamado al Modak----->
     @include('process.diario.create')
 @endsection
@@ -248,19 +240,3 @@
 <script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
 
 @endsection
-
-<script type="text/javascript">
-
-function makeArray() {
-for (i = 0; i<makeArray.arguments.length; i++)
-this[i + 1] = makeArray.arguments[i];}
-var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
-'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var yy = date.getYear();
-var year = (yy < 1000) ? yy + 1900 : yy;
-
-//]]>
-</script>

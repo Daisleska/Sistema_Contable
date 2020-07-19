@@ -151,7 +151,7 @@
                     <td></td>
                     <td></td>
                     <td align="right"><strong >SUBTOTAL</strong></td>
-                    <td><input style="width: 100px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount form-control" readonly="readonly" value=""></td>
+                    <td><input style="width: 200px;" type="text" name="sub_total" id="sub_total_amount"  class="sub_total_amount form-control" readonly="readonly" value=""></td>
                     <td></td>
                     
                 </tr>
@@ -165,7 +165,7 @@
 
                     <td align="right"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-sm">I.V.A {{$key->porcentaje}}%</button></td>
                     
-                    <td><input style="width: 100px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
+                    <td><input style="width: 200px;" type="text" name="iva" id="IVA" class="form-control" readonly="readonly" value=""></td>
                     
                     <input type="hidden" name="p_iva" id="iva" value="{{$key->porcentaje}}">
                   
@@ -179,7 +179,7 @@
                     <td></td>
                     <td></td>
                     <td align="right"><strong>TOTAL</strong></td>
-                    <td><input  style="width: 100px;" type="text" name="total" id="monto_total"  class="monto_total form-control" readonly="readonly" value=""></td>
+                    <td><input  style="width: 200px;" type="text" name="total" id="monto_total"  class="monto_total form-control" readonly="readonly" value=""></td>
       </tr>
 
              
@@ -190,7 +190,7 @@
 
 
                     
-                    <button class="btn btn-primary" id="guardar" type="submit">Guardar</button>
+                    <button style="margin-left: 20cm;" class="btn btn-primary" id="guardar" type="submit">Guardar</button>
 </div>
 
 
@@ -360,6 +360,7 @@ function add_amount(argument) {
  var IVA_total=0;
  var iva = $("#iva").val();
  var f_total =0;
+ console.log(iva);
  var id= $('#products_select').find(':selected').val();
 
      $.get("/products/"+id+"/add",function (data) {
@@ -383,19 +384,23 @@ function add_amount(argument) {
     }
   });
         sub_total +=  parseFloat(precio) * parseFloat(cantidad); 
-        IVA_total += parseFloat(sub_total) / parseFloat(iva);
+        IVA_total += parseFloat(sub_total) * parseFloat(iva) / 100;
         f_total = parseFloat(sub_total) + parseFloat(IVA_total);    
-        console.log(f_total);
+        console.log(IVA_total);
+
+var locale = 'de';
+var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
+var formatter = new Intl.NumberFormat(locale, options);
 //cantidad de productos///
   $(".total_amount").val(total);
   document.getElementById('total').innerHTML = total;
-  $(".monto_total").val(f_total);
+  $(".monto_total").val(formatter.format(f_total));
   document.getElementById('monto_total').innerHTML = f_total;
   $("#subtotales").val(sub_total);
   document.getElementById('totalsub').innerHTML = sub_total;
-  $("#IVA").val(IVA_total);
+  $("#IVA").val(formatter.format(IVA_total));
   document.getElementById('IVA').innerHTML = IVA_total;
-  $(".sub_total_amount").val(sub_total);
+  $(".sub_total_amount").val(formatter.format(sub_total));
   document.getElementById('sub_total').innerHTML = sub_total;
 
 });

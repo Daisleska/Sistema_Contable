@@ -27,32 +27,7 @@
             <div class="card">
                 <div class="card-body" style="padding-right: 50px;">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <table style="color: black;">
-                      <?php
-                      use App\empresa;
-
-  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
-
-                       
-                      foreach($empresa as $key){
-                        ?>
-                        <tr >
-                            <th>NOMBRE DE LA EMPRESA:</th>
-                            <th ><?php echo e($key->nombre)?></th>
-                        </tr>
-                        <tr>
-                            <th>MES:
-                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
-                        </tr>
-                        <tr>
-                            <th>RUT:
-                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
-                         <?php
-                        }
-                        ?>
-
-                        </tr>
-                    </table>
+                    
                   
   <div class="row">
     <div class="col-xl-6">
@@ -112,7 +87,7 @@
                 </ul>
 
               
-                <div class="tab-content p-3 text-muted">
+                <div class="tab-content text-muted">
                     <div class="tab-pane show active" id="compras">
                 @include('process.compra_venta.partials.libro_compra')
                     </div>
@@ -149,20 +124,3 @@
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
-
-<script type="text/javascript">
-
-function makeArray() {
-for (i = 0; i<makeArray.arguments.length; i++)
-this[i + 1] = makeArray.arguments[i];}
-var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
-'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
-var date = new Date();
-var day = date.getDate();
-var month = date.getMonth() + 1;
-var yy = date.getYear();
-var year = (yy < 1000) ? yy + 1900 : yy;
-
-//]]>
-
-</script>

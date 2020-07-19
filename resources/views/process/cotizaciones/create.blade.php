@@ -106,7 +106,7 @@
                                 <select  class="select2 form-control custom-select" style="width: 100%; height:36px;" name="productos_id" id="products_select">
                                     <option selected="selected" disabled="disabled" readonly>Seleccione el Producto</option>
                                     @foreach($products as $key)
-                                        <option value="{{ $key->id }}">{{ $key->nombre }} | {{ $key->unidad }} | {{ $key->existencia }}</option>
+                                        <option value="{{ $key->id }}">{{ $key->nombre }}  | {{ $key->unidad }} |&nbsp; {{ $key->existencia }}</option>
                                     @endforeach
                                 </select>
                             </div>

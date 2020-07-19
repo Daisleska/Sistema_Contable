@@ -202,12 +202,25 @@ if ($x_inventario) {
         </ul>
 </li>
 
+<?php
+   $b=\DB::select('SELECT * FROM diario WHERE estado="Abierto"');
+
+  if ($b) { 
+    ?>
     <li>
          <a href="{{ route('balances.index') }}">
             <i data-feather="bold"></i>
             <span>Balances</span>
         </a>
     </li>
+  <?php }elseif (empty($b)) { ?>
+  <li>
+         <a onclick="alert_balance()">
+            <i data-feather="bold"></i>
+            <span>Balances</span>
+        </a>
+    </li>
+  <?php } ?>   
 
      <li>
          <a href="{{ route('cotizacion.index') }}">

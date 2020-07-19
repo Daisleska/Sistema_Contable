@@ -5,10 +5,6 @@
 <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section('breadcrumb')
-
-@endsection
-
 @section('content')
 <div class="row">
         <div class="col-md-7" ></div>
@@ -55,12 +51,6 @@
 
                     <button type="button" class="btn btn-info btn-xs remove-item" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
 
-                      {{--  <form action="{{ route('productos.edit',$key->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form> --}}
-                      
                   
                    <form id="f_eliminar" name="formulario" action="{{ route('productos.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
@@ -165,20 +155,14 @@
             confirm: {
                 text: "Eliminar",
                 value: true,
-                visible: true,
-
-                
-            },
-             
+                visible: true,     
+            },    
         },
-
        }).then(function(confirm){
         if (confirm) {
-
           document.getElementById('f_eliminar').submit();
           }
        });
-
     }
 </script>
 

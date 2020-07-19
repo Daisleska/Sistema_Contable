@@ -138,7 +138,18 @@ class FacturasCController extends Controller
 
         $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
 
+         //----------Actualizar existencia en productos----------------
+        $pro_update = \DB::select('SELECT productos.id, productos.codigo, productos.existencia FROM  productos
+            WHERE productos.id='.$request->product_id[$i].' LIMIT 0,1');
+
+            foreach ($pro_update as $val) {
+            $nuevo= $val->existencia + $request->amount[$i] ;
+            }
+
+        $pro_update = \DB::select('UPDATE productos SET existencia ='.$nuevo.' WHERE productos.id='.$request->product_id[$i]);
+
          }//fin del ciclo
+         
        //registrar accion en bitacora-----------------------------------
             if ($fact_comp->save()) {
             flash('Registro Exitoso!', 'success');

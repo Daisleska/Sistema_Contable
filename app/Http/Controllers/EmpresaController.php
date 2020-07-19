@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use App\empresa;
+use App;
 use Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
@@ -81,7 +81,7 @@ class EmpresaController extends Controller
             $empresa->save();
 
            /*registrar accion en bitacora*/
-            $bitacoras =new Bitacora;
+            $bitacoras = new Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;

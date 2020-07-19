@@ -4,17 +4,17 @@ $utilidad = '12000';
 {{-- TABLA PARA LOS ACTIVOS --}}
    <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
    		<h5 align="center" style="text-align: center; color: black;">ACTIVO</h5>
-             <thead style="text-align: center; color: black; font-size: 14px;">
+             <thead style="text-align: center; color: black; font-size: 12px;">
                                     
                 <th>CUENTAS</th>
                	<th>VALOR 1</th>
                	<th>VALOR 2</th>
                 <th>TOTAL</th>
              </thead>
-            		 <tbody>
+            		 <tbody style="font-size: 12px;">
 
+{{--   <tr style="text-align: center; color: blue;"><td>Activo Circulante</td></tr> --}}  
                   @foreach($res_saldo_general as $general)
-                             
                             @if($general[1] =='activo' && $general[2] =='Circulante' )  
 
                            
@@ -35,7 +35,7 @@ $utilidad = '12000';
 
                       @endforeach  
 
-
+{{-- <tr style="text-align: center; color: blue;"><td>Activo Realizable</td></tr> --}}
                           @foreach($res_saldo_general as $general)
                              <tr>
                             @if($general[1] =='activo' && $general[2] =='Realizable' )  
@@ -55,7 +55,7 @@ $utilidad = '12000';
                    @endif
 
                       @endforeach  
-
+{{-- <tr style="text-align: center; color: blue;"><td>Activo Fijo Tangible</td></tr> --}}
                            @foreach($res_saldo_general as $general)
                              <tr>
                             @if($general[1] =='activo' && $general[2] =='Fijo tangible' )  
@@ -73,8 +73,8 @@ $utilidad = '12000';
                       
                             </tr>
                    @endif
-
                       @endforeach 
+{{-- <tr style="text-align: center; color: blue;"><td>Activo Intangible</td></tr> --}}
 
 
                            @foreach($res_saldo_general as $general)
@@ -94,8 +94,8 @@ $utilidad = '12000';
                       
                             </tr>
                    @endif
-
                       @endforeach  
+{{-- <tr style="text-align: center; color: blue;"><td>Cargo Diferido</td></tr> --}}
 
 
                           @foreach($res_saldo_general as $general)
@@ -115,8 +115,8 @@ $utilidad = '12000';
                       
                             </tr>
                    @endif
-
                       @endforeach  
+{{-- <tr style="text-align: center; color: blue;"><td>Otros Activo</td></tr> --}}
 
                           @foreach($res_saldo_general as $general)
                              <tr>
@@ -153,14 +153,15 @@ $utilidad = '12000';
 {{-- TABLA PARA LOS PASIVOS --}}
 <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
    		<h5 align="center" style="text-align: center; color: black;">PASIVO</h5>
-             <thead style="text-align: center; color: black; font-size: 14px;">
+             <thead style="text-align: center; color: black; font-size: 12px;">
                                     
                 <th>CUENTAS</th>
                	<th>VALOR 1</th>
                	<th>VALOR 2</th>
                 <th>TOTAL</th>
              </thead>
-            		 <tbody>
+            		 <tbody style="font-size: 12px;">
+              {{--     <tr style="text-align: center; color: blue;"><td>pasivo Circulante</td></tr> --}}
                    @foreach($res_saldo_general as $general2)
                              <tr >
                                @if($general2[1] =='pasivo' && $general2[2]=='Circulante')  
@@ -176,7 +177,7 @@ $utilidad = '12000';
                             </tr>
                     @endforeach
 
-
+{{-- <tr style="text-align: center; color: blue;"><td>Largo Plazo</td></tr> --}}
                     @foreach($res_saldo_general as $general2)
                              <tr >
                                @if($general2[1] =='pasivo' && $general2[2]=='A largo plazo')  
@@ -192,7 +193,7 @@ $utilidad = '12000';
                             </tr>
                     @endforeach
 
-
+{{-- <tr style="text-align: center; color: blue;"><td>Crédito Diferido</td></tr> --}}
                     @foreach($res_saldo_general as $general2)
                              <tr >
                                @if($general2[1] =='pasivo' && $general2[2]=='Crédito diferido')  
@@ -207,7 +208,7 @@ $utilidad = '12000';
                               @endif
                             </tr>
                     @endforeach
-
+{{-- <tr style="text-align: center; color: blue;"><td>Otros Pasivos</td></tr> --}}
                     @foreach($res_saldo_general as $general2)
                              <tr >
                                @if($general2[1] =='pasivo' && $general2[2]=='Otros pasivos')  
@@ -235,14 +236,14 @@ $utilidad = '12000';
 {{-- TABLA PARA EL PATRIMONIO --}}
 <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
    	<h5 align="center" style="text-align: center; color: black;">PATRIMONIO</h5>
-             <thead style="text-align: center; color: black; font-size: 14px;">
+             <thead style="text-align: center; color: black; font-size: 12px;">
                                     
                 <th>CUENTAS</th>
                	<th>VALOR 1</th>
                	<th>VALOR 2</th>
                 <th>TOTAL</th>
              </thead>
-            		 <tbody>
+            		 <tbody style="font-size: 12px;">
                   @foreach($res_saldo_general as $general3)
                              <tr>
                                  @if($general3[1] == 'capital')
@@ -256,7 +257,7 @@ $utilidad = '12000';
                               @endif
                             </tr>
                   @endforeach
-                          <tr style="font-size: 12px;">
+                          <tr style="font-size: 12px; text-align: center;">
                             <td>Utilidad liquida del ejercicio</td>
                             <td></td>
                              <td style="text-align: center;">{{number_format($utilidad, 2,',','.')}}</td>

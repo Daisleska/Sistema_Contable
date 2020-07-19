@@ -128,6 +128,19 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+<script>
+$(document).ready(function(){
+    $("select[name=anio]").change(function(){
+       var anio= document.getElementById("anio").value;
+    
+     document.getElementById('buscar').submit();
+    });
+})
+
+/*    $('#actu').click(function(){
+        tabla();
+    });*/
+</script>
 @endsection
 
 @section('script')
@@ -145,18 +158,5 @@
 @endsection
 
 
-<script>
-$(document).ready(function(){
-    $("select[name=anio]").change(function(){
-       var anio= document.getElementById("anio").value;
-    
-     document.getElementById('buscar').submit();
-    });
-})
-
-/*    $('#actu').click(function(){
-        tabla();
-    });*/
-</script>
 
 

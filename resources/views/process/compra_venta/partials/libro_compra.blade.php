@@ -1,4 +1,4 @@
- <table id="buscar" class="table dt-responsive nowrap" >
+ <table style="" id="buscar" class="table dt-responsive nowrap" >
                         <thead>
                            
                             <tr style="color: black;">
@@ -8,7 +8,7 @@
 
                 
 
-                            <tr style="color: black; font-size: 12px;">
+                            <tr style="color: black; font-size: 10px;">
                                 <th>N°</th>
                                 <th>FEC</th>
                                 <th>N° FACT.</th>
@@ -25,7 +25,7 @@
                         </thead>
                     
                     
-                        <tbody style="font-size: 11px;">
+                        <tbody style="font-size: 10px;">
                            
                       @foreach($compra as $item)
                 <tr>
@@ -53,7 +53,7 @@
 
                       <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
                       <?php
-                      if ($total_total >0) {
+                      if ($total_total>0) {
                             //TOTALES
                          $total_compra=array_sum($total_total);
                          $sub_total=array_sum($total_subtotal);

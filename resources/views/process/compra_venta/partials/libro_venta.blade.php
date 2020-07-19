@@ -3,12 +3,11 @@
                             <tr style="color: black;">
                                 <th COLSPAN="13" style="text-align: center;">LIBRO DE VENTAS</th>
                             </tr>
-                            <tr style="color: black; font-size: 11px;">
+                            <tr style="color: black; font-size: 10px;">
                                 <th>Nº</th>
                                 <th>FEC</th>
                                 <th>Nº.FACT</th>
                                 <th>Nº. CONTR</th>
-                                <th>CLIENTE</th>
                                 <th>RUT</th>
                                 <th>TOTAL VENTA</th>
                                 <th>VENTA EXENTA</th>
@@ -21,14 +20,13 @@
                         </thead>
                     
                     
-                        <tbody style="font-size: 11px;">
+                        <tbody style="font-size: 10px;">
                     @foreach($venta as $key)       
                 <tr>
                   <td>{{$key->facturav_id}}</td>
                   <td>{{$key->fecha}}</td>
                   <td>{{$key->n_factura}}</td>
                   <td>{{$key->n_control}}</td>
-                  <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>

@@ -37,13 +37,11 @@ class ComprasController extends Controller
            $total_IVA[]= $key->iva;
          }
 
-         if ($total_total =0) {
+         if ($total_total == 0) {
                             //TOTALES
                          $total_total=0;
                          $total_subtotal=0;
                          $total_IVA=0;
-               
-                      //---------------------------------------
                       }
           
         //fin
@@ -64,7 +62,7 @@ class ComprasController extends Controller
            $total_IVA_venta[]= $key->iva;
          }
 
-         if ($total_venta = 0) {
+         if ($total_venta == 0) {
                              //TOTALES
                          $total_venta=0;
                          $total_subventa=0;
