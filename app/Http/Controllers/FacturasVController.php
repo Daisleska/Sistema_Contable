@@ -29,8 +29,8 @@ class FacturasVController extends Controller
     {
 
 
-
-       $facturav = \DB::select('SELECT clientes.id, clientes.nombre, facturav.n_factura, facturav.total, facturav.fecha, facturav.id AS id_factura FROM facturav, clientes WHERE facturav.clientes_id= clientes.id');
+         $mesactual = date('m');
+       $facturav = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, facturav.n_factura, facturav.total, facturav.fecha, facturav.divisa FROM facturav, clientes WHERE facturav.clientes_id= clientes.id AND MONTH(facturav.fecha)='.$mesactual);
 
 
 
@@ -68,53 +68,73 @@ class FacturasVController extends Controller
         } else {
             # permitir regitrar
         //registro en la tabla facturav----------------------------
-       $facturav= new facturav();
+        $i=0;
+        foreach ($request->product_id as $val) {  
+        $producto=\DB::select('SELECT precio FROM productos WHERE id='.$val);
 
-             $facturav->clientes_id=$request->clientes_id;
-            $facturav->productos_id=$request->productos_id;
+            foreach ($producto as $valor) {      
+      
+        $precio[$i]=$valor->precio;
+
+         }
+         $i++;
+        }
+
+
+        $coun=count($request->product_id);
+
+        for ($i=0; $i <$coun ; $i++) { 
+
+            $facturav= new facturav();
+            
+            $importe=$precio[$i]*$request->amount[$i];
+            
             $facturav->n_factura=$request->n_factura;
             $facturav->fecha=$request->fecha;
+            $facturav->clientes_id=$request->clientes_id;
+            $facturav->productos_id=$request->product_id[$i];
             $facturav->n_control=$request->n_control;
             $facturav->domicilio=$request->domicilio;
             $facturav->f_pago=$request->f_pago;
             $facturav->divisa=$request->divisa;
-            $facturav->cantidad=$request->amount;
-            $facturav->importe=$request->importe;
+            $facturav->cantidad=$request->amount[$i];
+            $facturav->importe=$importe;
             $facturav->sub_total=$request->sub_total;
             $facturav->iva=$request->iva;
             $facturav->p_iva=$request->p_iva;
             $facturav->total=$request->total;
+
             $facturav->save();
 
-            
+          
 
             //-----------Registrar accion en libro de venta--------------------
-        $venta = new venta();
+            $venta = new venta();
 
             $venta->facturav_id=$facturav->id;
             $venta->clientes_id=$request->clientes_id;
             $venta->save();
         //-------------------------------------------------------------------
-
-             if ($facturav->save()) {
-            flash('Registro Exitoso!', 'success');
+        
+             
 
 
 
             //-------ACTUALIZAR EXISTENCIA-Inventario------------
 
-            $inventario = \DB::select('SELECT productos.id, productos.codigo, inventario.existencia AS exis_inv
-
-        FROM inventario, productos
-
-        WHERE inventario.productos_id='.$request->productos_id.' LIMIT 0,1');
+            $inventario = \DB::select('SELECT productos.id, productos.codigo, inventario.existencia AS exis_inv FROM inventario, productos
+            WHERE inventario.productos_id='.$request->product_id[$i].' LIMIT 0,1');
 
             foreach ($inventario as $val) {
-            $nuevo= $val->exis_inv - $request->amount ;
+            $nuevo= $val->exis_inv - $request->amount[$i] ;
             }
 
-        $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->productos_id);
+        $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
 
+       }//fin del ciclo
+
+       if ($facturav->save()) {
+            flash('Registro Exitoso!', 'success');
 
        //registrar accion en bitacora-----------------------------------
             $bitacoras = new App\Bitacora;
@@ -199,25 +219,21 @@ class FacturasVController extends Controller
     }
 
     
-    public function pdf($id_factura)
+    public function pdf($n_factura)
 
     {
-        $facturav = \DB::select('SELECT  clientes.id, clientes.nombre, clientes.direccion, clientes.email, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturav.n_factura, facturav.total, facturav.fecha, facturav.cantidad, facturav.importe, facturav.sub_total, facturav.iva, facturav.divisa, facturav.n_control, facturav.p_iva
 
-        FROM facturav, clientes, productos
+        $facturav = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.direccion, clientes.email, clientes.tipo_documento, clientes.ruf, facturav.sub_total, facturav.iva, facturav.p_iva, facturav.n_factura, facturav.n_control, facturav.domicilio, facturav.total, facturav.fecha, facturav.sub_total, facturav.f_pago, facturav.divisa FROM facturav, clientes WHERE facturav.clientes_id = clientes.id AND facturav.n_factura='.$n_factura);
 
-        WHERE facturav.clientes_id = clientes.id AND facturav.productos_id=productos.id AND facturav.id='.$id_factura );
+        $producto = \DB::select('SELECT  productos.id, productos.nombre, productos.precio, productos.descripcion, facturav.total, facturav.cantidad, facturav.importe, facturav.divisa FROM facturav, productos WHERE facturav.productos_id=productos.id AND facturav.n_factura='.$n_factura );
 
-        $i = 1;
-
-        $empresa = empresa::all();
+            $empresa = empresa::all();
 
 
+            $dompdf = PDF::loadView('pdf.facturav', compact('facturav', 'producto','empresa'));
 
-        $dompdf = PDF::loadView('pdf.facturav', compact('facturav', 'i','empresa'));
-
-        return $dompdf->stream('facturav.pdf');
-    }
+            return $dompdf->stream('facturav.pdf');
+    } 
     
     
     

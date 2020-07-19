@@ -48,7 +48,7 @@ class ProductosController extends Controller
         
         if ($buscar !== null && count($buscar) > 0) {
             
-            flash('<i class="icon-circle-check"></i> Ya tiene un producto registrado con este código!')->warning()->important();
+            flash('<i class="icon-circle-check"></i> ¡Ya tiene un producto registrado con este código!')->warning()->important();
             return redirect()->to('productos');
 
         } else {
@@ -83,7 +83,7 @@ class ProductosController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado un nuevo producto';
             $bitacoras->save();
-            flash('<i class="icon-circle-check"></i> Producto registrado exitosamente
+            flash('<i class="icon-circle-check"></i> ¡Producto registrado exitosamente
                 !')->success()->important();
            return redirect()->to('productos');
 
@@ -151,7 +151,7 @@ class ProductosController extends Controller
             $bitacoras->save();
 
 
-            flash('<i class="icon-circle-check"></i> Producto Actualizado satisfactoriamente!')->success()->important();
+            flash('<i class="icon-circle-check"></i> ¡Producto Actualizado satisfactoriamente!')->success()->important();
             return redirect ()->route('productos.index');
         }
     }
@@ -176,7 +176,7 @@ class ProductosController extends Controller
             $bitacoras->action = 'Ha Eliminado un Producto';
             $bitacoras->save();
 
-        flash('Registro eliminado satisfactoriamente!');
+        flash('¡Registro eliminado satisfactoriamente!');
 
 
         return back()->with('info', 'El producto ha sido eliminado');

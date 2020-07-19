@@ -66,17 +66,13 @@
                   <td>{{$key->email}}</td>
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>
-                      
-                    
-
-                        <div class="float-right" >
+                    <div class="float-right" >
                                             <a href="{{ route('cotizacion.pdf', $key->n_cotizacion) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
                         </div>
-                       
-                  
+                 
                    <form action="#" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">

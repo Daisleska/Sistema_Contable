@@ -8,13 +8,10 @@
     <link href="{{ public_path('../resources/views/pdf/boostrap/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css" />
 
-
-
-
-    <style>
+  <style>
         img {
             width: 10%;
-        
+         
       
 
 
@@ -103,7 +100,7 @@
 
         
         
-        <h3 class="float-center" id="titulo">___________________________    FACTURA      ____________________________</h3>
+        
      
       
   
@@ -113,117 +110,144 @@
 
       
       <table border="0"  width="470">
-      
-      <tr> 
-           <th style="text-align: left;">
-            Fecha: {{$val->fecha}} 
-           </th>
- 
-           <th rowspan="3"><img class="circular--square" src="../public/{{ $key->url_image }}"></th>  
-            
-      </tr>
-      <tr>
-           
-           <th style="text-align: left;">N° Factura {{$val->n_factura}}</th>
-
-    </tr>
-    <tr>
-           <th style="text-align: left;">N° de Control {{$val->n_control}}</th> 
-           
-            
-            
-      </tr>      
-      </table>
-     
-        <hr>
-        <br>
-        <table border="0"  width="470">
-
         <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
 
-         <br>
-         <th id="l" >{{$key->nombre}}</th>
-         <th id="l">PROVEEDOR</th>
-        
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
         </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
          <tr>
-        
-           <th id="l">{{$key->tipo_documento}}-{{$key->ruf}}</th>
-           <th id="l">{{$val->nombre}}</th>
-          
-                
-        </tr>
-        <tr>
-        
-           <th id="l">{{$key->direccion}}</th>
-           <th id="l">{{$val->direccion}}</th>
-                
-        </tr>
-        
-        <tr>
-        
-           <th id="l">{{$key->email}}</th>
-           <th id="l">{{$val->correo}}</th>
-                
-        </tr>
-        @endforeach
-        @endforeach  
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
+            
+            
+     
+<hr>
 
-        </table>
-        <br><br>
+
+      </table>  
+      <br>
+<h3 class="float-center" id="titulo">FACTURA</h3>
+
+    <br><br>
+     <table border="0"  width="470">
+
+      <tr> 
+           
+ 
+         <th style="text-align: right;">Factura N° {{$val->n_factura}}</th>
+
+           
+      </tr>
+      <tr> 
+           
+ 
+         <th style="text-align: right;">Factura N° {{$val->n_control}}</th>
+
+           
+      </tr>
+      <tr>  
+             
+            <th style="text-align: right;">
+            Fecha de Emisión: {{date("d-m-Y", strtotime($val->fecha))}} </th>
+      </tr>
+     
+
+      </table>
+
+ 
+        <!--tabla empresa y cliente -->
+
+
+    
+     <table  border="0" width="470">
+  
+
+       
+        <tr>
+          <br>
+          <td  align="left"><b>Proveedor:</b> {{ $val->nombre }} <b> RUT: </b> {{ $val->tipo_documento }}-{{ $val->ruf }} <br><strong>Correo:</strong> </b> {{ $val->correo }} <b> Dirección: </b> {{ $val->direccion }}</td>
+        </tr>
+        
+
+</table>
+     @endforeach 
+     @endforeach
+  
+         
         
         <table border="1"  width="470">
          
                 <thead>
+                  <tr>
+                <th colspan="5" style="text-align: center;">PRODUCTOS</th>
+              </tr>
                 <tr>
                    <th id="alto">Producto</th>
                    <th id="alto">Descripción</th>
-                   <th id="alto">Cantidad</th>
                    <th id="alto">Precio</th> 
+                   <th id="alto">Cantidad</th>
                    <th id="alto">Importe</th>
                 </tr>
 
                 </thead>
                 <tbody>
-                @foreach($facturac as $key)
+                @foreach($producto as $key)
                 <tr>
-                  <td id="c">{{$key->producto}}</td>
+                  <td id="c">{{$key->nombre}}</td>
                   <td id="c">{{$key->descripcion}}</td>
+                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$key->divisas}} </td>
                   <td id="c">{{$key->cantidad}}</td>
-                  <td id="c">{{number_format($key->precio,2,',','.')}} {{$key->divisas}}</td>
                   <td id="c">{{number_format($key->importe,2,',','.')}} {{$key->divisas}}</td>
                 </tr>
+               @endforeach 
+             
 
+             
+                @foreach($facturac as $val)
                 <tr>
-                    <th id="alto" scope="row" colspan="2" style="text-align: right;">CANTIDAD DE ARTÍCULOS</td>
-                    <td id="c">{{$key->cantidad}}</td>
-                    <td id="c"><strong>SUB TOTAL</strong></td>
-                    <td id="c">{{number_format($key->sub_total,2,',','.')}} {{$key->divisas}}</td>
+                    <th id="alto" scope="row" colspan="3"></th>
+                    <th id="c"><strong>SUB TOTAL</strong></th>
+                    <th id="c">{{number_format($val->sub_total,2,',','.')}} {{$val->divisas}}</th>
                     
                 </tr>
 
                 <tr>
-                  <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>I.V.A {{$key->p_iva}}%</strong></td>
-                  <td scope="row" id="c">{{number_format($key->iva,2,',','.')}} {{$key->divisas}}</td>
+                  <th scope="row" colspan="3" id="alto" ></th>
+                  <th id="c"><strong>I.V.A {{$val->p_iva}}%</strong></th>
+                  <th scope="row" id="c">{{number_format($val->iva,2,',','.')}} {{$val->divisas}}</th>
                 </tr>
-                 
-
+               
                 <tr>
-                  <th scope="row" colspan="3" id="alto" ></td>
-                  <td id="c"><strong>TOTAL</strong></td>
-                  <td scope="row" id="c">{{number_format($key->total,2,',','.')}} {{$key->divisas}}</td>
+                  <th scope="row" colspan="3" id="alto" ></th>
+                  <th id="c"><strong>TOTAL</strong></th>
+                  <th scope="row" id="c">{{number_format($val->total,2,',','.')}} {{$val->divisas}}</th>   
+                   
                 </tr>
                  
-                  @endforeach                                 
+                  @endforeach  
+
                 </tbody>
                 </table>
-       
-        
+                <br>
+                <table>
+
+                  @foreach($facturac as $val)
+                  <td><b>Domicilio:</b> {{$val->domicilio}}&nbsp; &nbsp; &nbsp;<b>Forma de Pago:</b> {{$val->f_pago}}</td>
+                  @endforeach
+                </table>
+                <br>
 
     </div>
-
-
+     
 </body>
 
 </html>

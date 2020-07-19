@@ -36,12 +36,12 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Compras</h4>
                    
-                          <div class="float-right" >
+                          <!--<div class="float-right" >
                                             <a href="#" class="btn btn-primary mt-2"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i class="feather icon-file-text"
                                                     style="font-size: 20px"></i> Generar PDF</a>
-                                        </div>
+                                        </div>-->
 
                           <a href="{{ route('facturac.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
 
@@ -65,18 +65,19 @@
                         <tbody>
                            @forelse($facturac as $key)
                 <tr>
-                  <td>{{$key->fecha}}</td>
-                  <td>000{{$key->n_factura}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
+                  <td>{{$key->n_factura}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{number_format($key->total,2,',','.')}}  {{$key->divisas}}</td>
                 
              
                   <td>
-                 
-                                            <a href="{{ route('facturac.pdf', $key->id_factura) }}" class="btn btn-primary mt-2"
+                            <div class="float-right" >
+                                            <a href="{{ route('facturac.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
+                              </div>
               
                        
                   

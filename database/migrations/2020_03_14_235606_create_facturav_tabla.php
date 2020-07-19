@@ -19,7 +19,7 @@ class CreateFacturavTabla extends Migration
             $table->date('fecha');
             $table->unsignedBigInteger('clientes_id');
             $table->unsignedBigInteger('productos_id');
-            $table->integer('n_control');
+            $table->string('n_control');
             $table->string('domicilio')->nullable();
             $table->string('f_pago');
             $table->string('divisa');

@@ -48,11 +48,14 @@
                                                         </button>
                                                     </div>
 
-                                                    <div class="modal-body">
-                                                        <p>Valor I.V.A actual:{{$key->porcentaje}}%</p>
-                                                       <td>% <input type="text" name="porcentaje" id="pct" placeholder="Ingrese el nuevo valor IVA"></td>
+                                                     <div class="modal-body">
+                                                        <p>Valor I.V.A actual: {{$key->porcentaje}}%</p>
+                                                       <td><input type="text" name="porcentaje"  placeholder="Ingrese el nuevo valor" class="form-control"></td>
 
-                                                       <button class="btn btn-info" id="other">~</button>
+                                                       
+                                                       <div class="modal-footer">
+                                                     <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
+                                                     <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                                 {!! Form::close() !!}

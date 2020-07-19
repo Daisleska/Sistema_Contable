@@ -34,7 +34,7 @@ class FacturasCController extends Controller
     
     {
         $mesactual = date('m');
-      $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas, facturac.iva, facturac.id AS id_factura
+      $facturac = \DB::select('SELECT DISTINCT proveedores.id, proveedores.nombre,  facturac.n_factura, facturac.total, facturac.fecha, facturac.divisas
 
         FROM facturac, proveedores
 
@@ -71,7 +71,7 @@ class FacturasCController extends Controller
      */
     public function store(Request $request)
     {
-         dd($request);
+         //dd($request);
        $buscar=facturac::where ('n_factura', $request->n_factura)->get();
         if (count($buscar)>0) {
             # no permitir registrar
@@ -80,51 +80,70 @@ class FacturasCController extends Controller
         } else {
             # permitir regitrar
         //registro en la tabla facturac----------------------------
-        $fact_comp= new facturac();
+            $i=0;
+            foreach ($request->product_id as $val) {  
+            $producto=\DB::select('SELECT precio FROM productos WHERE id='.$val);
+
+            foreach ($producto as $valor) {      
+      
+            $precio[$i]=$valor->precio;
+
+            }
+            $i++;
+            }
+
+
+            $coun=count($request->product_id);
+            
+            for ($i=0; $i <$coun ; $i++) { 
+
+            $fact_comp= new facturac();
+
+            $importe=$precio[$i]*$request->amount[$i];
 
             $fact_comp->n_factura=$request->n_factura;
             $fact_comp->fecha=$request->fecha;
+            $fact_comp->proveedores_id=$request->proveedores_id;
+            $fact_comp->productos_id=$request->product_id[$i];
             $fact_comp->domicilio=$request->domicilio;
             $fact_comp->f_pago=$request->f_pago;
-            $fact_comp->cantidad=$request->amount;
-            $fact_comp->importe=$request->importe;
+            $fact_comp->cantidad=$request->amount[$i];
+            $fact_comp->importe=$importe;//
             $fact_comp->sub_total=$request->sub_total;
+            $fact_comp->iva=$request->iva;
+            $fact_comp->p_iva=$request->p_iva;
             $fact_comp->total=$request->total;
             $fact_comp->n_control=$request->n_control;
-            $fact_comp->proveedores_id=$request->proveedores_id;
-            $fact_comp->productos_id=$request->productos_id;
             $fact_comp->divisas=$request->divisas;
-             $fact_comp->iva=$request->iva;
-             $fact_comp->p_iva=$request->p_iva;
+            
             $fact_comp->save();
 
 //-----------Registrar accion en libro de compra--------------------
-        $compra = new compra();
+            $compra = new compra();
 
             $compra->facturac_id=$fact_comp->id;
             $compra->proveedores_id=$request->proveedores_id;
             $compra->save();
 //-------------------------------------------------------------------
 
-             if ($fact_comp->save()) {
-            flash('Registro Exitoso!', 'success');
-
+           
 //-------ACTUALIZAR EXISTENCIA-Inventario------------
 
-            $inventario = \DB::select('SELECT productos.id, productos.codigo, inventario.existencia AS exis_inv
+        $inventario = \DB::select('SELECT productos.id, productos.codigo, inventario.existencia AS exis_inv FROM inventario, productos
+       WHERE inventario.productos_id='.$request->product_id[$i].' LIMIT 0,1');
 
-        FROM inventario, productos
+       foreach ($inventario as $val) {
+       $nuevo=$val->exis_inv + $request->amount[$i];
+       }
 
-        WHERE inventario.productos_id='.$request->productos_id.' LIMIT 0,1');
+        $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
 
-foreach ($inventario as $val) {
-       $nuevo=$request->cantidad_articulos + $val->exis_inv;
-}
-
-        $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->productos_id);
-
-
+         }//fin del ciclo
        //registrar accion en bitacora-----------------------------------
+            if ($fact_comp->save()) {
+            flash('Registro Exitoso!', 'success');
+ 
+
             $bitacoras = new App\Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
@@ -208,22 +227,18 @@ foreach ($inventario as $val) {
         return back();
     }
 
-      public function pdf($id_factura)
+      public function pdf($n_factura)
 
     {
-        $facturac = \DB::select('SELECT  proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.correo, productos.id, productos.nombre AS producto, productos.precio, productos.descripcion, facturac.n_factura, facturac.total, facturac.fecha, facturac.cantidad, facturac.importe, facturac.sub_total, facturac.iva, facturac.divisas, facturac.n_control, facturac.p_iva
+        $facturac = \DB::select('SELECT DISTINCT proveedores.id, proveedores.nombre, proveedores.direccion, proveedores.correo, proveedores.tipo_documento, proveedores.ruf, facturac.sub_total, facturac.iva, facturac.p_iva, facturac.n_factura, facturac.n_control, facturac.domicilio, facturac.total, facturac.fecha, facturac.sub_total, facturac.f_pago, facturac.divisas FROM facturac, proveedores WHERE facturac.proveedores_id = proveedores.id AND facturac.n_factura='.$n_factura);
 
-        FROM facturac, proveedores, productos
-
-        WHERE facturac.proveedores_id = proveedores.id AND facturac.productos_id=productos.id AND facturac.id='.$id_factura );
-
-        $i = 1;
+        $producto = \DB::select('SELECT  productos.id, productos.nombre, productos.precio, productos.descripcion, facturac.total, facturac.cantidad, facturac.importe, facturac.divisas FROM facturac, productos WHERE facturac.productos_id=productos.id AND facturac.n_factura='.$n_factura );
 
         $empresa = empresa::all();
 
 
 
-        $dompdf = PDF::loadView('pdf.facturac', compact('facturac', 'i','empresa'));
+        $dompdf = PDF::loadView('pdf.facturac', compact('facturac', 'producto','empresa'));
 
         return $dompdf->stream('facturac.pdf');
     }

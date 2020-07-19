@@ -58,16 +58,16 @@
                      @foreach($facturav as $key) 
 
                 <tr>
-                  <td>{{$key->fecha}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
                   <td>{{$key->n_factura}}</td>
                   <td>{{$key->nombre}}</td>
-                  <td>{{number_format($key->total,2,',','.')}}</td>
+                  <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>
                       
                     
 
                         <div class="float-right" >
-                                            <a href="{{ route('facturav.pdf', $key->id_factura) }}" class="btn btn-primary mt-2"
+                                            <a href="{{ route('facturav.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
