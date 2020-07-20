@@ -22,6 +22,8 @@
              <?php 
              $i=1;        
              foreach($comprobacion as $key) {
+
+                if ($key->tipo=="activo") {
               ?>
                         <tr style="font-size: 12px;">
                               
@@ -75,15 +77,247 @@
                  $saldod[]=$saldo;
             }
             
-            ?>
             
-          
-            <?php
+
+           } 
+
+              if ($key->tipo=="pasivo") {
+              ?>
+                        <tr style="font-size: 12px;">
+                              
+                                  <td style="text-align: center;">{{$key->codigo}}</td>
+                                  <?php 
+                                  
+                                  if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
+                                    ?>
+                                    <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>
+                                    <?php  
+                                  }else{
+                                    ?>
+                                    <td> {{$key->nombre}}</td> 
+                                    <?php
+                                  }
+                                  ?>
+                  <?php                
+                  if (isset($res_cuenta[$i][0])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][0],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  ?>
+                     
+                     <?php                
+                  if (isset($res_cuenta[$i][1])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][1],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  
+
+
+        
+           
+            if ($res_cuenta[$i][0]<$res_cuenta[$i][1]) {
+                
+                $saldo=$res_cuenta[$i][1]-$res_cuenta[$i][0];
+                ?>
+                  <td></td>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                
+                <?php
+
+                $saldoh[]=$saldo;
+            }else{
+                 
+                 $saldo=$res_cuenta[$i][0]-$res_cuenta[$i][1];
+                 ?>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                <td></td>
+                <?php
+                 $saldod[]=$saldo;
+            }
+            
+            
+
+           } 
+
+
+              if ($key->tipo=="capital") {
+              ?>
+                        <tr style="font-size: 12px;">
+                              
+                                  <td style="text-align: center;">{{$key->codigo}}</td>
+                                  <?php 
+                                  
+                                  if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
+                                    ?>
+                                    <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>
+                                    <?php  
+                                  }else{
+                                    ?>
+                                    <td> {{$key->nombre}}</td> 
+                                    <?php
+                                  }
+                                  ?>
+                  <?php                
+                  if (isset($res_cuenta[$i][0])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][0],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  ?>
+                     
+                     <?php                
+                  if (isset($res_cuenta[$i][1])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][1],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  
+
+
+        
+            
+            if ($res_cuenta[$i][0]<$res_cuenta[$i][1]) {
+                
+                $saldo=$res_cuenta[$i][1]-$res_cuenta[$i][0];
+                ?>
+                  <td></td>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                
+                <?php
+
+                $saldoh[]=$saldo;
+            }else{
+                 
+                 $saldo=$res_cuenta[$i][0]-$res_cuenta[$i][1];
+                 ?>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                <td></td>
+                <?php
+                 $saldod[]=$saldo;
+            }
+            
            
 
-            $i++; }  ?>
+           } 
+
+           
+            if ($key->tipo=="egreso") {
+              ?>
+                        <tr style="font-size: 12px;">
+                              
+                                  <td style="text-align: center;">{{$key->codigo}}</td>
+                                  <?php 
+                                  
+                                  if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
+                                    ?>
+                                    <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>
+                                    <?php  
+                                  }else{
+                                    ?>
+                                    <td> {{$key->nombre}}</td> 
+                                    <?php
+                                  }
+                                  ?>
+                  <?php                
+                  if (isset($res_cuenta[$i][0])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][0],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  ?>
+                     
+                     <?php                
+                  if (isset($res_cuenta[$i][1])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][1],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  
+
+
+        
             
+            if ($res_cuenta[$i][0]<$res_cuenta[$i][1]) {
+                
+                $saldo=$res_cuenta[$i][1]-$res_cuenta[$i][0];
+                ?>
+                  <td></td>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                
+                <?php
+
+                $saldoh[]=$saldo;
+            }else{
+                 
+                 $saldo=$res_cuenta[$i][0]-$res_cuenta[$i][1];
+                 ?>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                <td></td>
+                <?php
+                 $saldod[]=$saldo;
+            }
             
+           
+
+           } 
+
+
+            if ($key->tipo=="ingreso") {
+              ?>
+                        <tr style="font-size: 12px;">
+                              
+                                  <td style="text-align: center;">{{$key->codigo}}</td>
+                                  <?php 
+                                  
+                                  if ($res_cuenta[$i][1]>$res_cuenta[$i][0]) {
+                                    ?>
+                                    <td>&nbsp; &nbsp; &nbsp;&nbsp;{{$key->nombre}}</td>
+                                    <?php  
+                                  }else{
+                                    ?>
+                                    <td> {{$key->nombre}}</td> 
+                                    <?php
+                                  }
+                                  ?>
+                  <?php                
+                  if (isset($res_cuenta[$i][0])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][0],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  ?>
+                     
+                     <?php                
+                  if (isset($res_cuenta[$i][1])) {
+                               ?><td style="text-align: center;"><?php echo number_format($res_cuenta[$i][1],2,',','.'); ?></td> <?php 
+                                }else{  
+                                ?><td></td><?php 
+                    }  
+
+
+        
+            
+            if ($res_cuenta[$i][0]<$res_cuenta[$i][1]) {
+                
+                $saldo=$res_cuenta[$i][1]-$res_cuenta[$i][0];
+                ?>
+                  <td></td>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                
+                <?php
+
+                $saldoh[]=$saldo;
+            }else{
+                 
+                 $saldo=$res_cuenta[$i][0]-$res_cuenta[$i][1];
+                 ?>
+                  <td style="text-align: center;"><?php echo number_format($saldo,2,',','.'); ?></td>
+                <td></td>
+                <?php
+                 $saldod[]=$saldo;
+            }
+            
+           
+
+           } 
+
+
+           $i++; }  ?>
 
                     </tr>
                     

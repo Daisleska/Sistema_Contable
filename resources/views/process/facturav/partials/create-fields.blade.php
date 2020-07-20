@@ -14,13 +14,13 @@
 
                                 use App\facturav;
 
-                                $factura=DB::table ('facturav')->select('id')->take(1)->orderBy('id', 'desc')->first();
+                                $factura=DB::table ('facturav')->select('n_factura')->take(1)->orderBy('n_factura', 'desc')->first();
 
                                  if($factura) {
                             ?>
 
                                 <th>N° Factura</th>
-                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="000<?php  echo $factura->id +1; ?>"></th>
+                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="000<?php  echo $factura->n_factura +1; ?>"></th>
 
                           
                             </tr>
@@ -53,7 +53,7 @@
                                 ?>
 
                                 <th>N°control</th>
-                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="000000<?php  echo $factura->id +1; ?>" ></th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="000000<?php  echo $factura->n_factura +1; ?>" ></th>
                          
                             </tr>
                              <?php }else{

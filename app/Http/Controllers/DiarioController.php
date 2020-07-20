@@ -374,6 +374,58 @@ class DiarioController extends Controller
     }
 
 
+
+     public function pdfmayor(){
+       
+        //Datos de cuenta
+        $cuen= \DB::select('SELECT DISTINCT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE cuentas.id=mayor.cuenta_id AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) ORDER BY cuentas.codigo ASC');
+      
+        //Debe
+        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe, mayor.haber FROM mayor WHERE YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
+
+
+        //$descrip= \DB::select('SELECT DISTINCT descripcion, fecha, mayor.cuenta_id FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id=mayor.cuenta_id OR cuenta_has_diario.c_destino=mayor.cuenta_id ORDER BY n_asiento ASC');
+        
+        $info= \DB::select('SELECT DISTINCT n_asiento, n_folio FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id=mayor.cuenta_id OR cuenta_has_diario.c_destino=mayor.cuenta_id ORDER BY n_asiento ASC');
+     
+
+           $saldo=0;
+           $i=0;
+          foreach ($buscar as $key) {
+
+           if ($key->debe) {
+               $debe=$key->debe;
+           }else{
+
+            $debe=0;
+           }
+           
+           if ($key->haber) {
+               $haber=$key->haber;
+           }else{
+
+            $haber=0;
+           }
+
+           $saldo=$saldo+$debe-$haber;
+            
+
+            $saldos[$i][0]=$key->cuenta_id;
+            $saldos[$i][1]=$saldo;
+
+           $i++;
+     }
+        
+      //dd($saldos, $buscar);
+
+        $empresa= empresa::all();
+
+        $dompdf = PDF::loadView('pdf.mayor', compact('cuen', 'buscar', 'info', 'saldos', 'empresa'));
+       
+        return $dompdf->stream('mayor.pdf');
+    }
+
+
     public function individual($n_folio){
 
         $diario = \DB::select('SELECT DISTINCT fecha, descripcion, diario.id AS id_d, n_asiento, diario.anio FROM diario, cuenta_has_diario WHERE diario.id=cuenta_has_diario.diario_id AND diario.n_folio='.$n_folio.'');

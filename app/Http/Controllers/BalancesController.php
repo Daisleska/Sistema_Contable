@@ -23,7 +23,7 @@ class BalancesController extends Controller
     $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
 
         $anio = date('Y');
-        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.codigo');
+        $comprobacion= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo ASC');
         $cuenta=count($comprobacion);
         $i=1;
 
@@ -43,6 +43,8 @@ class BalancesController extends Controller
         }//
 
         $totales_C= \DB::select('SELECT SUM(mayor.debe) AS debe, SUM(mayor.haber) AS haber FROM  mayor WHERE YEAR(mayor.created_at)='.$anio.'');
+
+        //dd($comprobacion,$res, $res_cuenta, $totales_C);
     /*------------------------FIN COMPROBACION-------------------------*/
     /*-----------Datos para balance de ganancias y perdidas------------*/
 
@@ -55,7 +57,7 @@ class BalancesController extends Controller
     /*---------------------FIN GANANCIAS Y PERDIDAS--------------------*/
     /*-------------Datos para el balance general----------------------*/
 
-    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, cuentas.t_cuenta, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY saldo DESC');
+    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, cuentas.t_cuenta, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo ASC');
     $j=1;
 
     foreach ($general as $gen) {

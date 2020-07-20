@@ -37,14 +37,14 @@
 
                                 use App\cotizacion;
 
-                                $cotizacion=DB::table ('cotizaciones')->select('id')->take(1)->orderBy('id', 'desc')->first();
+                                $cotizacion=DB::table ('cotizaciones')->select('n_cotizacion')->take(1)->orderBy('n_cotizacion', 'desc')->first();
 
                                  if($cotizacion) {
                             ?>
                                 <div class="col-lg-4">
                                     
                                 <p>N° Cotización</p>
-                               <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="0000<?php  echo $cotizacion->id +1; ?>">
+                               <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="0000<?php  echo $cotizacion->n_cotizacion +1; ?>">
                                 </div>
 
                           

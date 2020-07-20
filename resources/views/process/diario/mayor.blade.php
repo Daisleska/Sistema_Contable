@@ -72,7 +72,7 @@
                         <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
                         <span>Excel</span>
                     </a>
-                    <a href="#" class="dropdown-item notify-item">
+                    <a href="{{ route('mayor.pdf') }}" class="dropdown-item notify-item">
                         <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
                         <span>PDF</span>
                     </a>

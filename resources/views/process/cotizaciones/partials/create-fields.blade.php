@@ -9,31 +9,6 @@
                                 <th>Fecha</th>
                                 <th><input style="width: 160px;" type="date" readonly="readonly" name="fecha" class="form-control"  value="<?php echo date("Y-m-d");?>"  required></th>
 
-
-                                <?php 
-
-                                use App\cotizacion;
-
-                                $cotizacion=DB::table ('cotizaciones')->select('id')->take(1)->orderBy('id', 'desc')->first();
-
-                                 if($cotizacion) {
-                            ?>
-
-                                <th>N° Cotización</th>
-                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="0000<?php  echo $cotizacion->id +1; ?>"></th>
-
-                          
-                            </tr>
-                          <?php }else{
-                            ?>
-                                
-                                <th>N° Cotización</th>
-                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="00001"></th>
-
-                                
-                            </tr>
-                            <?php
-                          }?>
                            
                                 
                             <tr>

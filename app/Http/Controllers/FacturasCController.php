@@ -118,13 +118,6 @@ class FacturasCController extends Controller
             
             $fact_comp->save();
 
-//-----------Registrar accion en libro de compra--------------------
-            $compra = new compra();
-
-            $compra->facturac_id=$fact_comp->id;
-            $compra->proveedores_id=$request->proveedores_id;
-            $compra->save();
-//-------------------------------------------------------------------
 
            
 //-------ACTUALIZAR EXISTENCIA-Inventario------------
@@ -149,6 +142,15 @@ class FacturasCController extends Controller
         $pro_update = \DB::select('UPDATE productos SET existencia ='.$nuevo.' WHERE productos.id='.$request->product_id[$i]);
 
          }//fin del ciclo
+
+         //-----------Registrar accion en libro de compra--------------------
+            $compra = new compra();
+
+            $compra->facturac_id=$fact_comp->id;
+            $compra->proveedores_id=$request->proveedores_id;
+            $compra->save();
+//-------------------------------------------------------------------
+
          
        //registrar accion en bitacora-----------------------------------
             if ($fact_comp->save()) {

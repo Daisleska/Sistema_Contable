@@ -85,6 +85,7 @@ Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('factur
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('bitacora.pdf', 'BitacoraController@pdf')->name('bitacora.pdf');
 Route::get('diario.pdf', 'DiarioController@pdf')->name('diario.pdf');
+Route::get('mayor.pdf', 'DiarioController@pdfmayor')->name('mayor.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
 Route::get('cajachica.egreso','CajaChicaController@egreso')->name('cajachica.egreso');

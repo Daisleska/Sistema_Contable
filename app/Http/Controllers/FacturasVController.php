@@ -106,19 +106,7 @@ class FacturasVController extends Controller
 
             $facturav->save();
 
-          
-
-            //-----------Registrar accion en libro de venta--------------------
-            $venta = new venta();
-
-            $venta->facturav_id=$facturav->id;
-            $venta->clientes_id=$request->clientes_id;
-            $venta->save();
-        //-------------------------------------------------------------------
         
-             
-
-
 
             //-------ACTUALIZAR EXISTENCIA-Inventario------------
 
@@ -144,7 +132,15 @@ class FacturasVController extends Controller
 
        }//fin del ciclo
 
+       //-----------Registrar accion en libro de venta--------------------
+            $venta = new venta();
 
+            $venta->facturav_id=$facturav->id;
+            $venta->clientes_id=$request->clientes_id;
+            $venta->save();
+        //-------------------------------------------------------------------
+        
+             
       
        if ($facturav->save()) {
             flash('Registro Exitoso!', 'success');
