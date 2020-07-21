@@ -8,7 +8,6 @@ Contact: support@coderthemes.com
 File: Dashboard init js
 */
 
-
 !function($) {
     "use strict";
 
@@ -224,69 +223,6 @@ function ($) {
 
         var chart = new ApexCharts(
             document.querySelector("#revenue-chart"),
-            options
-        );
-
-        chart.render();
-
-        /* ------------- target */
-        var options = {
-            chart: {
-                height: 296,
-                type: 'bar',
-                stacked: true,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '45%',
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            series: [{
-                name: 'Net Profit',
-                data: [35, 44, 55, 57, 56, 61]
-            }, {
-                name: 'Revenue',
-                data: [52, 76, 85, 101, 98, 87]
-            }],
-            xaxis: {
-                categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-                axisBorder: {
-                    show: false
-                },
-            },
-            legend: {
-                show: false
-            },
-            grid: {
-                row: {
-                    colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
-                    opacity: 0.2
-                },
-                borderColor: '#f3f4f7'
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return "$ " + val + " thousands"
-                    }
-                }
-            }
-        }
-
-        var chart = new ApexCharts(
-            document.querySelector("#targets-chart"),
             options
         );
 

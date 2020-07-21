@@ -70,6 +70,7 @@ Route::match(['get', 'post'], '/busquedaAjax/{cuenta}/buscar', 'DiarioController
 
 Route::match(['get', 'post'], '/busqueda/{anio}/buscar', 'DiarioController@busqueda')->name('post');
 
+Route::match(['get', 'post'], '/busquedaA/{anio}/buscar', 'HomeController@busquedaA')->name('post');
 
 //iva
 Route::put('ivaupdate', 'FacturasVController@ivaupdate')->name('ivaupdate');

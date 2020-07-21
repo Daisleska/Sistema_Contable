@@ -1,4 +1,4 @@
- <table style="" id="buscar" class="table dt-responsive nowrap" >
+ <table class="table dt-responsive nowrap" >
                         <thead>
                            
                             <tr style="color: black;">
@@ -9,7 +9,7 @@
                 
 
                             <tr style="color: black; font-size: 10px;">
-                                <th>N°</th>
+                               {{--  <th>N°</th> --}}
                                 <th>FEC</th>
                                 <th>N° FACT.</th>
                                 <th>N° CONT</th>
@@ -30,7 +30,7 @@
                       @foreach($compra as $item)
                 <tr>
                  
-                  <td>{{ $num++ }}</td>
+                  {{-- <td>{{ $num++ }}</td> --}}
                   <td>{{$item->fecha}}</td>
                   <td>0{{ $item->n_factura}}</td>
                   <td>0{{ $item->n_control}}</td>
@@ -51,7 +51,7 @@
 
                 <tr style="color: black;">
 
-                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="5" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_total>0) {
                             //TOTALES

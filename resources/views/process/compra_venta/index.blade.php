@@ -2,7 +2,7 @@
 
 @section('css')
 <!-- plugin css -->
-{{-- <link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+<link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('breadcrumb')
@@ -34,36 +34,6 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="header-title mb-3 mt-0" style="text-align: center;">Compra y Venta</h5>
-
-                <div class="row">
-                    <div class="col-md-3">
-                      <input type="date" id="dia" name="dia" class="form-control">
-                    </div>
-
-                    <div class="col-md-2">
-                      <select id="mes" name="mes" class="form-control">
-                        <option readonly >Mes</option>
-                      @foreach($meses as $mes)
-                          <option value="{{$x++}}">
-                            {{$mes}}
-                           </option> 
-                           @endforeach
-                      </select>
-                    </div>
-
-                    <div class="col-md-2">
-                      <select id="anio" name="anio" class="form-control">
-                        <option disabled="disabled" selected="selected">Año</option>
-                        <?php for ($i=2018; $i <=2030; $i++) { ?>
-                          <option value="{{$i}}">
-                            {{$i}}
-                           </option> 
-                           <?php } ?>
-                      </select>
-                    </div>
-                    <button class="btn btn-primary" onclick="buscador();">Buscar</button>
-                </div>
-                <br>
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -117,7 +87,7 @@
 
 @section('script')
 <!-- datatable js -->
-{{-- <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script> --}}
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')

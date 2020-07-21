@@ -2,7 +2,7 @@
 $utilidad = '12000';
  ?>
 {{-- TABLA PARA LOS ACTIVOS --}}
-   <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
+   <table style="border-color: black; border: 1px;" border="1" class="table dt-responsive nowrap">
    		<h5 align="center" style="text-align: center; color: black;">ACTIVO</h5>
              <thead style="text-align: center; color: black; font-size: 12px;">
                                     

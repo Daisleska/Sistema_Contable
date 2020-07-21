@@ -1,13 +1,13 @@
-   <table id="basic-datatable" class="table dt-responsive nowrap" >
+   <table class="table dt-responsive nowrap">
                         <thead>
                             <tr style="color: black;">
                                 <th COLSPAN="13" style="text-align: center;">LIBRO DE VENTAS</th>
                             </tr>
                             <tr style="color: black; font-size: 10px;">
-                                <th>Nº</th>
+                               {{--  <th>Nº</th> --}}
                                 <th>FEC</th>
-                                <th>Nº.FACT</th>
-                                <th>Nº. CONTR</th>
+                                <th>Nº FACT</th>
+                                <th>Nº CONTR</th>
                                 <th>RUT</th>
                                 <th>TOTAL VENTA</th>
                                 <th>VENTA EXENTA</th>
@@ -23,7 +23,7 @@
                         <tbody style="font-size: 10px;">
                     @foreach($venta as $key)       
                 <tr>
-                  <td>{{$key->facturav_id}}</td>
+               {{--    <td>{{$key->facturav_id}}</td> --}}
                   <td>{{$key->fecha}}</td>
                   <td>{{$key->n_factura}}</td>
                   <td>{{$key->n_control}}</td>
@@ -41,7 +41,7 @@
                 
                  <tr style="color: black;">
 
-                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="4" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_venta >0) {
                             //TOTALES
@@ -59,9 +59,9 @@
                  
                         ?>
 
-
                       <th style="color: black;" >{{number_format( $total_venta, 2,',','.')}}</th>
                       <th style="color: black;" >{{number_format( $sub_total, 2,',','.')}}</th>
+                      <th style="color: black;" >{{number_format( $iva_total, 2,',','.')}}</th>
                       <th></th>
                       <th></th>
                       <th></th>

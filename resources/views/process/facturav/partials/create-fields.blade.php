@@ -17,18 +17,19 @@
                                 $factura=DB::table ('facturav')->select('n_factura')->take(1)->orderBy('n_factura', 'desc')->first();
 
                                  if($factura) {
+
                             ?>
 
                                 <th>N° Factura</th>
-                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="000<?php  echo $factura->n_factura +1; ?>"></th>
+                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="<?php  echo $factura->n_factura +1; ?>"></th>
 
-                          
+                            
                             </tr>
                           <?php }else{
                             ?>
                                 
                                 <th>N° Factura</th>
-                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="0001"></th>
+                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="1"></th>
 
                                 
                             </tr>
@@ -406,19 +407,19 @@ function add_amount(argument) {
         console.log(f_total);
 
 
-var locale = 'de';
+/*var locale = 'de';
 var options = { minimumFractionDigits: 2, maximumFractionDigits: 2};
-var formatter = new Intl.NumberFormat(locale, options);
+var formatter = new Intl.NumberFormat(locale, options);*/
 //cantidad de productos///
   $(".total_amount").val(total);
   document.getElementById('total').innerHTML = total;
-  $(".monto_total").val(formatter.format(f_total));
+  $(".monto_total").val(f_total);
   document.getElementById('monto_total').innerHTML = f_total;
   $("#subtotales").val(sub_total);
   document.getElementById('totalsub').innerHTML = sub_total;
-  $("#IVA").val(formatter.format(IVA_total));
+  $("#IVA").val(IVA_total);
   document.getElementById('IVA').innerHTML = IVA_total;
-  $(".sub_total_amount").val(formatter.format(sub_total));
+  $(".sub_total_amount").val(sub_total);
   document.getElementById('sub_total').innerHTML = sub_total;
 
 });

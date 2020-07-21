@@ -3,6 +3,7 @@
 
 @section('css')
 <link href="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('breadcrumb')
@@ -118,6 +119,7 @@
             </div>
         </div>
     </div>
+ 
     <div class="col-md-6 col-xl-3">
         <div class="card">
             <div class="card-body p-0">
@@ -140,10 +142,27 @@
         </div>
     </div>
 </div>
-
 <!-- stats + charts -->
-@if($user_type=="Contador")
 <div class="row">
+<div class="col-xl-3">
+    <div class="card">
+        <div class="card-body pb-0">
+            <div class="row">
+              <div class="col-sm-4"><h5 class="card-title">Ventas: <span id="total_grafica"></span></h5></div>
+              <div class="col-sm-6"></div>
+              <div class="col-sm-2">
+                    <select name="val_anio" class="form-control" id="val_anio">
+                      @foreach($anio_factura as $ke)
+                       <option value="{{$ke->year}}">{{$ke->year}}</option>
+                      @endforeach
+                    </select>
+              </div>
+            </div>
+            <div id="targets-chart" class="apex-charts mt-3" dir="ltr"></div>
+        </div>
+    </div>
+</div>
+
  <div class="col-xl-6">
         <div class="card">
             <div class="card-body pb-0">
@@ -171,7 +190,6 @@
         </div>
     </div>
 </div>
-@endif
 <!-- row -->
 @endsection
 @section('script')
@@ -181,8 +199,105 @@
 <script src="{{ URL::asset('Shreyu/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 @endsection
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+@section('script-bottom')
 <!-- init js -->
-<script src="{{ URL::asset('Shreyu/assets/js/pages/dashboard.init.js') }}"></script>
+<script src="{{ URL::asset('js/pages/dashboard.init.js') }}"></script>
+<script>
+$(document).ready(function(){
+        var fecha = new Date();
+        var anio = fecha.getFullYear();
+        grafica(anio);
+})
+
+$(document).ready(function(){
+  $("select[name=val_anio]").change(function(){
+   var anio= document.getElementById("val_anio").value;
+   grafica(anio);
+  });
+})
+
+function grafica(anio){
+/*console.log(anio);*/
+ $.ajax({
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url: '/busquedaA/'+anio+'/buscar',
+    type: 'POST',
+    success: function(res){
+/* ------------- target */
+var gol = Object.values(res);
+var total = 0;
+for (var i = 0; i < gol.length; i++) {
+    total += Number(gol[i]);
+}
+document.getElementById('total_grafica').innerHTML = total;
+/* console.log(Object.values(gol));*/
+
+var options = {
+    chart: {
+        height: 296,
+        type: 'bar',
+        stacked: true,
+        toolbar: {
+            show: false
+        }
+    },
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            columnWidth: '50%',
+        },
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    series: [{
+   /*     name: 'Nuevas Ventas',
+        data: [35, 44, 55, 57, 56, 61, 10, 34, 33, 20, 50, 40]
+    }, {*/
+        name: 'Ventas',
+        data: gol
+    }],
+    xaxis: {
+        categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        axisBorder: {
+            show: false
+        },
+    },
+    legend: {
+        show: false
+    },
+    grid: {
+        row: {
+            colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.2
+        },
+        borderColor: '#f3f4f7'
+    },
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return "Cantidad: " + val 
+            }
+        }
+    }
+}
+
+var chart = new ApexCharts(
+    document.querySelector("#targets-chart"),
+    options
+);
+chart.render();
+}
+});
+}
+
+</script>
+@endsection
 {{-- Alerta si el usuario no ha registrado los datos de la empresa! --}}
 <?php $data_e = \DB::select('SELECT * FROM empresa'); ?> 
 @if (empty($data_e)) 

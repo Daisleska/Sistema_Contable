@@ -48,7 +48,24 @@ class HomeController extends Controller
            $productos=producto::all();
            $proveedores=proveedor::all();
 
-        return view('home', compact('valor_inventario','clientes', 'productos', 'proveedores'));
+          
+           $anio_factura=\DB::select('SELECT DISTINCT YEAR( facturav.fecha) AS year FROM facturav');
+          
+        return view('home', compact('valor_inventario','clientes', 'productos', 'proveedores', 'resultado', 'anio_factura'));
         
     }
+
+     public function busquedaA($anio){
+
+        // Consulta para grafica de ventas
+           $fechas = [1,2,3,4,5,6,7,8,9,10,11,12];
+           for ($i=1; $i <= count($fechas); $i++) { 
+           $resul = \DB::select('SELECT DISTINCT n_control FROM facturav WHERE MONTH(facturav.fecha)='.$i.' AND YEAR(facturav.fecha)='.$anio);
+            $resultado[$i] = count($resul);
+           }
+           //fin
+
+           return $resultado;
+
+     }
 }
