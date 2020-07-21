@@ -129,14 +129,14 @@
 
 
              <h2 style="text-align: center;">Libro Mayor</h2> <br>
-             @foreach($cuen as $val)
+            @foreach($cuen as $val)
                             <table border="1" width="470">
                
 
                     <thead>
                         
                         <tr>
-                            <th style="text-align: left;" colspan="6">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$val->nombre}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;N° {{$val->codigo}}</th>
+                            <th style="text-align: left;" colspan="6">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;{{$val->nombre}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;N°{{$val->codigo}}</th>
                         </tr>
                         <tr>
                             <th id="alto">Fecha</th>
@@ -146,45 +146,82 @@
                             <th id="alto">Haber</th>
                             <th id="alto">Saldo</th>
                        
-
-
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                         @foreach($buscar as $key)
-                       
-
-
-                         @if($val->cuenta_id==$key->cuenta_id)  
                          
-                           <tr>
-                               <td></td>
-                               <td></td>
-                               <td></td>
-                            @if($key->debe)
+                         @foreach($bus as $key)
+                         
+                        
+                           @if($key->cuenta_id==$val->cuenta_id) 
+                          
+
+                           @if($key->debe)
+                           <tr style="text-align: center;">
+
+                               <td>{{$key->fecha}}</td>
+                               <td style="text-align: left;">{{$key->descripcion}}</td>
+                               <td>{{$key->n_folio}}/ {{$key->n_asiento}}</td>
                                <td style="text-align: center;">{{number_format($key->debe,2,',','.')}}</td>
-                            @else 
-                            <td></td>
-                            @endif
-                            @if($key->haber)
+                               <td></td>
+                            
+                                <td>{{number_format(abs( $saldos[$i][1]),2,',','.')}}</td> 
+                            </tr>
+                            
+                            @else if($key->haber)
+                            <tr style="text-align: center;">
+
+                               <td>{{$key->fecha}}</td>
+                               <td style="text-align: left;">{{$key->descripcion}}</td>
+                               <td>{{$key->n_folio}}/ {{$key->n_asiento}}</td>
+                               <td></td>
                                <td style="text-align: center;">{{number_format($key->haber,2,',','.')}}</td>
-                            @else
-                            <td></td>
+
+                            
+                               <td>{{number_format(abs( $saldos[$i][1]),2,',','.')}}</td>
+                            
+                          
+                            </tr>
+
+                            @endif {{$i++}}
                             @endif
-                               <td style="text-align: center;"></td>
-                           </tr>
-                           @endif
-                     
+                          
                         
                             @endforeach
+                            
+                         
+
+
+                            @foreach($total as $item)
+                            @if($val->cuenta_id==$item[0])
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                @if($item[1])
+                                <th>{{number_format($item[1],2,',','.')}}</th>
+                                @else 
+                                <th></th>
+                                @endif
+                                @if($item[2])
+                                <th>{{number_format($item[2],2,',','.')}}</th>
+                                @else 
+                                <th></th>
+                                @endif
+
+                                <th></th>
+                            </tr>
+                            @endif
+                            @endforeach  
+                            
                           
                      </tbody>
                     
         
-                </table>
+                </table>  
                 <br>
-                @endforeach
-
+                @endforeach  
+            
 </body>
 
 </html>

@@ -377,23 +377,36 @@ class DiarioController extends Controller
 
      public function pdfmayor(){
        
+       
         //Datos de cuenta
         $cuen= \DB::select('SELECT DISTINCT mayor.cuenta_id, cuentas.nombre, cuentas.codigo, cuentas.tipo FROM mayor, cuentas WHERE cuentas.id=mayor.cuenta_id AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) ORDER BY cuentas.codigo ASC');
-      
-        //Debe
-        $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe, mayor.haber FROM mayor WHERE YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
+
+       $i=0;
+       foreach ($cuen as $key) {
+
+           $totales= \DB::select('SELECT SUM(mayor.debe) AS totald, SUM(mayor.haber) AS totalh FROM mayor WHERE mayor.cuenta_id='.$key->cuenta_id.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
+    
+           foreach ($totales as $val) {
 
 
-        //$descrip= \DB::select('SELECT DISTINCT descripcion, fecha, mayor.cuenta_id FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id=mayor.cuenta_id OR cuenta_has_diario.c_destino=mayor.cuenta_id ORDER BY n_asiento ASC');
-        
-        $info= \DB::select('SELECT DISTINCT n_asiento, n_folio FROM diario, cuenta_has_diario, mayor WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND cuenta_has_diario.cuenta_id=mayor.cuenta_id OR cuenta_has_diario.c_destino=mayor.cuenta_id ORDER BY n_asiento ASC');
-     
+          $total[$i][0]=$key->cuenta_id;
+          $total[$i][1]=$val->totald;
+          $total[$i][2]=$val->totalh;
+       $i++; }
+       }
+       
+       
+       
+       
+       $i=0;
+       foreach ($cuen as $val) {
 
-           $saldo=0;
-           $i=0;
-          foreach ($buscar as $key) {
+           $buscar= \DB::select('SELECT  mayor.cuenta_id, mayor.debe, mayor.haber FROM mayor WHERE cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE)');
+           
+            $saldo=0;
+           foreach ($buscar as $key) {
 
-           if ($key->debe) {
+            if ($key->debe) {
                $debe=$key->debe;
            }else{
 
@@ -406,21 +419,32 @@ class DiarioController extends Controller
 
             $haber=0;
            }
+           
 
            $saldo=$saldo+$debe-$haber;
-            
 
-            $saldos[$i][0]=$key->cuenta_id;
-            $saldos[$i][1]=$saldo;
+           $saldos[$i][0]=$key->cuenta_id;
+           $saldos[$i][1]=$saldo;
 
-           $i++;
-     }
+           
+          $i++;
+           }
+       }
+       
+     
+      
+
+
+       $bus= \DB::select('SELECT DISTINCT cuenta_has_diario.fecha, cuenta_has_diario.n_asiento, diario.n_folio, mayor.cuenta_id, mayor.debe, mayor.haber, cuenta_has_diario.descripcion FROM mayor, cuenta_has_diario, diario WHERE cuenta_has_diario.n_asiento=mayor.chd_as AND YEAR(mayor.created_at)=YEAR(CURRENT_DATE) ORDER BY cuenta_has_diario.n_asiento ASC');
+
+      
+        $i=0;
+
         
-      //dd($saldos, $buscar);
 
         $empresa= empresa::all();
 
-        $dompdf = PDF::loadView('pdf.mayor', compact('cuen', 'buscar', 'info', 'saldos', 'empresa'));
+        $dompdf = PDF::loadView('pdf.mayor', compact('cuen', 'bus', 'total', 'saldos', 'empresa', 'i'));
        
         return $dompdf->stream('mayor.pdf');
     }
