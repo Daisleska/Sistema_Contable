@@ -155,7 +155,7 @@ if ($x_inventario) {
         </a>
     </li>
     <li>
-         <a href="{{ route('diario.mayor') }}">
+         <a href="{{ route('mayor') }}">
             <i data-feather="book-open"></i>
             <span>Mayor</span>
         </a>

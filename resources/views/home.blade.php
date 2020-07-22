@@ -49,31 +49,7 @@
     ?> 
 
 <div class="row">
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body p-0">
-                <div class="media p-3">
-                    <div class="media-body">
-                        <span class="text-muted text-uppercase font-size-12 font-weight-bold">Valor Del
-                            Inventario</span>
-                              <?php
-                          
-                              if ($valor_inventario) {
-                         $total_inventario=array_sum($valor_inventario);
-                               }else{
-                                $total_inventario=0;
-                               }  ?>
-                   <h2 class="mb-0">{{number_format($total_inventario, 2,',','.')}} <small>Bs.F</small></h2>
-                    </div>
-                    <div class="align-self-center">
-                        <span class="icon-lg icon-dual-success" data-feather="dollar-sign"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-4 col-xl-3">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -94,10 +70,8 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-4 col-xl-3">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -120,7 +94,7 @@
         </div>
     </div>
  
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-4 col-xl-3">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -142,53 +116,60 @@
         </div>
     </div>
 </div>
-<!-- stats + charts -->
 <div class="row">
-<div class="col-xl-3">
-    <div class="card">
-        <div class="card-body pb-0">
-            <div class="row">
-              <div class="col-sm-4"><h5 class="card-title">Ventas: <span id="total_grafica"></span></h5></div>
-              <div class="col-sm-6"></div>
-              <div class="col-sm-2">
-                    <select name="val_anio" class="form-control" id="val_anio">
-                      @foreach($anio_factura as $ke)
-                       <option value="{{$ke->year}}">{{$ke->year}}</option>
-                      @endforeach
-                    </select>
-              </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-body p-0">
+                <h5 class="card-title header-title border-bottom p-3 mb-0">Totales</h5>
+                <!-- stat 2 -->
+                <div class="media px-3 py-4">
+                    <div class="media-body">
+                         <?php
+                          
+                              if ($valor_inventario) {
+                         $total_inventario=array_sum($valor_inventario);
+                               }else{
+                                $total_inventario=0;
+                               }  ?>
+                        <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{number_format($total_inventario, 2,',','.')}} <small>Bs.F</small></h4>
+                        <span class="text-muted">Valor Del
+                            Inventario</span>
+                    </div>
+                    <i data-feather="dollar-sign" class="align-self-center icon-dual icon-lg"></i>
+                </div>
             </div>
-            <div id="targets-chart" class="apex-charts mt-3" dir="ltr"></div>
         </div>
     </div>
 </div>
-
- <div class="col-xl-6">
+<!-- stats + charts -->
+<div class="row">
+    <div class="col-xl-3">
         <div class="card">
             <div class="card-body pb-0">
-                <ul class="nav card-nav float-right">
-                    <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">Hoy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">7d</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">15d</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">1m</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">1y</a>
-                    </li>
-                </ul>
-                <h5 class="card-title mb-0 header-title">balance</h5>
-
-                <div id="revenue-chart" class="apex-charts mt-3" dir="ltr"></div>
+                <div class="row">
+                  <div class="col-sm-4"><h5 class="card-title">Ventas: <span id="total_grafica"></span></h5></div>
+                  <div class="col-sm-6"></div>
+                  <div class="col-sm-2">
+                        <select name="val_anio" class="form-control" id="val_anio">
+                          @foreach($anio_factura as $ke)
+                           <option value="{{$ke->year}}">{{$ke->year}}</option>
+                          @endforeach
+                        </select>
+                  </div>
+                </div>
+                <div id="targets-chart" class="apex-charts mt-3" dir="ltr"></div>
             </div>
         </div>
     </div>
+<!-- products -->
+    <div class="col-xl-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mt-0 mb-0 header-title">Sales By Category</h5>
+                <div id="sales-by-category-chart" class="apex-charts mb-0 mt-4" dir="ltr"></div>
+            </div> <!-- end card-body-->
+        </div> <!-- end card-->
+    </div> <!-- end col-->
 </div>
 <!-- row -->
 @endsection

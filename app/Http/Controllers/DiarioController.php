@@ -113,7 +113,7 @@ class DiarioController extends Controller
     {
       $cuentas=cuenta::all();
 
-       return view('process.diario.mayor', compact('cuentas'));
+       return view('process.mayor.mayor', compact('cuentas'));
     }
 
       
@@ -517,6 +517,13 @@ class DiarioController extends Controller
     $historial= \DB::select('SELECT * FROM diario WHERE estado="Cerrado"');
 
       return view('process.diario.historial_diario', compact('historial'));
+   }
+
+   public function historial_mayor()
+   {
+    $historial= \DB::select('SELECT * FROM mayor');
+
+      return view('process.mayor.historial_mayor', compact('historial'));
    }
 
    public function busqueda($anio)

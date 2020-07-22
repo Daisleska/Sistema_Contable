@@ -1,7 +1,29 @@
    <table class="table dt-responsive nowrap">
                         <thead>
                             <tr style="color: black;">
-                                <th COLSPAN="13" style="text-align: center;">LIBRO DE VENTAS</th>
+                                <th COLSPAN="6" style="text-align: left;">LIBRO DE VENTAS</th>
+                                <th COLSPAN="3">     
+                                  <div class="btn-group">
+
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                   <a href="{{ route('inventario_view') }}" class="dropdown-item notify-item">
+                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
+                        <span>Excel</span>
+                    </a>
+                    <a href="{{ route('inventario.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                    <a href="javascript:window.print()" class="dropdown-item notify-item">
+                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
+                        <span>Imprimir</span>
+                    </a>
+                </div>
+            </div></th>
                             </tr>
                             <tr style="color: black; font-size: 10px;">
                                {{--  <th>Nº</th> --}}

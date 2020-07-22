@@ -48,10 +48,10 @@ Route::resource('balances', 'BalancesController');
 
 
 Route::get('actualizar_inventario','FacturasCController@actualizar_inventario')->name('actualizar_inventario');
-Route::get('diario.mayor','DiarioController@mayor')->name('diario.mayor');
+Route::get('mayor','DiarioController@mayor')->name('mayor');
+Route::get('mayor.historial','DiarioController@historial_mayor')->name('historial_mayor');
 Route::get('diario.historial','DiarioController@historial')->name('historial');
 Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
-
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
     Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');

@@ -81,7 +81,8 @@
                         <span>Imprimir</span>
                     </a>
                 
-                    </div></div></th>
+                    </div></div>
+                    <a href="{{ route('historial_mayor') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
                   </tr>
 
                     </table>
