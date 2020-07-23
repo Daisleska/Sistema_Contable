@@ -11,45 +11,15 @@
     <div class="col-sm-4 col-xl-6">
         <h4 class="mb-1 mt-0">Panel de Control</h4>
     </div>
-    <div class="col-sm-8 col-xl-6">
-        <form class="form-inline float-sm-right mt-3 mt-sm-0">
-            <div class="form-group mb-sm-0 mr-2">
-                <input type="text" class="form-control" id="dash-daterange" style="min-width: 190px;" />
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
-                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item notify-item">
-                        <i data-feather="mail" class="icon-dual icon-xs mr-2"></i>
-                        <span>Correo</span>
-                    </a>
-                    <a href="#" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item notify-item">
-                        <i data-feather="file" class="icon-dual icon-xs mr-2"></i>
-                        <span>Re-Generate</span>
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
 @endsection
-
-
 @section('content')
     <?php 
     $user_type=\Auth::User()->user_type; 
     ?> 
 
 <div class="row">
-    <div class="col-md-4 col-xl-3">
+    <div class="col-lg-4 col-md-4 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -71,7 +41,7 @@
         </div>
     </div>
 
-    <div class="col-md-4 col-xl-3">
+    <div class="col-lg-4 col-md-4 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -94,7 +64,7 @@
         </div>
     </div>
  
-    <div class="col-md-4 col-xl-3">
+    <div class="col-lg-4 col-md-4 col-xl-4">
         <div class="card">
             <div class="card-body p-0">
                 <div class="media p-3">
@@ -117,7 +87,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xl-3">
+    <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body p-0">
                 <h5 class="card-title header-title border-bottom p-3 mb-0">Totales</h5>
@@ -143,7 +113,7 @@
 </div>
 <!-- stats + charts -->
 <div class="row">
-    <div class="col-xl-3">
+    <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body pb-0">
                 <div class="row">
@@ -162,7 +132,7 @@
         </div>
     </div>
 <!-- products -->
-    <div class="col-xl-5">
+    <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title mt-0 mb-0 header-title">Sales By Category</h5>

@@ -179,6 +179,8 @@ class ComprasController extends Controller
 
         $dompdf = PDF::loadView('pdf.compra', compact('compra','i', 'mesactual', 'meses','x','num','costo_t', 'total_total','total_subtotal','total_IVA'  ,'empresa'));
 
+        $dompdf->setPaper('A4', 'landscape');
+
         return $dompdf->stream('compra.pdf');
 
     }
@@ -224,7 +226,7 @@ class ComprasController extends Controller
 
 
         $dompdf = PDF::loadView('pdf.venta', compact('venta','i', 'mesactual', 'meses','x','num','total_venta','total_subventa','total_IVA_venta','empresa'));
-
+        $dompdf->setPaper('A4', 'landscape');
         return $dompdf->stream('venta.pdf');
 
     }

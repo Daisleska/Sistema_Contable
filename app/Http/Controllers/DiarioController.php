@@ -99,7 +99,7 @@ class DiarioController extends Controller
      public function cerrar($n_folio){
 
         $cuentas=cuenta::all();
-        $diario = \DB::select('UPDATE diario SET estado ="Cerrado" WHERE n_folio='.$n_folio);
+        $diario = \DB::update('UPDATE diario SET estado ="Cerrado" WHERE n_folio='.$n_folio);
         $historial= \DB::select('SELECT * FROM diario WHERE estado="Cerrado"');
 
  
@@ -160,7 +160,7 @@ class DiarioController extends Controller
 
      
 
-            $cuen = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuenta[$i].'');
+            $cuen = \DB::update('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->de_cuenta[$i].'');
 
 
         }
@@ -184,7 +184,7 @@ class DiarioController extends Controller
 
             $nuevosaldo=$saldo+$request->a_monto[$i];
          
-            $cuen = \DB::select('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->a_cuenta[$i].'');
+            $cuen = \DB::update('UPDATE cuentas SET saldo ='.$nuevosaldo.' WHERE id='.$request->a_cuenta[$i].'');
 
 
         }

@@ -32,7 +32,8 @@ class CajaChicaController extends Controller
     $mes = date('F');
 
         $cajachica = \DB::select('SELECT * FROM cajachica WHERE WEEK(fecha)='.$semana);
-       return view('process.cajachica.index', compact('cajachica', 'semana','mes'));
+        $alerta = 0;
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes','alerta'));
        
   
     }//fin index
@@ -243,6 +244,14 @@ class CajaChicaController extends Controller
         FROM cajachica
 
         WHERE fecha BETWEEN "'.$request->fecha.'" AND "'.$request->fecha2.'"');
+        if (empty($pdf)) {
+          $semana = date('W')-1;
+          $mes = date('F');
+          $cajachica = \DB::select('SELECT * FROM cajachica WHERE WEEK(fecha)='.$semana);
+          $alerta = 1;
+       return view('process.cajachica.index', compact('cajachica', 'semana','mes', 'alerta'));
+
+        }else{
 
         $i = 1;
 
@@ -261,6 +270,7 @@ class CajaChicaController extends Controller
         $dompdf = PDF::loadView('pdf.cajachica', compact('pdf', 'i','empresa', 'fecha', 'fecha2', 'total_ingresos', 'total_egresos'));
 
         return $dompdf->stream('cajachica.pdf');
+        }
     }
     
     

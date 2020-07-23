@@ -129,7 +129,7 @@ class FacturasCController extends Controller
        $nuevo=$val->exis_inv + $request->amount[$i];
        }
 
-        $inventario = \DB::select('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
+        $inventario = \DB::update('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
 
          //----------Actualizar existencia en productos----------------
         $pro_update = \DB::select('SELECT productos.id, productos.codigo, productos.existencia FROM  productos
@@ -139,7 +139,7 @@ class FacturasCController extends Controller
             $nuevo= $val->existencia + $request->amount[$i] ;
             }
 
-        $pro_update = \DB::select('UPDATE productos SET existencia ='.$nuevo.' WHERE productos.id='.$request->product_id[$i]);
+        $pro_update = \DB::update('UPDATE productos SET existencia ='.$nuevo.' WHERE productos.id='.$request->product_id[$i]);
 
          }//fin del ciclo
 
@@ -302,7 +302,7 @@ class FacturasCController extends Controller
        $regresar=$existencia-$producto_stock;
        
 
-        $cambiar= \DB::select('UPDATE inventario SET existencia ='.$regresar.' WHERE inventario.productos_id='.$id_producto);
+        $cambiar= \DB::update('UPDATE inventario SET existencia ='.$regresar.' WHERE inventario.productos_id='.$id_producto);
 
     }
 

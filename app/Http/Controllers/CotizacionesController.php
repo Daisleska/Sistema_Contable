@@ -29,7 +29,7 @@ class CotizacionesController extends Controller
      */
     public function index()
     {  
-       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.id, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
 
 
 
@@ -203,7 +203,21 @@ class CotizacionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cotizacion = cotizacion::find($id);
+    /*    dd($cotizacion);*/
+        $cotizacion->delete();
+
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado una cotización';
+            $bitacoras->save();
+
+        flash('Registro eliminado satisfactoriamente');
+
+        return back();
     }
 
     public function descupdate (Request $request)

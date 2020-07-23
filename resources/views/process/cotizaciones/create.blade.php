@@ -44,7 +44,7 @@
                                 <div class="col-lg-4">
                                     
                                 <p>N° Cotización</p>
-                               <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="0000<?php  echo $cotizacion->n_cotizacion +1; ?>">
+                               <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="<?php  echo $cotizacion->n_cotizacion +1; ?>">
                                 </div>
 
                           
@@ -54,7 +54,7 @@
                                 <div class="col-lg-4"> 
                                 <p>N° Cotización</p>
                                     
-                                <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="00001">
+                                <input style="width: 160px;" type="text" readonly="readonly" name="n_cotizacion" class="form-control" value="1">
                                 </div>
 
                            

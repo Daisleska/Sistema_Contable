@@ -237,7 +237,7 @@
 <script src="{{ URL::asset('js/jquery/dist/jquery.maskedinput.js')}}
 "></script> 
 @endsection
-
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 @section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
@@ -259,4 +259,28 @@ var year = (yy < 1000) ? yy + 1900 : yy;
 //]]>
 
 </script>
+@if($alerta == '1')
+<script type="text/javascript">
+  $(function(){
+        alertica();
+    });
 
+      function alertica(){
+       swal({
+        icon : "error",
+        title : "Lo sentimos, no posee ningun registro",
+        text : "El sistema de busqueda no encontro ningun registro acorde con la fecha ingresa, intente nuevamente!",
+        buttons : {
+            confirm: {
+                text: "OK",
+                value: true,
+                visible: true,       
+            },
+             
+        },
+
+       });
+
+    }
+</script>
+@endif

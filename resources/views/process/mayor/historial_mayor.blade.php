@@ -35,7 +35,7 @@
                     <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">
                       <thead>
-                        <th></th>
+                        <th>#</th>
                         <th></th>
                         <th></th>
                         <th>Año</th>
