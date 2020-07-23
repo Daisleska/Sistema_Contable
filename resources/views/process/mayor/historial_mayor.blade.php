@@ -35,20 +35,20 @@
                     <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">
                       <thead>
-                        <th>#</th>
-                        <th>Debe</th>
-                        <th>Haber</th>
-                        <th>Creado</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Año</th>
                         <th>Opciones</th>
                       </thead>
                       <tbody>
                           @foreach($historial as $valor)
                         <tr>
-                          <td>{{$valor->cuenta_id}}</td>
-                          <td>{{$valor->debe}}</td>
-                          <td>{{$valor->haber}}</td>
-                          <td>{{$valor->created_at}}</td>
-                          <td><a href="" class="btn btn-info btn-xs remove-item"><i data-feather="download"></i></a></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>{{$valor->anio}}</td>
+                          <td><a href="{{ route('mayor.indimayor', $valor->anio) }}" class="btn btn-info btn-xs remove-item"><i data-feather="download"></i></a></td>
                         </tr>
                         @endforeach
                       </tbody>

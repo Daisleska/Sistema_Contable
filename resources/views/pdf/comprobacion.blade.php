@@ -1,44 +1,148 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
- ?>
- <th COLSPAN="3">     
-                                  <div class="btn-group">
+<head>
 
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
-                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                   <a href="" class="dropdown-item notify-item">
-                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
-                        <span>Excel</span>
-                    </a>
-                    <a href="{{ route('balance.pdfcomprobacion') }}" class="dropdown-item notify-item">
-                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
-                        <span>PDF</span>
-                    </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
-                </div>
-            </div></th>
-            <br>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ public_path('../resources/views/pdf/boostrap/bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <style>
+        img {
+            width: 10%;
+        
+      
 
-   <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
+
+        }
+     
+
+        #alto {
+          
+          /* Alto de las celdas */
+          height: 40px;
+        }
+
+        body {
+          font-family: "Times New Roman", serif;
+          margin: 0mm 1.2cm 1cm 1cm;
+         }
+
+
+        h3 {
+            text-align: center;
+        }
+
+        small {
+            margin-top: 20%;
+        }
+
+        #titulo {
+            text-align: center;
+
+        }
+
+        #membrete {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        #l {
+            text-align: left;
+            margin-left: 4cm;
+
+        }
+
+        #c{
+            text-align:center;
+            height: 40px;
+        }
+
+        
+
+
+        @font-face {
+            font-family: 'Times-Bold';
+            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
+        }
+
+        body {
+            font-family: 'Times-Bold';
+        }
+
+        table {
+           
+            border-collapse: collapse;
+
+        }
+
+        #tabla {
+
+            margin-top: -150px;
+
+        }
+
+        #a{
+            text-align: right;
+           margin-right: 2cm; 
+        }
+
+        .circular--square {
+       border-radius: 60%;
+         }
+
+    </style>
+</head>
+
+<body>
+    @foreach($empresa as $key)
+    <table border="0"  width="470">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
+
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
+            
+            
+     
+
+         @endforeach
+
+      </table>  
+
+        </div>
+
+             <h2 style="text-align: center;">Balance de Comprobación</h2> <br>
+             
+                            
+          <table border="1" width="470">
     <br>
-             <thead style="text-align: center; color: black; font-size: 14px;">
+             <thead style="text-align: center; color: black;">
              <tr> 
                 <th style="text-align: center;" rowspan="2">N°</th>    
                 <th style="text-align: center;" rowspan="2">Cuenta</th>                 
                 <th style="text-align: center;" colspan="2">Movimientos</th>
                 <th style="text-align: center;" colspan="2">Balance de Saldo</th>
              </tr>
-            
+             <tr>
                 <th style="text-align: center;">Debe</th>
                 <th style="text-align: center;">Haber</th>
                 <th style="text-align: center;">Deudor</th>  
-                <th style="text-align: center;">Acreedor</th>    
+                <th style="text-align: center;">Acreedor</th>  
+            </tr>  
              </thead>
              <tbody>
                 
@@ -49,7 +153,7 @@
 
                 if ($key->tipo=="activo") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -107,7 +211,7 @@
 
               if ($key->tipo=="pasivo") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -166,7 +270,7 @@
 
               if ($key->tipo=="capital") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -225,7 +329,7 @@
            
             if ($key->tipo=="egreso") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -284,7 +388,7 @@
 
             if ($key->tipo=="ingreso") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -364,3 +468,6 @@
                      </tr>
          </tbody>
 </table>
+</body>
+
+</html>

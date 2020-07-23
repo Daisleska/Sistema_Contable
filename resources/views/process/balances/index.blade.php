@@ -39,7 +39,7 @@
                      <table style="color: black;">
                       
 
-                    <th style="align-content: right;">
+                    <!--<th style="align-content: right;">
 
                        <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -60,7 +60,7 @@
                         <span>Imprimir</span>
                     </a>
                 
-                    </div></div></th>
+                    </div></div></th>-->
               
                     @foreach($a as $ke)
             <form  method="GET" action="{{route('balances.show', $ke->year)}}">

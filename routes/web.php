@@ -81,6 +81,12 @@ Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate'
 
 // Reportes en PDF
 Route::get('diario.individual/{n_folio}','DiarioController@individual')->name('diario.individual');
+Route::get('mayor.indimayor/{anio}','DiarioController@mayorindividual')->name('mayor.indimayor');
+
+Route::get('compra.pdfcompra','ComprasController@pdfcompra')->name('compra.pdfcompra');
+Route::get('venta.pdfventa','ComprasController@pdfventa')->name('venta.pdfventa');
+
+Route::get('balance.pdfcomprobacion','BalancesController@pdfcomprobacion')->name('balance.pdfcomprobacion');
 
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');

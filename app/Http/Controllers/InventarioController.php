@@ -118,7 +118,7 @@ class InventarioController extends Controller
          $empresa= empresa::all();
          $date = date('d-m-Y');
         $dompdf = PDF::loadView('pdf.inventario', compact('inventario', 'i','date', 'empresa'));
-        $dompdf->setPaper('a4', 'landscape');
+       
 
         return $dompdf->stream('inventario.pdf');
     }
