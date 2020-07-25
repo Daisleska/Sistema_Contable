@@ -138,9 +138,10 @@ class CotizacionesController extends Controller
 
         }
             if ($cotizacion->save()) {
-             $pdf=$this->pdf($request->n_cotizacion);
+            $pdf=$this->pdf($request->n_cotizacion);
             $clientes=cliente::find($request->clientes_id);
-            Mail::to($clientes->email)->send(new email_Cotizacion($cotizacion->id, $pdf)); 
+            $email= $clientes->email;   /* dd($email);*/
+            Mail::to($email)->send(new email_Cotizacion($cotizacion->id, $pdf)); 
 
             flash('¡Registro Exitoso!', 'success');
        //registrar accion en bitacora-----------------------------------
