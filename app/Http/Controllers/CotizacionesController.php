@@ -138,10 +138,20 @@ class CotizacionesController extends Controller
 
         }
             if ($cotizacion->save()) {
-            $pdf=$this->pdf($request->n_cotizacion);
+                 $pdf=$this->pdf($request->n_cotizacion);
+                 $mensaje= 'hola hector';
+                 $clientes=cliente::find($request->clientes_id);
+            $email= $clientes->email;   
+                $r=Mail::send(new email_Cotizacion($cotizacion->id, $pdf), 
+                    ['mensaje' => $mensaje], function ($m) use ($mensaje, $email){
+                        $m->from('blattsystem@eiche.cl', 'Blatt');
+                        $m->to($email)->subject('avisos');
+                    });
+
+           /* $pdf=$this->pdf($request->n_cotizacion);
             $clientes=cliente::find($request->clientes_id);
             $email= $clientes->email;   /* dd($email);*/
-            Mail::to($email)->send(new email_Cotizacion($cotizacion->id, $pdf)); 
+            #Mail::to($email)->send(new email_Cotizacion($cotizacion->id, $pdf)); */
 
             flash('¡Registro Exitoso!', 'success');
        //registrar accion en bitacora-----------------------------------
