@@ -1,3 +1,4 @@
+<p style="margin: 1cm;">Todos los campos son requeridos (<b style="color:red;">*</b>)</p>
 <div class="row">
  <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -41,8 +42,8 @@
 
                                
 
-                                <th><b style="color:red;">*</b>RUT </th>
-                                <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""> 
+                                <th><b style="color:red;">*</b> RUT </th>
+                                <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value="" required="required"> 
                              
                                 <small><span id="mensaje" style="color:red"></span></small>
                                 </th>
@@ -54,14 +55,14 @@
                                 ?>
 
                                 <th>N°control</th>
-                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="000000<?php  echo $factura->n_factura +1; ?>" ></th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="<?php  echo $factura->n_factura +1; ?>" ></th>
                          
                             </tr>
                              <?php }else{
                             ?>
                               
                               <th>N°control</th>
-                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="0000001" ></th>
+                                <th><input style="width: 160px;" type="text" name="n_control" class="form-control" readonly="readonly" value="1" ></th>
 
 
 
@@ -96,17 +97,17 @@
                             <tr>
                                 <th>Domicilio</th>
                                 <th><input style="width: 150px;" type="text" name="domicilio" id="domicilio" class="form-control"  value="" required></th>
-                                <th><b style="color:red;">*</b>Forma de pago</th>
+                                <th><b style="color:red;">*</b> Forma de pago</th>
                                 <th>
-                            <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
+                            <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige" required="required">
                                   
                                   <option value="transferencia" selected="selected">Tranferencia</option>
                                   <option value="efectivo">Efectivo</option>
                                   <option value="cheque">Cheque</option>
                                 </select></th>
 
-                                <th><b style="color:red;">*</b>Divisa</th>
-                                <th><select style="width: 50" name="divisa" class="form-control">
+                                <th><b style="color:red;">*</b> Divisa</th>
+                                <th><select style="width: 50" name="divisa" class="form-control" required="required">
                                 <option value="Bs.S">VEF</option>
                                 <option value="£">GBP</option>
                                 <option value="¥">JPY</option>
@@ -126,7 +127,7 @@
 
 <div class="row">
        <div class="col-lg-12">
-                                <label for="name"> <b style="color:red;">*</b>Productos:</label>
+                                <label for="name"> <b style="color:red;">*</b> Productos:</label>
                                 <select  class="select2 form-control custom-select" style="width: 100%; height:36px;" name="productos_id" id="products_select">
                                     <option selected="selected" disabled="disabled" readonly>Seleccione el Producto</option>
                                     @foreach($products as $key)
@@ -138,7 +139,7 @@
 
 <div class="row mb-3">
                             <div class="col-lg-12">
-                                <label for="cedula"> <b style="color:red;">*</b>Lista de Productos:</label>
+                                <label for="cedula"> <b style="color:red;">*</b> Lista de Productos:</label>
                                 <div class="table-responsive">
                                     <table id="lista_productos" class="table table-striped table-bordered">
                                         <thead>

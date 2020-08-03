@@ -97,7 +97,7 @@
 
 <body>
     @foreach($empresa as $key)
-    <table border="0"  width="470">
+    <table border="0"  width="700">
         <tr>
        
             <th style="text-align: left;">EICHE, C.L</th>
@@ -126,9 +126,9 @@
         
              <h2 style="text-align: center;">Libro Ventas</h2>
 
-             <table border="1" width="500">
+             <table border="1" width="700">
                  <thead>
-                  <tr style="color: black; font-size: 15px;">
+                  <tr style="color: black; font-size: 15px; text-align: center;">
                                 <th>Nº</th>
                                 <th>FEC</th>
                                 <th>Nº FACT</th>
@@ -147,7 +147,7 @@
                     
                         <tbody style="font-size: 15px;">
                     @foreach($venta as $key)       
-                <tr>
+                <tr style="text-align: center;">
                   <td>{{$key->facturav_id}}</td>
                   <td>{{$key->fecha}}</td>
                   <td>{{$key->n_factura}}</td>
@@ -164,9 +164,9 @@
 
                 
                 
-                 <tr style="color: black;">
+                 <tr style="color: black; text-align: center;">
 
-                      <th COLSPAN="4" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="5" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_venta >0) {
                             //TOTALES
@@ -183,15 +183,14 @@
                       }
                  
                         ?>
-
+                      
                       <th style="color: black;" >{{number_format( $total_venta, 2,',','.')}}</th>
                       <th style="color: black;" >{{number_format( $sub_total, 2,',','.')}}</th>
                       <th style="color: black;" >{{number_format( $iva_total, 2,',','.')}}</th>
                       <th></th>
                       <th></th>
                       <th></th>
-                     
-                      <th COLSPAN="6" style="color: black;"></th>
+                      <th style="color: black;"></th>
                       
                    
                 </tr>

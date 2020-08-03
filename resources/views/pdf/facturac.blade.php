@@ -143,14 +143,14 @@
       <tr> 
            
  
-         <th style="text-align: right;">Factura N° {{$val->n_factura}}</th>
+         <th style="text-align: right;">Factura N° 000{{$val->n_factura}}</th>
 
            
       </tr>
       <tr> 
            
  
-         <th style="text-align: right;">Factura N° {{$val->n_control}}</th>
+         <th style="text-align: right;">N° de Control 000000{{$val->n_control}}</th>
 
            
       </tr>

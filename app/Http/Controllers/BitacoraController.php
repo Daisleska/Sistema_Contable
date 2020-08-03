@@ -31,7 +31,7 @@ class BitacoraController extends Controller
          $empresa= empresa::all();
          $date = date('d-m-Y');
         $dompdf = PDF::loadView('pdf.bitacora', compact('bitacora', 'i','date', 'empresa'));
-        $dompdf->setPaper('a4', 'landscape');
+        
 
         return $dompdf->stream('bitacora.pdf');
     }

@@ -143,14 +143,14 @@
       <tr> 
            
  
-         <th style="text-align: right;">Factura N° {{$val->n_factura}}</th>
+         <th style="text-align: right;">Factura N° 000{{$val->n_factura}}</th>
 
            
       </tr>
       <tr> 
            
  
-         <th style="text-align: right;">Factura N° {{$val->n_control}}</th>
+         <th style="text-align: right;">N° de Control 000000{{$val->n_control}}</th>
 
            
       </tr>
@@ -241,8 +241,7 @@
                 <table>
 
                   @foreach($facturav as $val)
-                  <td><b>Domicilio:</b> {{$val->domicilio}}&nbsp; &nbsp; &nbsp;</td>
-                  <td><b>Forma de Pago:</b> {{$val->f_pago}}</td>
+                  <td><b>Domicilio:</b> {{$val->domicilio}}&nbsp; &nbsp; &nbsp;<b>Forma de Pago:</b> {{$val->f_pago}}</td>
                   @endforeach
                 </table>
                 <br>

@@ -60,7 +60,7 @@
                 @foreach($cotizacion as $key) 
                 <tr>
                   <td>{{date("d-m-Y", strtotime($key->fecha)) }}</td>
-                  <td>{{$key->n_cotizacion}}</td>
+                  <td>000{{$key->n_cotizacion}}</td>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{$key->email}}</td>

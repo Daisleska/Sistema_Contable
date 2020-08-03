@@ -97,7 +97,7 @@
 
 <body>
     @foreach($empresa as $key)
-    <table border="0"  width="470">
+    <table border="0"  width="700">
         <tr>
        
             <th style="text-align: left;">EICHE, C.L</th>
@@ -126,9 +126,9 @@
         
              <h2 style="text-align: center;">Libro Compras</h2>
 
-             <table border="1" width="500">
+             <table border="1" width="700">
                  <thead>
-                   <tr style="color: black; font-size: 15px;">
+                   <tr style="color: black; font-size: 15px; text-align: center;">
                                 <th>N°</th> 
                                 <th>FEC</th>
                                 <th>N° FACT.</th>
@@ -146,7 +146,7 @@
                         <tbody style="font-size: 15px;">
                            
                       @foreach($compra as $item)
-                <tr>
+                <tr style="text-align: center;">
                  
                   <td>{{ $num++ }}</td>
                   <td>{{$item->fecha}}</td>
@@ -167,9 +167,9 @@
 
                           @endforeach
 
-                <tr style="color: black;">
+                <tr style="color: black; text-align: center;">
 
-                      <th COLSPAN="5" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_total>0) {
                             //TOTALES
@@ -190,11 +190,12 @@
 
                       <th style="color: black;" >{{number_format( $iva_total, 2,',','.')}}</th>
                       <th style="color: black;" >{{number_format( $sub_total, 2,',','.')}}</th>
+                  
                       <th></th>
                       <th></th>
                       <th></th>
                      
-                      <th COLSPAN="6" style="color: black;">{{number_format( $total_compra, 2,',','.')}}</th>
+                      <th  style="color: black;">{{number_format( $total_compra, 2,',','.')}}</th>
                       
                    
                 </tr>

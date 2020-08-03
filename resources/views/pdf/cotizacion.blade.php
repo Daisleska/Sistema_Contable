@@ -143,7 +143,7 @@
       <tr> 
            
  
-         <th style="text-align: right;">N° {{$val->n_cotizacion}}</th>
+         <th style="text-align: right;">N° 000{{$val->n_cotizacion}}</th>
 
            
       </tr>

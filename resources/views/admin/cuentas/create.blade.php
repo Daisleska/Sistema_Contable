@@ -19,7 +19,8 @@
                          <div class="col-md-4">
                             <label for="exampleInputEmail1">Nombre *</label>
                              <input required="required" type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
-                       </div>  
+                    </div>  
+                    
 
                           <div class="col-md-4">
                             <label for="exampleInputEmail1">Descripción</label>

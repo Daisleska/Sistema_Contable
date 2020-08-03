@@ -17,9 +17,9 @@ class CreateCuentasTable extends Migration
             $table->bigIncrements('id');
             $table->string('codigo');
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->enum('tipo', ['activo','pasivo', 'capital', 'ingreso', 'egreso']);
-            $table->string('t_cuenta')->nullable();
+            $table->string('t_cuenta');
             $table->integer('saldo');
             $table->timestamps();
         });

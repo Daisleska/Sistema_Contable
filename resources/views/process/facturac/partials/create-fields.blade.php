@@ -1,4 +1,4 @@
-
+<p style="margin: 1cm;">Todos los campos son requeridos (<b style="color:red;">*</b>)</p>
 <div class="row">
  <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -39,11 +39,11 @@
                                
                             <tr>
 
-                                <th>RUF</th>
-                                <th><input style="width: 200px;"  type="text" id="ruf" name="ruf" class="form-control" ></th>
+                                <th><b style="color:red;">*</b> RUT</th>
+                                <th><input style="width: 200px;"  type="text" id="ruf" name="ruf" class="form-control" required></th>
                                 <small><span id="mensaje" style="color:red"></span></small>
 
-                                 <th>N°control</th>
+                                 <th><b style="color:red;">*</b> N°control</th>
                                 <th><input style="width: 160px;" type="number" name="n_control" class="form-control"  required></th>
                             </tr>
 
@@ -73,8 +73,8 @@
                         <thead>
                             <tr>
                                 <th>Domicilio</th>
-                                <th><input style="width: 150px;"  type="text" name="domicilio" id="domi" class="form-control"  value="" required></th>
-                                <th>Forma de pago</th>
+                                <th><input style="width: 150px;"  type="text" name="domicilio" id="domi" class="form-control"  value="" ></th>
+                                <th><b style="color:red;">*</b> Forma de pago</th>
                                 <th>
                             <select required="required" name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige">
                                   
@@ -83,8 +83,8 @@
                                   <option value="cheque">Cheque</option>
                                 </select></th>
 
-                                <th>Divisa</th>
-                                <th><select style="width: 50" name="divisas" class="form-control">
+                                <th><b style="color:red;">*</b> Divisa</th>
+                                <th><select style="width: 50" name="divisas" class="form-control" required>
                                 <option value="Bs.S">VEF</option>
                                 <option value="£">GBP</option>
                                 <option value="¥">JPY</option>
@@ -104,9 +104,9 @@
 
 <div class="row">
       <div class="col-lg-12">
-                                <label for="name"> <b style="color:red;">*</b>Productos:</label>
-                                <select  class="select2 form-control custom-select" style="width: 100%; height:36px;" name="productos_id" id="products_select">
-                                    <option selected="selected" disabled="disabled" readonly>Seleccione el Producto</option>
+                                <label for="name"> <b style="color:red;">*</b> Productos:</label>
+                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="productos_id" id="products_select">
+                                    <option selected="selected" disabled="disabled" readonly >Seleccione el Producto</option>
                                     @foreach($products as $key)
                                         <option value="{{ $key->id }}">{{ $key->nombre }} | {{ $key->unidad }} | {{ $key->existencia }}</option>
                                     @endforeach
@@ -116,7 +116,7 @@
 
 <div class="row mb-3">
                             <div class="col-lg-12">
-                                <label for="cedula"> <b style="color:red;">*</b>Lista de Productos:</label>
+                                <label for="cedula"> <b style="color:red;">*</b> Lista de Productos:</label>
                                 <div class="table-responsive">
                                     <table id="lista_productos" class="table table-striped table-bordered">
                                         <thead>

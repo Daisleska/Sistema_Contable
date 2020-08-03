@@ -1,4 +1,4 @@
-<p>Campos obligatorios (*)</p>
+<p style="margin-left: 0.5cm;">Campos obligatorios (*)</p>
 <div class="row" style="margin-left: 0.3cm;">
 <div class="form-group mb-3">
                     <label style="margin-left: 0.3cm;">Código *</label>
@@ -21,7 +21,7 @@
                     
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Descripción </label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control"  value="{{ old('descripcion') }}" placeholder="" required>
+                        <input style="width: 380px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control"  value="{{ old('descripcion') }}" placeholder="">
                         <div class="valid-feedback">
                            
                         </div>
