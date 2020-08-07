@@ -6,6 +6,16 @@
 
 
 @section('content')
+<style type="text/css">
+      .abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+      }
+  
+</style>
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
@@ -26,7 +36,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
-            <div class="card">
+            <div class="card abs-center">
                 {!! Form::open(['route' => ['users.update',$user->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
                     @csrf
                     <div class="card-body">
@@ -105,5 +115,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('script')
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 @endsection

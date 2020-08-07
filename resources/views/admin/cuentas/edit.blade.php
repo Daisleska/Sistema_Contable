@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('css')
-<!-- plugin css -->
-<link href="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+
 @endsection
 @section('content-header')
 <section class="content-header">
@@ -73,12 +72,14 @@
                          <div class="col-md-4">
                             <label for="exampleInputEmail1">Código *</label>
                              <input value="{{$cuentas->codigo}}" required="required" type="text" name="codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                             <div class="valid-feedback"></div>
                        </div>  
 
                         <div class="col-md-4">
                             <label for="exampleInputEmail1">Monto *</label>
                             <input value="{{$cuentas->saldo}}" required="required" name="saldo" type="number" class="form-control"  placeholder="Ingrese el monto">
                         </div>
+                         <div class="valid-feedback"></div>
  
                     </div>
                     
@@ -104,13 +105,11 @@
 @endsection
 @section('script')
 
-<!-- datatable js -->
-<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 @endsection
 
 @section('script-bottom')
-<!-- Datatables init -->
-<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
+
 @endsection
 
 <script type="text/javascript">

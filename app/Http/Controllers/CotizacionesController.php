@@ -29,7 +29,7 @@ class CotizacionesController extends Controller
      */
     public function index()
     {  
-       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.id, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
 
 
 
@@ -138,20 +138,10 @@ class CotizacionesController extends Controller
 
         }
             if ($cotizacion->save()) {
-                 $pdf=$this->pdf($request->n_cotizacion);
-                 $mensaje= 'hola hector';
-                 $clientes=cliente::find($request->clientes_id);
-            $email= $clientes->email;   
-                $r=Mail::send(new email_Cotizacion($cotizacion->id, $pdf), 
-                    ['mensaje' => $mensaje], function ($m) use ($mensaje, $email){
-                        $m->from('blattsystem@eiche.cl', 'Blatt');
-                        $m->to($email)->subject('avisos');
-                    });
-
-           /* $pdf=$this->pdf($request->n_cotizacion);
+            $pdf=$this->pdf($request->n_cotizacion);
             $clientes=cliente::find($request->clientes_id);
             $email= $clientes->email;   /* dd($email);*/
-            #Mail::to($email)->send(new email_Cotizacion($cotizacion->id, $pdf)); */
+            Mail::to($email)->send(new email_Cotizacion($cotizacion->id, $pdf)); 
 
             flash('¡Registro Exitoso!', 'success');
        //registrar accion en bitacora-----------------------------------

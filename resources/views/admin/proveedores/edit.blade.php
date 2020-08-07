@@ -1,14 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+      .abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+      }
+  
+</style>
 <div class="row" style=" align-items: center; justify-content: center;">
-    <div class="col-md-6">
+    <div class="col-md-10">
         <div class="card">
             <div class="card-body">
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Proveedores</h4>
                 <p class="sub-header"></p>
     
-                <div class="box-body">
+                <div class="box-body abs-center">
               {!! Form::open(['route' => ['proveedores.update',$proveedores->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
                   @csrf
                 @include('admin.proveedores.partials.edit-fields')

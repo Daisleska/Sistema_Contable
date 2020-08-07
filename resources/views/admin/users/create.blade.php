@@ -14,7 +14,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{ route('users.index') }}">Usuarios</a></li>
+                         <li class="breadcrumb-item active" aria-current="page">Registrar</li>
                     </ol>
                 </nav>
             </div>
@@ -30,7 +31,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
                     @csrf
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;">Usuarios</h4> <br> <h5><p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h5>
+                        <h4 class="card-title" style="text-align: center;">Registro de Usuarios</h4> <br> <h5><p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h5>
                     	<div class="form-group row">
                             <label for="name" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Nombre</label>
 
@@ -108,7 +109,7 @@
                         </div>     --}}         
                     <div class="border-top">
                         <div class="card-body">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -117,6 +118,7 @@
 	</div>
 </div>
 @endsection
-
-@section('scripts')
+@section('script')
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 @endsection

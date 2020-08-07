@@ -154,7 +154,8 @@ $(document).ready(function(){
 @section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('Shreyu/assets/js/pages/form-advanced.init.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/js/pages/form-validation.init.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsley.min.js') }}"></script>
 @endsection
 
 

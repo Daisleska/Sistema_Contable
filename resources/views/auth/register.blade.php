@@ -39,7 +39,10 @@
                                         <h6 class="h5 mb-0 mt-4">{{ __('Registrarse') }}</h6>
                                         <br>
                                        
-
+                                @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>
+                                <br>@endif
+                                @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>
+                                <br>@endif
                                         <form method="POST" action="{{ route('register') }}">
                                               @csrf
 

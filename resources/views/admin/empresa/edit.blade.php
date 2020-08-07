@@ -13,13 +13,13 @@
     </section>
 @endsection
 @section('content')
-<div class="content">
-	<div class="row">
-        <div class="col">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title" align="center">Modificar Datos de Empresa</h3>
-            </div>
+<div class="row" style=" align-items: center; justify-content: center;">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Datos de Empresa</h4>
+                <p class="sub-header"></p>
+            
             <!-- /.box-header -->
             <style type="text/css">
           .abs-center {
@@ -38,6 +38,7 @@
             @include('admin.empresa.partials.edit-fields')
 
               {!! Form::close() !!}
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -45,6 +46,8 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
-</div>
+@endsection
+@section('script')
+<!-- Plugin js-->
+<script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 @endsection

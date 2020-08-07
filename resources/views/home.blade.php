@@ -71,6 +71,7 @@
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Proveedores</span>
                          <?php
+                         
                               if ($proveedores) {
                                 $cantidad_proveedores=count($proveedores);
                                }else{

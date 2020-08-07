@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\facturav;
 use App\clientes;
+use App\has_inventario;
 use App\inventario;
 use App\producto;
 use App\venta;
@@ -118,6 +119,19 @@ class FacturasVController extends Controller
             }
 
         $inventario = \DB::update('UPDATE inventario SET existencia ='.$nuevo.' WHERE inventario.productos_id='.$request->product_id[$i]);
+
+        // Registrar en tabla Has_inventario 
+
+        $nuevo_total= \DB::select('SELECT inventario.existencia AS inv_asis, productos.id, productos.precio, inventario.existencia FROM productos, inventario WHERE inventario.productos_id = productos.id');
+         foreach ($nuevo_total as $key) {  
+           $inventario_t[]= $key->precio* $key->existencia;
+         }
+
+         $total_inventario = array_sum($inventario_t);
+         $has_inventario= new has_inventario();
+            $has_inventario->anio=$request->fecha;
+            $has_inventario->valor=$total_inventario;
+            $has_inventario->save();
 
 
        //----------Actualizar existencia en productos----------------

@@ -67,10 +67,10 @@
 @section('script')
 <!-- Plugin js-->
 <script src="{{ URL::asset('Shreyu/assets/libs/parsleyjs/parsley.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <script src="{{ asset('js/jquery/dist/jquery.js') }}"></script>
-<!-- jQuery CDN -->
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <script type="text/javascript">
     $(function() {
@@ -80,7 +80,12 @@
 
     
     });
-</script>  
-   
+</script>    
+
+
+
+@endsection
+
+@section('script-bottom')
 
 @endsection

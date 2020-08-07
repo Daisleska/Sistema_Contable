@@ -32,7 +32,6 @@
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Tipo</th>
-                                    <th>Empresa</th>
                                     <th>estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -43,7 +42,6 @@
                                     <td>{{ $key->name }}</td>
                                     <td>{{ $key->email }}</td>
                                     <td>{{ $key->user_type }}</td>
-                                    <td>{{ $key->Empresa }}</td>
                                         <?php 
                                         if ($key->status=='Activo') {
                                             ?>

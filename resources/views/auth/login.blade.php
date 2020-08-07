@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <title>Sistema Contable</title>
+        <title>Blatt System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -47,6 +47,12 @@
                                         <h6 class="h5 mb-0 mt-4">¡Bienvenido!</h6>
                                         <p class="text-muted mt-1 mb-4">Ingrese su correo y su contraseña de acceso</p>
 
+                                @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>
+                                <br>@endif
+                                @if(session('success'))<div class="alert alert-success">{{ session('success') }}</div>
+                                <br>@endif
+
+
                             <form method="POST" action="{{ route('login') }}">
                         @csrf
                                             <div class="form-group">
@@ -57,13 +63,13 @@
                                                             <i class="icon-dual" data-feather="mail"> {{ __('E-Mail') }}</i>
                                                         </span>
                                                     </div>
-                                                    <input type="email" id="email" placeholder="hello@coderthemes.com" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                    <input type="email" id="email" placeholder="hello@coderthemes.com" class="form-control @if($errors->has('email')) is-invalid @endif" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                      @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ 'El correo ingresado no es correcto' }}</strong>
-                                        </span>
-                                        @enderror
+                                     @if($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
                                                 </div>
                                             </div>
 
@@ -79,13 +85,13 @@
                                                         </span>
                                                     </div>
                                                     <input type="password"  id="password"
-                                                        placeholder="Ingrese su Contraseña"class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                        placeholder="Ingrese su Contraseña"class="form-control @if($errors->has('email')) is-invalid @endif" name="password" required autocomplete="current-password">
 
-                                                        @error('password')
-                                           <span class="invalid-feedback" role="alert">
-                                        <strong>{{ 'La contraseña ingresada no es correcta' }}</strong>
-                                          </span>
-                                          @enderror
+                                        @if($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                            @endif
                                                 </div>
                                             </div>
 
@@ -98,11 +104,16 @@
                                             </div>
                                         </form>
                                         <br>
+                                        <?php
+                                          $users= \DB::select('SELECT * FROM users');
+                                         ?>
+                                        @if(empty($users))
                                         <div class="form-group mb-0 text-center">
                                                 <button class="btn btn-default btn-block"><a href="{{ route('register') }}"> {{ __('Registrarse') }}</a>
                                                 </button>
 
                                             </div>
+                                        @endif
                                         
                                     </div>
                                     <div class="col-lg-6 d-none d-md-inline-block">

@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('auth/login')->name('login');;
+    return view('auth/login')->name('login');
 });
 Route::post('recuperando_clave','Auth\ResetPasswordController@recuperando_clave')->name('recuperando_clave');
 

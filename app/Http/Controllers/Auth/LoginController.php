@@ -16,17 +16,7 @@ class LoginController extends Controller
      * @var string
      */
 
-    public function authenticated($request, $user){
-       
-        if(\Auth::user()->status =='Activo'){
-         
-            return redirect()->route('home');
 
-        }elseif (\Auth::user()->status == 'Suspendido'){
-
-           return redirect()->to('login')->with('flash', 'Tu usuario esta suspendido');
-         }
-     }
     protected $redirectTo = '/home';
 
     /**
@@ -34,8 +24,15 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    public function authenticated($request, $user){
+       
+   
+     }
 }

@@ -22,14 +22,14 @@ class ComprasController extends Controller
     $i=1;
     $x=1;
     $num=1;
-    $mesactual = date('m');
+    $anio = date('Y');
     $meses = ['Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
          $compra =  \DB::select('SELECT  proveedores.nombre, proveedores.tipo_documento, proveedores.ruf, compra.proveedores_id, compra.facturac_id,  facturac.fecha, facturac.n_factura, facturac.total, facturac.n_control,facturac.sub_total, facturac.iva, facturac.p_iva
 
         FROM compra, proveedores, facturac
 
-        WHERE compra.proveedores_id = proveedores.id AND compra.facturac_id = facturac.id AND MONTH(facturac.fecha)='.$mesactual);
+        WHERE compra.proveedores_id = proveedores.id AND compra.facturac_id = facturac.id AND YEAR(facturac.fecha)='.$anio);
 
          //para sumar los total de facturac
 
@@ -39,7 +39,7 @@ class ComprasController extends Controller
            $total_IVA[]= $key->iva;
          }
 
-         if ($total_total == 0) {
+         if (isset($total_total)== false) {
                             //TOTALES
                          $total_total=0;
                          $total_subtotal=0;
@@ -49,11 +49,7 @@ class ComprasController extends Controller
         //fin
 
     // informacion para libro ventaas/////////////////////////
-           $venta =  \DB::select('SELECT  clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, venta.facturav_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa
-
-        FROM venta, clientes, facturav, iva
-
-        WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND MONTH(facturav.fecha)='.$mesactual);
+           $venta =  \DB::select('SELECT  clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, venta.facturav_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa FROM venta, clientes, facturav, iva WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND YEAR(facturav.fecha)='.$anio);
 
         /*dd($venta);
 */
@@ -64,7 +60,7 @@ class ComprasController extends Controller
            $total_IVA_venta[]= $key->iva;
          }
 
-         if ($total_venta == 0) {
+         if (isset($total_venta)== false) {
                              //TOTALES
                          $total_venta=0;
                          $total_subventa=0;
@@ -94,7 +90,7 @@ class ComprasController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+       
     }
 
     /**
@@ -149,14 +145,14 @@ class ComprasController extends Controller
     $i=1;
     $x=1;
     $num=1;
-    $mesactual = date('m');
+    $anio = date('Y');
     $meses = ['Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
          $compra =  \DB::select('SELECT  proveedores.nombre, proveedores.tipo_documento, proveedores.ruf, compra.proveedores_id, compra.facturac_id,  facturac.fecha, facturac.n_factura, facturac.total, facturac.n_control,facturac.sub_total, facturac.iva, facturac.p_iva
 
         FROM compra, proveedores, facturac
 
-        WHERE compra.proveedores_id = proveedores.id AND compra.facturac_id = facturac.id AND MONTH(facturac.fecha)='.$mesactual);
+        WHERE compra.proveedores_id = proveedores.id AND compra.facturac_id = facturac.id AND YEAR(facturac.fecha)='.$anio);
 
          //para sumar los total de facturac
 
@@ -166,7 +162,7 @@ class ComprasController extends Controller
            $total_IVA[]= $key->iva;
          }
 
-         if ($total_total == 0) {
+         if (isset($total_total)== false) {
                             //TOTALES
                          $total_total=0;
                          $total_subtotal=0;
@@ -193,14 +189,14 @@ class ComprasController extends Controller
     $i=1;
     $x=1;
     $num=1;
-    $mesactual = date('m');
+    $anio = date('Y');
     $meses = ['Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
      $venta =  \DB::select('SELECT  clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, venta.facturav_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa
 
         FROM venta, clientes, facturav, iva
 
-        WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND MONTH(facturav.fecha)='.$mesactual);
+        WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND YEAR(facturav.fecha)='.$anio);
 
         /*dd($venta);
 */
@@ -211,7 +207,7 @@ class ComprasController extends Controller
            $total_IVA_venta[]= $key->iva;
          }
 
-         if ($total_venta == 0) {
+         if (isset($total_venta)== false) {
                              //TOTALES
                          $total_venta=0;
                          $total_subventa=0;
@@ -229,21 +225,5 @@ class ComprasController extends Controller
         $dompdf->setPaper('A4', 'landscape');
         return $dompdf->stream('venta.pdf');
 
-    }
-
-
-    public function buscador($mes,$anio,$dia)
-    {
-        if ($mes>0) {
-         $res_mes=compra::join("facturac", "compra.facturac_id", "=", "facturac.id")->join("proveedores", "compra.proveedores_id", "=", "proveedores.id")->whereMonth('fecha', '=', $mes)->get();
-          return $res_mes;
-
-        }if ($dia>0) {
-            $res_dia=compra::join("facturac", "compra.facturac_id", "=", "facturac.id")->join("proveedores", "compra.proveedores_id", "=", "proveedores.id")->whereDate('fecha', $dia)->get();
-          return $res_dia;
-        }if ($anio >2000) {
-            $res_anio=compra::join("facturac", "compra.facturac_id", "=", "facturac.id")->join("proveedores", "compra.proveedores_id", "=", "proveedores.id")->whereYear('fecha', $anio)->get();
-          return $res_anio;
-        }
     }
 }
