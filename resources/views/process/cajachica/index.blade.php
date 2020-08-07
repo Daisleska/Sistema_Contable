@@ -78,9 +78,9 @@
                                 <th id="saldo" COLSPAN="3">SALDO INICIAL: 
                                 <?php
 
-                                 use App\cuenta;
+                                
 
-                                $cuenta=DB::table ('cuentas')->select('saldo')->where('nombre', '=', 'Caja Chica')->get();
+                                $cuenta=\DB::select('SELECT * FROM cuentas WHERE nombre="Caja Chica" OR nombre="Caja" ');
                                 ?>
                                 @foreach($cuenta as $key)
                                 {{number_format($key->saldo,2,',','.')}}</th>

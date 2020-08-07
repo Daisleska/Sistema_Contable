@@ -238,6 +238,15 @@ if ($x_inventario) {
         </a>
     </li>
     @endif
+
+
+    <li class="menu-title"></li>
+     <li>
+        <a href="{{ route('ayuda.index') }}">
+            <i data-feather="help-circle"></i>
+            <span>Ayuda</span>
+        </a>
+    </li>
   </ul>
 
 
