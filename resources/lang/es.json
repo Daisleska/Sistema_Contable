@@ -14,5 +14,6 @@
 	"Next": "Siguiente",
 	"Previous": "Anterior",
 	"No data available in table": "No hay registros",
-	"These credentials do not match our records.": "Los datos ingresados no son correctos"
+	"These credentials do not match our records.": "Los datos ingresados no son correctos",
+	"This value is required": "Valor requerido, si no lo tiene, ingrese '0'"
 }

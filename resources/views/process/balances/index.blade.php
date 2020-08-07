@@ -19,9 +19,8 @@
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Balances</li>
             </ol>
         </nav>
         <h4 class="mb-1 mt-0"></h4>
@@ -93,7 +92,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#GyP" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        <a @if($er == 1) href="#no_gan" @endif 
+                           @if($er == 2) href="#GyP" @endif 
+                          data-toggle="tab" aria-expanded="true" class="nav-link ">
                             <span class="d-block d-sm-none"><i class="uil-user"></i></span>
                             <span class="d-none d-sm-block">Ganancias y Perdidas</span>
                         </a>
@@ -110,9 +111,15 @@
                 @include('process.balances.comprobacion')
                     </div>
 
-                    <div class="tab-pane " id="GyP">
+                    <div class="tab-pane" id="GyP">
                         @include('process.balances.ganancia_perdida')
                     </div>
+                    <div class="tab-pane" id="no_gan">
+                        @include('process.balances.no_gan')
+                    </div>
+
+
+
                     <div class="tab-pane" id="general">
                        @include('process.balances.general')
                     </div>
