@@ -2,18 +2,27 @@
  $fecha = date('Y-m-d');
 ?>
 
-<h6 style="text-align: center; color: red;">IMPORTANTE</h6>
-<h6 style="font-family: Arial" >El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre.</h6> <br>
+@if(date('m')== '06' || date('m')== '12')
 
-<h6 style="font-family: Arial" >Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</h6> <br>
+    <center>
+      <p>Por favor presione click en el siguiente boton y ingrese los datos solicitados para generar el balance de ganancias y perdidas.</p>
+      <br>
+           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Completar</button>
+    </center>
 
- @if(date('m')== '06' && date('m')== '12')
+@else
+
 <center>
-       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Completar</button>
+<h6 style="text-align: center; color: red;">IMPORTANTE</h6>
+<p style="font-family: Arial" >El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre.</p> 
+<br>
+
+<p style="font-family: Arial" >Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</p> <br>
 </center>
-@endif
  
 <img style="width: 500px; margin-left: 4cm;" src="{{ URL::asset('uploads/imagen1.jpg')}}">
+
+@endif
 
   <!--  Modal content for the above example -->
 <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

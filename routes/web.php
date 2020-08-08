@@ -39,12 +39,11 @@ Route::resource('cajachica', 'CajaChicaController');
 Route::resource('diario', 'DiarioController');
 Route::resource('inventario', 'InventarioController');
 Route::resource('notificaciones', 'NotificacionesController');
-Route::resource('ayuda', 'AyudaController');
-
 
 Route::resource('cotizacion', 'CotizacionesController');
 Route::resource('cuentas', 'CuentasController');
 Route::resource('balances', 'BalancesController');
+Route::resource('ayuda', 'AyudaController');
 
 //Route::get('cotizacion', 'CotizacionesController@calc_cotizacion')->name('cotizacion.calc_cotizacion');
 
@@ -54,6 +53,7 @@ Route::get('mayor','DiarioController@mayor')->name('mayor');
 Route::get('mayor.historial','DiarioController@historial_mayor')->name('historial_mayor');
 Route::get('diario.historial','DiarioController@historial')->name('historial');
 Route::get('diario.balance','DiarioController@balance')->name('diario.balance');
+Route::get('balances.historial','BalancesController@historial')->name('historial_balances');
 /*Perfin de usuarios*/
 Route::get('profile','UsersController@profile')->name('profile');
     Route::patch('profile', 'UsersController@update_profile')->name('user.profile.update');

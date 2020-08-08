@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('css')
@@ -20,7 +21,8 @@
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Balances</li>
+                <li class="breadcrumb-item">Balances</li>
+                <li class="breadcrumb-item active" aria-current="page">Historial</li>
             </ol>
         </nav>
         <h4 class="mb-1 mt-0"></h4>
@@ -34,43 +36,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <h3 style="text-align: center; color: black;">BALANCES</h3>
-                     <table style="color: black;">
-                      
-
-            <!--<th style="align-content: right;">
-
-               <div class="btn-group">                           
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <i class='uil uil-file-alt mr-1'></i>Descargar
-            <i class="icon"><span data-feather="chevron-down"></span></i></button>
-        <div class="dropdown-menu dropdown-menu-right">
-           <a href="#" class="dropdown-item notify-item">
-                <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
-                <span>Excel</span>
-            </a>
-            <a href="#" class="dropdown-item notify-item">
-                <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
-                <span>PDF</span>
-            </a>
-            <a href="javascript:window.print()" class="dropdown-item notify-item">
-                <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                <span>Imprimir</span>
-            </a>
-        
-            </div></div></th>-->
-      
-          
-            <th>
-                <a href="{{ route('historial_balances') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
-            </th>
-            <th></th>
-          </tr>
-
-</table>
-<p>Nota: Los siguientes Estados Financieros son del año actual, si desea ver los estados anteriores, ingrese al historial!</p>
+                    <h3 style="text-align: center; color: black;">HISTORIAL DE BALANCES</h3>
 <br>
+
+<a href="{{ route('balances.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
 
                     <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -80,8 +49,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a @if($er == 1) href="#no_gan" @endif 
-                           @if($er == 2) href="#GyP" @endif 
+                        <a  href="#GyP"
                           data-toggle="tab" aria-expanded="true" class="nav-link ">
                             <span class="d-block d-sm-none"><i class="uil-user"></i></span>
                             <span class="d-none d-sm-block">Ganancias y Perdidas</span>
@@ -96,20 +64,15 @@
                 </ul>
                    <div class="tab-content p-3 text-muted">
                     <div class="tab-pane show active" id="comprobacion">
-                @include('process.balances.comprobacion')
+                    @include('process.balances.historial.comprobacion_h')
                     </div>
 
                     <div class="tab-pane" id="GyP">
-                        @include('process.balances.ganancia_perdida')
+                    @include('process.balances.historial.ganancias_perdidas_h')
                     </div>
-                    <div class="tab-pane" id="no_gan">
-                        @include('process.balances.no_gan')
-                    </div>
-
-
 
                     <div class="tab-pane" id="general">
-                       @include('process.balances.general')
+                     @include('process.balances.historial.general_h')
                     </div>
                 </div>
 
@@ -123,19 +86,6 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
-<script>
-$(document).ready(function(){
-    $("select[name=anio]").change(function(){
-       var anio= document.getElementById("anio").value;
-    
-     document.getElementById('buscar').submit();
-    });
-})
-
-/*    $('#actu').click(function(){
-        tabla();
-    });*/
-</script>
 @endsection
 
 @section('script')

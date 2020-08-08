@@ -414,4 +414,9 @@ class BalancesController extends Controller
     {
         //
     }
+
+     public function historial()
+    {
+        return view('process.balances.historial.historial');
+    }
 }

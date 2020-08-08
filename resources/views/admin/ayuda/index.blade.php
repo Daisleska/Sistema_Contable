@@ -34,38 +34,24 @@
                        <!-- Zero config.table start -->
                             <div class="card">
                             <div class="card-body">
-                                 
-                                        
-                                        <center>
-                                            <h4 class="box-title">Ayuda</h4>
+                                      
+                            <center>
+                                <h4 class="box-title">Ayuda</h4>
+                            </center>
 
-
-                                        </center>
-
-                  
-                    <a class="btn btn-info" href="{{ URL::asset('uploads/Manual.pdf')}}" class="dropdown-item notify-item">Manual de Usuario
-                        <i data-feather="download" >
-                        </i>
+                    <a class="btn btn-info" href="{{ URL::asset('uploads/Manual.pdf')}}" class="dropdown-item notify-item">Manual de Usuario<i data-feather="download"></i>
                     </a>
+                    <br>
 
+            <div class="row">
+                <div class="col-md-10">
+                  <video src="{{ URL::asset('uploads/video.mp4')}}" width="420" controls></video>       
+                </div>
+            </div>
 
-                    <table id="key-datatable" class="table dt-responsive nowrap">
-                                            <thead style="font-size: 12px;">
-                                            <tr>
-
-                                                <th><video src="{{ URL::asset('uploads/video.mp4')}}" width="320" controls></video></th>
-                                                
-                                            </tr>
-                                            </thead>
-                                            
-                                            
-                                        </table>
+                       
                 
                     </div></div></div>
-                        
-                                
-                            
-
 </div>
 </div>
 </div>
