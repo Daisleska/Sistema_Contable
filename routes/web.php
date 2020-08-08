@@ -41,6 +41,7 @@ Route::resource('inventario', 'InventarioController');
 Route::resource('notificaciones', 'NotificacionesController');
 Route::resource('ayuda', 'AyudaController');
 
+
 Route::resource('cotizacion', 'CotizacionesController');
 Route::resource('cuentas', 'CuentasController');
 Route::resource('balances', 'BalancesController');

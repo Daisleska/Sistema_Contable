@@ -2,13 +2,18 @@
  $fecha = date('Y-m-d');
 ?>
 
-<h6>Disculpe, solo puede observar el balance de ganancias y perdidas en los meses de junio y diciembre. espere a la fecha indicada y luego ingrese los datos que se solicitaran para poder realizar el balance del año actual.</h6> <br>
+<h6 style="text-align: center; color: red;">IMPORTANTE</h6>
+<h6 style="font-family: Arial" >El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre.</h6> <br>
+
+<h6 style="font-family: Arial" >Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</h6> <br>
+
  @if(date('m')== '06' && date('m')== '12')
 <center>
        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Completar</button>
 </center>
 @endif
-
+ 
+<img style="width: 500px; margin-left: 4cm;" src="{{ URL::asset('uploads/imagen1.jpg')}}">
 
   <!--  Modal content for the above example -->
 <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
