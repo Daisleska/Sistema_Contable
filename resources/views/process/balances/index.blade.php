@@ -72,7 +72,7 @@
 <p>Nota: Los siguientes Estados Financieros son del año actual, si desea ver los estados anteriores, ingrese al historial!</p>
 <br>
 
-                    <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a href="#comprobacion" data-toggle="tab" aria-expanded="false" class="nav-link active">
                             <span class="d-block d-sm-none"><i class="uil-home-alt"></i></span>
@@ -93,7 +93,7 @@
                             <span class="d-none d-sm-block">General</span>
                         </a>
                     </li>
-                </ul>
+             </ul>
                    <div class="tab-content p-3 text-muted">
                     <div class="tab-pane show active" id="comprobacion">
                 @include('process.balances.comprobacion')

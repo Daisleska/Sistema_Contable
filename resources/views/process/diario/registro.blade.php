@@ -72,7 +72,7 @@ $(document).ready(function () {
         '</div>' +
       
         '<label style="color: white;">...</label>'+
-        '<a href="javascript:void(0);" class="remove_button btn btn-danger" title="Eliminar"></a>' +
+        '<a href="javascript:void(0);" class="remove_button btn btn-danger" title="Eliminar">x</a>' +
       
  
       

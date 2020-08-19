@@ -2,7 +2,7 @@
  $fecha = date('Y-m-d');
 ?>
 
-@if(date('m')== '06' || date('m')== '12')
+@if(date('m')== '08' || date('m')== '12')
 
     <center>
       <p>Por favor presione click en el siguiente boton y ingrese los datos solicitados para generar el balance de ganancias y perdidas.</p>
@@ -23,7 +23,7 @@
 <img style="width: 500px; margin-left: 4cm;" src="{{ URL::asset('uploads/imagen1.jpg')}}">
 
 @endif
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <!--  Modal content for the above example -->
 <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -38,6 +38,8 @@
       <p>Nota: es importante ingresar los siguientes datos para completar el balance de ganancias y perdidas. Si alguno de los datos no los posee puede ingresar "0".</p>
       <br>
  {!! Form::open(['route' => ['balances.store'], 'method' => 'POST', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
+<div class="form">
+               
              @csrf
       <input type="hidden" name="fecha" value="{{$fecha}}">
 
@@ -123,7 +125,18 @@
                  class="form-control" required placeholder="Ej: 0"/>
               </div>
       </div>
+</div>
+
+      {{-- <div class="row">
+          <div class="col-md-12">
+            <center>
+             <label style="color: white;">...</label>
+              <a href="javascript:void(0);" class="add_button btn btn-info" title="Agregar">+</a>
+            </center>
+          </div>  
+      </div> --}}
   </div>
+
   <div class="modal-footer">
     <div class="row">
         <div class="col-md-10">
@@ -138,3 +151,46 @@
 </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+{{-- Agregar campos, descomentar para usar --}}
+{{-- <script type="text/javascript">
+$(document).ready(function () {
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.form'); //Input field wrapper
+    var fieldHTML = '<div class="form-group">'+
+    '<div class="row">'+
+        '<div class="col-md-6">' +
+        ' <input name="nombres[]" type="text" required class="form-control" title="nombres" placeholder="Ingrese el nombre de la cuenta">'+      
+        '</div>' +
+         '<div class="col-md-5">' +
+        '<input type="number" name="valor[]" class="form-control "  placeholder="Ingrese el valor"/>' +
+        '</div>' +
+      
+        '<label style="color: white;">...</label>'+
+        '<a href="javascript:void(0);" class="remove_button btn btn-danger" title="Eliminar">x</a>' +
+      
+ 
+      
+      '</div>'+
+    '</div>';
+    var x = 1; //Initial field counter is 1
+    $(addButton).click(function () { //Once add button is clicked
+        if (x < maxField) { //Check maximum number of input fields
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); // Add field html
+        }
+    });
+
+    $(wrapper).on('click', '.remove_button', function (e) { //Once remove button is clicked
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+
+});
+
+
+
+
+</script> --}}
