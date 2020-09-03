@@ -36,8 +36,7 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
                     
                     
-                    {{-- <a href="{{ route('empresa.create') }}" class="btn btn-outline-primary">
-                   Registrar</a> --}}
+                
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
@@ -75,7 +74,7 @@
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
                         </form>
                    <br>
-                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
+                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-success btn-sm" data-toggle="modal" title="Ver más" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   </td>
 
                 
@@ -95,7 +94,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="myCenterModalLabel">Información de la Empresa</h5>
+                                                        <h5 style="margin-left: 3cm;" class="modal-title" id="myCenterModalLabel">Información de la Empresa</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -117,7 +116,7 @@
                                                         <p style="color:black;">Dirección: {{$key->direccion}}</p>
                                                     </tr>
                                                      <tr>
-                                                        <p style="color:black;">Teléfono: {{$key->telefono}} </p>
+                                                        <p style="color:black;">Teléfono:+{{$key->codigo}} {{$key->telefono}} </p>
                                                     </tr>
                                                     <tr>
                                                         <p style="color:black;">Nombre de la Imagen: {{$key->image_name}} </p>
@@ -131,7 +130,10 @@
                                                     </tr>
                                                     
                                                   
-                                                   
+                                                   <div class="modal-footer" style="align-content: center;">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                
+                            </div>
                                                        
                                                     </div>
                                                 </div><!-- /.modal-content -->

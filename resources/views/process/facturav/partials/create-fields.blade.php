@@ -96,7 +96,7 @@
                         <thead>
                             <tr>
                                 <th>Domicilio</th>
-                                <th><input style="width: 150px;" type="text" name="domicilio" id="domicilio" class="form-control"  value="" required></th>
+                                <th><input style="width: 150px;" type="text" name="domicilio" id="domicilio" class="form-control" ></th>
                                 <th><b style="color:red;">*</b> Forma de pago</th>
                                 <th>
                             <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige" required="required">
@@ -209,16 +209,21 @@
              
                         </tbody>
 
-                </table>  
-
-                    
-                    <button style="margin-left: 20cm;" class="btn btn-primary" type="submit" id=guardar>Guardar</button>
-                  
-
+                 
+   </table> 
+                
+                
 
 
   
 </div>
+    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+               
 
 
 <script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>

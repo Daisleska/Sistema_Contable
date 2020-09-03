@@ -10,7 +10,7 @@
                 <?php
                 $fecha= date('d-m-Y');
                 ?>
-                <h5 class="modal-title" id="myExtraLargeModalLabel">Registro en libro Diario</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
+                <h5 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en libro Diario</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
@@ -28,7 +28,7 @@
             <div class="card-body">
 
                      @include('process.diario.registro')
-                    <div class="row">
+                    <div class="row" style="margin-left: 3cm;">
               
                      <div class="col-md-9">
                             <label for="exampleInputEmail1">Descripción</label>
@@ -38,7 +38,12 @@
                     
                     </div>
                     <br>
-                    <button  type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
                   {!! Form::close() !!}
 
                

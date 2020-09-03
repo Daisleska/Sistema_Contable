@@ -28,7 +28,7 @@
 
                <div class="card">
             <div class="card-body">
-              <h4 style="text-align: center;">Modificar cuentas</h3>
+              <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Cuenta</h4>
                <p style="color: black; padding-top: 10px;">Campos Obligatorios (*)</p>
               {!! Form::open(['route' => ['cuentas.update', $cuentas->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form', 'data-parsley-validate']) !!}
                 @csrf
@@ -84,7 +84,12 @@
                     </div>
                     
                     <br>
-                    <button  type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->

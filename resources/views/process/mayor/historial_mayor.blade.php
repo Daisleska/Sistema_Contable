@@ -29,8 +29,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <h3 style="text-align: center;">Historial Libro Mayor</h3>
+                
+                    <h4 style="text-align: center;">Historial Libro Mayor</h4>
                     <br>
                     <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">

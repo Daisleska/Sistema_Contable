@@ -49,7 +49,7 @@
                   
                   <td>
 
-                    <button type="button" class="btn btn-info btn-xs remove-item" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+                    <button type="button" class="btn btn-info btn-xs" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
 
                   
                    <form id="f_eliminar" name="formulario" action="{{ route('productos.destroy', $key->id) }}" method="POST">
@@ -57,9 +57,9 @@
                    <input type="hidden" name="_method" value="DELETE">
                    </form>
                    <button  class="btn btn-danger btn-xs" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
-                   <br>
+                   <br><br>
                  
-                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
+                   <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-success btn-xs" title="Ver más" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
                   
                  </td>
 
@@ -79,7 +79,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="myCenterModalLabel">Información del Producto</h5>
+                                                        <h5 style="margin-left: 2.9cm;" class="modal-title" id="myCenterModalLabel">Información del Producto</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -116,7 +116,10 @@
                                                         <p style="color:black;">Stock Máximo: {{$key->stock_max}} </p>
                                                     </tr>
 
-                                                       
+                                                        <div class="modal-footer" style="align-content: center;">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                
+                            </div> 
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->

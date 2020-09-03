@@ -11,7 +11,7 @@ use App\producto;
 use App\venta;
 use App\empresa;
 use App\iva;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use PDF;
 use Carbon\Carbon;
@@ -157,7 +157,7 @@ class FacturasVController extends Controller
              
       
        if ($facturav->save()) {
-            flash('Registro Exitoso!', 'success');
+            flash('¡Registro Exitoso!', 'success');
 
        //registrar accion en bitacora-----------------------------------
             $bitacoras = new App\Bitacora;
@@ -170,7 +170,7 @@ class FacturasVController extends Controller
             return redirect()->to('facturav');
             } else {
 
-            flash('No se pudo registrar!', 'danger');
+            flash('¡No se pudo registrar!', 'danger');
                 return redirect()->to('facturav');
         }
     

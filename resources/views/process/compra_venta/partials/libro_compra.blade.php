@@ -2,11 +2,8 @@
                         <thead>
                            
                             <tr style="color: black;">
-                                <th COLSPAN="6" style="text-align: left;">LIBRO DE COMPRAS</th>
-
-                                <th COLSPAN="3">     
-                                  <div class="btn-group">
-
+                              <div class="btn-group">
+                 <th COLSPAN="5"> 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Descargar
@@ -26,6 +23,10 @@
                     </a>
                 </div>
             </div></th>
+                                <th COLSPAN="6">LIBRO DE COMPRAS</th>
+
+                                    
+                                  
 
                             </tr>
 

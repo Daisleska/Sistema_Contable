@@ -10,7 +10,7 @@ use App\has_inventario;
 use App\producto;
 use App\compra;
 use App\empresa;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use App\iva;
 use PDF;
@@ -169,7 +169,7 @@ class FacturasCController extends Controller
          
        //registrar accion en bitacora-----------------------------------
             if ($fact_comp->save()) {
-            flash('Registro Exitoso!', 'success');
+            flash('¡Registro Exitoso!', 'success');
  
 
             $bitacoras = new App\Bitacora;
@@ -182,7 +182,7 @@ class FacturasCController extends Controller
             return redirect()->to('facturac');
             } else {
 
-            flash('No se pudo registrar!', 'danger');
+            flash('¡No se pudo registrar!', 'danger');
                 return redirect()->to('facturac');
         }
     

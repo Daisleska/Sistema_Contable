@@ -45,7 +45,7 @@
                                         </div>
 
                                         <h6 class="h5 mb-0 mt-4">¡Bienvenido!</h6>
-                                        <p class="text-muted mt-1 mb-4">Ingrese su correo y su contraseña de acceso</p>
+                                        <p class="text-muted mt-1 mb-4">Ingrese su correo y su contraseña de acceso.</p>
 
                                 @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>
                                 <br>@endif
@@ -76,7 +76,7 @@
                                             <div class="form-group mt-4">
                                                 <label class="form-control-label">Contraseña</label>
                                                  @if (Route::has('password.request'))
-                                                <a href="{{ route('password.request') }}" class="float-right text-muted text-unline-dashed ml-1">{{ __('Olvidó su Contraseña?') }}</a>
+                                                <a href="{{ route('password.request') }}" class="float-right text-muted text-unline-dashed ml-1">{{ __('¿Olvidó su Contraseña?') }}</a>
                                                  @endif
                                                 <div class="input-group input-group-merge">
                                                     <div class="input-group-prepend">
@@ -121,7 +121,7 @@
                                             <div class="overlay"></div>
 
                                             <div >
-                                               <img src="{{ asset('Shreyu/assets/images/logoeiche.jpg')}}" alt="" width="453" height="550">
+                                               <img src="{{ asset('Shreyu/assets/images/logoeiche.png')}}" alt="" width="455" height="500">
                                             </div>
                                         </div>
                                     </div>

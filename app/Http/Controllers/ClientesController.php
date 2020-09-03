@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\cliente;
 use App;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,8 +57,7 @@ class ClientesController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado un nuevo Cliente';
             $bitacoras->save();
-       flash('<i class="icon-circle-check"></i> Cliente registrado exitosamente
-                ')->success()->important();
+       flash('<i class="icon-circle-check"></i>¡Cliente registrado exitosamente!')->success()->important();
            return redirect()->to('clientes');
     }
 

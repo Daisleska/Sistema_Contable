@@ -66,11 +66,11 @@
                                 <th COLSPAN="13" style="text-align: center; color: black;">LIBRO DE CAJA CHICA</th>
                             </tr>
                             <tr>
-                              <th><button  type="button" class="btn btn-danger btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm1"><i data-feather="minus-circle"></i></button>
+                              <th><button  type="button" class="btn btn-danger btn-xs remove-item" data-toggle="modal" title="Egreso" data-target="#bs-example-modal-sm1"><i data-feather="minus-circle"></i></button>
 
-                              <button  type="button" class="btn btn-success btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm2"><i data-feather="plus-circle"></i></button>
+                              <button  type="button" class="btn btn-success btn-xs remove-item" title="Ingreso" data-toggle="modal" data-target="#bs-example-modal-sm2"><i data-feather="plus-circle"></i></button>
 
-                              <button  type="button" class="btn btn-info btn-xs remove-item" data-toggle="modal" data-target="#bs-example-modal-sm3"><i data-feather="download"></i></button></th>
+                              <button  type="button" class="btn btn-info btn-xs remove-item" title="Busqueda" data-toggle="modal" data-target="#bs-example-modal-sm3"><i data-feather="download"></i></button></th>
 
 
                             </tr>
@@ -137,7 +137,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Registrar nuevo Egreso</h5>
+                                                        <h5 style="margin-left: 1.3cm;" class="modal-title" id="mySmallModalLabel">Registrar Egreso</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -158,7 +158,7 @@
                                                         </tr>
                                                         <div class="modal-footer">
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button type="submit" id="guardar_egreso" class="btn btn-danger btn-xs remove-item">Guardar</button>
+                                                     <button type="submit" id="guardar_egreso" class="btn btn-primary btn-xs remove-item">Guardar</button>
                                                      </div>
                                                      </form>
                                                     </div>
@@ -170,7 +170,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Registrar nuevo Rembolso</h5>
+                                                        <h5 style="margin-left: 1cm;" class="modal-title" id="mySmallModalLabel">Registrar Rembolso</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -189,7 +189,7 @@
                                                        </tr>
                                                        <div class="modal-footer">
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button type="submit" class="btn btn-success btn-xs remove-item">Guardar</button>
+                                                     <button type="submit" class="btn btn-primary btn-xs remove-item">Guardar</button>
                                                      </div>
                                                      </form>
                                                     </div>
@@ -203,7 +203,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Rango de fecha</h5>
+                                                        <h5 style="margin-left: 1.3cm;"  class="modal-title" id="mySmallModalLabel">Rango de fecha</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -218,7 +218,7 @@
                                                       <div class="modal-footer">
                         
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button type="submit" class="btn btn-info btn-xs remove-item">Buscar</button>
+                                                     <button type="submit" class="btn btn-primary btn-xs remove-item">Buscar</button>
 
                                                      </div>
                                                    </form>

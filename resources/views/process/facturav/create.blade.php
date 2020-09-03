@@ -42,7 +42,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar I.V.A</h5>
+                                                        <h5 style="margin-left: 1.5cm;" class="modal-title" id="mySmallModalLabel">Cambiar I.V.A</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -55,7 +55,7 @@
                                                        
                                                        <div class="modal-footer">
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
+                                                     <button class="btn btn-primary btn-xs remove-item" id="other">Guardar</button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                                 {!! Form::close() !!}

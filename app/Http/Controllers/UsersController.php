@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App;
-Use Bitacora;
+Use App\Bitacora;
+use App\Alert;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +68,8 @@ class UsersController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Se Ha registrado un nuevo usuario';
             $bitacoras->save();
+
+            flash('<i class="icon-circle-check"></i>¡Registro exitoso!')->success()->important();
 
         return redirect()->to('users');
 

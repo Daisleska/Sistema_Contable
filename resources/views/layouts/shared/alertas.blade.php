@@ -3,7 +3,7 @@
     function alert_cajachica(){
        swal({
         icon : "warning",
-        title : " Caja Chica no existe!",
+        title : "¡Caja Chica no existe!",
         text : "Debe registrar la cuenta para hacer uso de este modulo.",
         buttons : {
             cancel: {
@@ -33,7 +33,7 @@
     function alert_inventario(){
        swal({
         icon : "info",
-        title : "No existe ningun registro!",
+        title : "¡No existe ningun registro!",
         text : "Debe registrar un producto para hacer uso de este modulo.",
         buttons : {
             confirm: {
@@ -51,7 +51,7 @@
         function alert_empresa(){
        swal({
         icon : "warning",
-        title : "No existe un registro de empresa!",
+        title : "¡No existe un registro de empresa!",
         text : "Debe registrar para hacer uso de este modulo.",
         buttons : {
             cancel: {

@@ -69,7 +69,12 @@
                     </div>
                     
                     <br>
-                    <button  type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
 
             </div> <!-- end card-body-->
         </div> <!-- end card-->

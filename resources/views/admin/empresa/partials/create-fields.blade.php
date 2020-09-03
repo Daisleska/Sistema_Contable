@@ -1,7 +1,7 @@
-<p>Campos obligatorios (*)</p>
+<p style="margin-left: 1.3cm;">Campos obligatorios (*)</p>
 
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;">
     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre de la Empresa *</label>
                         <input style="width: 310px; margin-left: 0.3cm; " type="text" name="nombre" class="form-control" placeholder="EICHE" required>
@@ -12,7 +12,7 @@
 </div>
 
 
-  <div class="row" style="margin-left: 0.3cm;">
+  <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">RUT *</label>
                             <select name="tipo_documento" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 60px; margin-left: 0.3cm; " >
@@ -40,7 +40,7 @@
 
     </div>
 
-    <div class="row" style="margin-left: 0.3cm;">         
+    <div class="row" style="margin-left: 1cm;">         
                 <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Correo *</label>
                         <input style="width: 310px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="eiche@gmail.com" required>
@@ -51,7 +51,7 @@
     </div>
 
 
-    <div class="row" style="margin-left: 0.3cm;">
+    <div class="row" style="margin-left: 1cm;">
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección *</label>
                         <input style="width: 310px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
@@ -61,9 +61,9 @@
                     </div>
     </div>
 
-     <div class="row" style="margin-left: 0.3cm;">
+     <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Código *</label>
+                        <label style="margin-left: 0.3cm;">Teléfono *</label>
                     
                             <select name="codigo" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 90px; margin-left: 0.3cm; " >
                                   
@@ -84,29 +84,35 @@
                     </div>
 
                  <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Teléfono *</label>
+                        <label style="color: white">..</label>
                         <input style="width: 210px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
 </div>
-
+                   <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Imagen</label>
+                        <label style="margin-left: 0.3cm;">Imagen *</label>
                         <input type="file" style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="image" id="image">
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
-
+                  </div>
+                   <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Pie de página</label>
+                        <label style="margin-left: 0.3cm;">Pie de página *</label>
                          <input type="text" style="width: 310px; margin-left: 0.3cm;" class="form-control" placeholder="Ej: Dirección y Datos de contactos" name="page_foot" id="page_foot">
                        
                         </div>
-
-                        <button style="margin-left: 0.6cm;" class="btn btn-primary" type="submit">Guardar</button>
+                      </div>
+                      <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
                     </div>
    </div>
 

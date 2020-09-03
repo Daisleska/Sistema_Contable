@@ -11,7 +11,7 @@
 
 @section('breadcrumb')
 <div class="row page-title align-items-center">
-    <div class="col-sm-4 col-xl-6">
+   <!-- <div class="col-sm-4 col-xl-6">
         <h4 class="mb-1 mt-0">Hora: </h4>
     </div>
     <div class="col-sm-8 col-xl-6">
@@ -24,6 +24,7 @@
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Download
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                -->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="#" class="dropdown-item notify-item">
                         <i data-feather="mail" class="icon-dual icon-xs mr-2"></i>

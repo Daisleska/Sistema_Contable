@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\producto;
 use App\inventario;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +48,7 @@ class ProductosController extends Controller
         
         if ($buscar !== null && count($buscar) > 0) {
             
-            flash('<i class="icon-circle-check"></i> ¡Ya tiene un producto registrado con este código!')->warning()->important();
+            flash('<i class="icon-circle-check"></i>¡Ya tiene un producto registrado con este código!')->warning()->important();
             return redirect()->to('productos');
 
         } else {
@@ -83,8 +83,7 @@ class ProductosController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado un nuevo producto';
             $bitacoras->save();
-            flash('<i class="icon-circle-check"></i> ¡Producto registrado exitosamente
-                !')->success()->important();
+            flash('<i class="icon-circle-check"></i>¡Producto registrado exitosamente!')->success()->important();
            return redirect()->to('productos');
 
             }
@@ -151,8 +150,8 @@ class ProductosController extends Controller
             $bitacoras->save();
 
 
-            flash('<i class="icon-circle-check"></i> ¡Producto Actualizado satisfactoriamente!')->success()->important();
-            return redirect ()->route('productos.index');
+            flash('<i class="icon-circle-check"></i>¡Producto actualizado satisfactoriamente!')->success()->important();
+            return redirect ()->to('productos');
         }
     }
 

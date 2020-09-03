@@ -63,7 +63,7 @@
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   <td>
                         
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
                     
                        <br>
                         <form id="f_eliminar" action="{{ route('clientes.destroy', $key->id) }}" method="POST" name="formulario">

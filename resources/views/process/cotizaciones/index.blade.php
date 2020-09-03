@@ -75,7 +75,7 @@
                         <form id="c_eliminar" action="{{ route('cotizacion.destroy', $key->id) }}" method="POST" name="formulario">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
-                        </form>
+                        </form><br>
                         <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cot()" title="Eliminar"><i data-feather="trash-2"></i></button>
                  
                     </td>

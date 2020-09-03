@@ -107,7 +107,7 @@ class InventarioController extends Controller
        public function pdf()
 
     {
-        $inventario = \DB::select('SELECT   inventario.existencia AS inv_asis, productos.id, productos.nombre,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.descripcion, productos.codigo
+        $inventario = \DB::select('SELECT   inventario.existencia AS inv_asis, productos.id, productos.nombre AS descripcion,  productos.precio, inventario.existencia, productos.unidad,  productos.stock_min, productos.stock_max, productos.codigo
 
         FROM productos, inventario
 

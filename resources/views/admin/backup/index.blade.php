@@ -42,7 +42,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="float-right">
-                                            <a href="{{ route('backup.create') }}" class="btn btn-primary">Generar respaldo</a>
+                                            <a href="{{ route('backup.create') }}" class="btn btn-info">Generar respaldo</a>
                                         </div>
                                         <center>
                                             <h4 class="box-title">BASE DATOS</h4>

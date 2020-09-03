@@ -212,8 +212,9 @@
                         </div>
                     </div>
                     <div class="border-top">
-                        <div class="card-body">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -231,7 +232,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mySmallModalLabel">Cambiar Descuento</h5>
+                                                        <h5 style="margin-left: 1cm;" class="modal-title" id="mySmallModalLabel">Cambiar Descuento</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -243,7 +244,7 @@
 
                                                        <div class="modal-footer">
                                                         <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                       <button class="btn btn-info btn-xs remove-item" id="other">Guardar</button>
+                                                       <button class="btn btn-primary btn-xs remove-item" id="other">Guardar</button>
                                                    </div>
 
                                                     </div>

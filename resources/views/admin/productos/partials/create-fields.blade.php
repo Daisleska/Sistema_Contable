@@ -1,50 +1,50 @@
-<p style="margin-left: 0.5cm;">Campos obligatorios (*)</p>
-<div class="row" style="margin-left: 0.3cm;">
+<p style="margin-left: 1cm;">Campos obligatorios (*)</p>
+<div class="row" style="margin-left: 1cm;">
 <div class="form-group mb-3">
                     <label style="margin-left: 0.3cm;">Código *</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control"  value="{{ old('codigo') }}" placeholder="CA08" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control"  value="{{ old('codigo') }}" placeholder="CA08" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre *</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control"  value="{{ old('nombre') }}" placeholder="Landing Page" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control"  value="{{ old('nombre') }}" placeholder="Landing Page" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;">
                     
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Descripción </label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control"  value="{{ old('descripcion') }}" placeholder="">
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text"  name="descripcion" class="form-control"  value="{{ old('descripcion') }}" placeholder="">
                         <div class="valid-feedback">
                            
                         </div>
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;">
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Existencia *</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control"  name="existencia" value="{{ old('existencia') }}" placeholder="" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" class="form-control"  name="existencia" value="{{ old('existencia') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;" >
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Unidad *</label>
                        
-                        <select style="width: 380px; margin-left: 0.3cm;" class="form-control"  name="unidad">
+                        <select style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="unidad">
                                     <option>Seleccione</option>
                                     <optgroup label="Seleccione una unidad">
                                         <option value="Caja">Caja</option>
@@ -65,23 +65,23 @@
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;" >
 
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Precio c/u *</label>
-                        <input style="width: 380px; margin-left: 0.3cm;" type="text" class="form-control" name="precio" value="{{ old('precio') }}" placeholder="200.800,00" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" class="form-control" name="precio" value="{{ old('precio') }}" placeholder="200.800,00" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
 </div>
 
-<div class="row" style="margin-left: 0.3cm;">
+<div class="row" style="margin-left: 1cm;">
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Mínimo *</label>
-                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ old('stock_min') }}" placeholder="" required>
+                        <input style="width: 150px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ old('stock_min') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -89,13 +89,18 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Máximo *</label>
-                        <input style="width: 185px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ old('stock_max') }}" placeholder="" required>
+                        <input style="width: 150px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ old('stock_max') }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
                     </div>
 </div>
-                    <button style="margin-left: 0.6cm;" class="btn btn-primary" type="submit">Guardar</button>
+                    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
 
 
 

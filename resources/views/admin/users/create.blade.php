@@ -25,18 +25,22 @@
 
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-12">
+	<div class="row" style=" align-items: center; justify-content: center;">
+		<div class="col-6">
             <div class="card">
                 <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
                     @csrf
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;">Registro de Usuarios</h4> <br> <h5><p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h5>
-                    	<div class="form-group row">
-                            <label for="name" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Nombre</label>
+                        <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Usuario</h4> <br> 
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Ej: Martin Ferrer">
+                        <p style="margin-left: 1cm;">Todos los campos son requeridos *</p>
+
+                    <div class="row" style="margin-left: 1cm;">
+                    	<div class="form-group  mb-3">
+                             <label style="margin-left: 0.3cm;">Nombre *</label>
+
+                          
+                                <input style="width: 310px; margin-left: 0.3cm;" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Ej: Martin Ferrer">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -44,13 +48,13 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Correo</label>
+                        <div class="row" style="margin-left: 1cm;">
+                        <div class="form-group  mb-3">
+                             <label style="margin-left: 0.3cm;">Correo *</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Ej: micorreo@gmail.com">
+                                <input style="width: 310px; margin-left: 0.3cm;" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Ej: micorreo@gmail.com">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -59,12 +63,14 @@
                                 @enderror
                             </div>
                         </div>
+                 
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Contraseña</label>
+                         <div class="row" style="margin-left: 1cm;">
+                        <div class="form-group  mb-3">
+                             <label style="margin-left: 0.3cm;">Contraseña *</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                           
+                                <input style="width: 310px; margin-left: 0.3cm;" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -74,19 +80,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Confirma Contraseña</label>
+                        <div class="row" style="margin-left: 1cm;">
+                        <div class="form-group  mb-3">
+                             <label style="margin-left: 0.3cm;">Confirmar Contraseña *</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            
+                                <input style="width: 310px; margin-left: 0.3cm;" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
-                         <div class="form-group row">
-                            <label for="user_type" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Tipo de usuario</label>
+                         <div class="row" style="margin-left: 1cm;">
+                        <div class="form-group  mb-3">
+                             <label style="margin-left: 0.3cm;">Tipo de usuario *</label>
 
-                             <div class="col-md-6">
-                             <select name="user_type" class="form-control" >
+                             
+                             <select  style="width: 310px; margin-left: 0.3cm;" name="user_type" class="form-control" >
                                 <option value="Administrador">Administrador</option>
                                 <option value="Jefe">Jefe</option>
                                 <option value="Contador">Contador</option>
@@ -108,7 +116,8 @@
                             </div>
                         </div>     --}}         
                     <div class="border-top">
-                        <div class="card-body">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
                             <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>

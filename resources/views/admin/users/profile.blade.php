@@ -6,13 +6,17 @@
 
 @section('content')
 <div class="page-breadcrumb">
-    <div class="row ">
+    <div class="row " align="center">
         <div class="card col-md-12">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Mi Cuenta</h4>
+         
          @if(\Auth::User()->user_type=="Administrador")
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="{{ route('users.index') }}"> Lista de usuarios</a>
-         @endif        
+           <a class="btn btn-info" href="{{ route('users.index') }}"> Lista de usuarios</a>
+         @endif  
+         <div class="ml-auto text-right">
+            <h4  class="page-title">Mi Cuenta</h4>
+        </div>  
+
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -41,11 +45,10 @@
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       <img width="20px" height="20px" src="{{ asset('uploads/avatars/'.$user->avatar) }}" class="avatar-lg rounded-circle" />
                     </a>
-                     <h4>Cambiar Foto</h4>
-        {{ Form::open(['route' => ['user.profile.update'], 'files' => true, 'method' => 'PATCH']) }}
-          <p>{{ Form::file('avatar') }}</p>
-          <button type="submit" class="btn btn-primary">Cambiar</button>
-        {{ Form::close() }}
+                    <div><br>
+                     <button class="btn btn-info" data-toggle="modal"
+                    data-target="#myModal2">Cambiar Foto</button>
+        </div>
                         <h5 class="mt-2 mb-0">{{ Auth::user()->name }}</h5>
                         <h6 class="text-muted font-weight-normal mt-2 mb-0">{{ Auth::user()->user_type }}
                         </h6>
@@ -62,7 +65,7 @@
 
                   <!-- profile  -->
                 <div class="mt-3 pt-2 border-top">
-                    <h4 class="mb-3 font-size-15">Información de Contacto</h4>
+                    <h4 class="mb-3 font-size-15" style="text-align: center;">Información de Contacto</h4>
                     <div class="table-responsive">
                         <table class="table table-borderless mb-0 text-muted">
                             <tbody>
@@ -129,7 +132,7 @@
                         aria-labelledby="pills-activity-tab">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Mis datos <br></h4>
+                  
                     <div class="form-group row">
                         <label for="name" class="col-md-3 col-form-label text-md-right"><b>Nombre:</b></label>
                         <label for="name" class="col-md-6 col-form-label text-md-right">{{ $user->name }}</label>
@@ -154,10 +157,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Clave de acceso:</b></label>
+                        <label for="log_enterprise" class="col-md-3 col-form-label text-md-right"><b>Contraseña:</b></label>
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  type="button" class="btn btn-info" data-toggle="modal"
-                    data-target="#myModal">Cambiar clave</button> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  type="button" class="btn btn-info" data-toggle="modal"
+                    data-target="#myModal">Cambiar Contraseña</button> 
                     </div>    
                            
                </div>

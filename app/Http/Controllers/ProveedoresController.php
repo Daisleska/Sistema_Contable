@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App;
 use App\proveedor;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,13 +39,16 @@ class ProveedoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-       /* dd($request);*/
-       /* $buscar=Repuestos::where ('descripcion', $require->descripcion)->get();
+    { 
+        
+       $buscar=proveedor::where ('ruf', $request->ruf)->get();
+
         if (count($buscar)>0) {
             # no permitir registrar
-            return redirect()->back();
-        } else {*/
+            flash('<i class="icon-circle-check"></i> ¡El registro ya existe!')->warning()->important();
+              return redirect()->back();
+
+        } else {
             # permitir regitrar
             $proveedor= new proveedor();
             $proveedor->nombre=$request->nombre;
@@ -67,11 +70,12 @@ class ProveedoresController extends Controller
             $bitacoras->role =  Auth::user()->user_type;
             $bitacoras->action = 'Ha registrado un nuevo proveedor';
             $bitacoras->save();
-       
+            flash('<i class="icon-circle-check"></i> ¡Proveedor registrado exitosamente!')->success()->important();
 
            return redirect()->to('proveedores');
        /* }*/
     }
+}
 
     /**
      * Display the specified resource.
@@ -131,7 +135,7 @@ class ProveedoresController extends Controller
             $bitacoras->action = 'Ha modificado al proveedor';
             $bitacoras->save();
 
-            flash('<i class="icon-circle-check"></i> Proveedor Actualizado satisfactoriamente!')->success()->important();
+            flash('<i class="icon-circle-check"></i>¡Proveedor actualizado satisfactoriamente!')->success()->important();
             return redirect ()->route('proveedores.index');
         }
     }
@@ -148,7 +152,7 @@ class ProveedoresController extends Controller
         $proveedor=proveedor::find($id);
 
         if ($proveedor->delete()) {
-            flash('Registro eliminado satisfactoriamente!', 'success');
+            flash('¡Registro eliminado satisfactoriamente!', 'success');
 
              /*registrar accion en bitacora*/
             $bitacoras = new App\Bitacora;
@@ -163,7 +167,7 @@ class ProveedoresController extends Controller
 
         } else {
 
-            flash('No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
+            flash('¡No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
                 return redirect()->back();
         }
 

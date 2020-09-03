@@ -190,9 +190,16 @@
 
 
                     
-                    <button style="margin-left: 20cm;" class="btn btn-primary" id="guardar" type="submit">Guardar</button>
+                   
 </div>
 
+    <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+               
 
 <script src="{{ URL::asset('Shreyu/assets/js/app.min.js') }}"></script>
 <!-- Plugin js-->

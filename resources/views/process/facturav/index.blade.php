@@ -66,14 +66,14 @@
                       
                     
 
-                        <div class="float-right" >
+                      
                                             <a href="{{ route('facturav.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
-                        </div>
                        
-                  
+                       
+                  <br><br>
                    <form action="{{ route('facturav.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">

@@ -5,7 +5,7 @@
                 <?php
                 $fecha= date('d-m-Y');
                 ?>
-                <h5 class="modal-title" id="myExtraLargeModalLabel">Registro en libro Diario 22222222222222222222222222</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
+                <h5 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en libro Diario</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>

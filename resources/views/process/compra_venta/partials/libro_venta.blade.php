@@ -1,8 +1,7 @@
    <table class="table dt-responsive nowrap">
                         <thead>
                             <tr style="color: black;">
-                                <th COLSPAN="6" style="text-align: left;">LIBRO DE VENTAS</th>
-                                <th COLSPAN="3">     
+                              <th COLSPAN="5">     
                                   <div class="btn-group">
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -24,6 +23,8 @@
                     </a>
                 </div>
             </div></th>
+                                <th COLSPAN="6" style="text-align: left;">LIBRO DE VENTAS</th>
+                              
                             </tr>
                             <tr style="color: black; font-size: 10px;">
                                {{--  <th>Nº</th> --}}

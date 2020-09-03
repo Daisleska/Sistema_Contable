@@ -132,8 +132,12 @@
     </tbody>
   </table>
 </div>
-                    
-                    <button style="margin-left: 1cm;" class="btn btn-info" type="submit" id=guardar>Guardar</button>
+                   <div class="border-top">
+                        <div class="card-body" align="right">
+                            <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>
+                            <button style="align-content: center;" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
                   
 
 

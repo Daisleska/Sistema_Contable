@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\empresa;
 use App;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +19,9 @@ class EmpresaController extends Controller
     public function index()
     {
        $empresa = \DB::select('SELECT * FROM empresa');
-       if (empty($empresa)) {
-        $empresa=0; 
-       }
+      
          return view('admin.empresa.index', compact('empresa'));
+       
     }
 
     /**
@@ -37,7 +36,7 @@ class EmpresaController extends Controller
         $buscar=empresa::all();
             
             if (count($buscar)>0) {
-                flash('<i class="icon-circle-check"></i> Ya existe un registro de empresa, para registrar uno debe eliminar el anterior!')->success()->important();
+                flash('<i class="icon-circle-check"></i> ¡Ya existe un registro de empresa, para registrar uno debe eliminar el anterior!')->success()->important();
                 return redirect()->back();
             } else {
                 return view ('admin.empresa.create');
@@ -90,7 +89,7 @@ class EmpresaController extends Controller
             $bitacoras->save();
 
             flash('¡Información de la empresa registrada exitosamente!', 'success');
-           return redirect()->to('empresa.index');
+           return redirect()->to('empresa');
     }
 
     /**
@@ -178,8 +177,9 @@ class EmpresaController extends Controller
         }
         
         
-        flash('<i class="icon-circle-check"></i> Información de la empresa actualizada exitosamente!')->success()->important();
-            return redirect()->to('admin.empresa.index');
+        flash('<i class="icon-circle-check"></i>¡Información de la empresa actualizada exitosamente!')->success()->important();
+
+           return redirect()->to('empresa');
     }
 
     /**
@@ -194,10 +194,10 @@ class EmpresaController extends Controller
          $image=$empresa->url_image;
         if ($empresa->delete()) {
             unlink(public_path().'/'.$image);
-            flash('Registro eliminado exitosamente!', 'success');
+            flash('¡Registro eliminado exitosamente!', 'success');
                 return redirect()->back();
         } else {
-            flash('No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
+            flash('¡No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
                 return redirect()->back();
         }        
     }

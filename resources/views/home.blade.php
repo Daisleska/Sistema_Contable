@@ -9,7 +9,7 @@
 @section('breadcrumb')
 <div class="row page-title align-items-center">
     <div class="col-sm-4 col-xl-6">
-        <h4 class="mb-1 mt-0">Panel de Control</h4>
+        <!--<h4 class="mb-1 mt-0">Panel de Control</h4>-->
     </div>
 </div>
 @endsection
@@ -262,7 +262,7 @@ chart.render();
         swal({
         icon : "info",
         title : "Registre su empresa",
-        text : "Le sugerimos registre los datos de su empresa o negocio, Gracias!.",
+        text : "Le sugerimos registre los datos de su empresa o negocio, ¡Gracias!.",
         buttons : {
             cancel: {
                 text: "Mas tarde",

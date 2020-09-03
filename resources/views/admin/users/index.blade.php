@@ -82,20 +82,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><strong>Cambiar Estado del Usuario a <span id="nuevo_status"></span> </strong></h4>
+                <h5 class="modal-title" style="margin-left: 1cm;">Cambiar Estado del Usuario a <span id="nuevo_status"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             {!! Form::open(['route' => ['users.destroy',1033], 'method' => 'DELETE']) !!}
                 @csrf
             <div class="modal-body">
-                <strong>¿Está seguro de Cambiar el Estado de éste usuario?</strong>
+                <strong style="margin-left: 1cm;">¿Está seguro de cambiar el estado de éste usuario?</strong>
                 <input type="hidden" name="user_id" id="user_id">
                 <input type="hidden" name="status" id="status">
                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-success save-event waves-effect waves-light">Cambiar Estado</button>
+                <button type="submit" class="btn btn-primary save-event waves-effect waves-light">Cambiar</button>
                 
             </div>
                     </div>
@@ -112,7 +112,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><strong>Cambiar Tipo de usuario</strong></h4>
+                <h5 class="modal-title" style="margin-left: 3.5cm;">Cambiar Tipo de Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             {!! Form::open(['route' => ['cambiar_tipo'], 'method' => 'PUT']) !!}
@@ -122,7 +122,7 @@
                 <input type="hidden" name="user_id" id="user_id2">
 
                 <div class="form-group row">
-                            <label for="user_type" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Tipo de usuario</label>
+                            <label for="user_type" class="col-md-4 col-form-label text-md-right">Tipo de usuario</label>
 
                              <div class="col-md-6">
                              <select name="user_type" class="form-control" >
