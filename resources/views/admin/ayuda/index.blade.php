@@ -7,6 +7,24 @@
 
 @section('content')
 
+<style type="text/css">
+    .titulo_boton {
+  float:left; 
+  padding:5px;  
+  background-color:#e6e6e6;
+  width:300px;
+  font-family:helvetica;
+  font-size:13px;
+  font-weight:bold;
+}
+.boton_mostrar {
+  float:right;
+  font-size:12px;
+  line-height:20px;
+  color:#DE7217;
+}
+
+</style>
 <!-- Pre-loader end -->
 <div id="pcoded" class="pcoded">
     <div class="pcoded-container navbar-wrapper">
@@ -56,17 +74,38 @@
           <center>
            <h4 class="box-title">Preguntas y Respuestas</h4>
            </center>
-      <button type="button" class="btn btn-link" onclick="Mostrar_Ocultar()">¿Cuando se muestra el Balance de Ganancias y Perdidas?</button>
-     
-      </div> <br>
-<section id="caja" style="width: 400px; height: 200px; display: none;"><p>El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre. Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</p> <br></section>
+      <br><br>
 
                      
                      
                        
 
-                
+<div class="titulo_boton" style="margin-right: 1cm;" >
+    
+  <a style='cursor: pointer; ' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">¿Cuando se muestra el Balance de Ganancias y Perdidas?</a>
+
+
+<div id="contenido" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">
+<p style="text-align: center;">El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre. Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</p>
+</div> 
+
+</div>
+
+
+<div class="titulo_boton" style="margin-right: 1cm;" >
+    
+  <a style='cursor: pointer;' onClick="muestra_oculta('d')" title="" class="boton_mostrar">¿Se puede abrir el Libro Diario luego de haberlo cerrado?</a>
+
+
+<div id="d" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">Nooooo</p>
+</div> 
+
+</div>
                     </div></div></div>
+
+
+
+
 </div>
 </div>
 </div>
@@ -87,24 +126,18 @@
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
 
+
 <script type="text/javascript">
-    function Mostrar(){
-        document.getElementById("caja").style.display="block";
-        
-    }
+    
 
-     function Ocultar(){
-        document.getElementById("caja").style.display="none";
-        
-    }
+function muestra_oculta(id){
+if (document.getElementById){ //se obtiene el id
 
-    function Mostrar_Ocultar(){
-        var caja= document.getElementById("caja");
-
-        if (caja.style.display == "none") {
-            Mostrar();
-        }else{
-            Ocultar();
-        }
-    }
+var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+}
+}
+window.onload = function(){/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
+muestra_oculta(el);/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+}
 </script>
