@@ -38,8 +38,9 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cuentas</h4>
                     <p class="sub-header"></p>
-                   
+                   @if(buscar_p('Registros Generales','Registrar')=="Si")
                      <a href="{{ route('cuentas.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  @endif
 
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
@@ -71,6 +72,7 @@
                   <td>{{number_format($key->saldo,2,',','.')}}</td>
                   
                   <td>
+                    @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si" )
                        <form action="{{ route('cuentas.edit',$key->id) }}" method="GET">
                         <input type="hidden" name="_method" value="EDITAR">
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
@@ -84,7 +86,7 @@
                    </form>
                    <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
                    
-                 
+                 @endif
                
                   
                  </td>

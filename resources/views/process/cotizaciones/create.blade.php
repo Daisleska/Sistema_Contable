@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h3 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cotización</h3>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cotización</h4>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('cotizacion.store')}}" class="needs-validation" method="post"  novalidate>

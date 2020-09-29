@@ -117,6 +117,13 @@ Route::get('backup/delete/{filename}', 'BackupController@delete')->name('backup.
     });
 /*fin backup*/
 
+//PRIVILEGIOS 
+Route::resource('privilegios','PrivilegiosController');
+Route::post('editP','PrivilegiosController@editarPrivilegio')->name('editP');
+Route::get('permisos/{id_user}/buscar','PrivilegiosController@buscar_privilegios');
+Route::get('permisos/{id_privilegio}/{opcion}/{id_usuario}/actualizando','PrivilegiosController@actualizando');
+Route::post('usuarios/update_privilegios/{id}','UsuariosController@update_privilegios')->name('usuarios.update_privilegios');
+
 
 /*rutas para cambiar personalizacion de la interfaz*/
 Route::group(['middleware' => 'auth'], function () {

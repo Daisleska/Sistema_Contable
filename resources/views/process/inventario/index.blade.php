@@ -28,9 +28,10 @@
                 <div class="card-body">
                     
                     <br>
-<h2 style="text-align: center; color: black;" class="header-title mt-0 mb-1">LIBRO DE INVENTARIO</h2>
+ <h4 style="text-align: center;" class="header-title mt-0 mb-1">Libro de Inventario</h4>
                 <div class="row">
                     <div class="col-md-4">
+                   @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                        <div class="btn-group">
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -52,6 +53,7 @@
                     </a>
                 </div>
             </div>
+          @endif
                     </div>  
                       @foreach($inventario as $key)
                        <?php

@@ -14,7 +14,7 @@
            <a class="btn btn-info" href="{{ route('users.index') }}"> Lista de usuarios</a>
          @endif  
          <div class="ml-auto text-right">
-            <h4  class="page-title">Mi Cuenta</h4>
+               <h4 style="text-align: center;" class="header-title mt-0 mb-1">Mi Cuenta</h4>
         </div>  
 
             <div class="ml-auto text-right">

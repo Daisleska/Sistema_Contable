@@ -34,8 +34,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Proveedores</h4>
-                    
-                    <a href="{{ route('proveedores.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+
+                    @if(buscar_p('Registros Generales','Registrar')=="Si")
+                     <a href="{{ route('proveedores.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                    @endif
                   
                     <br></br>
 
@@ -64,15 +66,18 @@
                   <td>{{$key->correo}}</td>
                   <td>{{$key->telefono}}</td>
                   <td>
-                        
+                       @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
+                        
                     
                        <br>
+                      
                         <form id="f_eliminar" action="{{ route('proveedores.destroy', $key->id) }}" method="POST" name="formulario">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         </form>
                         <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_pro()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                         @endif
                     </td>
                 </tr>
                 @endforeach

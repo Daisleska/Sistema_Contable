@@ -54,7 +54,7 @@
                             <div class="card-body">
                                       
                             <center>
-                                <h4 class="box-title">Ayuda</h4>
+                                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Ayuda</h4>
                             </center>
       <dir>
                     <a class="btn btn-info" href="{{ URL::asset('uploads/Manual.pdf')}}" class="dropdown-item notify-item">Manual de Usuario<i data-feather="download"></i>

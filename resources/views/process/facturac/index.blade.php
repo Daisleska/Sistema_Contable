@@ -42,8 +42,9 @@
                                                 title="Generar pdf"> <i class="feather icon-file-text"
                                                     style="font-size: 20px"></i> Generar PDF</a>
                                         </div>-->
-
+                  @if(buscar_p('Facturas','Registrar')=="Si" )
                           <a href="{{ route('facturac.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  @endif
 
                   
 
@@ -72,20 +73,22 @@
                 
              
                   <td>
-                            
+                             @if(buscar_p('Reportes','PDF')=="Si")
                                             <a href="{{ route('facturac.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
+                              @endif
                            
               
                     <br><br>   
-                  
+                   @if(buscar_p('Facturas','Eliminar')=="Si" )
                    <form action="{{ route('facturac.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
                    <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
+                   @endif
                    <br>
                </td>
 

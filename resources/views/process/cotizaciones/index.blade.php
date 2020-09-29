@@ -66,17 +66,20 @@
                   <td>{{$key->email}}</td>
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>
-
+                       @if(buscar_p('Reportes','PDF')=="Si")
                                             <a href="{{ route('cotizacion.pdf', $key->n_cotizacion) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
+                        @endif
+                         @if(buscar_p('Cotizaciones','Eliminar')=="Si" )
                       
                         <form id="c_eliminar" action="{{ route('cotizacion.destroy', $key->id) }}" method="POST" name="formulario">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE">
                         </form><br>
                         <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cot()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                        @endif
                  
                     </td>
              

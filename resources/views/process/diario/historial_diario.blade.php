@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                  
-                    <h4 style="text-align: center;">Historial Libro Diario</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Diario</h4>
                     <br>
                     <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">

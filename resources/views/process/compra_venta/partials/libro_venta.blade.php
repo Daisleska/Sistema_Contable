@@ -1,6 +1,7 @@
    <table class="table dt-responsive nowrap">
                         <thead>
                             <tr style="color: black;">
+          @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                               <th COLSPAN="5">     
                                   <div class="btn-group">
 
@@ -23,6 +24,7 @@
                     </a>
                 </div>
             </div></th>
+            @endif
                                 <th COLSPAN="6" style="text-align: left;">LIBRO DE VENTAS</th>
                               
                             </tr>

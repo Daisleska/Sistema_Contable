@@ -35,8 +35,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <h3 style="text-align: center; color: black;">HISTORIAL DE BALANCES</h3>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial de Balances</h4>
+                  
 <br>
 
 <a href="{{ route('balances.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>

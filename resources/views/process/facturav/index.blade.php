@@ -35,9 +35,9 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Ventas</h4>
 
                     
-                   
-                 
+                  @if(buscar_p('Facturas','Registrar')=="Si" )
                     <a href="{{ route('facturav.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                  @endif
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -64,21 +64,22 @@
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>
                       
-                    
-
-                      
-                                            <a href="{{ route('facturav.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
-                                                data-toggle="tooltip" 
-                                                title="Generar pdf"> <i data-feather="save"></i>
-                                            </a>
+                     @if(buscar_p('Reportes','PDF')=="Si")
+                      <a href="{{ route('facturav.pdf', $key->n_factura) }}" class="btn btn-info btn-sm"
+                          data-toggle="tooltip" 
+                          title="Generar pdf"> <i data-feather="save"></i>
+                      </a>
+                    @endif
                        
                        
                   <br><br>
+                   @if(buscar_p('Facturas','Eliminar')=="Si")
                    <form action="{{ route('facturav.destroy', $key->id) }}" method="POST">
                    {{ csrf_field() }}
                    <input type="hidden" name="_method" value="DELETE">
                    <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
+                   @endif
                    <br>
                  
                   </td>

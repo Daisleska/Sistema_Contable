@@ -29,13 +29,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Diario</h4>
                   <table style="color: black;" >
 
                     <th style="align-content: right;">
+                @if(buscar_p('Diario','Registrar')=="Si")
                      <button  type="button" class="btn btn-secondary  btn-xs remove-item" data-toggle="modal" title="Registrar"  data-target="#bs-example-modal-xl"><i data-feather="plus"></i></button>
+                @endif
                   
-            
+             @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                 <div class="btn-group">                           
                     <button type="button" class="btn btn-primary btn-xs remove-item" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" title="Descargar">
@@ -56,9 +58,16 @@
                     </a>
                 
                     </div></div>
-                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger btn-xs remove-item" title="Cerrar"><i data-feather="unlock"></i></a>
+                    @endif
 
-                 <a href="{{ route('historial') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
+                 @if(buscar_p('Diario','Cerrar o Abrir')=="Si")
+                 <a href="{{ route('diario.cerrar', $n_folio) }}"  class="btn btn-danger btn-xs remove-item" title="Cerrar"><i data-feather="unlock"></i></a>
+                 @endif
+
+                @if(buscar_p('Diario','Historial')=="Si")
+                 <a href="{{ route('historial') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a>
+                 @endif
+             </th>
                   
           </table>
                   <br>

@@ -26,7 +26,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <table style="color: black;">
                       <?php
                       use App\empresa;
@@ -66,11 +65,16 @@
                                 <th COLSPAN="13" style="text-align: center; color: black;">LIBRO DE CAJA CHICA</th>
                             </tr>
                             <tr>
-                              <th><button  type="button" class="btn btn-danger btn-xs remove-item" data-toggle="modal" title="Egreso" data-target="#bs-example-modal-sm1"><i data-feather="minus-circle"></i></button>
-
+                              <th>
+                              @if(buscar_p('Caja Chica','Egreso')=="Si")
+                                <button  type="button" class="btn btn-danger btn-xs remove-item" data-toggle="modal" title="Egreso" data-target="#bs-example-modal-sm1"><i data-feather="minus-circle"></i></button>
+                              @endif
+                              @if(buscar_p('Caja Chica','Ingreso')=="Si")
                               <button  type="button" class="btn btn-success btn-xs remove-item" title="Ingreso" data-toggle="modal" data-target="#bs-example-modal-sm2"><i data-feather="plus-circle"></i></button>
-
+                              @endif
+                              @if(buscar_p('Caja Chica','Busqueda')=="Si")
                               <button  type="button" class="btn btn-info btn-xs remove-item" title="Busqueda" data-toggle="modal" data-target="#bs-example-modal-sm3"><i data-feather="download"></i></button></th>
+                              @endif
 
 
                             </tr>

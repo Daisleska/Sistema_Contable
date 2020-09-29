@@ -34,7 +34,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <table style="color: black;">
                       <?php
                       use App\empresa;
@@ -61,7 +60,7 @@
                     </tr>
 
                     <th style="align-content: right;">
-
+             @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                        <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -82,7 +81,10 @@
                     </a>
                 
                     </div></div>
+                @endif
+                 @if(buscar_p('Mayor','Historial')=="Si")
                     <a href="{{ route('historial_mayor') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
+                @endif
                   </tr>
 
                     </table>

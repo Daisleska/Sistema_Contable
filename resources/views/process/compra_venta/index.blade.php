@@ -26,14 +26,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body" style="padding-right: 50px;">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    
                   
   <div class="row">
     <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
-                <h5 class="header-title mb-3 mt-0" style="text-align: center;">Compra y Venta</h5>
+                <h4 class="header-title mb-1 mt-0" style="text-align: center;">Compra y Venta</h4> 
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">

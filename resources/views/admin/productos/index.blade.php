@@ -18,9 +18,9 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Productos</h4>
                     <p class="sub-header"></p>
-
+                   @if(buscar_p('Registros Generales','Registrar')=="Si")
                    <a href="{{ route('productos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
-
+                   @endif
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
@@ -48,7 +48,7 @@
                   <td>{{number_format($key->precio,2,',','.')}}</td>
                   
                   <td>
-
+                 @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")
                     <button type="button" class="btn btn-info btn-xs" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
 
                   
@@ -60,6 +60,7 @@
                    <br><br>
                  
                    <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-success btn-xs" title="Ver más" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
+                  @endif
                   
                  </td>
 

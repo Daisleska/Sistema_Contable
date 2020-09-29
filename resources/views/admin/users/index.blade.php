@@ -16,7 +16,7 @@
 		<div class="col-12">
 			<div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;">Usuarios</h4>
+                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Usuarios</h4>
                     <br>
                     <h5 class="card-title">
 
@@ -56,13 +56,14 @@
                                         ?>
                                     
                                    <td>
-                                        
+                                 @if(buscar_p('Usuarios','cambiar tipo usuario')=="Si")
                                         <a title="Cambiar tipo" onclick="cambiar_tipo('{{ $key->id }}')"
                                            class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event2" title="Cambiar Tipo" ><i data-feather="edit"></i>
                                        </a>
                                        
                                         <a title="Cambiar estado" onclick="cambiar_status('{{ $key->id }}','{{ $key->status }}')" class="btn-block waves-effect waves-light"  data-toggle="modal" data-target="#my-event" title="Cambiar Estado"><i data-feather="book"></i>
                                         </a>
+                                    @endif
                                       
                                    </td>
                                 </tr>

@@ -7,7 +7,9 @@
     <center>
       <p>Por favor presione click en el siguiente boton y ingrese los datos solicitados para generar el balance de ganancias y perdidas.</p>
       <br>
+        @if(buscar_p('Balances','Completar')=="Si")
            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Completar</button>
+        @endif
     </center>
 
 @else

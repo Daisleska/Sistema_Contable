@@ -3,6 +3,7 @@
                            
                             <tr style="color: black;">
                               <div class="btn-group">
+            @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                  <th COLSPAN="5"> 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -23,6 +24,7 @@
                     </a>
                 </div>
             </div></th>
+            @endif
                                 <th COLSPAN="6">LIBRO DE COMPRAS</th>
 
                                     

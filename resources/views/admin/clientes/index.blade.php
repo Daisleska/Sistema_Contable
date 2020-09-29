@@ -35,8 +35,9 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Clientes</h4>
                     
+                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                     <a href="{{ route('clientes.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
-
+                    @endif
                     <br></br>
 
 
@@ -62,7 +63,7 @@
                   <td>{{$key->email}}</td>
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   <td>
-                        
+                  @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")   
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
                     
                        <br>
@@ -71,6 +72,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         </form>
                         <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cli()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                  @endif
                     </td>
                 </tr>
                 @endforeach

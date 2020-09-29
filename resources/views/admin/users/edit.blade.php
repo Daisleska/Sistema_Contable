@@ -40,7 +40,7 @@
                 {!! Form::open(['route' => ['users.update',$user->id], 'method' => 'PUT', 'name' => 'form', 'id' => 'form','data-parsley-validate']) !!}
                     @csrf
                     <div class="card-body">
-                        <h4 class="card-title">Actualizar Usuarios <br> <p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h4>
+                         <h4 style="text-align: center;" class="header-title mt-0 mb-1">Actualizar Usuarios <br> <p>Todos los campos son requeridos (<b style="color:red;">*</b>)</p></h4>
                     	<div class="form-group row">
                             <label for="name" class="col-md-3 col-form-label text-md-right"><b style="color:red;">*</b>Nombre</label>
 

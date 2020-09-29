@@ -112,6 +112,7 @@
         </div>
     </div>
 </div>
+ @if(buscar_p('Graficas','Ver')=="Si" )
 <!-- stats + charts -->
 <div class="row">
     <div class="col-xl-12 col-md-12 col-lg-12">
@@ -142,6 +143,7 @@
         </div> <!-- end card-->
     </div> <!-- end col-->
 </div>
+@endif
 <!-- row -->
 @endsection
 @section('script')

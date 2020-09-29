@@ -18,6 +18,7 @@
                     <i data-feather="user" class="icon-dual icon-xs mr-2"></i>
                     <span>Mi Cuenta</span>
                 </a>
+    @if(buscar_p('Empresa','Registrar')=="Si" || buscar_p('Empresa','Modificar')=="Si") 
                        <?php
    $x_empresa=\DB::select('SELECT * FROM empresa ');
 
@@ -34,17 +35,22 @@
                     <span>Empresa</span>
                 </a>
      <?php } ?>
+     @endif
+
+      @if(buscar_p('Configuracion','Data Base')=="Si")
 
                 <a href="{{ url('backup') }}" class="dropdown-item notify-item">
                     <i data-feather="settings" class="icon-dual icon-xs mr-2"></i>
                     <span>Configuración</span>
                 </a>
+        @endif
 
+         @if(buscar_p('ayuda','Ver')=="Si" )
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
                     <span>Ayuda</span>
                 </a>
-
+        @endif
                 <div class="dropdown-divider"></div>
 
                 <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="preventDefault()">

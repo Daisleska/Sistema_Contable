@@ -33,8 +33,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
-                    <h3 style="text-align: center; color: black;">BALANCES</h3>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Balances</h4>
                      <table style="color: black;">
                       
 
@@ -63,7 +62,9 @@
       
           
             <th>
+                @if(buscar_p('Balances','Historial')=="Si")   
                 <a href="{{ route('historial_balances') }}"  class="btn btn-info btn-xs remove-item" title="Historial"><i data-feather="clipboard"></i></a></th>
+                @endif
             </th>
             <th></th>
           </tr>

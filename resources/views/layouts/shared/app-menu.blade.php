@@ -12,11 +12,13 @@
     <li class="menu-title">Registros</li>
 
   <li>
+   @if(buscar_p('Registros Generales','Listado')=="Si" || buscar_p('Registros Generales','Registrar')=="Si")
      <a href="javascript: void(0);">
             <i data-feather="edit"></i>
             <span> Registros Generales </span>
             <span class="menu-arrow"></span>
         </a>
+     @endif
         <ul class="nav-second-level" aria-expanded="false">
 <?php
    $x_proveedores=\DB::select('SELECT * FROM proveedores ');
@@ -91,7 +93,7 @@
   </li>
 
 
-
+ @if(buscar_p('Facturas','Listado')=="Si" || buscar_p('Facturas','Registrar')=="Si")
    <li class="menu-title">Facturas</li>
 
    <li>
@@ -115,7 +117,7 @@
     </li>
         </ul>
    </li>
-   
+  @endif
 
     <li class="menu-title">Libros Principales</li>
 
@@ -126,6 +128,7 @@
             <span class="menu-arrow"></span>
         </a>
         <ul class="nav-second-level" aria-expanded="false">
+@if(buscar_p('Inventario','Ver')=="Si")
           <?php 
 $x_inventario=\DB::select('SELECT * FROM inventario');
 
@@ -146,20 +149,25 @@ if ($x_inventario) {
         </a>
     </li>
     <?php } ?>
-    
+@endif
 
+@if(buscar_p('Diario','Ver')=="Si" || buscar_p('Diario','Registrar')=="Si")
     <li>
          <a href="{{ route('diario.index') }}">
             <i data-feather="book-open"></i>
             <span>Diario</span>
         </a>
     </li>
+@endif
+
+ @if(buscar_p('Mayor','Ver')=="Si")
     <li>
          <a href="{{ route('mayor') }}">
             <i data-feather="book-open"></i>
             <span>Mayor</span>
         </a>
     </li>
+@endif
         </ul>
     </li>
 
@@ -169,19 +177,19 @@ if ($x_inventario) {
             <span>Otros Libros</span>
             <span class="menu-arrow"></span>
         </a>
-        <ul class="nav-second-level" aria-expanded="false">
-           <li>
+  <ul class="nav-second-level" aria-expanded="false">
+    @if(buscar_p('Compra Venta','Ver')=="Si")
+     <li>
         <a href="{{ route('compra.index') }}">
             <i data-feather="book-open"></i>  
             <span>Compra - Venta</span>
         </a>
     </li>
-
+    @endif
+ @if(buscar_p('Caja Chica','Listado')=="Si")
 <?php
    $x=\DB::select('SELECT * FROM cuentas WHERE nombre="Caja Chica" OR nombre="Caja" ');
-
-  if ($x) {
-
+    if ($x) {
    ?>
 
     <li>
@@ -199,9 +207,11 @@ if ($x_inventario) {
         </a>
     </li>
     <?php } ?>
+@endif
         </ul>
 </li>
 
+ @if(buscar_p('Balances','Ver')=="Si" )
 <?php
    $b=\DB::select('SELECT * FROM diario WHERE estado="Abierto"');
 
@@ -221,33 +231,46 @@ if ($x_inventario) {
         </a>
     </li>
   <?php } ?>   
-
+@endif
+@if(buscar_p('Cotizaciones','Listado')=="Si")
      <li>
          <a href="{{ route('cotizacion.index') }}">
             <i data-feather="file"></i>
             <span>Cotizaciones</span>
         </a>
     </li>
+@endif
 
-  @if(\Auth::User()->user_type=="Administrador")
+
      <li class="menu-title">Seguridad</li>
+  @if($user_type == "Administrador" || $user_type == "SuperUser")
+     <li>
+        <a href="{{ route('privilegios.index') }}">
+            <i data-feather="edit"></i>
+            <span> Privilegios </span>
+        </a>
+    </li>
+  @endif
+    
+ @if(buscar_p('Bitacora','Ver')=="Si")
      <li>
         <a href="{{ route('bitacoras.index') }}">
             <i data-feather="activity"></i>
             <span> Bitacora </span>
         </a>
     </li>
-    @endif
+@endif
 
-
-    <li class="menu-title"></li>
-     <li>
-        <a href="{{ route('ayuda.index') }}">
-            <i data-feather="help-circle"></i>
-            <span>Ayuda</span>
-        </a>
-    </li>
-  </ul>
+   @if(buscar_p('ayuda','Ver')=="Si" )
+      <li class="menu-title">Ayuda</li>
+       <li>
+          <a href="{{ route('ayuda.index') }}">
+              <i data-feather="help-circle"></i>
+              <span>Ayuda</span>
+          </a>
+      </li>
+   @endif
+ </ul>
 
 
 @include('layouts.shared.alertas')
