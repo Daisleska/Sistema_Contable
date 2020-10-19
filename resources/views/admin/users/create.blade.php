@@ -31,6 +31,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
                     @csrf
                     <div class="card-body">
+                        <br>
                         <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Usuario</h4> <br> 
 
                         <p style="margin-left: 1cm;">Todos los campos son requeridos *</p>

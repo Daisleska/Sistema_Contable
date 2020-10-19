@@ -22,7 +22,13 @@ Route::get('cotizacion/{product}/buscar_producto', 'CotizacionesController@busca
 
 Route::get('clients/{user_id}/search','CotizacionesController@search_clients');
     Route::get('products/{user_id}/search','CotizacionesController@search_products');
+
     Route::get('products/{product_id}/add','CotizacionesController@products_add');
+
+//Aquí estoy trabajando 
+    Route::get('chat/{mensaje}', 'UsersController@chat');
+//hasta aquí 
+
     Route::get('watch/{quotation_id}/watch','CotizacionesController@watch')->name('quotations.watch');
 /*fin*/
 
@@ -66,6 +72,9 @@ Route::resource('bitacoras','BitacoraController');
 
 
 Route::get('diario.abrir', 'DiarioController@abrir')->name('diario.abrir');
+
+
+
 Route::get('diario.cerrar/{n_folio}', 'DiarioController@cerrar')->name('diario.cerrar');
 
 Route::match(['get', 'post'], '/busquedaAjax/{cuenta}/buscar', 'DiarioController@busquedaAjax')->name('post');
@@ -134,7 +143,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('{any}', 'RoutingController@root');
 });
 /*fin*/
-
 
 
 /*mensajes*/

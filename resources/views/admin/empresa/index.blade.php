@@ -9,14 +9,7 @@
 
 <div class="row page-title">
     <div class="col-md-12">
-        <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
-            </ol>
-        </nav>
-        <h4 class="mb-1 mt-0"></h4>
+        
     </div>
 </div>
 @endsection
@@ -33,6 +26,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                  <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
                     
                     
@@ -94,7 +88,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 3cm;" class="modal-title" id="myCenterModalLabel">Información de la Empresa</h5>
+                                                        <h4 style="margin-left: 3cm;" class="header-title mt-0 mb-1" id="myCenterModalLabel">Información de la Empresa</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>

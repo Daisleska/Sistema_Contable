@@ -8,6 +8,23 @@
 @endsection
 
 @section('content')
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+           
+                
+            <div class="ml-auto text-right">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{ route('facturav.index') }}">Facturas</a></li>
+                         <li class="breadcrumb-item active" aria-current="page">Registrar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
         <div class="col-md-7" ></div>
         <div class="col-md-5">
@@ -18,6 +35,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
+                <br>
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Facturas</h4>
                 <p class="sub-header"></p>
 
@@ -42,7 +60,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 1.5cm;" class="modal-title" id="mySmallModalLabel">Cambiar I.V.A</h5>
+                                                        <h4 style="margin-left: 1.5cm;" class="header-title mt-0 mb-1" id="mySmallModalLabel">Cambiar I.V.A</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>

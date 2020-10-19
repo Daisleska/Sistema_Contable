@@ -18,10 +18,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Balances</li>
-            </ol>
+            
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -33,6 +30,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Balances</h4>
                      <table style="color: black;">
                       
@@ -70,7 +68,7 @@
           </tr>
 
 </table>
-<p>Nota: Los siguientes Estados Financieros son del año actual, si desea ver los estados anteriores, ingrese al historial!</p>
+<p>Nota: Los siguientes Estados Financieros son del año actual, si desea ver los estados anteriores, ingrese al historial.</p>
 <br>
 
             <ul class="nav nav-tabs">

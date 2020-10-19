@@ -6,6 +6,23 @@
 
 
 @section('content')
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+           
+                
+            <div class="ml-auto text-right">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{ route('productos.index') }}">Productos</a></li>
+                         <li class="breadcrumb-item active" aria-current="page">Editar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
       <style type="text/css">
           .abs-center {
         display: flex;
@@ -20,6 +37,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+              <br>
                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Producto</h4>
                 <p class="sub-header"></p>
     

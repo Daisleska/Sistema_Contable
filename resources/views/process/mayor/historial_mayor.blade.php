@@ -13,11 +13,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
-            </ol>
+            
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -29,14 +25,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                
+                 <br>
                      <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Mayor</h4>
                     <br>
-                    <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
+                    <a href="{{ route('mayor') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">
                       <thead>
-                        <th>#</th>
-                        <th></th>
+                     
                         <th></th>
                         <th>Año</th>
                         <th>Opciones</th>
@@ -44,9 +39,9 @@
                       <tbody>
                           @foreach($historial as $valor)
                         <tr>
+                        
                           <td></td>
-                          <td></td>
-                          <td></td>
+                        
                           <td>{{$valor->anio}}</td>
                           <td><a href="{{ route('mayor.indimayor', $valor->anio) }}" class="btn btn-info btn-xs remove-item"><i data-feather="download"></i></a></td>
                         </tr>

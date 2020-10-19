@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
 use App\cuentas;
 use App\ganancias_perdidas;

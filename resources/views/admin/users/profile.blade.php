@@ -14,12 +14,12 @@
            <a class="btn btn-info" href="{{ route('users.index') }}"> Lista de usuarios</a>
          @endif  
          <div class="ml-auto text-right">
-               <h4 style="text-align: center;" class="header-title mt-0 mb-1">Mi Cuenta</h4>
+            <h4 style="text-align: center;" class="header-title mt-0 mb-1">Mi Cuenta</h4>
         </div>  
 
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb" style="margin-top: 0.5cm;">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Perfil</li>
                     </ol>
@@ -77,6 +77,7 @@
                                 <th scope="row">Tel.</th>
                                 <td>(424) 459 0130</td>
                             </tr>
+                            <br>
                         </tbody>
                     </table>
                 </div>
@@ -166,6 +167,8 @@
                </div>
         </div>
     </div>
+
+    <!--Chat-->
     <div class="tab-pane" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">
       <h5 class="mt-3">Chat</h5>
        <div class="col-xl-12">
@@ -192,75 +195,73 @@
                 <h6 class="header-title mb-4">Team Chat</h6>
                 <div class="chat-conversation">
                     <ul class="conversation-list slimscroll" style="max-height: 268px;">
+                        <?php $i=0; ?>
+                         @foreach($chat as $key)
+                        @if ($key->usuario!=Auth::user()->id)
                         <li class="clearfix">
                             <div class="chat-avatar">
-                                <img src="/assets/images/users/avatar-9.jpg" alt="Female">
-                                <i>10:00</i>
+                                <img src="{{ asset('uploads/avatars/'.$use[$i][1]) }}" alt="Female">
+                                <i>{{$key->hora}}
+                                  </i>
                             </div>
-                            <div class="conversation-text">
+                            <div class="conversation-text" >
                                 <div class="ctext-wrap">
-                                    <i>Greeva</i>
+
+                                
+                                    <i>{{$use[$i][0]}}</i>   
                                     <p>
-                                        Hello!
+                                        {{$key->mensaje}}
                                     </p>
                                 </div>
                             </div>
                         </li>
+
+                       
+                        
+                        @else
+
+                         
                         <li class="clearfix odd">
                             <div class="chat-avatar">
-                                <img src="/assets/images/users/avatar-7.jpg" alt="Male">
-                                <i>10:01</i>
+                                <img src="{{ asset('uploads/avatars/'.$use[$i][1]) }}" alt="Male">
+                                <i>{{$key->hora}}</i>
                             </div>
                             <div class="conversation-text">
                                 <div class="ctext-wrap">
-                                    <i>Shreyu</i>
+                                    <i>{{$use[$i][0]}}</i>
                                     <p>
-                                        Hi, How are you? What about our next meeting?
+                                       {{$key->mensaje}}
                                     </p>
                                 </div>
                             </div>
                         </li>
-                        <li class="clearfix">
-                            <div class="chat-avatar">
-                                <img src="/assets/images/users/avatar-9.jpg" alt="female">
-                                <i>10:01</i>
-                            </div>
-                            <div class="conversation-text">
-                                <div class="ctext-wrap">
-                                    <i>Greeva</i>
-                                    <p>
-                                        Yeah everything is fine
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="clearfix odd">
-                            <div class="chat-avatar">
-                                <img src="/assets/images/users/avatar-7.jpg" alt="male">
-                                <i>10:02</i>
-                            </div>
-                            <div class="conversation-text">
-                                <div class="ctext-wrap">
-                                    <i>Shreyu</i>
-                                    <p>
-                                        Awesome! let me know if we can talk in 20 min
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
+                    @endif
+                     <?php $i++; ?>
+                         @endforeach  
+
+                    <li class="clearfix odd" id="chat">
+                              
+                    </li>  
                     </ul>
+                 
+                    
                     <form class="needs-validation" novalidate name="chat-form" id="chat-form">
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control chat-input" placeholder="Enter your text"
-                                    required>
+
+                                
+
+                                <input type="text" id="mensaje" class="form-control chat-input" placeholder="Ingrese el texto"
+                                    required name="mensaje">
+ 
+                                
+
                                 <div class="invalid-feedback">
-                                    Please enter your messsage
-                                </div>
+                                    ¡Por favor ingrese  su mensaje!                                </div>
                             </div>
                             <div class="col-auto">
-                                <button type="submit"
-                                    class="btn btn-danger chat-send btn-block waves-effect waves-light">Send</button>
+                                <button id="boton"
+                                    class="btn btn-primary" >Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -349,8 +350,44 @@
 <script src="{{ URL::asset('assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+
+<!-- De aquí  -->
+<script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
+
+<script type="text/javascript">
+    
+    $(document).ready( function(){
+        $("#boton").click(function () {
+        var mensaje= $("#mensaje").val();
+        
+
+        $.get('/chat/'+mensaje ,function (data) {
+
+      
+          var result=data;
+
+          //var dato;
+
+          //dato='<div class="chat-avatar"><i>'+result[0][2]+'</i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+result[0][3]+'</i><p>'+result[0][1]+'</p></div></div>';
+
+
+                              
+          //$('#chat').html(dato);
+          $('#mensaje').val('');
+
+          $("#chat").append('<div class="chat-avatar"><i>'+result[0][2]+'</i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+result[0][3]+'</i><p>'+result[0][1]+'</p></div></div><br>');
+
+
+        });
+         //
+        });
+        
+    });
+</script>
 @endsection
 
 @section('script-bottom')
 <script src="{{ URL::asset('assets/js/pages/widgets.init.js') }}"></script>
 @endsection
+
+

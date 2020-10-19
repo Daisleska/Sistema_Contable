@@ -20,7 +20,7 @@ class ProductosTableSeeder extends Seeder
           'unidad' => 'Individual',
           'precio' => '100000',
           'stock_min' => '10',
-          'stock_max' => '100',
+          'stock_max' => '100'
          
         ]);
           

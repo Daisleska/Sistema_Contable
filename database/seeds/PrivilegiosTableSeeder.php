@@ -98,6 +98,7 @@ class PrivilegiosTableSeeder extends Seeder
 
         //ID 14
         \DB::table('privilegios')->insert([
+            'modulo' => 'Usuarios',
             'privilegio' => 'Eliminar'
         ]);
 

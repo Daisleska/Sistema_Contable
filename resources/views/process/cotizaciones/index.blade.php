@@ -10,10 +10,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">cotizaciones</li>
-            </ol>
+          
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -31,6 +28,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                  <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cotizaciones</h4>
 
                      <a href="{{ route('cotizacion.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>

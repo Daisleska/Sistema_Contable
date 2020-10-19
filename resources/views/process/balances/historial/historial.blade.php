@@ -19,11 +19,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item">Balances</li>
-                <li class="breadcrumb-item active" aria-current="page">Historial</li>
-            </ol>
+           
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -35,6 +31,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial de Balances</h4>
                   
 <br>

@@ -13,11 +13,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
-            </ol>
+            
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -29,7 +25,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                 
+                  <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Diario</h4>
                     <br>
                     <a href="{{ route('diario.index') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>

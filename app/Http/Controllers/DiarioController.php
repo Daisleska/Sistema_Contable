@@ -8,7 +8,7 @@ use App\empresa;
 use App\cuenta;
 use App\mayor;
 use App\cuenta_has_diario;
-use Bitacora;
+use App\Bitacora;
 use PDF;
 use App\Alert;
 use Illuminate\Http\Request;

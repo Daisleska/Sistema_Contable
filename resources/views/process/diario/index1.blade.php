@@ -13,11 +13,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Shreyu</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Advanced</li>
-            </ol>
+            
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>
@@ -31,31 +27,9 @@
                 <div class="card-body">
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <table >
-                      <?php
-                      use App\empresa;
-
-  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
-
-                       
-                      foreach($empresa as $key){
-                        ?>
-                        <tr style="color: black;" >
-                            <th>NOMBRE DE LA EMPRESA:
-                              <?php echo e($key->nombre)?></th>
-                        </tr>
-                        <tr style="color: black;">
-                            <th>MES:
-                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
-                        </tr>
-                        <tr style="color: black;">
-                            <th>RUT:
-                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
-                         <?php
-                        }
-                        ?>
-                        
-                    </tr>
-                    <br>
+                      <br>
+                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Diario</h4>
+                     <br>
 
                     <?php
                     $diario= \DB::select('SELECT * FROM diario WHERE anio=YEAR(CURRENT_DATE)');

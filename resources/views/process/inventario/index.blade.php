@@ -10,11 +10,7 @@
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="">Libro Inventario</a></li>
-             
-            </ol>
+            
         </nav>
         <h4 class="mb-1 mt-0"></h4>
     </div>

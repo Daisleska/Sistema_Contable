@@ -16,6 +16,7 @@
 		<div class="col-12">
 			<div class="card">
                 <div class="card-body">
+                    <br>
                      <h4 style="text-align: center;" class="header-title mt-0 mb-1">Usuarios</h4>
                     <br>
                     <h5 class="card-title">
@@ -83,7 +84,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="margin-left: 1cm;">Cambiar Estado del Usuario a <span id="nuevo_status"></span></h5>
+                <h4 class="header-title mt-0 mb-1" style="margin-left: 1.3cm;">Cambiar Estado del Usuario a <span id="nuevo_status"></span></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             {!! Form::open(['route' => ['users.destroy',1033], 'method' => 'DELETE']) !!}
@@ -113,7 +114,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="margin-left: 3.5cm;">Cambiar Tipo de Usuario</h5>
+                <h4 class="header-title mt-0 mb-1" style="margin-left: 3.5cm;">Cambiar Tipo de Usuario</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             {!! Form::open(['route' => ['cambiar_tipo'], 'method' => 'PUT']) !!}

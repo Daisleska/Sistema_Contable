@@ -37,6 +37,7 @@
                                  
                                         
                                         <center>
+                                            <br>
                                              <h4 style="text-align: center;" class="header-title mt-0 mb-1">Bitácora</h4>
 
 

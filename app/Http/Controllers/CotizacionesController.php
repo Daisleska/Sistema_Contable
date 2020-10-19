@@ -9,7 +9,7 @@ use App\iva;
 use App\cliente;
 use App\User;
 use App\descuento;
-use Bitacora;
+use App\Bitacora;
 use App\empresa;
 use App\Alert;
 use App\Mail\email_Cotizacion;
@@ -29,7 +29,7 @@ class CotizacionesController extends Controller
      */
     public function index()
     {  
-       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.id, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
+       $cotizacion = \DB::select('SELECT DISTINCT clientes.id, clientes.nombre, clientes.tipo_documento, clientes.ruf, clientes.email, cotizaciones.fecha, cotizaciones.n_cotizacion, cotizaciones.total, cotizaciones.divisa FROM cotizaciones, clientes WHERE cotizaciones.clientes_id= clientes.id');
 
 
 

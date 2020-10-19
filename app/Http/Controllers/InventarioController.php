@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\inventario;
 use App\producto;
-use Bitacora;
+use App\Bitacora;
 use App\empresa;
 use PDF;
 use Illuminate\Http\Request;

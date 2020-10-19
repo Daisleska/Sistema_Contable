@@ -7,13 +7,13 @@
 
 @section('breadcrumb')
 
+
 <div class="row page-title">
     <div class="col-md-12">
         <nav aria-label="breadcrumb" class="float-right mt-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Permisos</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Privilegios</li>
             </ol>
         </nav>
         <h4 class="mb-1 mt-0"></h4>
@@ -24,20 +24,23 @@
 @section('content')
 
 <!-- Breadcomb area Start-->
-<div class="breadcomb-area">
+ <div class="card">
+<div class="breadcomb-area" >
 	<div class="container">
-		<div class="row">
+		<div class="row" >
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="breadcomb-list">
 					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="breadcomb-wp">
 								<div class="breadcomb-icon">
 									<i class="notika-icon notika-support"></i>
 								</div>
+                                <br><br>
 								<div class="breadcomb-ctn">
-									 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Privilegios</h4>
-									<p>Permisos del sistema de cada usuario terreno</p>
+									 <h4 style="text-align: center;">Privilegios</h4>
+
+									<p style="margin-left: 1.5cm;">Permisos del sistema de cada usuario terreno</p>
 								</div>
 							</div>
 						</div>
@@ -48,7 +51,7 @@
 	</div>
 </div>
 
-<div class="data-table-area">
+<div class="data-table-area" style="margin-left: 1.5cm; margin-right: 1.5cm;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -75,7 +78,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span><select class="form-control select2" name="id_user" id="id_user">
+                                <span class="input-group-addon" ><i class="fa fa-user"></i></span><select class="form-control select2" name="id_user" id="id_user">
                                     
                                     @foreach($user as $item)
                                         <option value="{{$item->id}}">{{$item->name}} .- {{$item->email}} .- {{$item->user_type}}</option>
@@ -84,7 +87,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" id="buscar_permisos" class="btn btn-primary">Buscar permisos</button>
+                            <button type="submit" id="buscar_permisos" class="btn btn-primary"> Buscar </button>
                         </div>
                     </div>
                 </div>
@@ -94,7 +97,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="normal-table-list mg-t-30">
                                             <div class="basic-tb-hd">
-                                                <h2>Permisos - Módulos</h2>
+                                                <h5 style="text-align: center;">Permisos - Módulos</h5>
                                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Ver todos los módulos</button>
                                                 <span id="notificacion"></span>
                                             </div>
@@ -112,16 +115,16 @@
                                                       <ul class="list-group list-group-flush">
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: green;">Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso1" id="id_permiso1" value="1"></div></div> </li>
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label >Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso1" id="id_permiso1" value="1"></div></div> </li>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso2" id="id_permiso2" value="2" ></div></div> </li>
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso2" id="id_permiso2" value="2" ></div></div> </li>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color: green;">Modificar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso3" id="id_permiso3" value="3"  checked></div></div> </li>
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Modificar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso3" id="id_permiso3" value="3"  checked></div></div> </li>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label style="color:red;">Eliminar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso4" id="id_permiso4" value="4" ></div></div> </li>
+                                                                <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Eliminar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso4" id="id_permiso4" value="4" ></div></div> </li>
                                                             </div>
                                                         </div>
                                                       </ul>
@@ -262,13 +265,13 @@
                                                 <div class="collapse multi-collapse" id="permisosLibrosP">
                                                   <div class="card">
                                                       <ul class="list-group list-group-flush">
-                                     <center><label style="color: red;">Inventario </label></center>
+                                     <center><label style="color: black;">Inventario </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Ver </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso21" id="id_permiso21" value="21" ></div></div> </li>
                                                             </div>
                                                         </div>
-                                            <center><label style="color: red;">Diario </label></center>
+                                            <center><label style="color: black;">Diario </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso22" id="id_permiso22" value="22" ></div></div> </li>
@@ -283,7 +286,7 @@
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Historial</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso25" id="id_permiso25" value="25" ></div></div> </li>
                                                             </div>
                                                         </div>
-                                            <center><label style="color: red;">Mayor </label></center>
+                                            <center><label style="color: black;">Mayor </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Ver </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso26" id="id_permiso26" value="26" ></div></div> </li>
@@ -309,13 +312,13 @@
                                                 <div class="collapse multi-collapse" id="permisosOtrosLibros">
                                                   <div class="card">
                                                       <ul class="list-group list-group-flush">
-                                    <center><label style="color: red;">Compra - Venta </label></center>
+                                    <center><label style="color: black;">Compra - Venta </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Ver </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso28" id="id_permiso28" value="28" ></div></div> </li>
                                                             </div>
                                                         </div>
-                                        <center><label style="color: red;">Caja Chica </label></center>
+                                        <center><label style="color: black;">Caja Chica </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Listado </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso29" id="id_permiso29" value="29" ></div></div> </li>
@@ -401,7 +404,7 @@
                                                 <div class="collapse multi-collapse" id="permisosOtros">
                                                   <div class="card">
                                                       <ul class="list-group list-group-flush">
-                                        <center><label style="color: red;">Empresa </label></center>
+                                        <center><label style="color: black;">Empresa </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Registrar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso39" id="id_permiso39" value="39" ></div></div> </li>
@@ -410,14 +413,14 @@
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Modificar </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso40" id="id_permiso40" value="40" ></div></div> </li>
                                                             </div>
                                                         </div>
-                                    <center><label style="color: red;">Configuración </label></center>
+                                    <center><label style="color: black;">Configuración </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Data Base </label></div><div class="col-md-1"><input type="checkbox" name="id_permiso41" id="id_permiso41" value="41" ></div></div> </li>
                                                             </div>
                                                             
                                                         </div>
-                                    <center><label style="color: red;">Mi Cuenta </label></center>
+                                    <center><label style="color: black;">Mi Cuenta </label></center>
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <li class="list-group-item"><div class="row"><div class="col-md-11"><label>Ver - Cambiar</label></div><div class="col-md-1"><input type="checkbox" name="id_permiso42" id="id_permiso42" value="42" ></div></div> </li>
@@ -446,6 +449,9 @@
         </div>
     </div>
 </div>
+<br><br><br><br>
+</div>
+
 
 @include('privilegios.modales.eliminar')
 <!-- Data Table area End-->
@@ -508,7 +514,7 @@
                     if (data==1) {
                         console.log("Se cambio el permiso a Si");
                         $("#notificacion").css('color','green');
-                        $("#notificacion").text("Se ha asignado el permiso exitosamente!!");
+                        $("#notificacion").text("¡Se ha asignado el permiso exitosamente!");
                     } else {
                         console.log("No se cambio el permiso a Si");
                     }
@@ -517,7 +523,7 @@
                 $.get('permisos/'+$(this).val()+'/2/'+id_usuario+'/actualizando',function (data) {
                     if (data==1) {
                         $("#notificacion").css('color','green');
-                        $("#notificacion").text("Se ha retirado el permiso exitosamente!!");
+                        $("#notificacion").text("¡Se ha retirado el permiso exitosamente!");
                     } else {
                         //console.log("No se cambio el permiso a No");
                     }

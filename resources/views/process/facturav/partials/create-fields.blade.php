@@ -92,11 +92,11 @@
 </div>
 <div class="row">
 
-     <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
+     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
-                            <tr>
+                            <tr >
                                 <th>Domicilio</th>
-                                <th><input style="width: 150px;" type="text" name="domicilio" id="domicilio" class="form-control" ></th>
+                                <th><input style="width: 130px;" type="text" name="domicilio" id="domicilio" class="form-control" ></th>
                                 <th><b style="color:red;">*</b> Forma de pago</th>
                                 <th>
                             <select name="f_pago" data-plugin="customselect" class="form-control" data-placeholder="Elige" required="required">

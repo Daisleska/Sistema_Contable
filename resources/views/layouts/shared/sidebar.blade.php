@@ -46,7 +46,7 @@
         @endif
 
          @if(buscar_p('ayuda','Ver')=="Si" )
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="{{ route('ayuda.index') }}" class="dropdown-item notify-item">
                     <i data-feather="help-circle" class="icon-dual icon-xs mr-2"></i>
                     <span>Ayuda</span>
                 </a>

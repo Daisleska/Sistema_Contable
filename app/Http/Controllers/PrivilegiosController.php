@@ -105,12 +105,12 @@ class PrivilegiosController extends Controller
         for ($i=0; $i < count($request->id_empleado); $i++) { 
             $user=User::find($request->id_empleado[$i]);
              if ($user->superUser == 'Eiche') {
-                flash('<i class="icon-circle-check"></i> No se pueden editar los permisos de este usuario! Incidente reportado!')->warning()->important();
+                flash('<i class="icon-circle-check"></i> ¡No se puede editar los permisos de este usuario! ¡Incidente reportado!')->warning()->important();
                 return redirect()->back();
 
 
              }elseif($user->tipo_user == 'Admin' && \Auth::user()->superUser != 'Eiche'){
-                flash('<i class="icon-circle-check"></i> No se puede modificar los permisos de un Admin!')->warning()->important();
+                flash('<i class="icon-circle-check"></i> ¡No se puede modificar los permisos de un Admin!')->warning()->important();
                 return redirect()->back();
              }
         }
@@ -141,7 +141,7 @@ class PrivilegiosController extends Controller
         }
 
 
-        flash('<i class="icon-circle-check"></i> Permisos modificados con éxito!')->success()->important();
+        flash('<i class="icon-circle-check"></i> ¡Permisos modificados con éxito!')->success()->important();
         return redirect()->back();
     }
     /**

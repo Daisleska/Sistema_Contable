@@ -45,7 +45,8 @@
                                             <a href="{{ route('backup.create') }}" class="btn btn-info">Generar respaldo</a>
                                         </div>
                                         <center>
-                                            <h4 class="box-title">BASE DATOS</h4>
+                                            <br>
+                                            <h4 style="margin-left: 3cm;" class="header-title mt-0 mb-1">Base de Datos</h4>
 
 
                                         </center>

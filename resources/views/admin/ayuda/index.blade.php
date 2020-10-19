@@ -48,31 +48,36 @@
                     <!-- Page-header end -->
 
                     <!-- Page body start -->
-                    <div class="page-body">
+      <div class="page-body">
                        <!-- Zero config.table start -->
-                            <div class="card">
-                            <div class="card-body">
-                                      
+      <div class="card">
+      <div class="card-body">
+                                
+
+
+
                             <center>
-                                 <h4 style="text-align: center;" class="header-title mt-0 mb-1">Ayuda</h4>
-                            </center>
-      <dir>
+                              <br>
+                                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Ayuda</h4>
+        <!--manual-->                   </center>
+        <div>
                     <a class="btn btn-info" href="{{ URL::asset('uploads/Manual.pdf')}}" class="dropdown-item notify-item">Manual de Usuario<i data-feather="download"></i>
                     </a>
                     <br>
-        </dir>
-            
-
+        </div>
+         <hr>    
+        
+        <!--video--> 
                 <div class="col-md-10" align="center">
                   <video src="{{ URL::asset('uploads/video.mp4')}}" width="420"  controls></video>       
                 </div>
            
 
-          <br> 
-          <div>  
-
+         <!--preguntas-->  
+          <hr>
           <center>
-           <h4 class="box-title">Preguntas y Respuestas</h4>
+            <br>
+           <h4 style="text-align: center;" class="header-title mt-0 mb-1">Preguntas Frecuentes</h4>
            </center>
       <br><br>
 
@@ -80,9 +85,9 @@
                      
                        
 
-<div class="titulo_boton" style="margin-right: 1cm;" >
+<div class="titulo_boton" style="margin-right: 1cm; margin-left: 3cm;" >
     
-  <a style='cursor: pointer; ' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">¿Cuando se muestra el Balance de Ganancias y Perdidas?</a>
+  <a style='cursor: pointer; text-align: center;' onClick="muestra_oculta('contenido')" title="" class="boton_mostrar">¿Cuándo se muestra el Balance de Ganancias y Pérdidas?</a>
 
 
 <div id="contenido" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">
@@ -94,23 +99,25 @@
 
 <div class="titulo_boton" style="margin-right: 1cm;" >
     
-  <a style='cursor: pointer;' onClick="muestra_oculta('d')" title="" class="boton_mostrar">¿Se puede abrir el Libro Diario luego de haberlo cerrado?</a>
+  <a style='cursor: pointer; text-align: center;' onClick="muestra_oculta('d')" title="" class="boton_mostrar">¿Se puede abrir el Libro Diario luego de haberlo cerrado?</a>
 
 
 <div id="d" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">Nooooo</p>
 </div> 
 
 </div>
-                    </div></div></div>
 
 
 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
 @endsection
@@ -119,6 +126,8 @@
 
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+
+
 @endsection
 
 @section('script-bottom')
@@ -141,3 +150,4 @@ window.onload = function(){/*hace que se cargue la función lo que predetermina 
 muestra_oculta(el);/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
 }
 </script>
+

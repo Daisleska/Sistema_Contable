@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\empresa;
+
 use App;
+use App\empresa;
 use App\Bitacora;
 use App\Alert;
 use Illuminate\Http\Request;

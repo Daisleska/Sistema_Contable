@@ -20,7 +20,7 @@
                             ?>
 
                                 <th>N° Factura</th>
-                                <th><input style="width: 100px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="<?php  echo $factura->n_factura +1; ?>"></th>
+                                <th><input style="width: 160px;" type="text" readonly="readonly" name="n_factura" class="form-control" value="<?php  echo $factura->n_factura +1; ?>"></th>
 
 
 
@@ -69,7 +69,7 @@
 </div>
 <div class="row">
 
-     <table style="margin-left: 1cm; margin-right: 1cm;" id="basic-datatable" class="table dt-responsive nowrap">
+     <table  id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Domicilio</th>

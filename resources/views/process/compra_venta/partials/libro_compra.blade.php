@@ -58,8 +58,8 @@
                  
                   {{-- <td>{{ $num++ }}</td> --}}
                   <td>{{$item->fecha}}</td>
-                  <td>0{{ $item->n_factura}}</td>
-                  <td>0{{ $item->n_control}}</td>
+                  <td>000{{ $item->n_factura}}</td>
+                  <td>000000{{ $item->n_control}}</td>
                   <td>{{ $item->nombre}}</td>
                   <td>{{$item->tipo_documento}}-{{$item->ruf}}</td>
                   <td>{{number_format($item->iva, 2,',','.')}}</td>

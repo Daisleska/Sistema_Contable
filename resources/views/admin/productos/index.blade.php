@@ -16,6 +16,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                  <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Productos</h4>
                     <p class="sub-header"></p>
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
@@ -80,7 +81,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 2.9cm;" class="modal-title" id="myCenterModalLabel">Información del Producto</h5>
+                                                        <h4 class="header-title mt-0 mb-1"style="margin-left: 2.9cm;"  id="myCenterModalLabel">Información del Producto</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
