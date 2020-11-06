@@ -2,7 +2,8 @@
 
 namespace App\Exports;
 
-use App\Inventario;
+use App\inventario;
+use App\empresa;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -14,7 +15,8 @@ class InventarioExport implements FromView
     */
     public function collection()
     {
-        return Inventario::all();
+        return inventario::all();     
+        return empresa::all();
     }
      public function view():view
     {
@@ -23,10 +25,14 @@ class InventarioExport implements FromView
         FROM productos, inventario
 
         WHERE inventario.productos_id = productos.id');
+        
+        $empresa= empresa::all();
+        $mes = date('M');
+        $anio = date('Y');
 
 
     	return view('exports.inventario',
-    		 compact('inventario'));
+    		 compact('inventario', 'empresa', 'mes', 'anio'));
     }
 }
 

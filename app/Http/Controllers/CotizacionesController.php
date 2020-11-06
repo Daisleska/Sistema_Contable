@@ -202,12 +202,15 @@ class CotizacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($n_cotizacion)
     {
-        $cotizacion = cotizacion::find($id);
-    /*    dd($cotizacion);*/
-        $cotizacion->delete();
+        //
+        $cotizacion= \DB::delete('DELETE FROM cotizaciones WHERE n_cotizacion='.$n_cotizacion);
 
+
+        if ($cotizacion > 0) {
+          
+        
             $bitacoras = new App\Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
@@ -216,9 +219,15 @@ class CotizacionesController extends Controller
             $bitacoras->action = 'Ha Eliminado una cotización';
             $bitacoras->save();
 
-        flash('Registro eliminado satisfactoriamente');
+        flash('¡Registro eliminado satisfactoriamente!', 'success');
 
-        return back();
+        return redirect()->back();
+
+        } else {
+
+            flash('¡No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
+                return redirect()->back();
+        }
     }
 
     public function descupdate (Request $request)

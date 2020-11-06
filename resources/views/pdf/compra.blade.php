@@ -97,7 +97,7 @@
 
 <body>
     @foreach($empresa as $key)
-    <table border="0"  width="700">
+    <table border="0"  width="740">
         <tr>
        
             <th style="text-align: left;">EICHE, C.L</th>
@@ -126,10 +126,10 @@
         
              <h2 style="text-align: center;">Libro Compras</h2>
 
-             <table border="1" width="700">
+             <table border="1" width="740">
                  <thead>
                    <tr style="color: black; font-size: 15px; text-align: center;">
-                                <th>N°</th> 
+                              
                                 <th>FEC</th>
                                 <th>N° FACT.</th>
                                 <th>N° CONT</th>
@@ -148,10 +148,10 @@
                       @foreach($compra as $item)
                 <tr style="text-align: center;">
                  
-                  <td>{{ $num++ }}</td>
-                  <td>{{$item->fecha}}</td>
-                  <td>0{{ $item->n_factura}}</td>
-                  <td>0{{ $item->n_control}}</td>
+                
+                  <td>{{date("d-m-Y", strtotime($item->fecha))}}</td>
+                  <td>000{{ $item->n_factura}}</td>
+                  <td>000000{{ $item->n_control}}</td>
                   <td>{{ $item->nombre}}</td>
                   <td>{{$item->tipo_documento}}-{{$item->ruf}}</td>
                   <td>{{number_format($item->iva, 2,',','.')}}</td>
@@ -169,7 +169,7 @@
 
                 <tr style="color: black; text-align: center;">
 
-                      <th COLSPAN="6" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="5" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_total>0) {
                             //TOTALES

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App;
 use App\cuenta;
-use Bitacora;
+use App\Bitacora;
 use App\Alert;
+use PDF;
+use App\empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,7 +134,7 @@ class CuentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
          $cuentas = cuenta::find($id);
         $cuentas->delete();  
@@ -146,10 +148,25 @@ class CuentasController extends Controller
             $bitacoras->action = 'Ha Eliminado una cuenta';
             $bitacoras->save();
 
-        flash('¡Registro eliminado satisfactoriamente!');
+        flash('¡Registro eliminado satisfactoriamente!', 'success');
 
 
         return back()->with('info', 'la cuenta ha sido eliminado');
     
+    }
+
+
+     public function pdf(){
+
+         $cuentas=cuenta::all();
+
+        $i = 1;
+
+        $empresa= empresa::all();
+        $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.cuentas', compact('cuentas', 'i','date', 'empresa'));
+
+        return $dompdf->stream('cuentas.pdf');
+
     }
 }

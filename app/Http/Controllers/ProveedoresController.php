@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\proveedor;
+use App\proveedor; 
+use App\empresa;
 use App\Bitacora;
 use App\Alert;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +21,7 @@ class ProveedoresController extends Controller
     public function index()
     {
         $proveedores = proveedor::all();
+
        return view('admin.proveedores.index', compact('proveedores'));
     }
 
@@ -146,12 +149,18 @@ class ProveedoresController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
+    
+    }
 
-        $proveedor=proveedor::find($id);
+    public function eliminar($id) {
+
+
+         $proveedor=proveedor::find($id);
 
         if ($proveedor->delete()) {
+            
             flash('¡Registro eliminado satisfactoriamente!', 'success');
 
              /*registrar accion en bitacora*/
@@ -170,7 +179,6 @@ class ProveedoresController extends Controller
             flash('¡No se pudo eliminar el registro, posiblemente esté siendo usada su información en otra área!', 'error');
                 return redirect()->back();
         }
-
     }
 
      public function buscar_proveedor($proveedor)
@@ -178,6 +186,20 @@ class ProveedoresController extends Controller
           $resultado=proveedor::where('ruf', $proveedor)->get();
         
         return $resultado;
+
+    }
+
+    public function pdf(){
+
+        $proveedores = proveedor::all();
+
+        $i = 1;
+
+        $empresa= empresa::all();
+        $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.proveedores', compact('proveedores', 'i','date', 'empresa'));
+
+        return $dompdf->stream('proveedores.pdf');
 
     }
 

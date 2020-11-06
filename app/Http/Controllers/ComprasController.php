@@ -188,11 +188,7 @@ class ComprasController extends Controller
     $anio = date('Y');
     $meses = ['Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-     $venta =  \DB::select('SELECT  clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, venta.facturav_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa
-
-        FROM venta, clientes, facturav, iva
-
-        WHERE venta.clientes_id = clientes.id AND venta.facturav_id = facturav.id AND YEAR(facturav.fecha)='.$anio);
+        $venta =  \DB::select('SELECT DISTINCT clientes.nombre, clientes.tipo_documento, clientes.ruf, venta.clientes_id, facturav.fecha, facturav.n_factura, facturav.total, facturav.n_control,facturav.sub_total, facturav.iva, iva.porcentaje, facturav.divisa FROM venta, clientes, facturav, iva WHERE venta.clientes_id = clientes.id AND YEAR(facturav.fecha)='.$anio);
 
         /*dd($venta);
 */

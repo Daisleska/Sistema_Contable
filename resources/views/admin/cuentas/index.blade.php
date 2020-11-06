@@ -38,7 +38,20 @@
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                      <a href="{{ route('cuentas.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                   @endif
-
+                  <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  
+                    <a href="{{ route('cuentas.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                   
+                
+                    </div></div>
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
@@ -48,7 +61,7 @@
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Tipo</th>
-                                <th>saldo</th>
+                                <th>Saldo</th>
                                 <th>Opciones</th>
                               
 
@@ -73,15 +86,9 @@
                        <form action="{{ route('cuentas.edit',$key->id) }}" method="GET">
                         <input type="hidden" name="_method" value="EDITAR">
                         <button class="btn btn-info btn-sm" title="Editar"><i data-feather="edit"></i></button>
-                        </form>
-                        &nbsp;&nbsp;
-                  
-                   <form id="f_eliminar" name="formulario" action="{{ route('cuentas.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   
-                   </form>
-                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                      </form>
+                       <br>
+                   <button  class="btn btn-danger btn-sm" onclick="alert_eliminar('{{$key->id}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                    
                  @endif
                
@@ -115,7 +122,8 @@
 </script>
 
 <script type="text/javascript">
-      function alert_eliminar(){
+      function alert_eliminar(id){
+        console.log(id);
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar esta cuenta?",
@@ -140,7 +148,16 @@
        }).then(function(confirm){
         if (confirm) {
 
-        document.getElementById('f_eliminar').submit();
+            $.ajax ({
+
+          url: '/cuentas/'+id+'/eliminar',
+          headers: { id: id},
+          method: "GET"
+
+         });
+
+        location.reload();
+
           }
        });
 

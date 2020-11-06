@@ -1,44 +1,29 @@
-<?php
+<br><br><br>
 
- ?>
- <th COLSPAN="3">     
-                                  <div class="btn-group">
-
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
-                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                   <a href="{{ route('comprobacion_view') }}" class="dropdown-item notify-item">
-                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
-                        <span>Excel</span>
-                    </a>
-                    <a href="{{ route('balance.pdfcomprobacion') }}" class="dropdown-item notify-item">
-                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
-                        <span>PDF</span>
-                    </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
-                </div>
-            </div></th>
-            <br>
-
-   <table style="border-color: black; border: 1px;  " border="1" class="table dt-responsive nowrap">
-    <br>
-             <thead style="text-align: center; color: black; font-size: 14px;">
+<table>
+<tr>
+  <th colspan="6" style="text-align: center;"><strong>Balance de Comprobación</strong></th>
+</tr>
+<tr>
+  <th colspan="6" style="text-align: center;"><strong></strong></th>
+</tr>
+</table> 
+             
+                            
+          <table border="1" width="470">
+             <thead>
              <tr> 
-                <th style="text-align: center;" rowspan="2">N°</th>    
-                <th style="text-align: center;" rowspan="2">Cuenta</th>                 
-                <th style="text-align: center;" colspan="2">Movimientos</th>
-                <th style="text-align: center;" colspan="2">Balance de Saldo</th>
+                <th style="text-align: center;" rowspan="2"><strong>N°</strong></th>    
+                <th style="text-align: center; width: 20px;" rowspan="2"><strong>Cuenta</strong></th>                 
+                <th style="text-align: center; width: 26px;" colspan="2"><strong>Movimientos</strong></th>
+                <th style="text-align: center; width: 26px;" colspan="2"><strong>Balance de Saldo</strong></th>
              </tr>
-            
-                <th style="text-align: center;">Debe</th>
-                <th style="text-align: center;">Haber</th>
-                <th style="text-align: center;">Deudor</th>  
-                <th style="text-align: center;">Acreedor</th>    
+             <tr>
+                <th style="text-align: center; width: 13px;"><strong>Debe</strong></th>
+                <th style="text-align: center; width: 13px;"><strong>Haber</strong></th>
+                <th style="text-align: center; width: 13px;"><strong>Deudor</strong></th>  
+                <th style="text-align: center; width: 13px;"><strong>Acreedor</strong></th>  
+            </tr>  
              </thead>
              <tbody>
                 
@@ -49,7 +34,7 @@
 
                 if ($key->tipo=="activo") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -107,7 +92,7 @@
 
               if ($key->tipo=="pasivo") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -166,7 +151,7 @@
 
               if ($key->tipo=="capital") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -225,7 +210,7 @@
            
             if ($key->tipo=="egreso") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -284,7 +269,7 @@
 
             if ($key->tipo=="ingreso") {
               ?>
-                        <tr style="font-size: 12px;">
+                        <tr>
                               
                                   <td style="text-align: center;">{{$key->codigo}}</td>
                                   <?php 
@@ -355,11 +340,11 @@
                     <tr style="color: black;">
                         @foreach($totales_C as $total)
                             
-                            <th style="text-align: center;" colspan="2">TOTAL</th>
-                            <th style="text-align: center;">{{number_format($total->debe, 2,',','.')}}</th>
-                            <th style="text-align: center;">{{number_format($total->haber, 2,',','.')}}</th>
-                            <th style="text-align: center;">{{number_format($sdebe, 2,',','.')}}</th>
-                            <th style="text-align: center;">{{number_format($shaber, 2,',','.')}}</th>
+                            <th style="text-align: center;" colspan="2"><strong>TOTAL</strong></th>
+                            <th style="text-align: center;"><strong>{{number_format($total->debe, 2,',','.')}}</strong> </th>
+                            <th style="text-align: center;"><strong> {{number_format($total->haber, 2,',','.')}}</strong></th>
+                            <th style="text-align: center;"><strong> {{number_format($sdebe, 2,',','.')}}</strong></th>
+                            <th style="text-align: center;"><strong>{{number_format($shaber, 2,',','.')}}</strong> </th>
                          @endforeach
                      </tr>
          </tbody>

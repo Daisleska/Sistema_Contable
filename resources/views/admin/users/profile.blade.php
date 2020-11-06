@@ -260,8 +260,7 @@
                                     ¡Por favor ingrese  su mensaje!                                </div>
                             </div>
                             <div class="col-auto">
-                                <button id="boton"
-                                    class="btn btn-primary" >Enviar</button>
+                                <button id="boton" class="btn btn-primary" >Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -355,34 +354,33 @@
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 
 <script type="text/javascript">
-    
-    $(document).ready( function(){
+  $(document).ready( function(){
         $("#boton").click(function () {
         var mensaje= $("#mensaje").val();
         
+         $.ajax ({
 
-        $.get('/chat/'+mensaje ,function (data) {
-
-      
-          var result=data;
-
-          //var dato;
-
-          //dato='<div class="chat-avatar"><i>'+result[0][2]+'</i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+result[0][3]+'</i><p>'+result[0][1]+'</p></div></div>';
-
-
-                              
-          //$('#chat').html(dato);
-          $('#mensaje').val('');
-
-          $("#chat").append('<div class="chat-avatar"><i>'+result[0][2]+'</i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+result[0][3]+'</i><p>'+result[0][1]+'</p></div></div><br>');
-
-
+          url: '/chat/'+mensaje,
+          headers: { mensaje: mensaje},
+          method: "GET"
+          
+         
         });
+
+        $('#mensaje').val('');
+
+          $("#chat").append('<div class="chat-avatar"><i></i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+mensaje+'</i><p></p></div></div><br>');       
+
+          //$('#chat').html(dato);
+        
+
+        
+      
          //
         });
         
-    });
+    });   
+   
 </script>
 @endsection
 

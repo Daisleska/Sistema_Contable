@@ -10,7 +10,7 @@
         type="text/css" />
     <style>
         img {
-            width: 10%;
+            width: 10%; 
         
       
 
@@ -26,7 +26,7 @@
 
         body {
           font-family: "Times New Roman", serif;
-          margin: 0mm 1.2cm 1cm 1cm;
+          margin: 0mm 1cm 1cm 1cm;
          }
 
 
@@ -97,7 +97,7 @@
 
 <body>
     @foreach($empresa as $key)
-    <table border="0"  width="700">
+    <table border="0"  width="740">
         <tr>
        
             <th style="text-align: left;">EICHE, C.L</th>
@@ -126,14 +126,14 @@
         
              <h2 style="text-align: center;">Libro Ventas</h2>
 
-             <table border="1" width="700">
+             <table border="1" width="740">
                  <thead>
-                  <tr style="color: black; font-size: 15px; text-align: center;">
-                                <th>Nº</th>
-                                <th>FEC</th>
+                  <tr style="color: black; font-size: 14px; text-align: center;">
+                             
+                                <th>FECHA</th>
                                 <th>Nº FACT</th>
                                 <th>Nº CONTR</th>
-                                <th>RUT</th>
+                                <th>RUT </th>
                                 <th>TOTAL VENTA</th>
                                 <th>VENTA EXENTA</th>
                                 <th>VENTA GRAVADA</th>
@@ -148,10 +148,9 @@
                         <tbody style="font-size: 15px;">
                     @foreach($venta as $key)       
                 <tr style="text-align: center;">
-                  <td>{{$key->facturav_id}}</td>
-                  <td>{{$key->fecha}}</td>
-                  <td>{{$key->n_factura}}</td>
-                  <td>{{$key->n_control}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
+                  <td>000{{$key->n_factura}}</td>
+                  <td>000000{{$key->n_control}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>
@@ -162,11 +161,11 @@
                   <td></td>
                   @endforeach
 
-                
+                </tr>
                 
                  <tr style="color: black; text-align: center;">
 
-                      <th COLSPAN="5" style="text-align: right;">TOTAL:</th>
+                      <th COLSPAN="4" style="text-align: right;">TOTAL:</th>
                       <?php
                       if ($total_venta >0) {
                             //TOTALES
@@ -190,7 +189,7 @@
                       <th></th>
                       <th></th>
                       <th></th>
-                      <th style="color: black;"></th>
+                      <th></th>
                       
                    
                 </tr>

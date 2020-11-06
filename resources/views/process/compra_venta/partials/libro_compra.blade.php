@@ -2,15 +2,16 @@
                         <thead>
                            
                             <tr style="color: black;">
-                              <div class="btn-group">
+                              
             @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
-                 <th COLSPAN="5"> 
+                <th COLSPAN="5">
+                <div class="btn-group"> 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Descargar
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
-                   <a href="" class="dropdown-item notify-item">
+                   <a href="{{ route('compra_view') }}" class="dropdown-item notify-item">
                         <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
                         <span>Excel</span>
                     </a>
@@ -23,7 +24,8 @@
                         <span>Imprimir</span>
                     </a>
                 </div>
-            </div></th>
+              </th>
+            </div>
             @endif
                                 <th COLSPAN="6">LIBRO DE COMPRAS</th>
 
@@ -33,7 +35,7 @@
                             </tr>
 
                 
-
+                          
                             <tr style="color: black; font-size: 10px;">
                                {{--  <th>N°</th> --}}
                                 <th>FEC</th>
@@ -57,7 +59,7 @@
                 <tr>
                  
                   {{-- <td>{{ $num++ }}</td> --}}
-                  <td>{{$item->fecha}}</td>
+                  <td>{{date("d-m-Y", strtotime($item->fecha))}}</td>
                   <td>000{{ $item->n_factura}}</td>
                   <td>000000{{ $item->n_control}}</td>
                   <td>{{ $item->nombre}}</td>

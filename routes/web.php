@@ -15,6 +15,17 @@ Route::get('productos/{product}/buscar_producto', 'ProductosController@buscar_pr
 Route::get('inventario/{product}/buscar_inventario', 'InventarioController@buscar_inventario');
 Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@buscar_proveedor');
 
+Route::get('cotizacion/{n_cotizacion}/eliminar', 'CotizacionesController@eliminar');
+
+Route::get('proveedores/{id}/eliminar', 'ProveedoresController@eliminar');
+
+Route::get('cuentas/{id}/eliminar', 'CuentasController@eliminar');
+
+Route::get('productos/{id}/eliminar', 'ProductosController@eliminar');
+
+Route::get('clientes/{id}/eliminar', 'ClientesController@eliminar');
+
+
 Route::get('compras/{mes}/{anio}/{dia}/buscador', 'ComprasController@buscador');
 
 Route::get('cotizacion/{product}/buscar_producto', 'CotizacionesController@buscar_producto');
@@ -91,7 +102,10 @@ Route::put('ivaupdateC', 'FacturasCController@ivaupdate')->name('ivaupdateC');
 Route::put('descupdate', 'CotizacionesController@descupdate')->name('descupdate');
 
 // Reportes en PDF
+
+
 Route::get('diario.individual/{n_folio}','DiarioController@individual')->name('diario.individual');
+
 Route::get('mayor.indimayor/{anio}','DiarioController@mayorindividual')->name('mayor.indimayor');
 
 Route::get('compra.pdfcompra','ComprasController@pdfcompra')->name('compra.pdfcompra');
@@ -104,14 +118,32 @@ Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf')
 Route::get('bitacora.pdf', 'BitacoraController@pdf')->name('bitacora.pdf');
 Route::get('diario.pdf', 'DiarioController@pdf')->name('diario.pdf');
 Route::get('mayor.pdf', 'DiarioController@pdfmayor')->name('mayor.pdf');
+
+Route::get('proveedores.pdf', 'ProveedoresController@pdf')->name('proveedores.pdf');
+
+Route::get('productos.pdf', 'ProductosController@pdf')->name('productos.pdf');
+
+Route::get('clientes.pdf', 'ClientesController@pdf')->name('clientes.pdf');
+
+Route::get('cuentas.pdf', 'CuentasController@pdf')->name('cuentas.pdf');
+
+Route::post('mayorindividual.pdf/{codigo}', 'DiarioController@mayorpdfindividual')->name('mayorindividual.pdf');
+
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
 Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
 Route::get('cajachica.egreso','CajaChicaController@egreso')->name('cajachica.egreso');
 Route::get('cajachica.ingreso','CajaChicaController@ingreso')->name('cajachica.ingreso');
 Route::get('cajachica.index','CajaChicaController@index')->name('cajachica.index');
 Route::get('cotizacion.pdf/{id_cotizacion}', 'CotizacionesController@pdf')->name('cotizacion.pdf');
+
 // Reportes en Excel
 Route::get('users_view', 'ExcelController@users_view')->name('users_view');
+Route::get('diario_view', 'ExcelController@diario_view')->name('diario_view');
+Route::get('mayor_view', 'ExcelController@mayor_view')->name('mayor_view');
+Route::get('compra_view', 'ExcelController@compra_view')->name('compra_view');
+Route::get('venta_view', 'ExcelController@venta_view')->name('venta_view');
+//Route::get('caja_view', 'ExcelController@caja_view')->name('caja_view');
+Route::get('comprobacion_view', 'ExcelController@comprobacion_view')->name('comprobacion_view');
 Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');
 Route::get('bitacora_view', 'ExcelController@bitacora_view')->name('bitacora_view');
 

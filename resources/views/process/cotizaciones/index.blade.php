@@ -72,11 +72,8 @@
                         @endif
                          @if(buscar_p('Cotizaciones','Eliminar')=="Si" )
                       
-                        <form id="c_eliminar" action="{{ route('cotizacion.destroy', $key->id) }}" method="POST" name="formulario">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        </form><br>
-                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cot()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                        <br><br>
+                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cot('{{$key->n_cotizacion}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                         @endif
                  
                     </td>
@@ -93,11 +90,14 @@
     </div>
     <!-- end row-->
     <script type="text/javascript">
-      function alert_eliminar_cot(){
+      function alert_eliminar_cot(n_cotizacion){
+
+      console.log(n_cotizacion);
+
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar esta cotización?",
-        text : "Nota: si elimina este registro no podra acceder a su información.",
+        text : "Nota: Si elimina este registro no podra acceder a su información.",
         buttons : {
             cancel: {
                 text: "Cancelar",
@@ -117,7 +117,16 @@
 
        }).then(function(confirm){
         if (confirm) {
-           document.getElementById('c_eliminar').submit();
+
+          $.ajax ({
+
+          url: '/cotizacion/'+n_cotizacion+'/eliminar',
+          headers: { n_cotizacion: n_cotizacion},
+          method: "GET"
+
+         });
+
+        location.reload();
           }
        });
 

@@ -234,7 +234,7 @@ class FacturasCController extends Controller
     public function destroy($id)
     {
   /*      $hoy=date('Y-m-d');
-     $desde=\DB::select('SELECT  * FROM facturac  WHERE facturac.fecha='.$hoy.' AND facturac.id='.$id );
+        $desde=\DB::select('SELECT  * FROM facturac  WHERE facturac.fecha='.$hoy.' AND facturac.id='.$id );
 */
         $this->actualizar_inventario_delete($id);
         $this->actualizar_compra_delete($id);

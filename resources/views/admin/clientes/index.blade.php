@@ -35,6 +35,20 @@
                     @if(buscar_p('Registros Generales','Registrar')=="Si")
                     <a href="{{ route('clientes.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                     @endif
+                    <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  
+                    <a href="{{ route('clientes.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                   
+                
+                    </div></div>
                     <br></br>
 
 
@@ -43,9 +57,9 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>RUT</th>
-                                <th>Direccion</th>
+                                <th>Dirección</th>
                                 <th>Correo</th>
-                                <th>Telefono</th>
+                                <th>Teléfono</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -63,12 +77,9 @@
                   @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")   
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
                     
-                       <br>
-                        <form id="f_eliminar" action="{{ route('clientes.destroy', $key->id) }}" method="POST" name="formulario">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        </form>
-                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cli()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                       <br><br>
+                       
+                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_cli('{{$key->id}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                   @endif
                     </td>
                 </tr>
@@ -98,7 +109,8 @@
 @endsection
 
 <script type="text/javascript">
-      function alert_eliminar_cli(){
+      function alert_eliminar_cli(id){
+        console.log(id);
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar el Cliente?",
@@ -122,7 +134,16 @@
 
        }).then(function(confirm){
         if (confirm) {
-           document.getElementById('f_eliminar').submit();
+
+           $.ajax ({
+
+          url: '/clientes/'+id+'/eliminar',
+          headers: { id: id},
+          method: "GET"
+
+         });
+
+        location.reload();
           }
        });
 

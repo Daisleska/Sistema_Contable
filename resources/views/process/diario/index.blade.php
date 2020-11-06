@@ -41,7 +41,7 @@
                     <i data-feather="download"></i>
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
-                   <a href="#" class="dropdown-item notify-item">
+                   <a href="{{ route('diario_view') }}" class="dropdown-item notify-item">
                         <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
                         <span>Excel</span>
                     </a>
@@ -94,7 +94,7 @@
                 <?php   foreach($diario as $key)  { ?>
                        
               <tr>
-                  <td style="text-align: center; "><?php echo $key->fecha; ?></td>
+                  <td style="text-align: center; "><?php echo date("d-m-Y", strtotime($key->fecha)) ?></td>
 
                 <?php $de_cuentas= \DB::select('SELECT DISTINCT cuentas.id, cuentas.nombre, cuentas.tipo, cuenta_has_diario.de_monto FROM cuentas, cuenta_has_diario, diario WHERE cuentas.id=cuenta_has_diario.cuenta_id AND cuenta_has_diario.n_asiento='.$key->n_asiento.' AND YEAR(cuenta_has_diario.fecha)=YEAR(CURRENT_DATE)'); ?>
                  

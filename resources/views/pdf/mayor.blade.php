@@ -159,7 +159,7 @@
                            @if($key->debe)
                            <tr style="text-align: center;">
 
-                               <td>{{$key->fecha}}</td>
+                               <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
                                <td style="text-align: left;">{{$key->descripcion}}</td>
                                <td>{{$key->n_folio}}/ {{$key->n_asiento}}</td>
                                <td style="text-align: center;">{{number_format($key->debe,2,',','.')}}</td>
@@ -171,7 +171,7 @@
                             @else if($key->haber)
                             <tr style="text-align: center;">
 
-                               <td>{{$key->fecha}}</td>
+                               <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
                                <td style="text-align: left;">{{$key->descripcion}}</td>
                                <td>{{$key->n_folio}}/ {{$key->n_asiento}}</td>
                                <td></td>

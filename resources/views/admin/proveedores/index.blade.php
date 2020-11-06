@@ -33,10 +33,21 @@
                     @if(buscar_p('Registros Generales','Registrar')=="Si")
                      <a href="{{ route('proveedores.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                     @endif
+                                            
+                    <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
                   
-                    <br></br>
-
-
+                    <a href="{{ route('proveedores.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                   
+                
+                    </div></div>
                      <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
@@ -52,26 +63,23 @@
                     
                     
                         <tbody style="font-size: 12px;">
-                            @foreach($proveedores as $key)
+                @foreach($proveedores as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{$key->representante}}</td>
                   <td>{{$key->direccion}}</td>
                   <td>{{$key->correo}}</td>
-                  <td>{{$key->telefono}}</td>
+                  <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   <td>
                        @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")
                         <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
-                        
-                    
-                       <br>
                       
-                        <form id="f_eliminar" action="{{ route('proveedores.destroy', $key->id) }}" method="POST" name="formulario">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        </form>
-                        <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_pro()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                    
+                       <br><br>
+                      
+                        
+                        <button class="btn btn-danger btn-sm" onclick="alert_eliminar_pro('{{$key->id}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                          @endif
                     </td>
                 </tr>
@@ -88,7 +96,11 @@
 @section('script')
 
 <!-- datatable js -->
-<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
+<script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}">
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 
 <script type="text/javascript">
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
@@ -101,11 +113,14 @@
 @endsection
 
 <script type="text/javascript">
-      function alert_eliminar_pro(){
+      function alert_eliminar_pro(id){
+
+         console.log(id);
+       
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar el Proveedor?",
-        text : "Si elimina el Proveedor, todos los cambios alterados por ella regresaran a su estado original",
+        text : "Si elimina el Proveedor, todos los cambios alterados por el regresaran a su estado original",
         buttons : {
             cancel: {
                 text: "Cancelar",
@@ -125,7 +140,18 @@
 
        }).then(function(confirm){
         if (confirm) {
-           document.getElementById('f_eliminar').submit();
+  
+        $.ajax ({
+
+          url: '/proveedores/'+id+'/eliminar',
+          headers: { id: id},
+          method: "GET"
+
+         });
+
+        location.reload();
+
+
           }
        });
 

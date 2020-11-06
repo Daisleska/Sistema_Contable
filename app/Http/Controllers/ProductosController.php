@@ -7,6 +7,8 @@ use App\producto;
 use App\inventario;
 use App\Bitacora;
 use App\Alert;
+use App\empresa;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class ProductosController extends Controller
@@ -161,7 +163,7 @@ class ProductosController extends Controller
      * @param  \App\Repuestos  $repuestos
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
    {
        $producto = producto::find($id);
         $producto->delete();  
@@ -175,7 +177,7 @@ class ProductosController extends Controller
             $bitacoras->action = 'Ha Eliminado un Producto';
             $bitacoras->save();
 
-        flash('¡Registro eliminado satisfactoriamente!');
+        flash('¡Registro eliminado satisfactoriamente!', 'success');
 
 
         return back()->with('info', 'El producto ha sido eliminado');
@@ -186,6 +188,21 @@ class ProductosController extends Controller
      public function buscar_producto($product)
     {
           return producto::where('codigo', $product)->get();
+
+    }
+
+
+    public function pdf(){
+
+        $productos= producto::all();
+
+        $i = 1;
+
+        $empresa= empresa::all();
+        $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.productos', compact('productos', 'i','date', 'empresa'));
+
+        return $dompdf->stream('productos.pdf');
 
     }
   

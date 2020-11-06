@@ -10,7 +10,7 @@
                     <i class='uil uil-file-alt mr-1'></i>Descargar
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
-                   <a href="" class="dropdown-item notify-item">
+                   <a href="{{ route('venta_view') }}" class="dropdown-item notify-item">
                         <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
                         <span>Excel</span>
                     </a>
@@ -49,9 +49,9 @@
                     @foreach($venta as $key)       
                 <tr>
                {{--    <td>{{$key->facturav_id}}</td> --}}
-                  <td>{{$key->fecha}}</td>
-                  <td>{{$key->n_factura}}</td>
-                  <td>{{$key->n_control}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
+                  <td>000{{$key->n_factura}}</td>
+                  <td>000000{{$key->n_control}}</td>
                   <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
                   <td>{{number_format($key->total,2,',','.')}} {{$key->divisa}}</td>
                   <td>{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>

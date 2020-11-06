@@ -7,6 +7,8 @@ use App;
 use App\cliente;
 use App\Bitacora;
 use App\Alert;
+use PDF;
+use App\empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -130,7 +132,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
         $cliente = cliente::find($id);
         $cliente->delete();
@@ -143,7 +145,7 @@ class ClientesController extends Controller
             $bitacoras->action = 'Ha Eliminado un Cliente';
             $bitacoras->save();
 
-        flash('Registro eliminado satisfactoriamente');
+        flash('¡Registro eliminado satisfactoriamente!', 'success');
 
         return back()->with('info', 'El cliente ha sido eliminado');
     }
@@ -154,6 +156,21 @@ class ClientesController extends Controller
           $resultado=cliente::where('ruf', $cliente)->get();
         
         return $resultado;
+
+    }
+
+
+    public function pdf(){
+
+        $clientes = cliente::all();
+
+        $i = 1;
+
+        $empresa= empresa::all();
+        $date = date('d-m-Y');
+        $dompdf = PDF::loadView('pdf.clientes', compact('clientes', 'i','date', 'empresa'));
+
+        return $dompdf->stream('clientes.pdf');
 
     }
 

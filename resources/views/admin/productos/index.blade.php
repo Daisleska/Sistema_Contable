@@ -22,6 +22,20 @@
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                    <a href="{{ route('productos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                    @endif
+                     <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  
+                    <a href="{{ route('productos.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                   
+                
+                    </div></div>
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
@@ -53,11 +67,8 @@
                     <button type="button" class="btn btn-info btn-xs" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
 
                   
-                   <form id="f_eliminar" name="formulario" action="{{ route('productos.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   </form>
-                   <button  class="btn btn-danger btn-xs" onclick="alert_eliminar()" title="Eliminar"><i data-feather="trash-2"></i></button>
+                  
+                   <button  class="btn btn-danger btn-xs" onclick="alert_eliminar('{{$key->id}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                    <br><br>
                  
                    <button onclick="detalles('{{$key->id}}')" type="button" class="btn btn-success btn-xs" title="Ver más" data-toggle="modal" data-target="#centermodal"><i data-feather="zoom-in"></i></button>
@@ -145,7 +156,8 @@
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
 <script type="text/javascript">
-      function alert_eliminar(){
+      function alert_eliminar(id){
+        console.log(id);
        swal({
         icon : "warning",
         title : "¿Seguro desea eliminar el Producto?",
@@ -165,7 +177,15 @@
         },
        }).then(function(confirm){
         if (confirm) {
-          document.getElementById('f_eliminar').submit();
+          $.ajax ({
+
+          url: '/productos/'+id+'/eliminar',
+          headers: { id: id},
+          method: "GET"
+
+         });
+
+        location.reload();
           }
        });
     }

@@ -165,7 +165,7 @@ if ($monto>0) {
             <td>Utilidad Bruta Venta</td>
             <td></td>       
             <td></td>
-            <td style="color: black;"><{{number_format( $utilidad_bruta_venta, 2,',','.')}}></td>         
+            <td style="color: black;">{{number_format( $utilidad_bruta_venta, 2,',','.')}}</td>         
         </tr>
         <tr>
               <td style="color: black;">Gastos de Operación</td>
@@ -244,7 +244,7 @@ if ($monto>0) {
               <td style="color: black;">Utilidad Neta de Operación</td>
               <td></td>
               <td></td>       
-              <td style="color: black;"><{{number_format( $utilidad_neta_operacion, 2,',','.')}}></td>         
+              <td style="color: black;">{{number_format( $utilidad_neta_operacion, 2,',','.')}}</td>         
         </tr>
         <tr>
               <td style="color: black;">Otros Ingresos:</td>
@@ -281,7 +281,7 @@ if ($monto>0) {
           	<td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
           	<td></td>
           	<td></td>
-          	<td><{{number_format( $utilidad_neta_ejercicio, 2,',','.')}}></td>
+          	<td>{{number_format( $utilidad_neta_ejercicio, 2,',','.')}}</td>
           </tr>
           @endif
     </tbody>

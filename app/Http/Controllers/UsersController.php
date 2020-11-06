@@ -647,6 +647,7 @@ class UsersController extends Controller
            $datos[0][3]=Auth::User()->name;
            $datos[0][4]=Auth::User()->avatar;
         } 
+        
         return $datos;
     }
 

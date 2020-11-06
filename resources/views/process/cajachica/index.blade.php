@@ -114,7 +114,7 @@
                         <tbody>
                       @foreach($cajachica as $key)      
                 <tr>
-                  <td>{{$key->fecha}}</td>
+                  <td>{{date("d-m-Y", strtotime($key->fecha))}}</td>
                   <td>{{$key->concepto}}</td>
                   <td style="color: green;">+ {{number_format($key->ingresos,2,',','.')}}</td>
                   <td style="color: red;">- {{number_format($key->egresos,2,',','.')}}</td>

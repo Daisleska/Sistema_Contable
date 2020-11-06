@@ -67,7 +67,7 @@
                     <i class='uil uil-file-alt mr-1'></i>Descargar
                     <i class="icon"><span data-feather="chevron-down"></span></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
-                   <a href="#" class="dropdown-item notify-item">
+                   <a href="{{ route('mayor_view') }}" class="dropdown-item notify-item">
                         <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
                         <span>Excel</span>
                     </a>
@@ -183,11 +183,7 @@ $(document).ready(function(){
             success: function(res){
                
                //res me trae 3 arreglos, para acceder a cada uno por separado utilizo el punto (.)
-                console.log(res.cuen);
-                console.log(res.buscar);
-                console.log(res.saldos);
-                console.log(res.descrip);
-                console.log(res.info);
+                
                 var cuent=res.cuen;
                 var buscar=res.buscar;
                 var saldo=res.saldos;
@@ -196,13 +192,13 @@ $(document).ready(function(){
                 var debe =[];
                 var haber =[];
                 var tabla;
+
                 
-
-
               
-                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'</th></tr><tr style="color: black;"><th style="text-align: center;">Fecha</th><th style="text-align: center;">Explicación</th><th style="text-align: center;">Ref.</th><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th><th style="text-align: center;">Saldo</th></tr>';
+                nom='<tr style="color: black;"><th colspan="6"><span style=" color: black;" id="titulo_cuenta"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'+cuent[0].nombre+' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N°'+cuent[0].codigo+'&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-danger btn-sm" onclick="pdf('+cuent[0].codigo+')" title="PDF"><i data-feather="trash-2"></i></button></th></tr><tr style="color: black;"><th style="text-align: center;">Fecha</th><th style="text-align: center;">Explicación</th><th style="text-align: center;">Ref.</th><th style="text-align: center;">Debe</th><th style="text-align: center;">Haber</th><th style="text-align: center;">Saldo</th></tr>';
                 
-                
+
+                  
                   for (var i =0; i<buscar.length; i++) {
                     tabla+= '<tr><td style="text-align: center;">'+descripcion[i].fecha+'</td><td style="text-align: left;">'+descripcion[i].descripcion+'</td><td style="text-align: center;">'+datos[i].n_folio+'/'+datos[i].n_asiento+'</td>';
               
@@ -301,4 +297,29 @@ $(document).ready(function(){
         tabla();
     });*/
 </script>
+<script type="text/javascript">
+function pdf(codigo){
 
+         //console.log(codigo);
+
+        // $.ajax ({
+
+          //url: '/mayorindividual.pdf/'+codigo,
+          //headers: { "X-CSRF-TOKEN": CSRF_TOKEN },
+          //method: "POST"
+
+        // });
+
+         $.ajax ({
+
+          url: '/mayorindividual.pdf/'+codigo,
+          headers: { codigo: codigo},
+          method: "GET"
+
+         });
+
+
+        
+
+      }
+</script>
