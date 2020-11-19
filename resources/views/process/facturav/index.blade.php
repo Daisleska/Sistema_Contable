@@ -71,10 +71,7 @@
                        
                   <br><br>
                    @if(buscar_p('Facturas','Eliminar')=="Si")
-                   <form action="{{ route('facturav.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
+                   <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_fact('{{$key->n_factura}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                    </form>
                    @endif
                    <br>
@@ -96,6 +93,48 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+
+    <script type="text/javascript">
+   function alert_eliminar_fact(n_factura){
+
+      console.log(n_factura);
+
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar esta Factura?",
+        text : "Nota: Si elimina este registro no podra acceder a su información.",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+          $.ajax ({
+
+          url: '/facturav/'+n_factura+'/eliminar',
+          headers: { n_factura: n_factura},
+          method: "GET"         });
+
+        location.reload();
+          }
+       });
+
+    }
+</script>
 @endsection
 
 @section('script')

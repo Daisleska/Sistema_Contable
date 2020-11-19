@@ -17,6 +17,8 @@ Route::get('proveedores/{proveedor}/buscar_proveedor', 'ProveedoresController@bu
 
 Route::get('cotizacion/{n_cotizacion}/eliminar', 'CotizacionesController@eliminar');
 
+Route::get('facturac/{n_factura}/eliminar', 'FacturasCController@eliminar');
+Route::get('facturav/{n_factura}/eliminar', 'FacturasVController@eliminar');
 Route::get('proveedores/{id}/eliminar', 'ProveedoresController@eliminar');
 
 Route::get('cuentas/{id}/eliminar', 'CuentasController@eliminar');
@@ -113,6 +115,10 @@ Route::get('venta.pdfventa','ComprasController@pdfventa')->name('venta.pdfventa'
 
 Route::get('balance.pdfcomprobacion','BalancesController@pdfcomprobacion')->name('balance.pdfcomprobacion');
 
+Route::get('balance.pdfgeneral','BalancesController@pdfgeneral')->name('balance.pdfgeneral');
+
+Route::get('balance.pdfgananciasp','BalancesController@pdfgananciasp')->name('balance.pdfgananciasp');
+
 Route::get('facturac.pdf/{id_factura}', 'FacturasCController@pdf')->name('facturac.pdf');
 Route::get('inventario.pdf', 'InventarioController@pdf')->name('inventario.pdf');
 Route::get('bitacora.pdf', 'BitacoraController@pdf')->name('bitacora.pdf');
@@ -144,6 +150,10 @@ Route::get('compra_view', 'ExcelController@compra_view')->name('compra_view');
 Route::get('venta_view', 'ExcelController@venta_view')->name('venta_view');
 //Route::get('caja_view', 'ExcelController@caja_view')->name('caja_view');
 Route::get('comprobacion_view', 'ExcelController@comprobacion_view')->name('comprobacion_view');
+Route::get('gananciasp_view', 'ExcelController@gananciasp_view')->name('gananciasp_view');
+
+Route::get('general_view', 'ExcelController@general_view')->name('general_view');
+
 Route::get('inventario_view', 'ExcelController@inventario_view')->name('inventario_view');
 Route::get('bitacora_view', 'ExcelController@bitacora_view')->name('bitacora_view');
 

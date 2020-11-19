@@ -80,11 +80,7 @@
               
                     <br><br>   
                    @if(buscar_p('Facturas','Eliminar')=="Si" )
-                   <form action="{{ route('facturac.destroy', $key->id) }}" method="POST">
-                   {{ csrf_field() }}
-                   <input type="hidden" name="_method" value="DELETE">
-                   <button class="btn btn-danger btn-sm" title="Eliminar"><i data-feather="trash-2"></i></button>
-                   </form>
+                   <button   class="btn btn-danger btn-sm" onclick="alert_eliminar_fact('{{$key->n_factura}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
                    @endif
                    <br>
                </td>
@@ -105,19 +101,59 @@
         </div><!-- end col-->
     </div>
     <!-- end row-->
+<script type="text/javascript">
+   function alert_eliminar_fact(n_factura){
+
+      console.log(n_factura);
+
+       swal({
+        icon : "warning",
+        title : "¿Seguro desea eliminar esta Factura?",
+        text : "Nota: Si elimina este registro no podra acceder a su información.",
+        buttons : {
+            cancel: {
+                text: "Cancelar",
+                value : null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Eliminar",
+                value: true,
+                visible: true,
+
+                
+            },
+             
+        },
+
+       }).then(function(confirm){
+        if (confirm) {
+
+          $.ajax ({
+
+          url: '/facturac/'+n_factura+'/eliminar',
+          headers: { n_factura: n_factura},
+          method: "GET"   
+
+            });    
+          location.reload();
+          }
+       });
+
+    }
+</script>
 
 @endsection
 
+
 @section('script')
-{{-- <script type="text/javascript">
-    mix.js('resources/js/app.js', 'public/js').version();
-</script> --}}
 <!-- datatable js -->
 <script src="{{ URL::asset('Shreyu/assets/libs/datatables/datatables.min.js') }}"></script>
-
 @endsection
 
 @section('script-bottom')
 <!-- Datatables init -->
 <script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 @endsection
+

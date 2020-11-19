@@ -219,26 +219,7 @@ class FacturasVController extends Controller
      */
     public function destroy($id)
     {
-          /*      $hoy=date('Y-m-d');
-     $desde=\DB::select('SELECT  * FROM facturac  WHERE facturac.fecha='.$hoy.' AND facturac.id='.$id );
-*/
-        $this->actualizar_inventario_delete($id);
-        $this->actualizar_venta_delete($id);
-
-        $facturav = facturav::find($id);
-        $facturav->delete();
-
-            $bitacoras = new App\Bitacora;
-
-            $bitacoras->user =  Auth::user()->name;
-            $bitacoras->lastname =  Auth::user()->name;
-            $bitacoras->role =  Auth::user()->user_type;
-            $bitacoras->action = 'Ha Eliminado una factura de compras';
-            $bitacoras->save();
-
-        flash('Registro eliminado satisfactoriamente');
-
-        return back();
+   
     }
 
     
@@ -272,7 +253,7 @@ class FacturasVController extends Controller
     return redirect()->back();
     }
 
-     public function actualizar_venta_delete($id)
+      public function actualizar_venta_delete($id)
     {
          $venta_eliminar=venta::find($id);
          if ($venta_eliminar != null) {
@@ -280,12 +261,16 @@ class FacturasVController extends Controller
          }
     }
 
-     public function actualizar_inventario_delete($id)
+    public function actualizar_inventario_delete($buscar)
     {
-
+        for ($i=0; $i <count($buscar); $i++) { 
+        $d=$buscar[$i];
+        foreach ($d as $key) {    
+        $id=$key;
+        }
         //consulta para obtener cantidad y id del producto----------
         $sql=\DB::select('SELECT id, cantidad, productos_id FROM facturav
-        WHERE id='.$id );
+        WHERE id='.$id);
 
         foreach ($sql as $val) {
        $producto_stock=$val->cantidad;
@@ -305,9 +290,41 @@ class FacturasVController extends Controller
        $regresar=$existencia+$producto_stock;
        
 
+       $cambiar_pro= \DB::update('UPDATE productos SET existencia ='.$regresar.' WHERE id='.$id_producto);
+
         $cambiar= \DB::update('UPDATE inventario SET existencia ='.$regresar.' WHERE inventario.productos_id='.$id_producto);
+       }
 
     }
+ 
+  public function eliminar($n_factura){
+  /*      $hoy=date('Y-m-d');
+        $desde=\DB::select('SELECT  * FROM facturac  WHERE facturac.fecha='.$hoy.' AND facturac.id='.$id );
+*/        $buscar= \DB::select('SELECT  id FROM facturav  WHERE facturav.n_factura='.$n_factura );
 
+        foreach ($buscar as $key) {
+           $id=$key->id;
+        }
+        $this->actualizar_venta_delete($id);
+       
+        $this->actualizar_inventario_delete($buscar);
+        
+        
+        $facturac= \DB::delete('DELETE FROM facturav WHERE n_factura='.$n_factura);
 
+            $bitacoras = new App\Bitacora;
+
+            $bitacoras->user =  Auth::user()->name;
+            $bitacoras->lastname =  Auth::user()->name;
+            $bitacoras->role =  Auth::user()->user_type;
+            $bitacoras->action = 'Ha Eliminado una factura de ventas';
+            $bitacoras->save();
+
+         
+
+         return flash('¡Registro eliminado satisfactoriamente!', 'success');
+        
+
+    }
+    
 }

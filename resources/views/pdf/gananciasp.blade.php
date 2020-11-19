@@ -79,39 +79,143 @@ if ($monto>0) {
   utilidad_neta($monto);
 }
 ?>
-<div class="btn-group">
+<!DOCTYPE html>
+<html lang="en">
 
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
-                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                   <a href="{{ route('gananciasp_view') }}" class="dropdown-item notify-item">
-                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
-                        <span>Excel</span>
-                    </a>
-                    <a href="{{ route('balance.pdfgananciasp') }}" class="dropdown-item notify-item">
-                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
-                        <span>PDF</span>
-                    </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
-                </div>
-            </div>
-   <table style="border-color:  black; border: 1px;  " border="1" class="table dt-responsive nowrap">
-       <thead >  
-         <tr>                     
-            <h5 style="text-align: center; color: black; font-size: 12px;">Estado De Ganancias Y Pérdidas <br> Ejercicio Del {{$inicio}} Al {{$final}}</h5>
-            <br>
-          </tr> 
-       </thead>
-      <tbody style="text-align: center; font-size: 12px;">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ public_path('../resources/views/pdf/boostrap/bootstrap.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <style>
+        img {
+            width: 10%;
+        
+      
+
+
+        }
+     
+
+        #alto {
+          
+          /* Alto de las celdas */
+          height: 40px;
+        }
+
+        body {
+          font-family: "Times New Roman", serif;
+          margin: 0mm 1.2cm 1cm 1cm;
+         }
+
+
+        h3 {
+            text-align: center;
+        }
+
+        small {
+            margin-top: 20%;
+        }
+
+        #titulo {
+            text-align: center;
+
+        }
+
+        #membrete {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        #l {
+            text-align: left;
+            margin-left: 4cm;
+
+        }
+
+        #c{
+            text-align:center;
+            height: 40px;
+        }
+
+        
+
+
+        @font-face {
+            font-family: 'Times-Bold';
+            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
+        }
+
+        body {
+            font-family: 'Times-Bold';
+        }
+
+        table {
+           
+            border-collapse: collapse;
+
+        }
+
+        #tabla {
+
+            margin-top: -150px;
+
+        }
+
+        #a{
+            text-align: right;
+           margin-right: 2cm; 
+        }
+
+        .circular--square {
+       border-radius: 60%;
+         }
+
+    </style>
+</head>
+
+<body>
+ @foreach($empresa as $key)
+    <table border="0"  width="500">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
+
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
+            
+            
+     
+
+         @endforeach
+
+      </table>  
+
+
+
+ <h2 style="text-align: center; color: black; font-size: 16px;">Estado De Ganancias Y Pérdidas <br> Ejercicio Del {{$inicio}} Al {{$final}}</h2>
+  <br>           
+
+<table style="border-color:  black; border: 1px; width: 600px;" border="1" align="center">
+  <br>
+      <tbody style="text-align: center;">
 
 
           <tr>
-              <td style=" color: black;">Ventas</td>
+              <td style=" color: black;"><strong>Ventas</strong> </td>
               <td>{{number_format( $ventas, 2,',','.')}}</td>       
               <td></td>
               <td></td>         
@@ -129,7 +233,7 @@ if ($monto>0) {
               <td>{{number_format( $venta_neta, 2,',','.')}}</td>         
           </tr>
           <tr>
-              <td style=" color: black;">Costo de Ventas:</td>
+              <td style=" color: black;"><strong>Costo de Ventas:</strong></td>
               <td><hr></td>       
               <td><hr></td>
               <td><hr></td>         
@@ -180,22 +284,22 @@ if ($monto>0) {
             <td>Costo de Venta</td>
             <td></td>       
             <td></td>
-            <td style="color: black;">{{number_format( $costo_venta, 2,',','.')}}</td>         
+            <td style="color: black;"><strong>{{number_format( $costo_venta, 2,',','.')}}</strong></td>         
         </tr>
         <tr>
             <td>Utilidad Bruta Venta</td>
             <td></td>       
             <td></td>
-            <td style="color: black;">{{number_format( $utilidad_bruta_venta, 2,',','.')}}</td>         
+            <td style="color: black;"><strong>{{number_format( $utilidad_bruta_venta, 2,',','.')}}</strong></td>         
         </tr>
         <tr>
-              <td style="color: black;">Gastos de Operación</td>
+              <td style="color: black;"><strong>Gastos de Operación</strong></td>
               <td><hr></td>       
               <td><hr></td>
               <td><hr></td>         
         </tr>
         <tr>
-              <td style="color: black;">En Venta:</td>
+              <td style="color: black;"><strong>En Venta:</strong></td>
               <td></td>       
               <td></td>
               <td></td>         
@@ -226,7 +330,7 @@ if ($monto>0) {
         </tr>
         @if(isset($informacion)) 
         <tr>
-              <td style="color: black;">En Administración:</td>
+              <td style="color: black;"><strong>En Administración:</strong></td>
               <td></td>       
               <td></td>
               <td></td>         
@@ -259,16 +363,16 @@ if ($monto>0) {
               <td>Total Gastos Operación</td>
               <td></td>
               <td></td>       
-              <td style="color: black;">{{number_format( $total_gastos_op, 2,',','.')}}</td>         
+              <td style="color: black;"><strong>{{number_format( $total_gastos_op, 2,',','.')}}</strong></td>         
         </tr>
         <tr>
-              <td style="color: black;">Utilidad Neta de Operación</td>
+              <td style="color: black;"><strong>Utilidad Neta de Operación</strong></td>
               <td></td>
               <td></td>       
-              <td style="color: black;">{{number_format( $utilidad_neta_operacion, 2,',','.')}}</td>         
+              <td style="color: black;"><strong>{{number_format( $utilidad_neta_operacion, 2,',','.')}}</strong></td>         
         </tr>
         <tr>
-              <td style="color: black;">Otros Ingresos:</td>
+              <td style="color: black;"><strong>Otros Ingresos:</strong></td>
               <td></td>
               <td></td>       
               <td></td>         
@@ -280,7 +384,7 @@ if ($monto>0) {
               <td></td>       
         </tr>
         <tr>
-              <td style="color: black;">Otros Egresos:</td>
+              <td style="color: black;"><strong>Otros Egresos:</strong></td>
               <td></td>
               <td></td>       
               <td></td>         
@@ -292,18 +396,26 @@ if ($monto>0) {
               <td></td>       
         </tr>
         <tr>
-              <td style="color: black;">Total Ingresos - Egresos</td>
+              <td style="color: black;"><strong>Total Ingresos - Egresos</strong></td>
               <td></td>
               <td></td>       
-              <td style="color: black;">{{number_format( $ingresos_menos_egresos, 2,',','.')}}</td>         
+              <td style="color: black;"><strong>{{number_format( $ingresos_menos_egresos, 2,',','.')}}</strong></td>         
         </tr>
 
-          <tr  style="text-align: center; font-size: 12px; color: black;" >
-          	<td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
-          	<td></td>
-          	<td></td>
-          	<td>{{number_format( $utilidad_neta_ejercicio, 2,',','.')}}</td>
+          <tr  style="text-align: center; color: black; font-size: 16px;" >
+            <td>UTILIDAD LIQUIDA DEL EJERCICIO</td>
+            <td></td>
+            <td></td>
+            <td><strong>{{number_format( $utilidad_neta_ejercicio, 2,',','.')}}</strong></td>
           </tr>
           @endif
     </tbody>
 </table>
+
+
+
+
+
+</body>
+
+</html>

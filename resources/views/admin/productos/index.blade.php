@@ -22,6 +22,7 @@
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                    <a href="{{ route('productos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                    @endif
+                   @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                      <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -36,6 +37,7 @@
                    
                 
                     </div></div>
+                    @endif
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
@@ -54,7 +56,7 @@
                     
                     
                         <tbody style="font-size: 12px;">
-                            @foreach($productos as $key)
+              @foreach($productos as $key)
                 <tr>
                   <td>{{$key->codigo}}</td>
                   <td>{{$key->nombre}}</td>
@@ -64,7 +66,7 @@
                   
                   <td>
                  @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")
-                    <button type="button" class="btn btn-info btn-xs" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
+                    <button type="button" class="btn btn-info btn-xs" title="Editar"><a href="{{ route('productos.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
 
                   
                   
@@ -75,11 +77,8 @@
                   @endif
                   
                  </td>
-
-                  
-                  
                 </tr>
-                @endforeach
+            @endforeach
                           
                              </tbody>
                     </table>
@@ -98,6 +97,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
+                                                      @if(isset($key)==true)
                                                      <tr>
                                                         <p style="color:black;">Código: {{$key->codigo}} </p>
                                                     </tr>
@@ -128,7 +128,7 @@
                                                     <tr>
                                                         <p style="color:black;">Stock Máximo: {{$key->stock_max}} </p>
                                                     </tr>
-
+                                                    @endif
                                                         <div class="modal-footer" style="align-content: center;">
                                 <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
                                 

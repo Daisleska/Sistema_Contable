@@ -38,6 +38,7 @@
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                      <a href="{{ route('cuentas.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                   @endif
+                  @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                   <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -52,6 +53,7 @@
                    
                 
                     </div></div>
+                    @endif
 
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">

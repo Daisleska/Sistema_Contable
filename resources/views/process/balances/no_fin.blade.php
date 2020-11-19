@@ -1,5 +1,9 @@
-<h1 style="text-align: center;">No se puede acceder hasta realizar el balance de ganancias y perdidas</h1>
+<h6 style="text-align: center; color: red;">IMPORTANTE</h6>
+<center>
+<p style="font-family: Arial" >No se puede acceder hasta realizar el Balance de Ganancias y Pérdidas.</p> 
 <br>
-<div class="card">
-<p>- Para completar este balance es necesario la utilidad neta, la cual se obtiene del balance de ganancias y perdidas.</p>
-</div>
+
+<p style="font-family: Arial" >Para completar este balance es necesario la utilidad neta, la cual se obtiene del Balance de Ganancias y Pérdidas.</p> <br>
+</center>
+
+<img style="width: 500px; margin-left: 4cm;" src="{{ URL::asset('uploads/imagen1.jpg')}}">

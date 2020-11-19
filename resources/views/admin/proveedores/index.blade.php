@@ -33,7 +33,7 @@
                     @if(buscar_p('Registros Generales','Registrar')=="Si")
                      <a href="{{ route('proveedores.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                     @endif
-                                            
+                    @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")                     
                     <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -46,8 +46,8 @@
                         <span>PDF</span>
                     </a>
                    
-                
                     </div></div>
+                    @endif
                      <table id="key-datatable" class="table dt-responsive nowrap">
                         <thead style="font-size: 12px;">
                             <tr>
@@ -73,7 +73,7 @@
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   <td>
                        @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('proveedores.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
                       
                     
                        <br><br>

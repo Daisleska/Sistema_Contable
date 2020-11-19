@@ -208,8 +208,7 @@ class CotizacionesController extends Controller
         $cotizacion= \DB::delete('DELETE FROM cotizaciones WHERE n_cotizacion='.$n_cotizacion);
 
 
-        if ($cotizacion > 0) {
-          
+        if ($cotizacion) {
         
             $bitacoras = new App\Bitacora;
 

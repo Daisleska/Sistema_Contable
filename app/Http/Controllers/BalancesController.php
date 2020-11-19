@@ -406,6 +406,108 @@ class BalancesController extends Controller
  
     }
 
+    public function pdfgananciasp(){
+
+    $anio = date('Y');
+    $mes= date('m');
+
+    
+    $informacion= \DB::select('SELECT * FROM ganancias_perdidas WHERE MONTH(fecha)='.$mes.' AND YEAR(fecha)='.$anio);
+    
+    $compra =  \DB::select('SELECT compra.facturac_id,facturac.fecha, facturac.total, facturac.sub_total, facturac.iva, facturac.p_iva FROM compra, facturac WHERE compra.facturac_id = facturac.id AND YEAR(facturac.fecha)='.$anio);
+
+    foreach ($compra as $key) {  
+           $compras[]= $key->total;
+           $subtotal_compra[]= $key->sub_total;
+           $IVA_compra[]= $key->iva;
+         }
+         if (isset($compras)== false) {
+             $compras=0;
+             $subtotal_compra=0;
+             $IVA_compra=0;
+          }
+    $venta =  \DB::select('SELECT venta.facturav_id, facturav.fecha, facturav.total,facturav.sub_total, facturav.iva, iva.porcentaje FROM venta, facturav, iva WHERE venta.facturav_id = facturav.id AND YEAR(facturav.fecha)='.$anio);
+    foreach ($venta as $key) {  
+           $ventas[]= $key->total;
+           $subtotal_venta[]= $key->sub_total;
+           $IVA_venta[]= $key->iva;
+         }
+     if (isset($ventas)== false) {
+         $ventas=0;
+         $subtotal_venta=0;
+         $IVA_venta=0;
+      }
+
+    $inventario_ini = \DB::select('SELECT id, anio, valor, created_at, updated_at FROM has_inventario 
+        WHERE YEAR(anio)='.$anio.' ORDER BY id ASC LIMIT 0,1');
+         foreach ($inventario_ini as $key) {  
+           $inventario_inicial= $key->valor;
+           $inicio = $key->anio;
+         }
+     $inventario_fin = \DB::select('SELECT id, anio, valor, created_at, updated_at FROM has_inventario 
+        WHERE YEAR(anio)='.$anio.' ORDER BY id DESC LIMIT 0,1');
+         foreach ($inventario_fin as $key) {  
+           $inventario_final= $key->valor;
+           $final = $key->anio;
+     }
+
+    $empresa = empresa::all();
+
+
+    $dompdf = PDF::loadView('pdf.gananciasp', compact('empresa', 'inventario_fin', 'inventario_ini', 'ventas', 'compras', 'subtotal_venta', 'IVA_venta', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'inicio', 'final', 'informacion'));
+
+    return $dompdf->stream('gananciasp.pdf');
+    }
+
+
+     public function pdfgeneral(){
+
+
+    $anio = date('Y');
+    $mes= date('m');
+
+    $ventas = 0;
+    $compras = 0;
+    $inventario_inicial =0;
+    $inventario_final =0;
+     $inventario_ini = \DB::select('SELECT id, anio, valor, created_at, updated_at FROM has_inventario 
+        WHERE YEAR(anio)='.$anio.' ORDER BY id ASC LIMIT 0,1');
+         foreach ($inventario_ini as $key) {  
+           $inicio = $key->anio;
+         }
+     $inventario_fin = \DB::select('SELECT id, anio, valor, created_at, updated_at FROM has_inventario 
+        WHERE YEAR(anio)='.$anio.' ORDER BY id DESC LIMIT 0,1');
+         foreach ($inventario_fin as $key) {  
+           $final = $key->anio;
+     }
+    $general= \DB::select('SELECT DISTINCT cuentas.nombre, cuentas.tipo, cuentas.t_cuenta, mayor.cuenta_id, cuentas.codigo FROM cuentas, mayor WHERE mayor.cuenta_id=cuentas.id AND YEAR(mayor.created_at)='.$anio.' ORDER BY cuentas.tipo ASC');
+    $j=1;
+
+    foreach ($general as $gen) {
+
+     $gener= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$gen->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
+
+
+        foreach ($gener as $keyk) {    
+        $res_saldo_general[$j][0]=$gen->nombre;
+        $res_saldo_general[$j][1]=$gen->tipo;  
+        $res_saldo_general[$j][2]=$gen->t_cuenta;
+        $res_saldo_general[$j][3]=$keyk->cuenta_debe;
+        $res_saldo_general[$j][4]=$keyk->cuenta_haber;
+        }
+        $j++;
+
+    }
+
+    $empresa = empresa::all();
+
+
+    $dompdf = PDF::loadView('pdf.general', compact('empresa', 'inicio', 'final', 'res_saldo_general'));
+
+    return $dompdf->stream('general.pdf');
+    }
+
+
     /**
      * Update the specified resource in storage.
      *

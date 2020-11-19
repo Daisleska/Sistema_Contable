@@ -11,7 +11,8 @@ class BitacoraController extends Controller
 {
    public function index(){
 
-      $bitacora = Bitacora::orderBy('id', 'DESC')->paginate();
+    $bitacora = \DB::select('SELECT *
+        FROM bitacora ORDER BY id DESC');
       $i=1;
 
       return view('admin/bitacoras/index', compact('bitacora', 'i'));

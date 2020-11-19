@@ -1,33 +1,125 @@
-<div class="btn-group">
+<br><br><br>
+<style>
+        img {
+            width: 10%;
+        
+      
 
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class='uil uil-file-alt mr-1'></i>Descargar
-                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                   <a href="{{ route('general_view') }}" class="dropdown-item notify-item">
-                        <i data-feather="book-open" class="icon-dual icon-xs mr-2"></i>
-                        <span>Excel</span>
-                    </a>
-                    <a href="{{ route('balance.pdfgeneral') }}" class="dropdown-item notify-item">
-                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
-                        <span>PDF</span>
-                    </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
-                </div>
-            </div>
+
+        }
+     
+
+        #alto {
+          
+          /* Alto de las celdas */
+          height: 40px;
+        }
+
+        body {
+          font-family: "Times New Roman", serif;
+          margin: 0mm 1.2cm 1cm 1cm;
+         }
+
+
+        h3 {
+            text-align: center;
+        }
+
+        small {
+            margin-top: 20%;
+        }
+
+        #titulo {
+            text-align: center;
+
+        }
+
+        #membrete {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        #l {
+            text-align: left;
+            margin-left: 4cm;
+
+        }
+
+        #c{
+            text-align:center;
+            height: 40px;
+        }
+
+        
+
+
+        @font-face {
+            font-family: 'Times-Bold';
+            src:"{{ public_path('../storage/fonts/Times-Bold') }}"
+        }
+
+        body {
+            font-family: 'Times-Bold';
+        }
+
+        table {
+           
+            border-collapse: collapse;
+
+        }
+
+        #tabla {
+
+            margin-top: -150px;
+
+        }
+
+        #a{
+            text-align: right;
+           margin-right: 2cm; 
+        }
+
+        .circular--square {
+       border-radius: 60%;
+         }
+
+    </style>
+@foreach($empresa as $key)
+    <table border="0"  width="500">
+        <tr>
+       
+            <th style="text-align: left;">EICHE, C.L</th>
+
+            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
+        </tr> 
+        <tr>   
+        <th style="text-align: left;">{{$key->direccion}}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
+        </tr>   
+
+
+         <tr>
+            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
+         </tr>
+            
+            
+     
+
+         @endforeach
+     </table>
+     <br>
+<table width="500">
+<tr>                   
+<th rowspan="2" colspan="4" style="text-align: center; color: black;"><strong> Balance General <br> {{$inicio}} Al {{$final}}</strong></th>
+</tr>
+</table>
+<br> 
 {{-- TABLA PARA LOS ACTIVOS --}}
-<table style="border-color: black; border: 1px;" border="1" class="table dt-responsive nowrap">
-<thead style="text-align: center; color: black; font-size: 12px;">
-<tr>                     
-<h5 style="text-align: center; color: black; font-size: 12px;">Balance General <br> {{$inicio}} Al {{$final}}</h5>
-<br>
-</tr> 
-</thead>
-<tbody style="font-size: 12px;">
+<table border="1" width="500">
+
+<tbody>
 
 {{--   <tr style="text-align: center; color: blue;"><td>Activo Circulante</td></tr> --}}  
 @foreach($res_saldo_general as $general)
@@ -43,11 +135,11 @@
          $total_activo_circ = array_sum($saldo_activo_circ);
         ?>
      <tr>
-          <td style="text-align: center;">{{$general[0]}}</td>
-          <td></td>
+      <td style="text-align: center; ">{{$general[0]}}</td>
+                <td></td>
           <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
-          <td></td>
-     </tr>
+                <td></td>
+          </tr>
     @endif
     @endforeach  
     <tr>
@@ -102,9 +194,13 @@
              $saldo=$general[4] - $general[3]; 
             $saldo_activo_tang[]= $saldo;
            } 
-           $total_activo_tang = array_sum($saldo_activo_tang);
-            ?>
+             
 
+
+           $total_activo_tang = array_sum($saldo_activo_tang);
+
+           
+           ?>
            <tr>
                 <td style="text-align: center;">{{$general[0]}}</td>
                 <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>       
@@ -121,9 +217,9 @@
       <td  style="text-align: center;">{{number_format($total_activo_tang,2,',','.')}}</td>
     </tr>
 {{-- <tr style="text-align: center; color: blue;"><td>Activo Intangible</td></tr> --}}
-
+ 
          @foreach($res_saldo_general as $general)
-         
+          
           @if($general[1] =='activo' && $general[2] =='Fijo intangible' )  
 
            <?php 
@@ -147,7 +243,7 @@
           </tr>
  @endif
     @endforeach  
-    <tr>
+ <tr>
       <td style="text-align: center;">Total Activo Intangible</td>
       <td></td>
       <td></td>
@@ -157,7 +253,7 @@
 
 
         @foreach($res_saldo_general as $general)
-       
+           
           @if($general[1] =='activo' && $general[2] =='Cargo diferido' )  
 
          
@@ -177,7 +273,7 @@
 {{-- <tr style="text-align: center; color: blue;"><td>Otros Activo</td></tr> --}}
 
         @foreach($res_saldo_general as $general)
-          
+           
           @if($general[1] =='activo' && $general[2] =='Otros activos' )  
 
          
@@ -198,7 +294,7 @@
 <?php 
 $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $total_activo_intan;
 ?>
-          <tr  style="text-align: center; font-size: 12px; color: black;" >
+          <tr  style="text-align: center; color: black;" >
           	<th>TOTAL ACTIVO</th>
           	<th></th>
           	<th></th>
@@ -239,7 +335,7 @@ $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $
 
 {{-- <tr style="text-align: center; color: blue;"><td>Largo Plazo</td></tr> --}}
   @foreach($res_saldo_general as $general2)
-         
+           
              @if($general2[1] =='pasivo' && $general2[2]=='A largo plazo')  
              
              <?php 
@@ -252,7 +348,7 @@ $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $
            } 
            $total_pasivo_largoplazo = array_sum($saldo_pasivo_largoplazo);
             ?>
-          <tr>
+            <tr>
                 <td style="text-align: center;">{{$general2[0]}}</td>
                 <td style="text-align: center;">{{number_format($saldo,2,',','.')}}</td>      
                 <td></td>
@@ -269,11 +365,11 @@ $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $
     </tr>
 {{-- <tr style="text-align: center; color: blue;"><td>Crédito Diferido</td></tr> --}}
   @foreach($res_saldo_general as $general2)
-          
+           
              @if($general2[1] =='pasivo' && $general2[2]=='Crédito diferido')  
              
             <?php $saldo2=  $general2[3] - $general2[4]; ?>
-            <tr> 
+            <tr >
                 <td style="text-align: center;">{{$general2[0]}}</td>
                 <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
                 <td></td>
@@ -288,7 +384,7 @@ $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $
              @if($general2[1] =='pasivo' && $general2[2]=='Otros pasivos')  
              
             <?php $saldo2=  $general2[3] - $general2[4]; ?>
-            <tr>
+            <tr >
                 <td style="text-align: center;">{{$general2[0]}}</td>
                 <td style="text-align: center;">{{number_format($saldo2,2,',','.')}}</td>      
                 <td></td>
@@ -299,7 +395,7 @@ $total_activo = $total_activo_circ + $total_activo_real + $total_activo_tang + $
   <?php
   $total_pasivo = $total_pasivo_circ + $total_pasivo_largoplazo;
    ?>
-          <tr  style="text-align: center; font-size: 12px; color: black;" >
+          <tr  style="text-align: center; color: black;" >
           	<th>TOTAL PASIVO</th>
           	<th></th>
           	<th></th>
@@ -347,20 +443,20 @@ if (isset($utilidad)==false) {
 $nuevo_capital = $total_capital + $utilidad;
 $patrimonio = $total_pasivo + $nuevo_capital;
 ?>
-     <tr style="font-size: 12px; text-align: center;">
+     <tr style=" text-align: center;">
           <td>Utilidad neta del ejercicio</td>
           <td></td>
            <td style="text-align: center;">{{number_format($utilidad, 2,',','.')}}</td>
           <td></td>
         </tr>
 
- <tr style="text-align: center; font-size: 12px; color: black;">
+ <tr style="text-align: center; color: black;">
       <th>Nuevo Capital</th>
       <th></th>
       <th></th>
       <th>{{number_format($nuevo_capital,2,',','.')}}</th>
     </tr>
-          <tr  style="text-align: center; font-size: 12px; color: black;" >
+          <tr  style="text-align: center; color: black;" >
           	<th>TOTAL PATRIMONIO</th>
           	<th></th>
           	<th></th>

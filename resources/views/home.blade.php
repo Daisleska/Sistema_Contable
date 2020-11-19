@@ -137,7 +137,7 @@
     <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title mt-0 mb-0 header-title">Sales By Category</h5>
+                <h5 class="card-title mt-0 mb-0 header-title">Tipos De Cuentas</h5>
                 <div id="sales-by-category-chart" class="apex-charts mb-0 mt-4" dir="ltr"></div>
             </div> <!-- end card-body-->
         </div> <!-- end card-->

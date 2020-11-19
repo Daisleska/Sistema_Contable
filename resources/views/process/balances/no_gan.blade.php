@@ -19,7 +19,7 @@
 <p style="font-family: Arial" >El Balance de Ganancias y Pérdidas, es un reporte que se emite dos veces al año, en los meses de Junio y Diciembre.</p> 
 <br>
 
-<p style="font-family: Arial" >Cuando sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</p> <br>
+<p style="font-family: Arial" >Cuándo sea la fecha indicada se podrá mostrar un formulario para completar la información requerida, y posteriormente se emitirá el balance del año actual.</p> <br>
 </center>
  
 <img style="width: 500px; margin-left: 4cm;" src="{{ URL::asset('uploads/imagen1.jpg')}}">

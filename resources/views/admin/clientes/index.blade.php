@@ -35,6 +35,7 @@
                     @if(buscar_p('Registros Generales','Registrar')=="Si")
                     <a href="{{ route('clientes.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                     @endif
+                    @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                     <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -49,6 +50,7 @@
                    
                 
                     </div></div>
+                    @endif
                     <br></br>
 
 
@@ -75,7 +77,7 @@
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
                   <td>
                   @if(buscar_p('Registros Generales','Modificar')=="Si" || buscar_p('Registros Generales','Eliminar')=="Si")   
-                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"></a><i data-feather="edit"></i></button>
+                        <button type="button" class="btn btn-info btn-sm" title="Editar"><a href="{{ route('clientes.edit',$key->id) }}"><i data-feather="edit"></i></a></button>
                     
                        <br><br>
                        

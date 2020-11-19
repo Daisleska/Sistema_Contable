@@ -182,17 +182,16 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item"><i
-                                class="uil uil-refresh mr-2"></i>Refresh</a>
+                                class="uil uil-refresh mr-2"></i>Refrescar</a>
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-user-plus mr-2"></i>Add
-                            Member</a>
+                        <a href="javascript:void(0);" class="dropdown-item"><i class="uil uil-user-plus mr-2"></i>Añadir Miembro</a>
                         <div class="dropdown-divider"></div>
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item text-danger"><i
-                                class="uil uil-exit mr-2"></i>Exit</a>
+                                class="uil uil-exit mr-2"></i>Salir</a>
                     </div>
                 </div>
-                <h6 class="header-title mb-4">Team Chat</h6>
+                <h6 class="header-title mb-4">Chat Grupal</h6>
                 <div class="chat-conversation">
                     <ul class="conversation-list slimscroll" style="max-height: 268px;">
                         <?php $i=0; ?>
@@ -249,15 +248,14 @@
                         <div class="row">
                             <div class="col">
 
-                                
-
                                 <input type="text" id="mensaje" class="form-control chat-input" placeholder="Ingrese el texto"
                                     required name="mensaje">
  
                                 
 
                                 <div class="invalid-feedback">
-                                    ¡Por favor ingrese  su mensaje!                                </div>
+                                    ¡Por favor ingrese su mensaje!                         
+                               </div>
                             </div>
                             <div class="col-auto">
                                 <button id="boton" class="btn btn-primary" >Enviar</button>
@@ -342,7 +340,6 @@
 
 @endsection
 
-@endif
 
 @section('script')
 <!-- optional plugins -->
@@ -354,38 +351,28 @@
 <script src="{{ URL::asset('js/jquery/dist/jquery.min.js') }}"></script>
 
 <script type="text/javascript">
-  $(document).ready( function(){
-        $("#boton").click(function () {
-        var mensaje= $("#mensaje").val();
-        
-         $.ajax ({
 
+        $("#boton").on('click',function () {
+        var mensaje= $("#mensaje").val();
+         $.ajax ({
           url: '/chat/'+mensaje,
           headers: { mensaje: mensaje},
-          method: "GET"
-          
-         
+          method: "GET" 
         });
 
         $('#mensaje').val('');
 
           $("#chat").append('<div class="chat-avatar"><i></i></div><div class="conversation-text" ><div class="ctext-wrap"><i>'+mensaje+'</i><p></p></div></div><br>');       
-
           //$('#chat').html(dato);
-        
-
-        
-      
-         //
-        });
-        
-    });   
+        });       
    
 </script>
 @endsection
 
 @section('script-bottom')
+<script src="{{ URL::asset('Shreyu/assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/widgets.init.js') }}"></script>
 @endsection
 
+@endif
 
