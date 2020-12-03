@@ -73,6 +73,11 @@
   $ingresos_menos_egresos = $otros_ingresos - $otros_egresos;
 
   $utilidad_neta_ejercicio = $utilidad_neta_operacion - $ingresos_menos_egresos;
+
+$monto= $utilidad_neta_ejercicio;
+if ($monto>0) {
+  utilidad_neta($monto);
+}
 ?>
    <table style="border-color:  black; border: 1px;  " border="1" class="table dt-responsive nowrap">
        <thead >  
@@ -281,4 +286,3 @@
           @endif
     </tbody>
 </table>
-

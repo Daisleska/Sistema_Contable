@@ -14,3 +14,15 @@ function buscar_p($modulo,$privilegio)
 	return $hallado;
 }
 
+function utilidad_neta($monto)
+{ 
+   $fecha_mes= date('m');
+   $fecha_anio= date('Y');
+   $u= \DB::select('SELECT * FROM utilidad WHERE MONTH(fecha)='.$fecha_mes.' AND YEAR(fecha)='.$fecha_anio);
+
+   if (empty($u)) {
+   	#registrar
+   	$fecha_completa= date('Y-m-d');
+   	$registrar= \DB::select ('INSERT INTO utilidad ( `cantidad`, `fecha`) VALUES ("'.$monto.'","'.$fecha_completa.'")');
+   }
+}

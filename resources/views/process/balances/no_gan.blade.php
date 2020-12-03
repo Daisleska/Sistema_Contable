@@ -2,7 +2,7 @@
  $fecha = date('Y-m-d');
 ?>
 
-@if(date('m')== '08' || date('m')== '12')
+@if(date('m')== '06' || date('m')== '12')
 
     <center>
       <p>Por favor presione click en el siguiente boton y ingrese los datos solicitados para generar el balance de ganancias y perdidas.</p>

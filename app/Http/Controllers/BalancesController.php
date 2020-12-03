@@ -24,6 +24,13 @@ class BalancesController extends Controller
     {
          $anio = date('Y');
          $mes= date('m');
+         $utilidad_general= \DB::select('SELECT * FROM utilidad WHERE MONTH(fecha)='.$mes.' AND YEAR(fecha)='.$anio);
+         if ($utilidad_general) {
+            $valor = 1;
+         }else{
+             $valor = 2;
+         }
+
          $informacion= \DB::select('SELECT * FROM ganancias_perdidas WHERE MONTH(fecha)='.$mes.' AND YEAR(fecha)='.$anio);
     if (empty($informacion)) {
          /*-----------------datos para balance de comprobacion---------------*/
@@ -89,10 +96,11 @@ class BalancesController extends Controller
         $j++;
 
     }
+     /*dd($res_saldo_general);*/
         $er = 1;
         return view('process.balances.index', 
         compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general',
-        'ventas', 'compras', 'inventario_inicial', 'inventario_final', 'inicio', 'final', 'er'));
+        'ventas', 'compras', 'inventario_inicial', 'inventario_final', 'inicio', 'final', 'er', 'valor'));
     }else{
      /*-----------------datos para balance de comprobacion---------------*/
     $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
@@ -180,11 +188,11 @@ class BalancesController extends Controller
         $j++;
 
     }
-   //dd($res_saldo_general);
+  /* dd($res_saldo_general);*/
         $er = 2;
        return view('process.balances.index', 
         compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general',
-        'inicio', 'final', 'ventas', 'subtotal_venta', 'IVA_venta', 'compras', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'informacion', 'er'));
+        'inicio', 'final', 'ventas', 'subtotal_venta', 'IVA_venta', 'compras', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'informacion', 'er', 'valor'));
       }
     }
 
@@ -218,6 +226,12 @@ class BalancesController extends Controller
     }
     $anio= date('Y');
     $mes= date('m');
+         $utilidad_general= \DB::select('SELECT * FROM utilidad WHERE MONTH(fecha)='.$mes.' AND YEAR(fecha)='.$anio);
+         if ($utilidad_general) {
+            $valor = 1;
+         }else{
+             $valor = 2;
+         }
     $informacion= \DB::select('SELECT * FROM ganancias_perdidas WHERE MONTH(fecha)='.$mes.' AND YEAR(fecha)='.$anio);
         /*-----------------datos para balance de comprobacion---------------*/
     $a=\DB::select('SELECT DISTINCT YEAR( mayor.created_at) AS year FROM mayor');
@@ -311,7 +325,7 @@ class BalancesController extends Controller
          $er = 2;
        return view('process.balances.index', 
         compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general',
-        'inicio', 'final', 'ventas', 'subtotal_venta', 'IVA_venta', 'compras', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'informacion', 'er'));
+        'inicio', 'final', 'ventas', 'subtotal_venta', 'IVA_venta', 'compras', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'informacion', 'er','valor'));
     }
 
     /**
