@@ -85,7 +85,7 @@
 
                  <div class="form-group mb-3">
                         <label style="color: white;">...</label>
-                        <input value="{{$clientes->telefono}}" style="width: 220px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
+                        <input value="{{$clientes->telefono}}" style="width: 220px; margin-left: 0.3cm; "type="number" name="telefono" class="form-control" placeholder="04127685432" required>
                         <div class="valid-feedback">
                        
                         </div>

@@ -5,7 +5,7 @@
                 <?php
                 $fecha= date('d-m-Y');
                 ?>
-                <h5 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en libro Diario</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
+                <h5 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en Libro Diario</h5><hr>                <h5 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
@@ -28,7 +28,7 @@
              
                 <div class="col-md-2 form2">
                      <label>Cuentas</label>
-                    <select name="cuenta[]" class="form-control " title="pu" placeholder="P. U.">
+                    <select name="cuenta[]" required="required" class="form-control" title="pu" placeholder="P. U.">
                            @foreach($cuentas as $key)
                         <option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>
                                  @endforeach
@@ -36,7 +36,7 @@
                 </div> 
                  <div class="col-md-2">
                      <label>Monto</label>
-                    <input type="text" name="momto[]" class="form-control"  placeholder="M. U."/>
+                    <input type="number" name="momto[]" required="required" class="form-control"  placeholder="M. U."/>
                 </div>
                 <div class="col-md-1">
                     <a href="javascript:void(0);" class="btn-info add_button2 form-control " title="Agregar"><i data-feather="plus"></i></a>
@@ -63,7 +63,7 @@ $(document).ready(function () {
     '<div class="row">'+
         '<div class="col-md-2 ">' +
           '<label>Cuentas</label>'+
-        ' <select name="cuenta[]" class="form-control" title="pu" placeholder="P. U.">'+
+        ' <select name="cuenta[]" required="required" class="form-control" title="pu" placeholder="P. U.">'+
                  ' @foreach($cuentas as $key)'+
                         '<option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>'+
                                 ' @endforeach'+
@@ -71,7 +71,7 @@ $(document).ready(function () {
         '</div>' +
          '<div class="col-md-2">' +
            '<label>Monto</label>'+
-        '<input type="number" name="monto[]" class="form-control "  placeholder="M. U."/>' +
+        '<input type="number" name="monto[]" required="required" class="form-control "  placeholder="M. U."/>' +
         '</div>' +
         '&nbsp;&nbsp;<a href="javascript:void(0);" class="col-md-1 btn-danger remove_button2" title="Eliminar"><i data-feather="time"></i></a>' +
         '</div>'+

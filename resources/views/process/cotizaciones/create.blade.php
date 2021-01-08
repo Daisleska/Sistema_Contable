@@ -257,7 +257,7 @@
 
                                                     <div class="modal-body">
                                                         <p>Valor Descuento actual: {{$key->porcen}}%</p>
-                                                       <td><input type="text" name="porcen" placeholder="Ingrese el nuevo valor" class="form-control"></td>
+                                                       <td><input type="number" name="porcen" placeholder="Ingrese el nuevo valor" title="Ingrese el porcentaje de descuento" class="form-control" required="required"></td>
 
                                                        <div class="modal-footer">
                                                         <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>

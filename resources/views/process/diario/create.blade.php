@@ -32,7 +32,7 @@
               
                      <div class="col-md-9">
                             <label for="exampleInputEmail1">Descripción</label>
-                             <input type="text" name="descripcion" class="form-control" maxlength="100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Breve Descripción">
+                             <input type="text" name="descripcion" class="form-control" required="required" maxlength="100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Breve Descripción">
                        </div> 
                                               
                     

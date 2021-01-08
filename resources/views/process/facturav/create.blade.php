@@ -68,7 +68,7 @@
 
                                                      <div class="modal-body">
                                                         <p>Valor I.V.A actual: {{$key->porcentaje}}%</p>
-                                                       <td><input type="text" name="porcentaje"  placeholder="Ingrese el nuevo valor" class="form-control"></td>
+                                                       <td><input type="number" name="porcentaje"  placeholder="Ingrese el nuevo valor" title="Ingrese el porcentaje de I.V.A" class="form-control" required="required"></td>
 
                                                        
                                                        <div class="modal-footer">

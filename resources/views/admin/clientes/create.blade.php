@@ -18,6 +18,12 @@
         </div>
     </div>
 </div>
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="row" style=" align-items: center; justify-content: center;">
     <div class="col-lg-6">
         <div class="card">

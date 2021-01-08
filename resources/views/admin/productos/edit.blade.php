@@ -23,6 +23,12 @@
         </div>
     </div>
 </div>
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
       <style type="text/css">
           .abs-center {
         display: flex;

@@ -51,21 +51,23 @@
 </div>
 
 
-    <div class="row" >         
-                <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Correo *</label>
-                        <input value="{{$proveedores->correo}}" style="width: 310px; margin-left: 0.3cm; " type="email" class="form-control"  name="correo" placeholder="eiche@gmail.com" required>
-                        <div class="valid-feedback">
-                       
-                        </div>
-                    </div>
-    </div>
+    
 
 
     <div class="row" >
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección *</label>
                         <input value="{{$proveedores->direccion}}" style="width: 310px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+    </div>
+
+    <div class="row" >         
+                <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Correo *</label>
+                        <input value="{{$proveedores->correo}}" style="width: 310px; margin-left: 0.3cm; " type="email" class="form-control"  name="correo" placeholder="eiche@gmail.com" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -96,7 +98,7 @@
 
                  <div class="form-group mb-3">
                         <label style="color: white;" >... </label>
-                        <input value="{{$proveedores->telefono}}" style="width: 220px; margin-left: 0.3cm; "type="text" name="telefono" class="form-control" placeholder="04127685432" required>
+                        <input value="{{$proveedores->telefono}}" style="width: 220px; margin-left: 0.3cm; "type="number" name="telefono" class="form-control" placeholder="04127685432" required>
                         <div class="valid-feedback">
                        
                         </div>

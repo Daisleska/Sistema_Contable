@@ -32,7 +32,7 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Existencia *</label>
-                        <input style="width: 310px; margin-left: 0.3cm;" type="text" class="form-control"  name="existencia" value="{{ $productos->existencia}}" placeholder="" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="number" class="form-control"  name="existencia" value="{{ $productos->existencia}}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -69,7 +69,7 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Precio c/u *</label>
-                        <input style="width: 310px; margin-left: 0.3cm;" type="text" class="form-control" name="precio" value="{{ $productos->precio }}" placeholder="200.800,00" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="number" class="form-control" name="precio" value="{{ $productos->precio }}" placeholder="200.800,00" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -80,7 +80,7 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Mínimo *</label>
-                        <input style="width: 150px; margin-left: 0.3cm;" type="text" class="form-control"  name="stock_min" value="{{ $productos->stock_min }}" placeholder="" required>
+                        <input style="width: 150px; margin-left: 0.3cm;" type="number" class="form-control"  name="stock_min" value="{{ $productos->stock_min }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -88,7 +88,7 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">&ensp;&ensp;Stock Máximo *</label>
-                        <input style="width: 150px; margin-left: 0.3cm;" type="text" class="form-control" name="stock_max" value="{{ $productos->stock_max }}" placeholder="" required>
+                        <input style="width: 150px; margin-left: 0.3cm;" type="number" class="form-control" name="stock_max" value="{{ $productos->stock_max }}" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>

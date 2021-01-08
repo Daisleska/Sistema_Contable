@@ -150,12 +150,13 @@
                                                     <div class="modal-body">
                                                         <tr>
                                                           <th>
-                                                            Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
+                                                            Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control" required="required">
 
-                                                            Monto <input type="text" name="egreso" id="monto_egreso" class="form-control">
+                                                            Monto <input type="number" name="egreso" id="monto_egreso" class="form-control" required="required">
 
-                                                           N° Comprobante <input type="text" name="n_comp" class="form-control">
-                                                           Descripción <input type="text" name="concepto" class="form-control"> 
+                                                           N° Comprobante <input type="text" name="n_comp" class="form-control" required="required">
+
+                                                           Descripción <input type="text" name="concepto" class="form-control" required="required"> 
 
 
                                                           </th>
@@ -183,12 +184,13 @@
                                                     <div class="modal-body">
                                                        <tr>
                                                          <th>
-                                                           Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control">
+                                                           Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control" required="required">
 
-                                                           Monto <input type="text" name="ingreso" class="form-control">
+                                                           Monto <input type="number" name="ingreso" class="form-control" required="required">
 
-                                                           N° Comprobante <input type="text" name="n_comp" class="form-control">
-                                                           Descripción <input type="text" name="concepto" class="form-control"> 
+                                                           N° Comprobante <input type="text" name="n_comp" class="form-control" required="required">
+
+                                                           Descripción <input type="text" name="concepto" class="form-control" required="required"> 
                                                          </th>
                                                        </tr>
                                                        <div class="modal-footer">

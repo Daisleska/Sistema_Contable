@@ -18,6 +18,12 @@
         </div>
     </div>
 </div>
+<div class="row">
+        <div class="col-md-7" ></div>
+        <div class="col-md-5">
+            @include('flash::message')
+        </div>
+</div>
 <div class="row" style=" align-items: center; justify-content: center;">
     <div class="col-lg-12">                
         <div class="card">
@@ -36,20 +42,24 @@
                     <div class="row">                       
                          <div class="col-md-4">
                             <label for="exampleInputEmail1">Nombre *</label>
-                             <input required="required" type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                             <input  type="text" name="nombre" class="form-control" id="exampleInputEmail1" title="Ingrese el nombre" aria-describedby="emailHelp" placeholder="Ingrese el nombre" required>
+                             <div class="valid-feedback">
+                            </div>
                     </div>  
                     
 
                           <div class="col-md-4">
                             <label for="exampleInputEmail1">Descripción</label>
-                             <input type="text" name="descripcion" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                             <input type="text" name="descripcion" title="Ingrese la descripción" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="Ingrese la descripción" required>
+                             <div class="valid-feedback">
+                            </div>
                        </div> 
 
                    
                     
                         <div class="col-md-4">
                       <label>Tipo *</label>
-                      <select name="tipo" id="tipo_cuenta" onchange="cargartipos();" required="required" class="form-control" >
+                      <select name="tipo" id="tipo_cuenta" onchange="cargartipos();" title="Seleccione el tipo de cuenta"  class="form-control" required>
                       <option value="">Seleccione el tipo de cuenta</option>
                       <option value="pasivo">Pasivo</option>
                       <option value="activo">Activo</option>
@@ -58,6 +68,8 @@
                       <option value="ingreso">Ingreso</option>
                       
                       </select>
+                      <div class="valid-feedback">
+                            </div>
 
                        </div>
                         </div> 
@@ -67,21 +79,27 @@
 
                       <div class="col-md-4">
                             <label>Tipo *</label>
-                            <select name="t_cuenta" id="t_cuenta" required="required" class="form-control">
+                            <select name="t_cuenta" id="t_cuenta" title="Seleccione el tipo de cuenta"  class="form-control" required> 
                            <option value="">Seleccione</option>
                            </select>
+                           <div class="valid-feedback">
+                            </div>
                         </div> 
 
 
                     
                          <div class="col-md-4">
                             <label for="exampleInputEmail1">Código *</label>
-                             <input required="required" type="text" name="codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese la Descripción">
+                             <input  type="text" name="codigo" class="form-control" id="exampleInputEmail1" title="Ingrese el código" aria-describedby="emailHelp" placeholder="Ingrese el código" required>
+                             <div class="valid-feedback">
+                            </div>
                        </div>  
 
                         <div class="col-md-4">
                             <label for="exampleInputEmail1">Monto *</label>
-                            <input required="required" name="saldo" type="number" class="form-control"  placeholder="Ingrese el monto">
+                            <input  name="saldo" type="number" class="form-control" title="Ingrese el monto"  placeholder="Ingrese el monto" required>
+                            <div class="valid-feedback">
+                            </div>
                         </div>
  
                     </div>

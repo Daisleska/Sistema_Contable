@@ -78,7 +78,7 @@
 
 
                                 <a class="btn btn-sm btn-danger" data-button-type="delete" href="{{ route('backup.delete' , substr($backup,15)) }}">
-                                    Borrar
+                                    Eliminar
                                 </a>
 
                             </td>

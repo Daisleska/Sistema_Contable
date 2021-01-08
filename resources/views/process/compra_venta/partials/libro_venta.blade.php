@@ -57,9 +57,9 @@
                   <td>{{number_format($key->sub_total,2,',','.')}} {{$key->divisa}}</td>
                   <td>{{number_format($key->iva,2,',','.')}} {{$key->divisa}}</td>
                   <td>{{$key->porcentaje}} %</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>I.V.A</td>
+                  <td style="text-align: center;">-</td>
+                  <td style="text-align: center;">-</td>
                   @endforeach
 
                 

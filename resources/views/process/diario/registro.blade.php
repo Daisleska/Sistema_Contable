@@ -4,7 +4,7 @@
               <div class="row" style="margin-left: 3cm;">
                 <div class="col-md-4">
                      <label>Cuentas</label>
-                    <select name="de_cuenta[]" class="form-control " placeholder="P. U.">
+                    <select name="de_cuenta[]" required="required" class="form-control " placeholder="P. U.">
                         <option selected="selected" readonly>Seleccionar</option>
                            @foreach($cuentas as $key)
                         <option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>
@@ -13,7 +13,7 @@
                 </div> 
                  <div class="col-md-4">
                      <label>Monto</label>
-                    <input type="text" name="de_monto[]" class="form-control"  placeholder="M. U."/>
+                    <input type="number" name="de_monto[]" required="required" class="form-control"  placeholder="M. U."/>
                 </div>
                 <div class="col-md-1">
                    <label style="color: white;">...</label>
@@ -30,7 +30,7 @@
               <div class="row" style="margin-left: 3cm;">
                 <div class="col-md-4">
                      <label>Cuentas</label>
-                    <select name="a_cuenta[]" class="form-control " placeholder="P. U.">
+                    <select name="a_cuenta[]" required="required" class="form-control " placeholder="P. U.">
                         <option selected="selected" readonly>Seleccionar</option>
                            @foreach($cuentas as $key)
                         <option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>
@@ -39,7 +39,7 @@
                 </div> 
                  <div class="col-md-4">
                      <label>Monto</label>
-                    <input type="text" name="a_monto[]" class="form-control"  placeholder="M. U."/>
+                    <input type="number" name="a_monto[]" required="required" class="form-control"  placeholder="M. U."/>
                 </div>
                 <div class="col-md-1">
                    <label style="color: white;">...</label>
@@ -59,7 +59,7 @@ $(document).ready(function () {
     '<div class="row" style="margin-left: 3cm;">'+
         '<div class="col-md-4">' +
           '<label>Cuentas</label>'+
-        ' <select name="de_cuenta[]" class="form-control" title="pu" placeholder="P. U.">'+
+        ' <select name="de_cuenta[]" required="required" class="form-control" title="pu" placeholder="P. U.">'+
          '<option selected="selected" readonly>Seleccionar</option>'+
                  ' @foreach($cuentas as $key)'+
                    '<option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>'+
@@ -68,7 +68,7 @@ $(document).ready(function () {
         '</div>' +
          '<div class="col-md-4">' +
            '<label>Monto</label>'+
-        '<input type="number" name="de_monto[]" class="form-control "  placeholder="M. U."/>' +
+        '<input type="number" name="de_monto[]" required="required" class="form-control "  placeholder="M. U."/>' +
         '</div>' +
         
         '<label style="color: white;">...</label>'+
@@ -118,7 +118,7 @@ $(document).ready(function () {
     '<div class="row" style="margin-left: 3cm;">'+
         '<div class="col-md-4">' +
           '<label>Cuentas</label>'+
-        ' <select name="a_cuenta[]" class="form-control" title="pu" placeholder="P. U.">'+
+        ' <select name="a_cuenta[]" required="required" class="form-control" title="pu" placeholder="P. U.">'+
          '<option selected="selected" readonly>Seleccionar</option>'+
                  ' @foreach($cuentas as $key)'+
                    '<option value="{{$key->id}}">{{$key->nombre}}-({{$key->codigo}})</option>'+
@@ -127,7 +127,7 @@ $(document).ready(function () {
         '</div>' +
          '<div class="col-md-4">' +
            '<label>Monto</label>'+
-        '<input type="number" name="a_monto[]" class="form-control "  placeholder="M. U."/>' +
+        '<input type="number" name="a_monto[]" required="required" class="form-control "  placeholder="M. U."/>' +
         '</div>' +
 
         '<label style="color: white;">...</label>'+

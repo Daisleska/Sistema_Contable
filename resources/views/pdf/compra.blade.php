@@ -157,8 +157,8 @@
                   <td>{{number_format($item->iva, 2,',','.')}}</td>
                   <td>{{number_format($item->sub_total, 2,',','.')}}</td>
                   <td>0,{{$item->p_iva}}</td>
-                  <td></td>
-                  <td></td>
+                  <td>I.V.A</td>
+                  <td style="text-align: center;">-</td>
                   <td>{{number_format( $item->total, 2,',','.')}}</td>
              
              

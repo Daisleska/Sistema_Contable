@@ -58,8 +58,8 @@
                   <td style="text-align: center;"> {{number_format($item->iva, 2,',','.')}}</td>
                   <td style="text-align: center;"> {{number_format($item->sub_total, 2,',','.')}}</td>
                   <td style="text-align: center;"> {{$item->p_iva}}</td>
-                  <td style="text-align: center;"> </td>
-                  <td style="text-align: center;"> </td>
+                  <td>I.V.A</td>
+                  <td style="text-align: center;">-</td>
                   <td style="text-align: center;"> {{number_format( $item->total, 2,',','.')}}</td>
              
              
