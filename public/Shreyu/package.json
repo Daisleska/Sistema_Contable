@@ -45,7 +45,7 @@
     "@fullcalendar/list": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
     "admin-resources": "git+https://github.com/coderthemes/admin-resources#master",
-    "apexcharts": "^3.8.4",
+    "apexcharts": "^3.24.0",
     "bootstrap": "^4.3.1",
     "bootstrap-colorpicker": "^3.1.2",
     "bootstrap-touchspin": "^4.2.5",
