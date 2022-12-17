@@ -26,12 +26,12 @@
                     <div class="media-body">
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Clientes registrados</span>
                          <?php
-                              if ($clientes) {
-                                $cantidad=count($clientes);
-                               }else{
-                                $cantidad=0;
-                               }  ?>
-                        <h2 class="mb-0" style="color: #006699;">{{$cantidad}}</h2>
+                            //   if ($clientes) {
+                            //     $cantidad=count($clientes);
+                            //    }else{
+                            //     $cantidad=0;
+                            //    }  ?>
+                        <h2 class="mb-0" style="color: #006699;"></h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-warning" data-feather="user-check"></span>
@@ -49,12 +49,12 @@
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Productos</span>
                               <?php
                           
-                              if ($productos) {
-                         $cantidad_productos=count($productos);
-                               }else{
-                                $cantidad_productos=0;
-                               }  ?>
-                   <h2 class="mb-0">{{$cantidad_productos}} </h2>
+                        //       if ($productos) {
+                        //  $cantidad_productos=count($productos);
+                        //        }else{
+                        //         $cantidad_productos=0;
+                        //        }  ?>
+                   <h2 class="mb-0"></h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-primary" data-feather="shopping-bag"></span>
@@ -72,12 +72,12 @@
                         <span class="text-muted text-uppercase font-size-12 font-weight-bold">Proveedores</span>
                          <?php
                          
-                              if ($proveedores) {
-                                $cantidad_proveedores=count($proveedores);
-                               }else{
-                                $cantidad_proveedores=0;
-                               }  ?>
-                        <h2 class="mb-0" style="color: #006699;"> {{$cantidad_proveedores}}</h2>
+                            //   if ($proveedores) {
+                            //     $cantidad_proveedores=count($proveedores);
+                            //    }else{
+                            //     $cantidad_proveedores=0;
+                            //    }  ?>
+                        <h2 class="mb-0" style="color: #006699;"> </h2>
                     </div>
                     <div class="align-self-center">
                         <span class="icon-lg icon-dual-info" data-feather="truck"></span>
@@ -97,12 +97,12 @@
                     <div class="media-body">
                          <?php
                           
-                              if ($valor_inventario) {
-                         $total_inventario=array_sum($valor_inventario);
-                               }else{
-                                $total_inventario=0;
-                               }  ?>
-                        <h4 class="mt-0 mb-1 font-size-22 font-weight-normal">{{number_format($total_inventario, 2,',','.')}} <small>Bs.F</small></h4>
+                        //       if ($valor_inventario) {
+                        //  $total_inventario=array_sum($valor_inventario);
+                        //        }else{
+                        //         $total_inventario=0;
+                        //        }  ?>
+                        <h4 class="mt-0 mb-1 font-size-22 font-weight-normal"><small>Bs.F</small></h4>
                         <span class="text-muted">Valor Del
                             Inventario</span>
                     </div>
@@ -123,9 +123,7 @@
                   <div class="col-sm-6"></div>
                   <div class="col-sm-2">
                         <select name="val_anio" class="form-control" id="val_anio">
-                          @foreach($anio_factura as $ke)
-                           <option value="{{$ke->year}}">{{$ke->year}}</option>
-                          @endforeach
+
                         </select>
                   </div>
                 </div>

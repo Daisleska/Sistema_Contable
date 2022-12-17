@@ -8,7 +8,7 @@ class cliente extends Model
 {
    protected $table='clientes';
 
-    protected $fillable=['nombre','tipo_documento'.'ruf', 'email','direccion','codigo','telefono'];
+   // protected $fillable=['nombre','tipo_documento'.'ruf', 'email','direccion','codigo','telefono'];
 
 
     public function producto()

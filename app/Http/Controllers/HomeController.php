@@ -44,14 +44,14 @@ class HomeController extends Controller
 
         }
         
-           $clientes= cliente::all();
-           $productos=producto::all();
-           $proveedores=proveedor::all();
+        //    $clientes= cliente::all();
+        //    $productos=producto::all();
+        //    $proveedores=proveedor::all();
 
           
-           $anio_factura=\DB::select('SELECT DISTINCT YEAR( facturav.fecha) AS year FROM facturav');
+        //    $anio_factura=\DB::select('SELECT DISTINCT YEAR( facturav.fecha) AS year FROM facturav');
           
-        return view('home', compact('valor_inventario','clientes', 'productos', 'proveedores', 'resultado', 'anio_factura'));
+        // return view('home', compact('valor_inventario','clientes', 'productos', 'proveedores', 'resultado', 'anio_factura'));
         
     }
 
