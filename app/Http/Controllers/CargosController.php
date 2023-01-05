@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\cuenta;
+use App\Cargos;
 use App\Bitacora;
 use App\Alert;
-use PDF;
 use App\empresa;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-
-class CuentasController extends Controller
+class CargosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +20,8 @@ class CuentasController extends Controller
      */
     public function index()
     {
-        $cuentas=cuenta::all();
-         return view ('admin.cuentas.index', compact('cuentas'));
+      $cargos= cargos::all();
+       return view('admin.cargos.index', compact('cargos'));
     }
 
     /**
@@ -33,8 +31,7 @@ class CuentasController extends Controller
      */
     public function create()
     {
-        $cuentas=cuenta::all();
-         return view ('admin.cuentas.create', compact('cuentas'));
+        return view ('admin.cargos.create');
     }
 
     /**
@@ -45,25 +42,34 @@ class CuentasController extends Controller
      */
     public function store(Request $request)
     {
-         $cuenta= new cuenta();
-            $cuenta->codigo=$request->codigo;
-            $cuenta->nombre=$request->nombre;
-            $cuenta->descripcion=$request->descripcion;
-            $cuenta->tipo=$request->tipo;
-            $cuenta->t_cuenta=$request->t_cuenta;
-            $cuenta->saldo=$request->saldo;
-            $cuenta->save();
+         $buscar=cargos::where('nombre',$request->nombre)->first();
+
+        
+        if ($buscar !== null && count($buscar) > 0) {
+            
+            flash('<i class="icon-circle-check"></i>¡Ya tiene un Cargo registrado con este nombre!')->warning()->important();
+            return redirect()->to('cargos');
+
+        } else {
+
+            $cargos= new cargos();
+            $cargos->nombre=$request->nombre;
+            $cargos->tipo=$request->tipo;
+            $cargos->save();
+
+
 
             $bitacoras = new App\Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
             $bitacoras->role =  Auth::user()->user_type;
-            $bitacoras->action = 'Ha registrado una nueva cuenta';
+            $bitacoras->action = 'Ha registrado un Cargo';
             $bitacoras->save();
-       flash('<i class="icon-circle-check"></i> ¡Nueva cuenta registrada exitosamente!
-                ')->success()->important();
-           return redirect()->to('cuentas');
+            flash('<i class="icon-circle-check"></i>¡Cargo registrado exitosamente!')->success()->important();
+           return redirect()->to('cargos');
+
+        }
     }
 
     /**
@@ -83,10 +89,10 @@ class CuentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_cargos)
     {
-         $cuentas=cuenta::find($id);
-        return view ('admin.cuentas.edit', compact ('cuentas'));
+        $cargos=cargos::find($id_cargos);
+        return view ('admin.cargos.edit', compact ('cargos'));
     }
 
     /**
@@ -98,33 +104,29 @@ class CuentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $buscar=cuenta::where('codigo', $request->codigo)->where('id', '<>', $id)->get();
+        $buscar=cargos::where('nombre', $request->nombre)->where('id', '<>', $id)->get();
 
         if (count($buscar)>0) {
              
-            return redirect()-> route('cuentas.index');
+            return redirect()-> route('cargos.index');
         } else {
             # podemos actualizar los datos
-            $cuenta=cuenta::find($id);
-            $cuenta->codigo=$request->codigo;
-            $cuenta->nombre=$request->nombre;
-            $cuenta->descripcion=$request->descripcion;
-            $cuenta->tipo=$request->tipo;
-            $cuenta->t_cuenta=$request->t_cuenta;
-            $cuenta->saldo=$request->saldo;
-            $cuenta->save();
+        $cargos=cargos::find($id);
+        $cargos->nombre=$request->nombre;
+        $cargos->tipo=$request->tipo;
+        $cargos->save();
 
             $bitacoras = new App\Bitacora;
 
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
             $bitacoras->role =  Auth::user()->user_type;
-            $bitacoras->action = 'Ha modificado una Cuenta';
+            $bitacoras->action = 'Ha modificado un Cargo';
             $bitacoras->save();
 
 
-            flash('<i class="icon-circle-check"></i> ¡Cuenta Actualizada satisfactoriamente!')->success()->important();
-            return redirect ()->route('cuentas.index');
+            flash('<i class="icon-circle-check"></i>¡Cargo actualizado satisfactoriamente!')->success()->important();
+            return redirect ()->to('cargos');
         }
     }
 
@@ -134,10 +136,10 @@ class CuentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
+    public function destroy($id)
     {
-        $cuentas = cuenta::find($id);
-        $cuentas->delete();  
+       $cargos = cargos::find($id);
+        $cargos->delete();  
 
       
         $bitacoras = new App\Bitacora;
@@ -145,28 +147,27 @@ class CuentasController extends Controller
             $bitacoras->user =  Auth::user()->name;
             $bitacoras->lastname =  Auth::user()->name;
             $bitacoras->role =  Auth::user()->user_type;
-            $bitacoras->action = 'Ha Eliminado una cuenta';
+            $bitacoras->action = 'Ha Eliminado un Cargo';
             $bitacoras->save();
 
         flash('¡Registro eliminado satisfactoriamente!', 'success');
 
 
-        return back()->with('info', 'la cuenta ha sido eliminado');
-    
+        return back()->with('info', 'El Cargo ha sido eliminado');
     }
 
 
-     public function pdf(){
+    public function pdf(){
 
-         $cuentas=cuenta::all();
+        $cargos= cargos::all();
 
         $i = 1;
 
         $empresa= empresa::all();
         $date = date('d-m-Y');
-        $dompdf = PDF::loadView('pdf.cuentas', compact('cuentas', 'i','date', 'empresa'));
+        $dompdf = PDF::loadView('pdf.cargos', compact('cargos', 'i','date', 'empresa'));
 
-        return $dompdf->stream('cuentas.pdf');
+        return $dompdf->stream('cargos.pdf');
 
     }
 }

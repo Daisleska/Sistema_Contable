@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
         \DB::table('users')->insert([
        		'name' => 'Hector hernandez',
        		'email' => 'hectorher149@gmail.com',
+            'email_verified_at'  => '2022-04-12', 
        		'password' => bcrypt('123456'),
           'user_type' => 'Administrador',
           'avatar' => '1_1584161024.jpg'
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
          \DB::table('users')->insert([
           'name' => 'Daisleska Vilera',
           'email' => 'dvilera610@gmail.com',
+           'email_verified_at'  => '2022-04-12',
           'password' => bcrypt('Dailes20'),
           'user_type' => 'Contador',
           'avatar' => '1_1586365399.jpg'
@@ -34,6 +36,7 @@ class UsersTableSeeder extends Seeder
         \DB::table('users')->insert([
          'name' => 'Rodolfo Silva',
          'email' => 'rodosilva@gmail.com',
+          'email_verified_at'  => '2022-04-12',
          'password' => bcrypt('12345'),
          'user_type' => 'Jefe',
           'avatar' => 'FB_IMG_16001323602758190.jpg'

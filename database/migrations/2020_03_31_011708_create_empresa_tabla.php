@@ -17,11 +17,13 @@ class CreateEmpresaTabla extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('tipo_documento');
-            $table->string('ruf')->unique();;
+            $table->string('rif')->unique();
             $table->string('email')->unique();
             $table->string('direccion');
             $table->string('codigo');
             $table->text('telefono');
+            $table->string('decreto_max_auto');
+            $table->string('slogan');
             $table->string('image_name');
             $table->string('url_image');
             $table->text('page_foot');

@@ -70,11 +70,13 @@ class EmpresaController extends Controller
        $empresa= new empresa();
             $empresa->nombre=$request->nombre;
             $empresa->tipo_documento=$request->tipo_documento;
-            $empresa->ruf=$request->ruf;
+            $empresa->rif=$request->rif;
             $empresa->email=$request->email;
             $empresa->direccion=$request->direccion;
             $empresa->codigo=$request->codigo;
             $empresa->telefono=$request->telefono;
+            $empresa->decreto_max_auto=$request->decreto_max_auto;
+            $empresa->slogan=$request->slogan;
             $empresa->image_name=$name;
             $empresa->url_image=$url;
             $empresa->page_foot=$request->page_foot;
@@ -152,11 +154,13 @@ class EmpresaController extends Controller
             
             $empresa->nombre=$request->nombre;
             $empresa->tipo_documento=$request->tipo_documento;
-            $empresa->ruf=$request->ruf;     
+            $empresa->rif=$request->rif;     
             $empresa->email=$request->email;
             $empresa->direccion=$request->direccion;
             $empresa->codigo=$request->codigo;
             $empresa->telefono=$request->telefono;
+            $empresa->decreto_max_auto=$request->decreto_max_auto;
+            $empresa->slogan=$request->slogan;
             $empresa->image_name=$name;
             $empresa->url_image=$url;
             $empresa->page_foot=$request->page_foot;
@@ -167,11 +171,13 @@ class EmpresaController extends Controller
             $empresa=empresa::find($id);
             $empresa->nombre=$request->nombre;
             $empresa->tipo_documento=$request->tipo_documento;
-            $empresa->ruf=$request->ruf;     
+            $empresa->rif=$request->rif;     
             $empresa->email=$request->email;
             $empresa->direccion=$request->direccion;
             $empresa->codigo=$request->codigo;
             $empresa->telefono=$request->telefono;
+            $empresa->decreto_max_auto=$request->decreto_max_auto;
+            $empresa->slogan=$request->slogan;
             $empresa->user_id=$request->user_id;
             $empresa->page_foot=$request->page_foot;
             $empresa->save();

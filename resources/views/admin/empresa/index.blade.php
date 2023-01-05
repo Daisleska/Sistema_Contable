@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos de la empresa</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos del Ente</h4>
                     
                     
                 
@@ -36,8 +36,8 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>Nombre de la Empresa</th>
-                                <th>RUT</th>
+                                <th>Nombre</th>
+                                <th>RIF</th>
                                 <th>Correo</th>
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
@@ -56,7 +56,7 @@
               @foreach($empresa as $key)
                 <tr>
                   <td>{{$key->nombre}}</td>
-                  <td>{{$key->tipo_documento}}-{{$key->ruf}}</td>
+                  <td>{{$key->tipo_documento}}-{{$key->rif}}</td>
                   <td>{{$key->email}}</td>
                   <td>{{$key->direccion}}</td>
                   <td>+{{$key->codigo}} {{$key->telefono}}</td>
@@ -101,7 +101,7 @@
                                                         <p style="color:black;">Nombre: {{$key->nombre}} </p>
                                                     </tr>
                                                     <tr>
-                                                        <p style="color:black;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} </p>
+                                                        <p style="color:black;">RUT: {{$key->tipo_documento}}-{{$key->rif}} </p>
                                                     </tr>
                                                     <tr>
                                                         <p style="color:black;">Correo: {{$key->email}} </p>
@@ -111,6 +111,14 @@
                                                     </tr>
                                                      <tr>
                                                         <p style="color:black;">Teléfono:+{{$key->codigo}} {{$key->telefono}} </p>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <p style="color:black;">Decreto Maxima Autoridad: {{$key->decreto_max_auto}}</p>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <p style="color:black;">Slogan: {{$key->slogan}}</p>
                                                     </tr>
                                                     <tr>
                                                         <p style="color:black;">Nombre de la Imagen: {{$key->image_name}} </p>
@@ -139,12 +147,12 @@
  <script type="text/javascript">
     //descripcion, monto
   
-  function detalles(id,nombre, tipo_documento, ruf, correo, direccion, telefono, image_name, page_foot){
+  function detalles(id,nombre, tipo_documento, ruf, correo, direccion, telefono, decreto_max_auto, slogan, image_name, page_foot){
 
   $.ajax({
         url: 'index.blade.php',
         type: 'POST',
-        data: {nombre: nombre, tipo_documento: tipo_documento, ruf: ruf, correo: correo, direccion: direccion, telefono: telefono, image_name: image_name, page_foot: page_foot}
+        data: {nombre: nombre, tipo_documento: tipo_documento, ruf: ruf, correo: correo, direccion: direccion, telefono: telefono, decreto_max_auto: decreto_max_auto, slogan: slogan, image_name: image_name, page_foot: page_foot}
     }).success(function(respuesta){
         // console.log(respuesta);
         $('#tablita').html(respuesta);
@@ -156,6 +164,8 @@
   $("#ruf").text(ruf);
   $("#correo").text(correo);
   $("#direccion").text(direccion);
+   $("#decreto_max_auto").text(decreto_max_auto);
+    $("#slogan").text(slogan);
     $("#image_name").text(image_name);
     $("#page_foot").text(page_foot);
    

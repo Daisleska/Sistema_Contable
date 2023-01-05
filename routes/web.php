@@ -24,6 +24,10 @@ Route::get('proveedores/{id}/eliminar', 'ProveedoresController@eliminar');
 Route::get('cuentas/{id}/eliminar', 'CuentasController@eliminar');
 
 Route::get('productos/{id}/eliminar', 'ProductosController@eliminar');
+Route::get('bienes/{id}/eliminar', 'BienesController@eliminar');
+Route::get('departamento/{id}/eliminar', 'DepartamentoController@eliminar');
+Route::get('cargos/{id}/eliminar', 'CargosController@eliminar');
+Route::get('empleado/{id}/eliminar', 'EmpleadoController@eliminar');
 
 Route::get('clientes/{id}/eliminar', 'ClientesController@eliminar');
 
@@ -45,7 +49,11 @@ Route::get('clients/{user_id}/search','CotizacionesController@search_clients');
     Route::get('watch/{quotation_id}/watch','CotizacionesController@watch')->name('quotations.watch');
 /*fin*/
 
-
+Route::resource('contratos', 'ContratosController');
+Route::resource('cargos', 'CargosController');
+Route::resource('empleado', 'EmpleadosController');
+Route::resource('bienes', 'BienesController');
+Route::resource('departamento', 'DepartamentoController');
 Route::resource('proveedores','ProveedoresController');
 Route::resource('productos', 'ProductosController');
 Route::resource('clientes', 'ClientesController');
@@ -128,6 +136,12 @@ Route::get('mayor.pdf', 'DiarioController@pdfmayor')->name('mayor.pdf');
 Route::get('proveedores.pdf', 'ProveedoresController@pdf')->name('proveedores.pdf');
 
 Route::get('productos.pdf', 'ProductosController@pdf')->name('productos.pdf');
+
+Route::get('bienes.pdf', 'BienesController@pdf')->name('bienes.pdf');
+Route::get('contratos.pdf', 'ContratosController@pdf')->name('contratos.pdf');
+Route::get('empleado.pdf', 'EmpleadosController@pdf')->name('empleado.pdf');
+Route::get('cargos.pdf', 'CargosController@pdf')->name('cargos.pdf');
+Route::get('departamento.pdf', 'DepartamentoController@pdf')->name('departamento.pdf');
 
 Route::get('clientes.pdf', 'ClientesController@pdf')->name('clientes.pdf');
 

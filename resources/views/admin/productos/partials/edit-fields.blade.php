@@ -44,7 +44,7 @@
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Unidad *</label>
                        
-                        <select style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="unidad">
+                        <select style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="unidad" >
                                     <optgroup label="Seleccione una unidad">
                                         <option value="Caja" @if($productos->unity=="Caja") selected="selected" @endif >Caja</option>
                                         <option value="Bulto" @if($productos->unity=="Bulto") selected="selected" @endif >Bulto</option>

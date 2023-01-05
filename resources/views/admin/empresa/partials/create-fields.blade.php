@@ -4,7 +4,7 @@
 <div class="row" style="margin-left: 1cm;">
     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre de la Empresa *</label>
-                        <input style="width: 310px; margin-left: 0.3cm; " type="text" name="nombre" class="form-control" placeholder="EICHE" required>
+                        <input style="width: 310px; margin-left: 0.3cm; " type="text" name="nombre" class="form-control" placeholder="ENTE" required>
                         <div class="valid-feedback">
                            
                         </div>
@@ -14,10 +14,10 @@
 
   <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">RUT *</label>
+                        <label style="margin-left: 0.3cm;">RIF *</label>
                             <select name="tipo_documento" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 60px; margin-left: 0.3cm; " >
                                   
-                                  <option value="C">C</option>
+                                  <option value="G">G</option>
                                   <option value="E">E</option>
                                   <option value="J">J</option>
                                   <option value="P">P</option>
@@ -32,7 +32,7 @@
   
                 <div class="form-group mb-3">
                     <label style="color: white;">...</label>    
-                        <input style="width: 240px; margin-left: 0.3cm;" type="text" class="form-control"  name="ruf" placeholder="9876584-J" required>
+                        <input style="width: 240px; margin-left: 0.3cm;" type="text" class="form-control"  name="rif" placeholder="9876584-J" required>
                         <div class="valid-feedback">
                         </div>
 
@@ -43,7 +43,7 @@
     <div class="row" style="margin-left: 1cm;">         
                 <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Correo *</label>
-                        <input style="width: 310px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="eiche@gmail.com" required>
+                        <input style="width: 310px; margin-left: 0.3cm; " type="email" class="form-control"  name="email" placeholder="ente@gmail.com" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -54,7 +54,7 @@
     <div class="row" style="margin-left: 1cm;">
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección *</label>
-                        <input style="width: 310px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="Antofagasta" required>
+                        <input style="width: 310px; margin-left: 0.3cm; " type="text" class="form-control"  name="direccion" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>
@@ -93,7 +93,7 @@
 </div>
                    <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Imagen *</label>
+                        <label style="margin-left: 0.3cm;">Imagen </label>
                         <input type="file" style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="image" id="image">
                         <div class="valid-feedback">
                        
@@ -102,11 +102,31 @@
                   </div>
                    <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">Pie de página *</label>
+                        <label style="margin-left: 0.3cm;">Pie de página </label>
                          <input type="text" style="width: 310px; margin-left: 0.3cm;" class="form-control" placeholder="Ej: Dirección y Datos de contactos" name="page_foot" id="page_foot">
                        
                         </div>
                       </div>
+
+
+
+                      <div class="row" style="margin-left: 1cm;">
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Decreto Maxima Autoridad *</label>
+                         <input type="text" style="width: 310px; margin-left: 0.3cm;" class="form-control" placeholder="Segun Decreto N° publicado en Gaceta Oficial N° de fecha " name="decreto_max_auto" id="decreto_max_auto">
+                       
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-left: 1cm;">
+                    <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Slogan *</label>
+                         <input type="text" style="width: 310px; margin-left: 0.3cm;" class="form-control" placeholder="" name="slogan" id="slogan">
+                       
+                        </div>
+                      </div>
+
+
                       <div class="border-top">
                         <div class="card-body" align="right">
                             <button style="align-content: center;" type="reset" class="btn btn-dark">Borrar</button>

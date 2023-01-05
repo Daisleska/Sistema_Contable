@@ -20,6 +20,89 @@
         </a>
      @endif
         <ul class="nav-second-level" aria-expanded="false">
+
+
+<?php
+   $x_empleado=\DB::select('SELECT * FROM empleado');
+
+  if ($x_empleado) { ?>
+    <li>
+        <a href="{{ route('empleado.index') }}">
+            <i data-feather="clipboard"></i>
+            <span> Empleados </span>
+        </a>
+   </li>
+    <?php }elseif (empty($x_empleado)) {  ?>
+   <li>
+        <a href="{{ route('empleado.create') }}">
+            <i data-feather="clipboard"></i>
+            <span> Empleados </span>
+        </a>
+   </li>
+   <?php } ?>
+
+
+   <?php
+   $x_cargos=\DB::select('SELECT * FROM cargos');
+
+  if ($x_cargos) { ?>
+    <li>
+        <a href="{{ route('cargos.index') }}">
+            <i data-feather="clipboard"></i>
+            <span> Cargos </span>
+        </a>
+   </li>
+    <?php }elseif (empty($x_cargos)) {  ?>
+   <li>
+        <a href="{{ route('cargos.create') }}">
+            <i data-feather="clipboard"></i>
+            <span> Cargos </span>
+        </a>
+   </li>
+   <?php } ?>
+
+
+<?php
+   $x_bienes=\DB::select('SELECT * FROM bienes');
+
+  if ($x_bienes) { ?>
+    <li>
+        <a href="{{ route('bienes.index') }}">
+            <i data-feather="clipboard"></i>
+            <span> Bienes </span>
+        </a>
+   </li>
+    <?php }elseif (empty($x_bienes)) {  ?>
+   <li>
+        <a href="{{ route('bienes.create') }}">
+            <i data-feather="clipboard"></i>
+            <span> Bienes </span>
+        </a>
+   </li>
+   <?php } ?>
+
+
+
+<?php
+   $x_departamento=\DB::select('SELECT * FROM departamento');
+
+  if ($x_departamento) { ?>
+    <li>
+        <a href="{{ route('departamento.index') }}">
+            <i data-feather="clipboard"></i>
+            <span> Departamentos </span>
+        </a>
+   </li>
+    <?php }elseif (empty($x_departamento)) {  ?>
+   <li>
+        <a href="{{ route('departamento.create') }}">
+            <i data-feather="clipboard"></i>
+            <span> Departamentos </span>
+        </a>
+   </li>
+   <?php } ?>
+
+
 <?php
    $x_proveedores=\DB::select('SELECT * FROM proveedores ');
 
@@ -118,6 +201,31 @@
         </ul>
    </li>
   @endif
+
+   <li class="menu-title">Talento Humano</li>
+
+   <li>
+      <a href="javascript: void(0);">
+            <i data-feather="file-text"></i>
+            <span> </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <ul class="nav-second-level" aria-expanded="false">
+           <li>
+        <a href="{{ route('contratos.index') }}">
+            <i data-feather="log-out"></i>
+            <span> Contratos </span>
+        </a>
+    </li>
+    <li>
+        <a href="">
+         <i data-feather="log-in"></i>
+            <span> Resoluciones </span>
+        </a>
+    </li>
+        </ul>
+   </li>
+
 
     <li class="menu-title">Libros Principales</li>
 

@@ -16,11 +16,34 @@
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">RUT *</label>
                             <select value="{{$empresa->tipo_documento}}" name="tipo_documento" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 80px; margin-left: 0.3cm; " >
-                                  
-                                  <option value="C">C</option>
+                                
+                                 @if ($empresa->tipo_documento=="G")
+                                  <option value="G">G</option>
                                   <option value="E">E</option>
                                   <option value="J">J</option>
                                   <option value="P">P</option>
+                                  @elseif ($empresa->tipo_documento=="E")
+
+                                  <option value="E">E</option>
+                                  <option value="G">G</option>
+                                  <option value="J">J</option>
+                                  <option value="P">P</option>
+                                  @elseif ($empresa->tipo_documento=="J")
+                                  <option value="J">J</option>
+                                  <option value="G">G</option>
+                                  <option value="E">E</option>
+                                  <option value="P">P</option>
+
+                                  @else
+                                  <option value="P">P</option>
+                                  <option value="G">G</option>
+                                  <option value="E">E</option>
+                                  <option value="J">J</option>
+                                  @endelseif
+                                  @endelse
+                                  @endif
+                                  
+
                                   
                                   
                                 </select></th>
@@ -32,7 +55,7 @@
   
                 <div class="form-group mb-3">
                     <label style="color: white;">...</label>    
-                        <input value="{{$empresa->ruf}}" style="width: 220px; margin-left: 0.3cm;" type="text" class="form-control"  name="ruf" placeholder="9876584-J" required>
+                        <input value="{{$empresa->rif}}" style="width: 220px; margin-left: 0.3cm;" type="text" class="form-control"  name="rif" placeholder="9876584-J" required>
                         <div class="valid-feedback">
                         </div>
 
