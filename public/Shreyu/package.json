@@ -50,7 +50,7 @@
     "bootstrap-colorpicker": "^3.1.2",
     "bootstrap-touchspin": "^4.2.5",
     "chart.js": "^2.8.0",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.11.3",
     "datatables.net-bs4": "^1.10.19",
     "datatables.net-buttons": "^1.4.2",
     "datatables.net-buttons-bs4": "^1.4.2",
