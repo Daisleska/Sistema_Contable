@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContratosTable extends Migration
+class CreateResolucionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateContratosTable extends Migration
      */
     public function up()
     {
-        Schema::create('contratos', function (Blueprint $table) {
+        Schema::create('resoluciones', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('fecha');
+            $table->string('n_resolucion')->nullable();
             $table->unsignedBigInteger('empleado_id');
-             $table->string('tarea');
-             $table->date('fecha');
-             $table->date('fecha_inicio');
-             $table->date('fecha_final');
-             $table->enum('status',['Activo','Vencido'])->default('Activo');
-             $table->string('cargo');
+            $table->enum('status',['Activo','Suspendido'])->default('Activo');
+            $table->string('cargo');
             $table->string('adscripcion');
-            $table->foreign('empleado_id')->references('id')->on('empleado')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateContratosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contratos');
+        Schema::dropIfExists('resoluciones');
     }
 }

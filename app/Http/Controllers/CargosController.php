@@ -42,13 +42,12 @@ class CargosController extends Controller
      */
     public function store(Request $request)
     {
-         $buscar=cargos::where('nombre',$request->nombre)->first();
+         $buscar=cargos::where ('nombre', $request->nombre)->get();
 
-        
-        if ($buscar !== null && count($buscar) > 0) {
-            
-            flash('<i class="icon-circle-check"></i>¡Ya tiene un Cargo registrado con este nombre!')->warning()->important();
-            return redirect()->to('cargos');
+        if (count($buscar)>0) {
+            # no permitir registrar
+            flash('<i class="icon-circle-check"></i> ¡Ya existe el cargo!')->warning()->important();
+              return redirect()->back();
 
         } else {
 

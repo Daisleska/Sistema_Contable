@@ -218,7 +218,7 @@
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="{{route('resoluciones.index')}}">
          <i data-feather="log-in"></i>
             <span> Resoluciones </span>
         </a>

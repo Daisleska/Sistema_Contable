@@ -9,6 +9,7 @@
                        
                         <select style="width: 310px; margin-left: 0.3cm;" class="form-control"  name="tipo">
                                     <optgroup label="Seleccione">
+                                        <option value="Despacho" @if($departamento->unity=="Despacho") selected="selected" @endif >Despacho</option>
                                         <option value="Gerencia" @if($departamento->unity=="Gerencia") selected="selected" @endif >Gerencia</option>
                                         <option value="Oficina" @if($departamento->unity=="Oficina") selected="selected" @endif >Oficina</option>
                                     </optgroup>

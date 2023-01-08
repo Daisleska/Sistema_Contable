@@ -17,7 +17,7 @@
                         <label style="margin-left: 0.3cm;">Tipo *</label>
                        
                         <select style="width: 310px; margin-left: 0.3cm;" class="form-control" title="Seleccione" name="tipo">
-                                    <option>Seleccione</option>
+                                   
                                         <option value="Alto Nivel">Alto Nivel</option>
                                         <option value="Fijo">Fijo</option>
                                         <option value="Contratado">Contratado</option>

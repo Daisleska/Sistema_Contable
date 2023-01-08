@@ -8,7 +8,7 @@
                         <label style="margin-left: 0.3cm;">Tipo *</label>
                        
                         <select style="width: 310px; margin-left: 0.3cm;" class="form-control" title="Seleccione el tipo de Departamento" name="tipo">
-                                    <option>Seleccione</option>
+                                        <option value="Despacho">Despacho</option>
                                         <option value="Gerencia">Gerencia</option>
                                         <option value="Oficina">Oficina</option>
                                    

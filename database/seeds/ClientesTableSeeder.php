@@ -19,7 +19,7 @@ class ClientesTableSeeder extends Seeder
             'email' => 'santiago02@gmail.com',
             'direccion' => 'Cagua',
             'codigo' => '58',
-            'telefono' => '0412786768',
+            'telefono' => '0412786768'
             
           
        	]);

@@ -41,12 +41,12 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr >
-                                <th COLSPAN="5" style="text-align: center; color: black;">Contratos</th>
+                                <th COLSPAN="13" style="text-align: center; color: black;">Resoluciones</th>
                             </tr>
                             <tr>
                               <th>
                             
-                                <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
+                                <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Resoluciones" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
                            
                              
 
@@ -54,11 +54,9 @@
                             </tr>
                            
                                
-                              
-                                <th>Empleado</th>
-                                <th>Fecha E</th>
-                                <th>Fecha Ingreso</th>
-                                <th>Fecha fin</th>
+                                <th>N° Resolución</th>
+                                <th>Funcionario</th>
+                                <th>Fecha </th>
                                 <th>Status</th>
                                 <th>Opciones</th>
                               
@@ -70,17 +68,15 @@
                     
                     
                         <tbody>
-                   @foreach($contratos as $key)       
+                   @foreach($resoluciones as $key)       
                 <tr>
-              
+                <td>{{$key->n_resolucion}}</td>
                 <td>{{$key->nombres}} {{$key->apellidos}}</td>
                 <td>{{$key->fecha}}</td>
-                <td>{{$key->fecha_inicio}}</td>
-                <td>{{$key->fecha_final}}</td>
                 <td>{{$key->status}}</td>
                 <td>
                     @if(buscar_p('Reportes','PDF')=="Si")
-                                            <a href="{{ route('contratos.pdf', $key->numero) }}" class="btn btn-info btn-sm"
+                                            <a href="{{ route('resoluciones.pdf', $key->n_resolucion) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
@@ -109,13 +105,42 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 1.3cm;" class="modal-title" id="mySmallModalLabel">Registrar Contrato</h5>
+                                                        <h5 style="margin-left: 1.3cm;" class="modal-title" id="mySmallModalLabel">Resoluciones</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form  action="{{route('contratos.crear')}}" class="needs-validation" method="GET">
+                                                    <form  action="{{route('resoluciones.crear')}}" class="needs-validation" method="GET">
                                                     <div class="modal-body">
+
+
+                                                        <?php 
+
+                                                    use App\resoluciones;
+                                                    $anio = date('Y');
+
+                                                    $resolucion = \DB::select('SELECT * FROM `resoluciones` WHERE YEAR(fecha)='.$anio);
+
+                                                    if($resolucion) {
+
+                                                    $num=count($resolucion);
+                                                    $anio = date('Y'); ?>
+
+                                                    <th>N° Resolución</th>
+                                                    <th><input style="width: 160px;" type="text" readonly="readonly" name="n_resolucion" class="form-control" value="00<?php  echo $num +1;?>-{{$anio}}"></th>
+
+                            
+                                                    </tr>
+                                                    <?php }else{
+                                                    $anio = date('Y');  ?>
+                                 
+                                                    <th>N° Resolución</th>
+                                                    <th><input style="width: 160px;" type="text" readonly="readonly" name="n_resolucion" class="form-control" value="001-{{$anio}}"></th>
+
+                                
+                                                    </tr>
+                                                    <?php
+                                                    }?>
                                                        
                                                           <th>
                                                             Fecha <input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly" class="form-control" required="required">
@@ -124,39 +149,20 @@
                                                           <br>
 
                                                           <th>
-                                                           Empleado <select name="empleado_id" data-plugin="customselect" title="Seleccione el empleado" required="required" class="form-control" data-placeholder=""  >
+                                                           Funcionario <select name="empleado_id" data-plugin="customselect" title="Seleccione el funcionario" required="required" class="form-control" data-placeholder=""  >
                                   
                                                            
                                                            @foreach($empleado as $key)
-                                                          <option value="{{$key->id}}">{{ $key->nombres}} {{ $key->apellidos}}
-                                                          </option>
-
-
+                                                          <option value="{{$key->id}}">{{ $key->nombres}} {{ $key->apellidos}}</option>
+                                                          
                                                           @endforeach
 
-                                                       </select>
+                                                          
+                                                          </select>
+
+
+                                                          </th>
                                                         
-                                                          </th>
-                                                          
-                                                          
-                                                           
-                                                           <br>
-                                                          <th>
-                                                            Tareas <input type="text" name="tarea" class="form-control" required="required">
-
-                                                          </th>
-                                                          <br>
-                                                          <th>
-                                                            Fecha Inicio<input type="date" name="fecha_inicio"  class="form-control" required="required">
-
-                                                          </th>
-
-                                                          <br>
-
-                                                          <th>
-                                                            Fecha Final <input type="date" name="fecha_final" value="fecha_final"  class="form-control" required="required">
-
-                                                          </th>
                                                           
 
                                                          
@@ -165,7 +171,7 @@
                                                         </tr>
                                                         <div class="modal-footer">
                                                      <button type="button" class="btn btn-dark btn-xs remove-item" data-dismiss="modal">Cerrar</button>
-                                                     <button type="submit" id="guardar_contrato" class="btn btn-primary btn-xs remove-item">Guardar</button>
+                                                     <button type="submit" id="guardar_resoluciones" class="btn btn-primary btn-xs remove-item">Guardar</button>
                                                      </div>
                                                      </form>
                                                     </div>

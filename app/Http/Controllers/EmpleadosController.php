@@ -22,7 +22,7 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-       $empleado = empleado::all();
+       $empleado=empleado::where ('status', '=', 'Activo')->get();
        return view('admin.empleado.index', compact('empleado'));
     }
 
@@ -47,6 +47,15 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
+
+        $buscar=empleado::where ('cedula', $request->cedula)->get();
+
+        if (count($buscar)>0) {
+            # no permitir registrar
+            flash('<i class="icon-circle-check"></i> ¡Ya existe el empleado!')->warning()->important();
+              return redirect()->back();
+
+        } else {
             $empleado= new empleado();
             $empleado->nombres=$request->nombres;
             $empleado->apellidos=$request->apellidos;
@@ -72,6 +81,7 @@ class EmpleadosController extends Controller
        flash('<i class="icon-circle-check"></i>¡Empleado registrado exitosamente!')->success()->important();
            return redirect()->to('empleado');
     }
+}
 
     /**
      * Display the specified resource.
@@ -148,10 +158,12 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
-        $empleado = empleado::find($id);
-        $empleado->delete();
+
+         $empleado=empleado::find($id);
+         $empleado->status="Suspendido";
+         $empleado->save();
 
             $bitacoras = new App\Bitacora;
 
@@ -163,7 +175,7 @@ class EmpleadosController extends Controller
 
         flash('¡Registro eliminado satisfactoriamente!', 'success');
 
-        return back()->with('info', 'El Empleado ha sido eliminado');
+            return redirect ()->route('empleado.index');
     }
 
 

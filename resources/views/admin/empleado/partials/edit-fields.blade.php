@@ -74,15 +74,16 @@
                         <label style="margin-left: 0.3cm;">Sexo *</label>
                             <select name="sexo" data-plugin="customselect" title="Seleccione el sexo" class="form-control" data-placeholder="" required="required" style="width: 310px; margin-left: 0.3cm; " >
                                   
-                                  @if ($empleado->sexo=="F")
+                                  @if ($empleado->sexo=="Femenino")
                                 
-                                  <option value="F">Femenino</option>
-                                  <option value="M">Masculino</option>
+                                  <option value="Femenino" selected>Femenino</option>
+                                  <option value="Masculino">Masculino</option>
                                 @else
                                   
-                                  <option value="M" >Masculino</option>
-                                  <option value="F">Femenino</option>
+                                  <option value="Masculino" selected>Masculino</option>
+                                  <option value="Femenino">Femenino</option>
 
+                                @endelse
                                 @endif
                                   
                                 </select>
@@ -208,13 +209,16 @@
                                   
                                     @foreach($cargos as $key)
                                     @if($key->nombre=="$empleado->cargo")
-                                        <option disabled="disabled" value="{{$key->nombre}}">{{ $key->nombre }}</option>
+                                        <option selected value="{{$key->nombre}}">{{ $key->nombre }}</option>
                                     @else 
                                     <option value="{{$key->nombre}}">{{ $key->nombre }}</option>
                                     @endelse
                                     @endif
 
                                     @endforeach
+
+
+
                                   
                                 </select>
                             <div class="valid-feedback">
@@ -229,7 +233,7 @@
                         <label style="margin-left: 0.3cm;">Dirección de Adscripción *</label>
                             <select name="adscripcion" data-plugin="customselect" title="Seleccione la dirección de adscripcion" class="form-control" data-placeholder="" required="required" style="width: 310px; margin-left: 0.3cm; " >
                                   
-                                  <option selected="selected" disabled="disabled" readonly>Seleccione el departamento</option>
+                                 
                                     @foreach($departamento as $key)
                                         <option value="{{ $key->tipo }} {{ $key->nombre }}">{{ $key->tipo }} de {{ $key->nombre }}</option>
                                     @endforeach

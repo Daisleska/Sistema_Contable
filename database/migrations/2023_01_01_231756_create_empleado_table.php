@@ -27,6 +27,7 @@ class CreateEmpleadoTable extends Migration
             $table->string('adscripcion');
             $table->date('fecha_ingreso');
             $table->string('direccion');
+            $table->enum('status',['Activo','Suspendido'])->default('Activo');
             $table->timestamps();
         });
     }

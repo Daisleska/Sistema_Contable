@@ -20,7 +20,8 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cargos</h4>
                     <p class="sub-header"></p>
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
-                   <a href="{{ route('cargos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
+                   <a href="{{ route('cargos.create') }}" class="
+                   " title="Registrar" ><i data-feather="plus"></i></a>
                    @endif
                    @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                      <div class="btn-group">                           

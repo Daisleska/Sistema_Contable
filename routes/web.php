@@ -51,6 +51,7 @@ Route::get('clients/{user_id}/search','CotizacionesController@search_clients');
 
 Route::resource('contratos', 'ContratosController');
 Route::resource('cargos', 'CargosController');
+Route::resource('resoluciones', 'ResolucionesController');
 Route::resource('empleado', 'EmpleadosController');
 Route::resource('bienes', 'BienesController');
 Route::resource('departamento', 'DepartamentoController');
@@ -139,6 +140,8 @@ Route::get('productos.pdf', 'ProductosController@pdf')->name('productos.pdf');
 
 Route::get('bienes.pdf', 'BienesController@pdf')->name('bienes.pdf');
 Route::get('contratos.pdf', 'ContratosController@pdf')->name('contratos.pdf');
+
+Route::get('resoluciones.pdf', 'ResolucionesController@pdf')->name('resoluciones.pdf');
 Route::get('empleado.pdf', 'EmpleadosController@pdf')->name('empleado.pdf');
 Route::get('cargos.pdf', 'CargosController@pdf')->name('cargos.pdf');
 Route::get('departamento.pdf', 'DepartamentoController@pdf')->name('departamento.pdf');
@@ -149,7 +152,11 @@ Route::get('cuentas.pdf', 'CuentasController@pdf')->name('cuentas.pdf');
 
 Route::post('mayorindividual.pdf/{codigo}', 'DiarioController@mayorpdfindividual')->name('mayorindividual.pdf');
 
+Route::get('contratos.pdf/{numero}', 'ContratosController@pdf')->name('contratos.pdf');
+Route::get('resoluciones.pdf/{numero}', 'ResolucionesController@pdf')->name('resoluciones.pdf');
 Route::get('facturav.pdf/{id_factura}', 'FacturasVController@pdf')->name('facturav.pdf');
+Route::get('contratos.crear','ContratosController@crear')->name('contratos.crear');
+Route::get('resoluciones.crear','ResolucionesController@crear')->name('resoluciones.crear');
 Route::get('cajachica.pdf','CajaChicaController@pdf')->name('cajachica.pdf');
 Route::get('cajachica.egreso','CajaChicaController@egreso')->name('cajachica.egreso');
 Route::get('cajachica.ingreso','CajaChicaController@ingreso')->name('cajachica.ingreso');

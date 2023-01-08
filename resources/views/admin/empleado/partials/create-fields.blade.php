@@ -118,9 +118,8 @@
                 <div class="row" style="margin-left: 1cm;">
     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Cargos *</label>
-                            <select name="cargo" data-plugin="customselect" title="Seleccione el cargo" required="required" class="form-control" data-placeholder=""  style="width: 310px; margin-left: 0.3cm; " >
+                            <select name="cargo" data-plugin="customselect" title="Seleccione el cargo" required="required" class="form-control" data-placeholder=""  style="width: 310px; margin-left: 0.3cm; ">
                                   
-                                  <option selected="selected" disabled="disabled" readonly>Seleccione el cargo</option>
                                     @foreach($cargos as $key)
                                         <option value="{{$key->nombre}}">{{ $key->nombre }}</option>
                                     @endforeach
@@ -138,7 +137,7 @@
                         <label style="margin-left: 0.3cm;">Dirección de Adscripción *</label>
                             <select name="adscripcion" data-plugin="customselect" title="Seleccione la dirección de adscripcion" class="form-control" data-placeholder="" required="required" style="width: 310px; margin-left: 0.3cm; " >
                                   
-                                  <option selected="selected" disabled="disabled" readonly>Seleccione el departamento</option>
+                                
                                     @foreach($departamento as $key)
                                         <option value="{{ $key->tipo }} {{ $key->nombre }}">{{ $key->tipo }} de {{ $key->nombre }}</option>
                                     @endforeach
