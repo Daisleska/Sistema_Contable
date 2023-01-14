@@ -34,7 +34,7 @@
     <thead>
     	<tr>
     		<th>Direccion</th>
-            <th>Rut</th>
+            <th>Rif</th>
     		<th>Telefono</th>
     		
     	</tr>

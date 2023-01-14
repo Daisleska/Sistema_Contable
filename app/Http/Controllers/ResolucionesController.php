@@ -136,7 +136,8 @@ class ResolucionesController extends Controller
     {
         
 
-        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id AND resoluciones.n_resolucion='.$n_resolucion);
+        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id AND resoluciones.n_resolucion="$n_resolucion"');
+
 
         $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
 
@@ -148,4 +149,30 @@ class ResolucionesController extends Controller
 
         return $dompdf->stream('resoluciones.pdf');
     }
+
+
+
+     public function pdfgeneral(){
+          $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.status FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id');
+
+         $dompdf = PDF::loadView('pdf.resolucionesgeneral', compact('resoluciones'));
+
+        return $dompdf->stream('resolucionesgeneral.pdf');
+    }
+
+
+
+    public function noti_resolucion($n_resolucion){
+
+
+         $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id AND resoluciones.n_resolucion="$n_resolucion"');
+
+        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
+
+         $dompdf = PDF::loadView('pdf.noti_resolucion', compact('resoluciones', 'autoridad'));
+
+        return $dompdf->stream('noti_resolucion.pdf');
+    }
+
+
 }

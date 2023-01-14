@@ -13,49 +13,26 @@ class ProveedoresTableSeeder extends Seeder
     {
         \DB::table('proveedores')->insert([
 
-          'nombre' => 'EICHE',
-       		'tipo_documento' => 'j',
+          'nombre' => 'Faboca C.A',
+       		'tipo_documento' => 'J',
        		'ruf' => 12345678,
        		'representante' => 'Pablo',
-            'direccion' => 'chile',
-            'correo' => 'eiche@gmail.com',
+            'direccion' => 'Maracay, edo Aragua',
+            'correo' => 'camisasfaboca@gmail.com',
             'codigo' => '58',
-            'telefono' => '0212222222'
+            'telefono' => '0243222222'
        	]);
         \DB::table('proveedores')->insert([
 
-          'nombre' => 'EICHE',
-          'tipo_documento' => 'j',
-          'ruf' => 125678,
+          'nombre' => 'Diseños y Papeleria, C.A',
+          'tipo_documento' => 'J',
+          'ruf' => 1256782,
            'representante' => 'Cesar',
-            'correo' => 'eihe@gmail.com',
-            'direccion' => 'chile',
+            'correo' => 'diseñospapel@gmail.com',
+            'direccion' => 'Las Delicias, Aragua.',
             'codigo' => '58',
-            'telefono' => '0212222222'
+            'telefono' => '0243222222'
         ]);
 
-        \DB::table('proveedores')->insert([
-
-          'nombre' => 'EICHE',
-          'tipo_documento' => 'j',
-          'ruf' => 1256787,
-           'representante' => 'Cesar',
-            'correo' => 'eihhe@gmail.com',
-            'direccion' => 'chile',
-            'codigo' => '58',
-            'telefono' => '0342222222'
-        ]);
-        \DB::table('proveedores')->insert([
-
-          'nombre' => 'EICHE',
-          'tipo_documento' => 'j',
-          'ruf' => 125988,
-           'representante' => 'Cesar',
-            'correo' => 'eihjje@gmail.com',
-            'direccion' => 'chile',
-            'codigo' => '58',
-            'telefono' => '0212227222'
-        ]);
-        
     }
 }

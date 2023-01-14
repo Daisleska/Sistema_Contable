@@ -96,14 +96,11 @@
 </head>
 
 <body>
-      @foreach($empresa as $key)
+      
     <table border="0"  width="500">
          <img class="circular--square" src="../public/uploads/membrete.jpg">
             
             
-     
-
-         @endforeach
 
       </table> 
 
@@ -114,26 +111,35 @@
 
     </div>
 
-    <h2 style="text-align: center;">Cargos</h2> <br>
+    <h2 style="text-align: center;">Lista de Contratos</h2> <br>
              
 
-<table border="1" width="300" align="center">
+<table border="1" width="500" align="center">
                         <thead>
                             <tr>
                                 
-                                 <th id="alto">Nombre</th>
-                                 <th id="alto">Tipo</th>
+                                 <th id="alto">Personal</th>
+                                 <th id="alto">Fecha E</th>
+                                 <th id="alto">Fecha Inicio</th>
+                                 <th id="alto">Fecha E</th>
+                                 <th id="alto">Status</th>
+
                             </tr>
                         </thead>
                     
                     
                         <tbody>
-                @foreach($cargos as $key)
+                @foreach($contratos as $key)
                 <tr>
                   
                   
-                  <td id="c">{{$key->nombre}}</td>
-                  <td id="c">{{$key->tipo}}</td>
+                  <td id="c">{{$key->nombres}} {{$key->apellidos}}</td>
+                  <td id="c">{{$key->fecha}}</td>
+                  <td id="c">{{$key->fecha_inicio}}</td>
+                  <td id="c">{{$key->fecha_final}}</td>
+                  <td id="c">{{$key->status}}</td>
+
+
                   
                 @endforeach
                           

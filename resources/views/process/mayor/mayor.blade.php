@@ -38,7 +38,7 @@
                       <?php
                       use App\empresa;
 
-  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','ruf')->get();
+  $empresa=DB::table ('empresa')->select('nombre', 'tipo_documento','rif')->get();
 
                        
                       foreach($empresa as $key){
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                             <th>RUT:
-                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->ruf)?></th>
+                            <?php echo e($key->tipo_documento)?>-<?php echo e($key->rif)?></th>
                          <?php
                         }
                         ?>

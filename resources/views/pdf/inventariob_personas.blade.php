@@ -98,7 +98,7 @@
 <body>
       @foreach($empresa as $key)
     <table border="0"  width="500">
-         <img class="circular--square" src="../public/uploads/membrete.jpg">
+       <img class="circular--square" src="../public/uploads/membrete.jpg">
             
             
      
@@ -114,27 +114,31 @@
 
     </div>
 
-    <h2 style="text-align: center;">Cargos</h2> <br>
+    <h2 style="text-align: center;">Inventario Bienes Públicos</h2> <br>
              
 
-<table border="1" width="300" align="center">
+<table border="1" width="500">
                         <thead>
                             <tr>
                                 
-                                 <th id="alto">Nombre</th>
-                                 <th id="alto">Tipo</th>
+                                <th id="alto">Fecha Asignación</th>
+                                <th id="alto">N° de Ident</th>
+                                <th id="alto">Descripción</th>
+                                <th id="alto">Asignado A</th>
+                                <th id="alto">Status</th>
                             </tr>
                         </thead>
                     
                     
                         <tbody>
-                @foreach($cargos as $key)
+                @foreach($inventariobienes as $key)
                 <tr>
                   
-                  
+                  <td id="c">{{$key->fecha}}</td>
+                  <td id="c">{{$key->codigo}}</td>
                   <td id="c">{{$key->nombre}}</td>
-                  <td id="c">{{$key->tipo}}</td>
-                  
+                  <td id="c">{{$key->nombres}}{{$key->apellidos}}</td>
+                  <td id="c">{{$key->status}}</td>
                 @endforeach
                           
                              </tbody>

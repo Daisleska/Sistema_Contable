@@ -10,7 +10,7 @@
         type="text/css" />
    <style>
         img {
-            width: 10%;
+            width: 17cm;
         
       
 
@@ -26,7 +26,7 @@
 
         body {
           font-family: "Times New Roman", serif;
-          margin: 0mm 1.2cm 1cm 1cm;
+          margin: 0mm 1cm 1cm 1cm;
          }
 
 
@@ -100,21 +100,7 @@
     <table border="0"  width="470">
         <tr>
        
-            <th style="text-align: left;">EICHE, C.L</th>
-
-            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
-        </tr> 
-        <tr>   
-        <th style="text-align: left;">{{$key->direccion}}</th>
-        </tr>
-        <tr>
-            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
-        </tr>   
-
-
-         <tr>
-            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
-         </tr>
+          <img class="circular--square" src="../public/uploads/membrete.jpg">
             
             
      
@@ -133,11 +119,11 @@
     <h2 style="text-align: center;">Proveedores</h2> <br>
              
 
-<table border="1" width="470">
+<table border="1" width="500">
                         <thead>
                             <tr>
                                 <th id="alto">Nombre</th>
-                                <th id="alto">RUT</th>
+                                <th id="alto">RIF</th>
                                 <th id="alto">Representante</th>
                                 <th id="alto">Dirección</th>
                                 <th id="alto">Correo</th>

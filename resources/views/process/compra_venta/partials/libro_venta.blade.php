@@ -33,7 +33,7 @@
                                 <th>FEC</th>
                                 <th>Nº FACT</th>
                                 <th>Nº CONTR</th>
-                                <th>RUT</th>
+                                <th>RIF</th>
                                 <th>TOTAL VENTA</th>
                                 <th>VENTA EXENTA</th>
                                 <th>VENTA GRAVADA</th>

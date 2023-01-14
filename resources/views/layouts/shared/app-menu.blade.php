@@ -29,14 +29,14 @@
     <li>
         <a href="{{ route('empleado.index') }}">
             <i data-feather="clipboard"></i>
-            <span> Empleados </span>
+            <span> Personal </span>
         </a>
    </li>
     <?php }elseif (empty($x_empleado)) {  ?>
    <li>
         <a href="{{ route('empleado.create') }}">
             <i data-feather="clipboard"></i>
-            <span> Empleados </span>
+            <span> Personal </span>
         </a>
    </li>
    <?php } ?>
@@ -221,6 +221,32 @@
         <a href="{{route('resoluciones.index')}}">
          <i data-feather="log-in"></i>
             <span> Resoluciones </span>
+        </a>
+    </li>
+        </ul>
+   </li>
+
+
+
+    <li class="menu-title">Inventario de Bienes</li>
+
+   <li>
+      <a href="javascript: void(0);">
+            <i data-feather="file-text"></i>
+            <span> </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <ul class="nav-second-level" aria-expanded="false">
+           <li>
+        <a href="{{ route('inventariobienes.index') }}">
+            <i data-feather="log-out"></i>
+            <span> Asignar a Personas </span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('bienesinventario.index') }}">
+         <i data-feather="log-in"></i>
+            <span> Asignar Departamentos </span>
         </a>
     </li>
         </ul>

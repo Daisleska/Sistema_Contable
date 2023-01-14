@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -52,6 +52,8 @@ class HomeController extends Controller
         //    $anio_factura=\DB::select('SELECT DISTINCT YEAR( facturav.fecha) AS year FROM facturav');
           
         // return view('home', compact('valor_inventario','clientes', 'productos', 'proveedores', 'resultado', 'anio_factura'));
+
+        return view('home', compact('valor_inventario'));
         
     }
 

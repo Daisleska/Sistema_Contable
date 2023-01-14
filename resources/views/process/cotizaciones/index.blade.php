@@ -41,7 +41,7 @@
                                     <th>Fecha</th>
                                     <th>N° Cotización</th>
                                     <th>Cliente</th>
-                                    <th>RUT</th>
+                                    <th>RIF</th>
                                     <th>Correo</th>
                                     <th>Monto</th>
                                     <th>Opciones</th>

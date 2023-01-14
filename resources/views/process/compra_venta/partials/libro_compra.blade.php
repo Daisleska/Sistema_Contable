@@ -42,7 +42,7 @@
                                 <th>N° FACT.</th>
                                 <th>N° CONT</th>
                                 <th>PROVEEDOR</th>
-                                <th>RUT</th>
+                                <th>RIF</th>
                                 <th>COMPRAS IVA</th>
                                 <th>MONTO B</th>
                                 <th>%</th>

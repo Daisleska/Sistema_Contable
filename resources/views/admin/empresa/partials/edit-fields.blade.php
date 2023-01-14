@@ -14,7 +14,7 @@
 
   <div class="row">
                     <div class="form-group mb-3">
-                        <label style="margin-left: 0.3cm;">RUT *</label>
+                        <label style="margin-left: 0.3cm;">RIF *</label>
                             <select value="{{$empresa->tipo_documento}}" name="tipo_documento" data-plugin="customselect" class="form-control" data-placeholder="" required="required" style="width: 80px; margin-left: 0.3cm; " >
                                 
                                  @if ($empresa->tipo_documento=="G")

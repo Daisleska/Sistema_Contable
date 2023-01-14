@@ -21,6 +21,8 @@ class CreateResolucionesTable extends Migration
             $table->enum('status',['Activo','Suspendido'])->default('Activo');
             $table->string('cargo');
             $table->string('adscripcion');
+            $table->foreign('empleado_id')->references('id')->on('empleado')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }

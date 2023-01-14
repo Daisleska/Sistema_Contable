@@ -10,7 +10,7 @@
 
   <style>
         img {
-            width: 10%;
+            width: 17cm;
          
       
 
@@ -110,23 +110,7 @@
 
       
       <table border="0"  width="470">
-        <tr>
-       
-            <th style="text-align: left;">EICHE, C.L</th>
-
-            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
-        </tr> 
-        <tr>   
-        <th style="text-align: left;">{{$key->direccion}}</th>
-        </tr>
-        <tr>
-            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
-        </tr>   
-
-
-         <tr>
-            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
-         </tr>
+       <img class="circular--square" src="../public/uploads/membrete.jpg">
             
             
      
@@ -174,7 +158,7 @@
        
         <tr>
           <br>
-          <td  align="left"><b>Cliente:</b> {{ $val->nombre }} <b> RUT: </b> {{ $val->tipo_documento }}-{{ $val->ruf }} <br><strong>Correo:</strong> </b> {{ $val->email }} <b> Dirección: </b> {{ $val->direccion }}</td>
+          <td  align="left"><b>Cliente:</b> {{ $val->nombre }} <b> RIF: </b> {{ $val->tipo_documento }}-{{ $val->ruf }} <br><strong>Correo:</strong> </b> {{ $val->email }} <b> Dirección: </b> {{ $val->direccion }}</td>
         </tr>
         
 

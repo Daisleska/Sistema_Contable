@@ -10,7 +10,7 @@
         type="text/css" />
     <style>
         img {
-            width: 10%;
+            width: 17cm;
         
       
 
@@ -98,23 +98,7 @@
 <body>
     @foreach($empresa as $key)
     <table border="0"  width="470">
-        <tr>
-       
-            <th style="text-align: left;">EICHE, C.L</th>
-
-            <th rowspan="4"><img class="circular--square" src="../public/{{$key->url_image }}"></th>
-        </tr> 
-        <tr>   
-        <th style="text-align: left;">{{$key->direccion}}</th>
-        </tr>
-        <tr>
-            <th style="text-align: left;">RUT: {{$key->tipo_documento}}-{{$key->ruf}} Telefono: +{{$key->codigo}} {{$key->telefono}}</th>
-        </tr>   
-
-
-         <tr>
-            <th style="text-align: left;">Correo: {{$key->email}} Web: </th>
-         </tr>
+        <img class="circular--square" src="../public/uploads/membrete.jpg">
             
             
      

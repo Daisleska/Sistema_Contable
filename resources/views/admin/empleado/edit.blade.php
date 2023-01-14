@@ -40,7 +40,7 @@
         <div class="card">
             <div class="card-body">
               <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Empleado</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Modificar Personal</h4>
                 <p class="sub-header"></p>
     
                 <div class="box-body abs-center">

@@ -68,10 +68,9 @@ class ContratosController extends Controller
             $contratos->save();
 
 
-            $limite = \DB::select('SELECT * FROM `contratos` WHERE empleado_id='.$request->empleado_id);
              $emple=\DB::select('SELECT * FROM `empleado` WHERE id='.$request->empleado_id);
 
-                if(count($limite)<4){
+               
                      foreach ($emple as $k) {
 
             $contratos= new contratos();
@@ -95,16 +94,7 @@ class ContratosController extends Controller
             flash('<i class="icon-circle-check"></i>¡Contrato registrado exitosamente!')->success()->important();
            return redirect()->to('contratos');
            } 
-       }else{
-
-        #autualizo el empleado a fijo 
-
-        $empleado=empleado::find($request->empleado_id);
-        $empleado->tipo_personal="Fijo";
-        $empleado->save();
-          flash('<i class="icon-circle-check"></i> ¡Ya no se le pueden realizar más contratos a este empleado!')->warning()->important();
-              return redirect()->back();
-       }
+      
 
            
 
@@ -196,7 +186,7 @@ class ContratosController extends Controller
     {
         
 
-        $contratos = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, contratos.id AS numero, contratos.fecha, contratos.fecha_inicio, contratos.fecha_final, contratos.cargo, contratos.adscripcion FROM `contratos`, `empleado` WHERE empleado.id=contratos.empleado_id AND contratos.id='.$numero);
+        $contratos = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, contratos.id AS numero, contratos.fecha, contratos.fecha_inicio, contratos.fecha_final, contratos.cargo, contratos.adscripcion, contratos.tarea FROM `contratos`, `empleado` WHERE empleado.id=contratos.empleado_id AND contratos.id='.$numero);
 
         $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
 
@@ -207,5 +197,15 @@ class ContratosController extends Controller
         $dompdf = PDF::loadView('pdf.contratos', compact('contratos','empresa', 'autoridad'));
 
         return $dompdf->stream('contratos.pdf');
+    }
+
+
+
+    public function pdfgeneral(){
+         $contratos = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.cargo, empleado.adscripcion, contratos.id AS numero, contratos.fecha, contratos.fecha_inicio, contratos.fecha_final, contratos.status FROM `contratos`, `empleado` WHERE empleado.id=contratos.empleado_id');
+
+         $dompdf = PDF::loadView('pdf.contratosgeneral', compact('contratos'));
+
+        return $dompdf->stream('contratosgeneral.pdf');
     }
 }

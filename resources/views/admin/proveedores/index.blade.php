@@ -52,7 +52,7 @@
                         <thead style="font-size: 12px;">
                             <tr>
                                 <th>Nombre</th>
-                                <th>RUT</th>
+                                <th>RIF</th>
                                 <th>Representante</th>
                                 <th>Direccion</th>
                                 <th>Correo</th>

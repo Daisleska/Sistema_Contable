@@ -15,7 +15,7 @@
 
                                
                              <input type="hidden" name="clientes_id" id="clientes_id">  
-                                <th>RUT</th>
+                                <th>RIF</th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value=""><small><span id="mensaje" style="color:red"></span></small>
                                 </th>
                                 <th colspan="2"></th>

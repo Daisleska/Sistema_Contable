@@ -235,7 +235,7 @@
                                   
                                  
                                     @foreach($departamento as $key)
-                                        <option value="{{ $key->tipo }} {{ $key->nombre }}">{{ $key->tipo }} de {{ $key->nombre }}</option>
+                                        <option value="{{ $key->tipo }} de {{ $key->nombre }}">{{ $key->tipo }} de {{ $key->nombre }}</option>
                                     @endforeach
                                   
                                 </select>

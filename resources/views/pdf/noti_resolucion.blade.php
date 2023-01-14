@@ -110,11 +110,9 @@
         </tr> 
   </table>
 
-
-<table border="1" width="17cm">
-@foreach($autoridad as $k)
-@foreach($resoluciones as $ky)
-@foreach($empresa as $key)
+ @foreach($autoridad as $k)
+ @foreach($resoluciones as $ky)
+  <table border="1" width="17cm">
     <tr>
         <th colspan="4" style="text-align: justify; font: arial; font-size: 12;">
      <center>REPUBLICA BOLIVARIANA DE VENEZUELA <br>
@@ -165,9 +163,7 @@
 </table>
      @endforeach
       @endforeach
-      @endforeach
-    
-        
+
         
      
       

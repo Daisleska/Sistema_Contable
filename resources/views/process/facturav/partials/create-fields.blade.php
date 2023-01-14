@@ -42,7 +42,7 @@
 
                                
 
-                                <th><b style="color:red;">*</b> RUT </th>
+                                <th><b style="color:red;">*</b> RIF </th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="rut" class="form-control"  value="" required="required"> 
                              
                                 <small><span id="mensaje" style="color:red"></span></small>

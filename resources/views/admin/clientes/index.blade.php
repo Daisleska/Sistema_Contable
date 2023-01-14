@@ -58,7 +58,7 @@
                         <thead style="font-size: 12px;">
                             <tr>
                                 <th>Nombre</th>
-                                <th>RUT</th>
+                                <th>RIF</th>
                                 <th>Dirección</th>
                                 <th>Correo</th>
                                 <th>Teléfono</th>

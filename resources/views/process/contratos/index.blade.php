@@ -44,9 +44,22 @@
                                 <th COLSPAN="5" style="text-align: center; color: black;">Contratos</th>
                             </tr>
                             <tr>
-                              <th>
+                              <th><a><button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button></a>
+                                <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  
+                    <a href="{{ route('contratosgeneral.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                   
+                    </div></div>
                             
-                                <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
+                                
                            
                              
 
@@ -55,10 +68,10 @@
                            
                                
                               
-                                <th>Empleado</th>
+                                <th>Personal</th>
                                 <th>Fecha E</th>
-                                <th>Fecha Ingreso</th>
-                                <th>Fecha fin</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
                                 <th>Status</th>
                                 <th>Opciones</th>
                               
@@ -109,7 +122,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 1.3cm;" class="modal-title" id="mySmallModalLabel">Registrar Contrato</h5>
+                                                        <h5 style="margin-left: 1.5cm;" class="modal-title" id="mySmallModalLabel">Registrar Contrato</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -124,7 +137,7 @@
                                                           <br>
 
                                                           <th>
-                                                           Empleado <select name="empleado_id" data-plugin="customselect" title="Seleccione el empleado" required="required" class="form-control" data-placeholder=""  >
+                                                           Personal <select name="empleado_id" data-plugin="customselect" title="Seleccione el empleado" required="required" class="form-control" data-placeholder=""  >
                                   
                                                            
                                                            @foreach($empleado as $key)

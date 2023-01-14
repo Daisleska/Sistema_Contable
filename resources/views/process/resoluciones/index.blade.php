@@ -47,6 +47,20 @@
                               <th>
                             
                                 <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Resoluciones" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
+
+                                <div class="btn-group">                           
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class='uil uil-file-alt mr-1'></i>Descargar
+                    <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  
+                    <a href="{{ route('resolucionesgeneral.pdf') }}" class="dropdown-item notify-item">
+                        <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
+                        <span>PDF</span>
+                    </a>
+                    
+
                            
                              
 
@@ -78,7 +92,12 @@
                     @if(buscar_p('Reportes','PDF')=="Si")
                                             <a href="{{ route('resoluciones.pdf', $key->n_resolucion) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
-                                                title="Generar pdf"> <i data-feather="save"></i>
+                                                title="Resolución pdf"> <i data-feather="save"></i>
+                                            </a>
+
+                                            <a href="{{ route('noti_resolucion.pdf', $key->n_resolucion) }}" class="btn btn-danger btn-sm"
+                                                data-toggle="tooltip" 
+                                                title="Notificación pdf"> <i data-feather="save"></i>
                                             </a>
                         @endif
                 </td>
@@ -105,7 +124,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 1.3cm;" class="modal-title" id="mySmallModalLabel">Resoluciones</h5>
+                                                        <h5 style="margin-left: 2cm;" class="modal-title" id="mySmallModalLabel">Resoluciones</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>

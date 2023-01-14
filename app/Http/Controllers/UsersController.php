@@ -453,6 +453,7 @@ class UsersController extends Controller
        
         foreach ($usuarios as $val) {
         
+      
             $use[$i][0]=$val->name;
             $use[$i][1]=$val->avatar;
 
