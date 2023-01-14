@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Cotizaciones</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">COTIZACIONES</h4>
 
                      <a href="{{ route('cotizacion.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
                   

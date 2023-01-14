@@ -32,7 +32,7 @@
                 $fecha= date('d-m-Y');
                 ?>
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cuentas</h4> <p style="color: black; padding-top: 10px;">Fecha: {{$fecha}}</p>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DE CUENTA</h4> <p style="color: black; padding-top: 10px;">Fecha: {{$fecha}}</p>
                 <p class="sub-header"></p>
                 <p style="color: black; padding-top: 10px;">Campos Obligatorios (*)</p>
 

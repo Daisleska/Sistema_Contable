@@ -28,7 +28,7 @@
   if ($x_empleado) { ?>
     <li>
         <a href="{{ route('empleado.index') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="users"></i>
             <span> Personal </span>
         </a>
    </li>
@@ -68,14 +68,14 @@
   if ($x_bienes) { ?>
     <li>
         <a href="{{ route('bienes.index') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="archive"></i>
             <span> Bienes </span>
         </a>
    </li>
     <?php }elseif (empty($x_bienes)) {  ?>
    <li>
         <a href="{{ route('bienes.create') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="archivesliders"></i>
             <span> Bienes </span>
         </a>
    </li>
@@ -89,14 +89,14 @@
   if ($x_departamento) { ?>
     <li>
         <a href="{{ route('departamento.index') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="sliders"></i>
             <span> Departamentos </span>
         </a>
    </li>
     <?php }elseif (empty($x_departamento)) {  ?>
    <li>
         <a href="{{ route('departamento.create') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="sliders"></i>
             <span> Departamentos </span>
         </a>
    </li>
@@ -131,7 +131,7 @@
    ?>
    <li>
         <a href="{{ route('productos.index') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="package"></i>
             <span> Productos </span>
         </a>
     </li>
@@ -140,7 +140,7 @@
     ?>
    <li>
         <a href="{{ route('productos.create') }}">
-            <i data-feather="clipboard"></i>
+            <i data-feather="package"></i>
             <span> Productos </span>
         </a>
     </li>
@@ -181,7 +181,7 @@
 
    <li>
       <a href="javascript: void(0);">
-            <i data-feather="file-text"></i>
+            <i data-feather="file"></i>
             <span>Facturas</span>
             <span class="menu-arrow"></span>
         </a>
@@ -207,7 +207,7 @@
    <li>
       <a href="javascript: void(0);">
             <i data-feather="file-text"></i>
-            <span> </span>
+            <span>Talento Humano</span>
             <span class="menu-arrow"></span>
         </a>
         <ul class="nav-second-level" aria-expanded="false">
@@ -232,8 +232,8 @@
 
    <li>
       <a href="javascript: void(0);">
-            <i data-feather="file-text"></i>
-            <span> </span>
+            <i data-feather="package"></i>
+            <span>Bienes Públicos</span>
             <span class="menu-arrow"></span>
         </a>
         <ul class="nav-second-level" aria-expanded="false">

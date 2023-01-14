@@ -63,7 +63,7 @@
                                                             <i class="icon-dual" data-feather="mail"> {{ __('E-Mail') }}</i>
                                                         </span>
                                                     </div>
-                                                    <input type="email" id="email" placeholder="hello@coderthemes.com" class="form-control @if($errors->has('email')) is-invalid @endif" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                    <input type="email" id="email" placeholder="correo@mail.com" class="form-control @if($errors->has('email')) is-invalid @endif" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                      @if($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
                                             <div class="overlay"></div>
 
                                             <div >
-                                               <img src="{{ asset('Shreyu/assets/images/logoeiche.png')}}" alt="" width="455" height="500">
+                                               <img src="{{ asset('Shreyu/assets/images/S.png')}}" alt="" width="480 px" height="477 px">
                                             </div>
                                         </div>
                                     </div>

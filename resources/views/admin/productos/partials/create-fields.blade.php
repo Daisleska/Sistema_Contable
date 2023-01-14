@@ -2,7 +2,7 @@
 <div class="row" style="margin-left: 1cm;">
 <div class="form-group mb-3">
                     <label style="margin-left: 0.3cm;">Código *</label>
-                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control" title="Ingrese el código" value="{{ old('codigo') }}" placeholder="CA08" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="codigo" class="form-control" title="Ingrese el código" value="{{ old('codigo') }}" placeholder="" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -11,7 +11,7 @@
 <div class="row" style="margin-left: 1cm;">
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Nombre *</label>
-                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control" title="Ingrese el nombre" value="{{ old('nombre') }}" placeholder="Landing Page" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="text" name="nombre" class="form-control" title="Ingrese el nombre" value="{{ old('nombre') }}" placeholder="" required>
                         <div class="valid-feedback">
                         </div>
                     </div>
@@ -70,7 +70,7 @@
 
                     <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Precio c/u *</label>
-                        <input style="width: 310px; margin-left: 0.3cm;" type="number" class="form-control" name="precio" value="{{ old('precio') }}" title="Ingrese el precio" placeholder="200.800,00" required>
+                        <input style="width: 310px; margin-left: 0.3cm;" type="number" class="form-control" name="precio" value="{{ old('precio') }}" title="Ingrese el precio" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>

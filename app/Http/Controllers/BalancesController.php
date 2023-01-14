@@ -44,7 +44,7 @@ class BalancesController extends Controller
         
         $res= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
-
+   
         foreach ($res as $key) {      
         $res_cuenta[$i][0]=$key->cuenta_debe;
         $res_cuenta[$i][1]=$key->cuenta_haber;
@@ -52,6 +52,10 @@ class BalancesController extends Controller
         $saldos[]=$res_cuenta[$i][0] - $res_cuenta[$i][1]; 
         }
         $i++;
+     
+        
+
+        
 
         }//
 
@@ -85,8 +89,8 @@ class BalancesController extends Controller
 
      $gener= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$gen->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
-
-        foreach ($gener as $keyk) {    
+    
+       foreach ($gener as $keyk) {    
         $res_saldo_general[$j][0]=$gen->nombre;
         $res_saldo_general[$j][1]=$gen->tipo;  
         $res_saldo_general[$j][2]=$gen->t_cuenta;
@@ -94,6 +98,10 @@ class BalancesController extends Controller
         $res_saldo_general[$j][4]=$keyk->cuenta_haber;
         }
         $j++;
+     
+        
+
+        
 
     }
      /*dd($res_saldo_general);*/
@@ -113,14 +121,17 @@ class BalancesController extends Controller
         
         $res= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$val->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
-
-        foreach ($res as $key) {      
+      
+          foreach ($res as $key) {      
         $res_cuenta[$i][0]=$key->cuenta_debe;
         $res_cuenta[$i][1]=$key->cuenta_haber;
 
         $saldos[]=$res_cuenta[$i][0] - $res_cuenta[$i][1]; 
         }
-        $i++;
+        $i++; 
+      
+
+        
 
         }//
 
@@ -177,15 +188,20 @@ class BalancesController extends Controller
 
      $gener= \DB::select('SELECT SUM(mayor.debe) AS cuenta_debe,  SUM(mayor.haber) AS cuenta_haber FROM mayor WHERE mayor.cuenta_id='.$gen->cuenta_id.' AND YEAR(mayor.created_at)='.$anio.'');
 
-
-        foreach ($gener as $keyk) {    
+ 
+      foreach ($gener as $keyk) {    
         $res_saldo_general[$j][0]=$gen->nombre;
         $res_saldo_general[$j][1]=$gen->tipo;  
         $res_saldo_general[$j][2]=$gen->t_cuenta;
         $res_saldo_general[$j][3]=$keyk->cuenta_debe;
         $res_saldo_general[$j][4]=$keyk->cuenta_haber;
         }
-        $j++;
+        $j++; 
+   
+        
+
+
+
 
     }
   /* dd($res_saldo_general);*/

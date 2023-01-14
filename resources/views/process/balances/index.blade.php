@@ -33,7 +33,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Balances</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">BALANCES</h4>
                      <table style="color: black;">
                       
 

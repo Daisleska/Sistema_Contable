@@ -58,7 +58,7 @@
 
                             <center>
                               <br>
-                                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Ayuda</h4>
+                                <h4 style="text-align: center;" class="header-title mt-0 mb-1">AYUDA</h4>
         <!--manual-->                   </center>
         <div>
                     <a class="btn btn-info" href="{{ URL::asset('uploads/Manual.pdf')}}" class="dropdown-item notify-item">Manual de Usuario<i data-feather="download"></i>

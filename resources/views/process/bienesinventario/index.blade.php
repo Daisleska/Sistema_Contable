@@ -59,7 +59,7 @@
                     <table style="border-color: black; border: 1px;  " border="1" id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr style="color: black;">
-                                <th COLSPAN="2" style="text-transform: uppercase; text-align: center;">Inventario Bienes Públicos</th>
+                                <th COLSPAN="2" style="text-transform: uppercase; text-align: center;">INVENTARIO DE BIENES PÚBLICOS</th>
                             </tr>
                             <tr>
                                 <th COLSPAN="6" style="margin-right: 10cm;"><select name="departamento" id="departamento" data-plugin="customselect" class="form-control" data-placehol class="form-control" data-placeholder="Elige" style="width: 8cm;">

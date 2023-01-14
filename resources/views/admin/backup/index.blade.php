@@ -42,11 +42,11 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="float-right">
-                                            <a href="{{ route('backup.create') }}" class="btn btn-info">Generar respaldo</a>
+                                            <a href="{{ route('backup.create') }}" class="btn btn-dark">Generar Respaldo</a>
                                         </div>
                                         <center>
                                             <br>
-                                            <h4 style="margin-left: 3cm;" class="header-title mt-0 mb-1">Base de Datos</h4>
+                                            <h4 style="margin-left: 3cm;" class="header-title mt-0 mb-1">BASE DE DATOS</h4>
 
 
                                         </center>

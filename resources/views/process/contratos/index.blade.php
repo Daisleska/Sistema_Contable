@@ -34,18 +34,10 @@
             <div class="card">
                 <div class="card-body">
                  
-                
-                  
-              
-
-                    <table id="basic-datatable" class="table dt-responsive nowrap" >
-                        <thead>
-                            <tr >
-                                <th COLSPAN="5" style="text-align: center; color: black;">Contratos</th>
-                            </tr>
-                            <tr>
-                              <th><a><button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button></a>
-                                <div class="btn-group">                           
+                    <br>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">CONTRATOS</h4>
+                    <a><button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button></a>
+                    <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class='uil uil-file-alt mr-1'></i>Descargar
@@ -56,13 +48,14 @@
                         <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
                         <span>PDF</span>
                     </a>
-                   
+               
                     </div></div>
                             
-                                
+                    <br></br>        
                            
                              
-
+                    <table id="key-datatable" class="table dt-responsive nowrap">
+                        <thead style="font-size: 12px;">
 
                             </tr>
                            

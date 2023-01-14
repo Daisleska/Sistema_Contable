@@ -31,19 +31,19 @@
     <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title mb-1 mt-0" style="text-align: center;">Compra y Venta</h4> 
+                <h4 class="header-title mb-1 mt-0" style="text-align: center;">COMPRA Y VENTA</h4> 
 
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a href="#compras" data-toggle="tab" aria-expanded="false" class="nav-link active">
                             <span class="d-block d-sm-none"><i class="uil-home-alt"></i></span>
-                            <span class="d-none d-sm-block">Compras</span>
+                            <span class="d-none d-sm-block">COMPRAS</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#ventas" data-toggle="tab" aria-expanded="true" class="nav-link ">
                             <span class="d-block d-sm-none"><i class="uil-user"></i></span>
-                            <span class="d-none d-sm-block">Ventas</span>
+                            <span class="d-none d-sm-block">VENTAS</span>
                         </a>
                     </li>
                     {{-- <li class="nav-item">

@@ -41,7 +41,7 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr >
-                                <th COLSPAN="5" style="text-align: center; color: black;">Inventario Bienes Públicos</th>
+                                <th COLSPAN="5" style="text-align: center; color: black;">INVENTARIO BIENES PÚBLICOS</th>
                             </tr>
                             <tr>
                               <th>

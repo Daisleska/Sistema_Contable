@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Personal</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">PERSONAL</h4>
                     
                     @if(buscar_p('Registros Generales','Registrar')=="Si")
                     <a href="{{ route('empleado.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>
@@ -58,7 +58,7 @@
                         <thead style="font-size: 12px;">
                             <tr>
                                 <th>Nombres y Apellidos</th>
-                                <th>Cedula</th>
+                                <th>Cédula</th>
                                 <th>Tipo de Personal</th>
                                 <th>Cargo</th>
                                 <th>Adscripción</th>

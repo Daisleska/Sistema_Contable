@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Compras</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">FACTURAS DE COMPRAS</h4>
                    
                           <!--<div class="float-right" >
                                             <a href="#" class="btn btn-primary mt-2"

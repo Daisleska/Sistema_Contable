@@ -23,7 +23,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Empresa</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DEL ENTE</h4>
                 <p class="sub-header"></p>
     
                 <form  action="{{route('empresa.store')}}" class="needs-validation" method="post" enctype="multipart/form-data"  novalidate>

@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Productos</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">PRODUCTOS</h4>
                     <p class="sub-header"></p>
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                    <a href="{{ route('productos.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>

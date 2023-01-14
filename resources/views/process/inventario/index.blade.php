@@ -75,7 +75,7 @@
                 </div>    
 
                                <h6 style="text-align: right; color: black;"><p>
-                                VALOR TOTAL: <?php echo number_format($total_inventario, 2,',','.');  ?></p></h6>
+                                VALOR TOTAL: <?php echo number_format($total_inventario, 2,',','.');  ?> Bs</p></h6>
                          
 
                      <table id="key-datatable" class="table dt-responsive nowrap">
@@ -107,8 +107,8 @@
                              <td>{{$key->codigo}}</td>
                              <td style="color: green;">{{$key->existencia}}</td>
                              <td>{{$key->unidad}}</td>
-                             <td>{{number_format($key->precio, 2,',','.')}}</td>
-                             <td  id="costo_total" >{{number_format($costo_total, 2,',','.')}}</td>
+                             <td>{{number_format($key->precio, 2,',','.')}} Bs</td>
+                             <td  id="costo_total" >{{number_format($costo_total, 2,',','.')}} Bs</td>
 
                              {{-- <td >{{str_split(strval($costo_total)))}}</td> --}}
                          </tr>

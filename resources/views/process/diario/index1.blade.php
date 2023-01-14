@@ -28,7 +28,7 @@
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1"></h4>
                     <table >
                       <br>
-                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Diario</h4>
+                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">HISTORIAL LIBRO DIARIO</h4>
                      <br>
 
                     <?php

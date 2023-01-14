@@ -44,20 +44,20 @@
                       foreach($empresa as $key){
                         ?>
                         <tr >
-                            <th>NOMBRE DE LA EMPRESA:</th>
-                            <th><?php echo e($key->nombre)?></th>
-                        </tr>
+                            <th>NOMBRE DEL ENTE: <?php echo e($key->nombre)?></th>
+                        </tr> 
                         <tr>
-                            <th>MES:
-                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
-                        </tr>
-                        <tr>
-                            <th>RUT:
+                            <th>RIF:
                             <?php echo e($key->tipo_documento)?>-<?php echo e($key->rif)?></th>
                          <?php
                         }
                         ?>
                     </tr>
+                        <tr>
+                            <th>MES:
+                            <script style="text-align: right;" type="text/javascript">document.write("" + months[month] + " " + year);</script></th>
+                        </tr>
+                       
 
                     <th style="align-content: right;">
              @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")

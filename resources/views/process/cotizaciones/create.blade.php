@@ -34,7 +34,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Cotización</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DE COTIZACIÓN</h4>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('cotizacion.store')}}" class="needs-validation" method="post"  novalidate>
@@ -220,7 +220,7 @@
                             
                             <div class="col-lg-4">
                                 <label for="adiciones">Dirigido a:</label>
-                                <input type="text"  value="{{old('address_to')}}" required="required"  class="form-control" placeholder="Ej: José Quintero" name="address_to" id="address_to">
+                                <input type="text"  value="{{old('address_to')}}" required="required"  class="form-control" placeholder="" name="address_to" id="address_to">
                             </div>
                             <div class="col-lg-4">
                                 <label for="Comentarios Correo">Comentarios del Correo:</label>

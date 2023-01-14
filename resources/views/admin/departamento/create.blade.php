@@ -29,7 +29,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Departamento</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DE DEPARTAMENTO</h4>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('departamento.store')}}" class="needs-validation" method="post"  novalidate>

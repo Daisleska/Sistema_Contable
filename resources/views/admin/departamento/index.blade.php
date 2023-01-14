@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Departamento</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">DEPARTAMENTO</h4>
                     <p class="sub-header"></p>
                    @if(buscar_p('Registros Generales','Registrar')=="Si")
                    <a href="{{ route('departamento.create') }}" class="btn btn-secondary" title="Registrar" ><i data-feather="plus"></i></a>

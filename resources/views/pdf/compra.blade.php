@@ -10,7 +10,7 @@
         type="text/css" />
     <style>
         img {
-            width: 17cm;
+            width: 26cm;
         
       
 

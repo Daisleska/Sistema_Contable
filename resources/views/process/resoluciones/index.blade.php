@@ -41,7 +41,7 @@
                     <table id="basic-datatable" class="table dt-responsive nowrap" >
                         <thead>
                             <tr >
-                                <th COLSPAN="13" style="text-align: center; color: black;">Resoluciones</th>
+                                <th COLSPAN="13" style="text-align: center; color: black;">RESOLUCIONES</th>
                             </tr>
                             <tr>
                               <th>

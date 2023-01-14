@@ -29,7 +29,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Bienes Públicos</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DE BIENES PÚBLICOS</h4>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('bienes.store')}}" class="needs-validation" method="post"  novalidate>

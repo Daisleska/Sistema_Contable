@@ -18,10 +18,7 @@
                         <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
                         <span>PDF</span>
                     </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
+                
                 </div>
             </div></th>
             @endif

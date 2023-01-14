@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Datos del Ente</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">DATOS DEL ENTE</h4>
                     
                     
                 

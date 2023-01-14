@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Libro Diario</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">LIBRO DIARIO</h4>
                   <table style="color: black;" >
 
                     <th style="align-content: right;">
@@ -49,10 +49,7 @@
                         <i data-feather="download" class="icon-dual icon-xs mr-2"></i>
                         <span>PDF</span>
                     </a>
-                    <a href="javascript:window.print()" class="dropdown-item notify-item">
-                        <i data-feather="printer" class="icon-dual icon-xs mr-2"></i>
-                        <span>Imprimir</span>
-                    </a>
+                    
                 
                     </div></div>
                     @endif

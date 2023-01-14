@@ -26,9 +26,9 @@
             <div class="card">
                 <div class="card-body">
                  <br>
-                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">Historial Libro Mayor</h4>
+                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">HISTORIAL LIBRO MAYOR</h4>
                     <br>
-                    <a href="{{ route('mayor') }}"  class="btn btn-info btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
+                    <a href="{{ route('mayor') }}"  class="btn btn-dark btn-xs remove-item" title="Volver"><i data-feather="corner-up-left"></i></a></th>
                     <table id="key-datatable" class="table dt-responsive nowrap">
                       <thead>
                      
