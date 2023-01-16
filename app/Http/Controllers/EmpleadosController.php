@@ -69,6 +69,7 @@ class EmpleadosController extends Controller
             $empleado->adscripcion=$request->adscripcion;
             $empleado->fecha_ingreso=$request->fecha_ingreso;
             $empleado->direccion=$request->direccion;
+            $empleado->sueldo=$request->sueldo;
             $empleado->save();
 
            $bitacoras = new App\Bitacora;
@@ -137,6 +138,7 @@ class EmpleadosController extends Controller
             $empleado->adscripcion=$request->adscripcion;
             $empleado->fecha_ingreso=$request->fecha_ingreso;
             $empleado->direccion=$request->direccion;
+            $empleado->sueldo=$request->sueldo;
             $empleado->save();
 
             $bitacoras = new App\Bitacora;

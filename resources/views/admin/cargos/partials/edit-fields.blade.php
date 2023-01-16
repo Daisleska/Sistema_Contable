@@ -20,6 +20,7 @@
                                     <optgroup label="Seleccione">
                                         <option value="Alto Nivel" @if($cargos->unity=="Alto Nivel") selected="selected" @endif >Alto Nivel</option>
                                         <option value="Fijo" @if($cargos->unity=="Fijo") selected="selected" @endif >Fijo</option>
+                                        <option value="Obrero" @if($cargos->unity=="Obrero") selected="selected" @endif >Obrero/option>
                                         <option value="Contratado" @if($cargos->unity=="Contratado") selected="selected" @endif >Contratado</option>
                                     </optgroup>
                                 </select>

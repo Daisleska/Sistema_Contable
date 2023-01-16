@@ -104,6 +104,10 @@ Route::get('diario.abrir', 'DiarioController@abrir')->name('diario.abrir');
 
 Route::match(['get', 'post'], '/busquedaAjax/{departamento}/buscar', 'BienesInventarioController@busquedaAjax')->name('post');
 
+Route::match(['get', 'post'], '/bienesinven/{id}/depart', 'BienesInventarioController@bienesinvendepart')->name('post');
+
+Route::match(['get', 'post'], '/responsablesporuso/{id}/acta', 'BienesInventarioController@actaresponsablesporuso')->name('post');
+
 Route::get('diario.cerrar/{n_folio}', 'DiarioController@cerrar')->name('diario.cerrar');
 
 Route::match(['get', 'post'], '/busquedaAjax/{cuenta}/buscar', 'DiarioController@busquedaAjax')->name('post');
@@ -157,6 +161,10 @@ Route::get('resolucionesgeneral.pdf', 'ResolucionesController@pdfgeneral')->name
 
 Route::get('noti_resolucion.pdf/{n_resolucion}', 'ResolucionesController@noti_resolucion')->name('noti_resolucion.pdf');
 
+
+
+Route::get('noti_contrato.pdf/{numero}', 'ContratosController@notipdf')->name('noti_contrato.pdf');
+
 Route::get('resoluciones.pdf', 'ResolucionesController@pdf')->name('resoluciones.pdf');
 Route::get('empleado.pdf', 'EmpleadosController@pdf')->name('empleado.pdf');
 Route::get('cargos.pdf', 'CargosController@pdf')->name('cargos.pdf');
@@ -167,6 +175,10 @@ Route::get('clientes.pdf', 'ClientesController@pdf')->name('clientes.pdf');
 Route::get('cuentas.pdf', 'CuentasController@pdf')->name('cuentas.pdf');
 
 Route::post('mayorindividual.pdf/{codigo}', 'DiarioController@mayorpdfindividual')->name('mayorindividual.pdf');
+
+
+Route::post('bienesinvendepart.pdf/{id}', 'BienesInventarioController@bienesinvendepart')->name('bienesinvendepart.pdf');
+
 
 Route::post('bienesinventario.pdf/{id_inventario}', 'BienesInventarioController@asignar_departamento')->name('bienesinventario.pdf');
 

@@ -90,6 +90,11 @@
                                                 data-toggle="tooltip" 
                                                 title="Generar pdf"> <i data-feather="save"></i>
                                             </a>
+
+                                            <a href="{{ route('noti_contrato.pdf', $key->numero) }}" class="btn btn-danger btn-sm"
+                                                data-toggle="tooltip" 
+                                                title="Generar pdf"> <i data-feather="save"></i>
+                                            </a>
                         @endif
                 </td>
                   
@@ -148,7 +153,12 @@
                                                            
                                                            <br>
                                                           <th>
-                                                            Tareas <input type="text" name="tarea" class="form-control" required="required">
+                                                            Área <input type="text" name="area" class="form-control" required="required">
+
+                                                          </th>
+                                                          <br>
+                                                          <th>
+                                                            Tareas <input type="texarea" name="tarea" class="form-control" required="required">
 
                                                           </th>
                                                           <br>

@@ -176,12 +176,12 @@ class InventarioBienesController extends Controller
         $bienes = \DB::select('SELECT DISTINCT bienes.codigo, bienes.nombre, bienes.valor_u FROM inventariobienes, bienes WHERE inventariobienes.bienes_id=bienes.id AND inventariobienes.empleado_id='.$request->empleado_id);
 
 
-         $admin = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, cargo FROM empleado WHERE cargo="Gerente" AND adscripcion="Gerencia de Administración y Finanzas"');
+         $admin = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, cargo FROM empleado WHERE tipo_personal="Alto Nivel" AND adscripcion="Gerencia de Administración y Finanzas"');
 
-         $delegado = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, cargo FROM empleado WHERE cargo="Delegado de Bienes Publicos"');
+         //$delegado = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, cargo FROM empleado WHERE cargo="Delegado de Bienes Publicos"');
 
         $empresa= empresa::all();
-        $dompdf = PDF::loadView('pdf.inventarioacta_personas', compact( 'empresa', 'asignacion', 'admin', 'delegado', 'bienes'));
+        $dompdf = PDF::loadView('pdf.inventarioacta_personas', compact( 'empresa', 'asignacion', 'admin', 'bienes'));
 
         return $dompdf->stream('inventariacta_personas.pdf');
 

@@ -21,7 +21,7 @@ class ResolucionesController extends Controller
      */
     public function index()
     {
-        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.status FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id');
+        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.status, resoluciones.condicion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id');
         
         $empleado = \DB::select('SELECT * FROM `empleado` WHERE tipo_personal="Alto Nivel"');
 
@@ -65,8 +65,9 @@ class ResolucionesController extends Controller
             $resoluciones->fecha=$request->fecha;
             $resoluciones->n_resolucion=$request->n_resolucion;
             $resoluciones->empleado_id=$request->empleado_id;
-            $resoluciones->cargo=$k->cargo;
+            $resoluciones->cargo=$request->cargo;
             $resoluciones->adscripcion=$k->adscripcion;
+            $resoluciones->condicion=$request->condicion;
             $resoluciones->save();
 
 
@@ -136,10 +137,10 @@ class ResolucionesController extends Controller
     {
         
 
-        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id AND resoluciones.n_resolucion="$n_resolucion"');
+        $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.condicion FROM `resoluciones`, `empleado` WHERE resoluciones.n_resolucion="'.$n_resolucion.'" AND empleado.id=resoluciones.empleado_id');
 
 
-        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
+        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="MAXIMA AUTORIDAD"');
 
         $empresa = empresa::all();
 
@@ -153,7 +154,7 @@ class ResolucionesController extends Controller
 
 
      public function pdfgeneral(){
-          $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.status FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id');
+          $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.status, resoluciones.condicion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id');
 
          $dompdf = PDF::loadView('pdf.resolucionesgeneral', compact('resoluciones'));
 
@@ -165,11 +166,14 @@ class ResolucionesController extends Controller
     public function noti_resolucion($n_resolucion){
 
 
-         $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion FROM `resoluciones`, `empleado` WHERE empleado.id=resoluciones.empleado_id AND resoluciones.n_resolucion="$n_resolucion"');
+          $resoluciones = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, resoluciones.n_resolucion, resoluciones.fecha, resoluciones.cargo, resoluciones.adscripcion, resoluciones.condicion FROM `resoluciones`, `empleado` WHERE resoluciones.n_resolucion="'.$n_resolucion.'" AND empleado.id=resoluciones.empleado_id');
 
-        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
 
-         $dompdf = PDF::loadView('pdf.noti_resolucion', compact('resoluciones', 'autoridad'));
+        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="MAXIMA AUTORIDAD"');
+
+        $empresa = empresa::all();
+
+         $dompdf = PDF::loadView('pdf.noti_resolucion', compact('resoluciones', 'autoridad','empresa'));
 
         return $dompdf->stream('noti_resolucion.pdf');
     }

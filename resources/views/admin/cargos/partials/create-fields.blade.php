@@ -20,6 +20,7 @@
                                    
                                         <option value="Alto Nivel">Alto Nivel</option>
                                         <option value="Fijo">Fijo</option>
+                                        <option value="Obrero">Obrero</option>
                                         <option value="Contratado">Contratado</option>
                                    
                                 </select>

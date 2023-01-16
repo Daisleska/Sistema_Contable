@@ -104,6 +104,7 @@
                                   <option value="Alto Nivel">Alto Nivel</option>
                                   <option value="Contratado">Contratado</option>
                                   <option value="Fijo">Fijo</option>
+                                  <option value="Obrero">Obrero</option>
                                   
                                 </select>
                             <div class="valid-feedback">
@@ -170,6 +171,15 @@
                     </div>
     </div>
 
+<div class="row" style="margin-left: 1cm;">
+                  <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Sueldo Mensual *</label>
+                        <input style="width: 310px; margin-left: 0.3cm; " type="number" class="form-control" title="Ingrese el Sueldo" name="sueldo" placeholder="" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+    </div>
     
           
                     

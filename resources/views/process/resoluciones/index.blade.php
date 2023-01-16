@@ -181,6 +181,37 @@
 
 
                                                           </th>
+                                                          <th>
+                                                              
+                            Cargo
+                            <select name="cargo" data-plugin="customselect" title="Seleccione el cargo" class="form-control" data-placeholder="" required="required">
+                                  
+                                  <option value="Gerente">Gerente</option>
+                                  <option value="Auditor Interno">Auditor Interno</option>
+                                  <option value="Coordinador">Coordinador</option>
+                                  <option value="Coordinador">Coordinador</option>
+                                  <option value="Jefe">Jefe</option>
+                                  <option value="Jefe de Area">Jefe de Area</option>
+                                  <option value="Coordinador Tecnico Administrativo">Coordinador Tecnico Administrativo</option>
+                                  <option value="Jefe de Division">Jefe de Division</option>
+                                  
+                                </select>
+                           
+                                                          </th>
+                                                           <br>
+                                                          <th>
+                                                           
+                                                            Condición
+                            <select name="condicion" data-plugin="customselect" title="" class="form-control" data-placeholder="" required="required">
+                                  
+                                  <option value=" ">Titular</option>
+                                  <option value="Encargado">Encargado</option>
+                                  <option value="Encargado-Ad Honorem">Encargado-Ad Honorem</option>
+                                  
+                                </select>   
+                                     
+                                                          </th>
+                                                          <br>
                                                         
                                                           
 

@@ -16,7 +16,7 @@ class CreateCargosTable extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->bigIncrements('id');  
             $table->string('nombre')->unique();
-            $table->enum('tipo',['Alto Nivel','Fijo','Contratado']);
+            $table->enum('tipo',['Alto Nivel','Fijo','Contratado', 'Obrero']);
             $table->timestamps();
         });
     }

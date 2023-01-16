@@ -177,6 +177,63 @@ class BienesInventarioController extends Controller
     }
 
 
+
+    public function bienesinvendepart($id){
+
+    $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="MAXIMA AUTORIDAD"'); 
+      
+    $empresa= empresa::all();
+    
+    $inven = \DB::select('SELECT departamento.id, departamento.tipo, departamento.nombre,bienesinventario.id as id_inventario, bienesinventario.fecha, bienes.codigo, bienes.cantidad,bienes.grupo, bienes.sub_grupo, bienes.sec, bienes.valor_u, bienes.nombre as bien FROM departamento, bienesinventario, bienes WHERE bienesinventario.departamento_id='.$id.' AND departamento.id=bienesinventario.departamento_id AND bienesinventario.bienes_id=bienes.id');
+
+    foreach($inven as $key)
+    {
+    
+    $var=$key->tipo.' de '.$key->nombre;
+    }
+
+    $respon = \DB::select('SELECT empleado.id, empleado.nombres as respo_nombre, empleado.apellidos as respo_apellido FROM empleado, resoluciones WHERE empleado.adscripcion="'.$var.'" AND resoluciones.empleado_id=empleado.id');
+
+
+
+       
+        $dompdf = PDF::loadView('pdf.bienesinvendepart', compact('inven', 'empresa', 'autoridad', 'respon'))->setPaper('a4', 'landscape');
+        return $dompdf->stream('bienesinvendepart.pdf');
+
+    }
+
+
+
+
+     public function actaresponsablesporuso($id){
+
+    $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="MAXIMA AUTORIDAD"'); 
+      
+    $empresa= empresa::all();
+    
+    $inven = \DB::select('SELECT departamento.id, departamento.tipo, departamento.nombre,bienesinventario.id as id_inventario, bienesinventario.fecha FROM departamento, bienesinventario, bienes WHERE bienesinventario.departamento_id='.$id.' AND departamento.id=bienesinventario.departamento_id AND bienesinventario.bienes_id=bienes.id LIMIT 1');
+
+    foreach($inven as $key)
+    {
+    
+    $var=$key->tipo.' de '.$key->nombre; 
+    }
+
+    $respon = \DB::select('SELECT empleado.id, empleado.sexo, empleado.tipo_doc, empleado.cedula, empleado.cargo, empleado.nombres, empleado.apellidos, empleado.adscripcion, resoluciones.n_resolucion, resoluciones.fecha as fecha_reso, resoluciones.condicion, resoluciones.cargo as tipocargo FROM empleado, resoluciones WHERE empleado.adscripcion="'.$var.'" AND resoluciones.empleado_id=empleado.id');
+
+
+    $admin = \DB::select('SELECT empleado.id, empleado.tipo_doc, empleado.cedula, empleado.cargo, empleado.nombres, empleado.apellidos, empleado.adscripcion, resoluciones.n_resolucion, resoluciones.fecha as fecha_reso, resoluciones.condicion, resoluciones.cargo as tipocargo FROM empleado, resoluciones WHERE empleado.adscripcion="Gerencia de Administración y Finanzas" AND resoluciones.empleado_id=empleado.id');
+
+
+  print_r($admin);
+       
+        $dompdf = PDF::loadView('pdf.responsablesporusoacta', compact('inven', 'empresa', 'autoridad', 'respon', 'admin'));
+        return $dompdf->stream('responsablesporusoacta.pdf');
+
+    }
+
+
+
     
 
      

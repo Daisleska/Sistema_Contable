@@ -169,6 +169,7 @@
                                   <option value="Alto Nivel">Alto Nivel</option>
                                   <option value="Contratado">Contratado</option>
                                   <option value="Fijo">Fijo</option>
+                                  <option value="Obrero">Obrero</option>
 
                                 @elseif ($empleado->tipo_personal=="Contratado")
 
@@ -176,15 +177,29 @@
                                   <option value="Contratado">Contratado</option>
                                   <option value="Alto Nivel">Alto Nivel</option>
                                   <option value="Fijo">Fijo</option>
+                                  <option value="Obrero">Obrero</option>
+
+                             
+                                @elseif ($empleado->tipo_personal=="Obrero")
+
+
+                                  <option value="Obrero">Obrero</option>
+                                  <option value="Contratado">Contratado</option>
+                                  <option value="Alto Nivel">Alto Nivel</option>
+                                  <option value="Fijo">Fijo</option>
+                                  
 
                                 @else 
 
                                   <option value="Fijo">Fijo</option>
                                   <option value="Alto Nivel">Alto Nivel</option>
                                   <option value="Contratado">Contratado</option>
+                                  <option value="Obrero">Obrero</option>
 
-                                @endelseif
+                                
                                 @endelse
+                                @endelseif
+                                @endelseif
                                 @endif
                                   
 
@@ -260,6 +275,17 @@
                   <div class="form-group mb-3">
                         <label style="margin-left: 0.3cm;">Dirección *</label>
                         <input style="width: 310px; margin-left: 0.3cm; " type="text" class="form-control" title="Ingrese la dirección" value="{{$empleado->direccion}}" name="direccion" placeholder="" required>
+                        <div class="valid-feedback">
+                       
+                        </div>
+                    </div>
+    </div>
+
+
+     <div class="row" style="margin-left: 1cm;">
+                  <div class="form-group mb-3">
+                        <label style="margin-left: 0.3cm;">Sueldo Mensual *</label>
+                        <input style="width: 310px; margin-left: 0.3cm; " type="number" class="form-control" title="Ingrese el Sueldo" value="{{$empleado->sueldo}}" name="sueldo" placeholder="" required>
                         <div class="valid-feedback">
                        
                         </div>

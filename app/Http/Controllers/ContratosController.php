@@ -80,6 +80,7 @@ class ContratosController extends Controller
             $contratos->fecha_inicio=$request->fecha_inicio;
             $contratos->fecha_final=$request->fecha_final;
             $contratos->cargo=$k->cargo;
+            $contratos->area=$request->area;
             $contratos->adscripcion=$k->adscripcion;
             $contratos->save();
 
@@ -117,6 +118,7 @@ class ContratosController extends Controller
             $contratos->fecha_inicio=$request->fecha_inicio;
             $contratos->fecha_final=$request->fecha_final;
             $contratos->cargo=$k->cargo;
+            $contratos->area=$request->area;
             $contratos->adscripcion=$k->adscripcion;
             $contratos->save();
 
@@ -186,9 +188,9 @@ class ContratosController extends Controller
     {
         
 
-        $contratos = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, contratos.id AS numero, contratos.fecha, contratos.fecha_inicio, contratos.fecha_final, contratos.cargo, contratos.adscripcion, contratos.tarea FROM `contratos`, `empleado` WHERE empleado.id=contratos.empleado_id AND contratos.id='.$numero);
+        $contratos = \DB::select('SELECT empleado.nombres,empleado.apellidos, empleado.sexo, empleado.estado_civil, empleado.tipo_doc, empleado.cedula, empleado.direccion, contratos.id AS numero, contratos.fecha, contratos.fecha_inicio, contratos.fecha_final, contratos.cargo, contratos.adscripcion, contratos.tarea, contratos.area FROM `contratos`, `empleado` WHERE empleado.id=contratos.empleado_id AND contratos.id='.$numero);
 
-        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="Superintendente"');
+        $autoridad = \DB::select('SELECT nombres, apellidos, tipo_doc, cedula, sexo, cargo FROM `empleado` WHERE cargo="MAXIMA AUTORIDAD"');
 
         $empresa = empresa::all();
 
@@ -207,5 +209,21 @@ class ContratosController extends Controller
          $dompdf = PDF::loadView('pdf.contratosgeneral', compact('contratos'));
 
         return $dompdf->stream('contratosgeneral.pdf');
+    }
+
+
+
+       public function notipdf($numero)
+
+    {
+        
+
+
+
+
+
+        $dompdf = PDF::loadView('pdf.noti_contrato');
+
+        return $dompdf->stream('noti_contrato.pdf');
     }
 }

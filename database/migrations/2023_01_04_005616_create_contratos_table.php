@@ -22,6 +22,7 @@ class CreateContratosTable extends Migration
              $table->date('fecha_final');
              $table->enum('status',['Activo','Vencido'])->default('Activo');
              $table->string('cargo');
+             $table->text('area');
             $table->string('adscripcion');
             $table->foreign('empleado_id')->references('id')->on('empleado')->onDelete('cascade');
             $table->timestamps();

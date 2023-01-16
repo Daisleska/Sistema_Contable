@@ -153,6 +153,10 @@
                                                         <p style="color:black;">Dirección: {{$key->direccion}} </p>
                                                     </tr>
 
+                                                    <tr>
+                                                        <p style="color:black;">Sueldo Mensual: {{number_format($key->sueldo,2,',','.')}} Bs </p>
+                                                    </tr>
+
                                                     @endif
                                                         <div class="modal-footer" style="align-content: center;">
                                 <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
