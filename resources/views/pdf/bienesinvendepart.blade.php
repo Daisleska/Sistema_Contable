@@ -65,8 +65,8 @@
  
   @foreach($empresa as $key)
  @foreach($autoridad as $k)
- @foreach($inven as $ky) 
-        <table border="1" style="width: 25cm; margin-top: 1cm; margin-left: 0.8cm; margin-right: 0.8cm;"> 
+ @foreach($info as $j) 
+        <table border="1" style="width: 26cm; margin-top: 1cm; margin-right: 0.8cm;"> 
             <tr>
                 <th colspan="3" rowspan="2">
                 <img class="img" src="../public/uploads/logobernacion.png">
@@ -92,9 +92,9 @@
             </tr>
 
             <tr>
-             <th style="font: arial; font-size: 7;">@php echo strftime("%d", strtotime($ky->fecha)); @endphp</th>
-                <th style="font: arial; font-size: 7;">@php echo strftime("%m", strtotime($ky->fecha)); @endphp</th>
-                <th style="font: arial; font-size: 7;">@php echo strftime("%Y", strtotime($ky->fecha)); @endphp</th>
+             <th style="font: arial; font-size: 7;">@php echo strftime("%d", strtotime($j->fecha)); @endphp</th>
+                <th style="font: arial; font-size: 7;">@php echo strftime("%m", strtotime($j->fecha)); @endphp</th>
+                <th style="font: arial; font-size: 7;">@php echo strftime("%Y", strtotime($j->fecha)); @endphp</th>
             </tr>
             <tr>
                 <th colspan="3" style="font: arial; font-size: 7; text-align: left; text-transform: uppercase;">ENTIDAD PROPIETARIA: {{$key->nombre}}</th>
@@ -110,10 +110,11 @@
                   <th colspan="3" style="font: arial; font-size: 7; text-align: left;">DIRECCIÓN: AV. 10 DE DICIEMBRE, ENTRE CALLE SUCRE Y JUNÍN, EDIF. SETA. MARACAY EDO. ARAGUA</th>
                     
                 </th>
-            </tr>
+            </tr>@foreach($nom as $n)
             <tr>
-                <th colspan="8" style="font: arial; font-size: 7; text-align: center; text-transform: uppercase;">{{$ky->tipo}} de {{$ky->nombre}}</th>
+                <th colspan="8" style="font: arial; font-size: 7; text-align: center; text-transform: uppercase;">{{$n->tipo}} de {{$n->nombre}}</th>
             </tr>
+                @endforeach
             <tr>
                 <th colspan="3" style="font: arial; font-size: 7;">Clasificación 
                 (Código)</th>
@@ -145,7 +146,9 @@
             @endforeach
             <tr>
                  <th colspan="2" style="font: arial; font-size: 7;">DELEGADO (A) BIENES PUBLICOS</th>
-                 <th colspan="2" style="font: arial; font-size: 7; text-transform: uppercase;">{{$ky->tipo}} de {{$ky->nombre}}</th>
+                 @foreach($nom as $n)
+                 <th colspan="2" style="font: arial; font-size: 7; text-transform: uppercase;">{{$n->tipo}} de {{$n->nombre}}</th>
+                  @endforeach
                  <th colspan="2" style="font: arial; font-size: 7;">DESPACHO DE SUPERINTENDENCIA </th>
                  <th colspan="2" style="font: arial; font-size: 7;">RESUMEN</th>
             </tr>

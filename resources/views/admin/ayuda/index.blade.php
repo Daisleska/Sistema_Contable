@@ -102,7 +102,7 @@
   <a style='cursor: pointer; text-align: center;' onClick="muestra_oculta('d')" title="" class="boton_mostrar">¿Se puede abrir el Libro Diario luego de haberlo cerrado?</a>
 
 
-<div id="d" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">Nooooo</p>
+<div id="d" style="display: none; background: white; width: 290px;float:left; clear:both; border:2px solid #e6e6e6; margin-top:2px; padding:5px; overflow:auto; font-family:helvetica; font-size:14px; text-align: justify;">No sin la autorización del Administrador</p>
 </div> 
 
 </div>

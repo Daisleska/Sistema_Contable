@@ -46,9 +46,9 @@
                             <tr>
                               <th>
                             
-                                <button  type="button" class="btn btn-secondary" data-toggle="modal" title="" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
+                                <button  type="button" class="btn btn-secondary" data-toggle="modal" title="Asignar Bienes" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button>
 
-                                <button  type="button" class="btn btn-danger" data-toggle="modal" title="" data-target="#bs-example-modal-sm2"><i data-feather="plus"></i></button>
+                                <button  type="button" class="btn btn-danger" data-toggle="modal" title="Caución Manifestación de Bienes" data-target="#bs-example-modal-sm2"><i data-feather="plus"></i></button>
 
                                 @if(buscar_p('Reportes','PDF')=="Si" || buscar_p('Reportes','Excel')=="Si")
                      <div class="btn-group">                           
@@ -64,13 +64,13 @@
                     </a>
                    
                 
-                    </div></div>
+                    </div></div></th></tr>
                     @endif
                            
                              
 
 
-                            </tr>
+                            <tr>
                            
                                
                               
@@ -79,7 +79,7 @@
                                 <th>Descripción</th>
                                 <th>Asignado A</th>
                                 <th>Status</th>
-                                <th>Opciones</th>
+                               
                               
                              
 
@@ -92,14 +92,12 @@
                    @foreach($inventario as $key)       
                 <tr>
               
-                <td>{{$key->fecha}}</td>
-                <td>{{$key->codigo}}</td>
-                <td>{{$key->nombre}}</td>
-                <td>{{$key->nombres}} {{$key->apellidos}}</td>
-                <td>{{$key->status}}</td>
-                <td>
-                    <button  class="btn btn-danger btn-xs" onclick="alert_eliminar('{{$key->n_inven}}')" title="Eliminar"><i data-feather="trash-2"></i></button>
-                </td>
+                <td style="font-size: 10">{{$key->fecha}}</td>
+                <td style="font-size: 10">{{$key->codigo}}</td>
+                <td style="font-size: 10">{{$key->nombre}}</td>
+                <td style="font-size: 10">{{$key->nombres}} {{$key->apellidos}}</td>
+                <td style="font-size: 10">{{$key->status}}</td>
+                
                   
              
              
@@ -197,7 +195,7 @@
                                             <div class="modal-dialog modal-sm3">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="margin-left: 2cm;" class="modal-title" id="mySmallModalLabel">Generar Acta de Asignación de Bienes</h5>
+                                                        <h5 style="margin-left: 2cm;" class="modal-title" id="mySmallModalLabel">Caución Manifestación de Bienes</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>

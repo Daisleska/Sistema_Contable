@@ -338,7 +338,7 @@ class BalancesController extends Controller
 
     }
    //dd($res_saldo_general);
-         $er = 2;
+        // $er = 2;
        return view('process.balances.index', 
         compact('comprobacion', 'a','res_cuenta','totales_C', 'saldos', 'res_saldo_general',
         'inicio', 'final', 'ventas', 'subtotal_venta', 'IVA_venta', 'compras', 'subtotal_compra', 'IVA_compra', 'inventario_inicial', 'inventario_final', 'informacion', 'er','valor'));

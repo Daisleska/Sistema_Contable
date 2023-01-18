@@ -149,7 +149,7 @@
                                         <thead>
                                             <tr>
                                                 <th>N° de Ident</th>
-                                                <th>Descripción</th>
+                                                <th >Descripción</th>
                                                 <th>Opción</th>
                                             </tr>
                                         </thead> 
@@ -260,7 +260,7 @@ $(document).ready(function(){
                
               
               
-                nom='<tr style="color: black;"><th colspan="6" style="text-transform: uppercase;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;'+cuent[i].tipo+' de '+cuent[i].nombre+'&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="bienesinven/'+cuent[i].id+'/depart" class="btn btn-info btn-sm" data-toggle="tooltip" title="Inventario"><i data-feather="save"></i></a>&nbsp; &nbsp; &nbsp;&nbsp;<a href="responsablesporuso/'+cuent[i].id+'/acta" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Acta de Asignación"><i data-feather="save"></i></a></th></tr><tr style="color: black;"><th style="text-align: center; text-transform: uppercase;">N° de Ident</th><th style="text-align: center; text-transform: uppercase;">Descripción</th><th style="text-align: center; text-transform: uppercase;">Valor Unitario</th><th style="text-align: center; text-transform: uppercase;">Fecha</th></tr>';
+                nom='<tr style="color: black;"><th colspan="6" style="text-transform: uppercase;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;'+cuent[i].tipo+' de '+cuent[i].nombre+'&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="bienesinven/'+cuent[i].id+'/depart" class="btn btn-info btn-sm" data-toggle="tooltip" title="Inventario"><i data-feather="save"></i></a>&nbsp; &nbsp; &nbsp;&nbsp;<a href="responsablesporuso/'+cuent[i].id+'/acta" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Acta de Asignación"><i data-feather="save"></i></a></th></tr><tr style="color: black;"><th style="text-align: center; text-transform: uppercase;">N° de Ident</th><th style="text-align: center; text-transform: uppercase;">Descripción</th><th style="text-align: center; text-transform: uppercase;">Valor Unitario</th></tr>';
 
 
  for (var i =0; i<cuent.length; i++) {
@@ -268,7 +268,7 @@ $(document).ready(function(){
 
   
 
-tabla+='<tr style="color: black;"><td style="text-align: center;">'+cuent[i].codigo+'</td><td style="text-align: center;">'+cuent[i].bien+'</td><td style="text-align: center;">'+formatter.format(cuent[i].valor_u)+' Bs</td><td style="text-align: center;">'+cuent[i].fecha+'</td></tr>';
+tabla+='<tr style="color: black;"><td style="text-align: justify; font-size: 9">'+cuent[i].codigo+'</td><td style="text-align: justify; font-size: 9">'+cuent[i].bien+'</td><td style="text-align: justify; font-size: 9">'+formatter.format(cuent[i].valor_u)+' Bs</td></tr>';
 
 $('#tbody').html(tabla);
 

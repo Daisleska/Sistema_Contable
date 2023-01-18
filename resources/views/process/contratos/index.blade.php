@@ -29,6 +29,7 @@
             @include('flash::message')
         </div>
 </div>
+
 <div class="row">
         <div class="col-12">
             <div class="card">
@@ -37,6 +38,8 @@
                     <br>
                     <h4 style="text-align: center;" class="header-title mt-0 mb-1">CONTRATOS</h4>
                     <a><button  type="button" class="btn btn-secondary" data-toggle="modal" title="Contratos" data-target="#bs-example-modal-sm1"><i data-feather="plus"></i></button></a>
+
+
                     <div class="btn-group">                           
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -88,13 +91,10 @@
                     @if(buscar_p('Reportes','PDF')=="Si")
                                             <a href="{{ route('contratos.pdf', $key->numero) }}" class="btn btn-info btn-sm"
                                                 data-toggle="tooltip" 
-                                                title="Generar pdf"> <i data-feather="save"></i>
+                                                title="Generar pdf"><i data-feather="save"></i>
                                             </a>
 
-                                            <a href="{{ route('noti_contrato.pdf', $key->numero) }}" class="btn btn-danger btn-sm"
-                                                data-toggle="tooltip" 
-                                                title="Generar pdf"> <i data-feather="save"></i>
-                                            </a>
+                                           
                         @endif
                 </td>
                   
@@ -114,6 +114,7 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+
     <!-- end row-->
     <!-- egreso -->
      <div class="modal fade" id="bs-example-modal-sm1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

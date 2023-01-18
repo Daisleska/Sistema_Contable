@@ -10,7 +10,10 @@
                 <?php
                 $fecha= date('d-m-Y');
                 ?>
-                <h4 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en Libro Diario</h4><hr>                <h4 class="modal-title" id="myExtraLargeModalLabel">Fecha: {{$fecha}}</h4>
+             <h5 style="margin-left: 1cm;" class="modal-title" id="myExtraLargeModalLabel">Registro en Libro Diario  </h5><h6 style="margin-left: 1cm;">Fecha: {{$fecha}} </h6>
+          
+
+                <div class="modal-title" id="myExtraLargeModalLabel"><label>   </label></div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
@@ -28,9 +31,10 @@
             <div class="card-body">
 
                      @include('process.diario.registro')
-                    <div class="row" style="margin-left: 3cm;">
+
+                    <div class="row">
               
-                     <div class="col-md-9">
+                     <div class="col-md-12">
                             <label for="exampleInputEmail1">Descripción</label>
                              <input type="text" name="descripcion" class="form-control" required="required" maxlength="100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Breve Descripción">
                        </div> 

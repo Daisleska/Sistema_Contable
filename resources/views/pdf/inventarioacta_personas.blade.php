@@ -108,13 +108,13 @@
     @foreach($admin as $key)
     
     <tr>
-        <th colspan="2" style="text-align: left;">Apellidos y Nombres: {{$key->nombres}} {{$key->apellidos}}</th>
+        <th colspan="2" style="text-align: left;">Apellidos y Nombres: Oscar Rafael Brito Ortega</th>
         <th colspan="2" style="text-align: left;">Apellidos y Nombres: Mayerling Mileika Todeth Melendez</th>
         
   
     </tr>
     <tr>
-        <th>C.I.{{$key->tipo_doc}}.-{{number_format($key->cedula, 0, ".", ".")}}</th>
+        <th>C.I.V-13.646.470</th>
         <th style="text-align: left;">Cargo: Gerente de Administración y Finanzas</th>
         <th>C.I. 20.450.282</th>
         <th style="text-align: left;">Cargo: Delegado (a) de Bienes Públicos</th>

@@ -1,8 +1,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <div class="form">
                @csrf
-              <div class="row" style="margin-left: 3cm;">
-                <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-6" >
                      <label>Cuentas</label>
                     <select name="de_cuenta[]" required="required" class="form-control " placeholder="P. U.">
                         <option selected="selected" readonly>Seleccionar</option>
@@ -11,6 +11,7 @@
                                  @endforeach
                     </select> 
                 </div> 
+
                  <div class="col-md-4">
                      <label>Monto</label>
                     <input type="number" name="de_monto[]" required="required" class="form-control"  placeholder="M. U."/>
@@ -27,8 +28,8 @@
     
 <div class="form2">
                @csrf
-              <div class="row" style="margin-left: 3cm;">
-                <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-6">
                      <label>Cuentas</label>
                     <select name="a_cuenta[]" required="required" class="form-control " placeholder="P. U.">
                         <option selected="selected" readonly>Seleccionar</option>

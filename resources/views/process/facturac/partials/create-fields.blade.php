@@ -39,7 +39,7 @@
                                
                             <tr>
 
-                                <th><b style="color:red;">*</b> RIF</th>
+                                <th><b style="color:red;">*</b> RUT</th>
                                 <th><input style="width: 200px;"  type="text" id="ruf" name="ruf" class="form-control" required></th>
                                 <small><span id="mensaje" style="color:red"></span></small>
 

@@ -186,6 +186,10 @@ class BienesInventarioController extends Controller
     
     $inven = \DB::select('SELECT departamento.id, departamento.tipo, departamento.nombre,bienesinventario.id as id_inventario, bienesinventario.fecha, bienes.codigo, bienes.cantidad,bienes.grupo, bienes.sub_grupo, bienes.sec, bienes.valor_u, bienes.nombre as bien FROM departamento, bienesinventario, bienes WHERE bienesinventario.departamento_id='.$id.' AND departamento.id=bienesinventario.departamento_id AND bienesinventario.bienes_id=bienes.id');
 
+     $nom = \DB::select('SELECT departamento.id, departamento.tipo, departamento.nombre FROM departamento, bienesinventario, bienes WHERE bienesinventario.departamento_id='.$id.' AND departamento.id=bienesinventario.departamento_id AND bienesinventario.bienes_id=bienes.id LIMIT 1');
+
+     $info = \DB::select('SELECT bienesinventario.fecha FROM bienesinventario WHERE bienesinventario.departamento_id='.$id.'');
+
     foreach($inven as $key)
     {
     
@@ -197,7 +201,7 @@ class BienesInventarioController extends Controller
 
 
        
-        $dompdf = PDF::loadView('pdf.bienesinvendepart', compact('inven', 'empresa', 'autoridad', 'respon'))->setPaper('a4', 'landscape');
+        $dompdf = PDF::loadView('pdf.bienesinvendepart', compact('inven', 'empresa', 'autoridad', 'respon', 'info', 'nom'))->setPaper('a4', 'landscape');
         return $dompdf->stream('bienesinvendepart.pdf');
 
     }

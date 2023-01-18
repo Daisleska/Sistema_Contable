@@ -34,7 +34,7 @@
         <div class="card">
             <div class="card-body">
                 <br>
-                <h4 style="text-align: center;" class="header-title mt-0 mb-1">REGISTRO DE FACTURA DE COMPRA</h4>
+                <h4 style="text-align: center;" class="header-title mt-0 mb-1">Registro de Facturas</h4>
                 <p class="sub-header"></p>
 
                 <form  action="{{route('facturac.store', 'facturac.update')}}" class="needs-validation" method="post"  novalidate>

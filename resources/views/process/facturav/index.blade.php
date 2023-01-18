@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                   <br>
-                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">FACTURAS DE VENTAS</h4>
+                    <h4 style="text-align: center;" class="header-title mt-0 mb-1">Facturas de Ventas</h4>
 
                     
                   @if(buscar_p('Facturas','Registrar')=="Si" )
